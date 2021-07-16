@@ -1,5 +1,5 @@
 {
-  "name": "flint-gui",
+  "name": "flint-ui",
   "version": "1.1.0",
   "description": "This project aims to implement a user-friendly UI for FLINT and GCBM runs",
   "author": "waridrox <mohdwarid4@gmail.com>",

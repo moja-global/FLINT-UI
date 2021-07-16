@@ -1,0 +1,3 @@
+[submodule "flint-ui/flint.cloud"]
+	path = flint.cloud
+	url = https://github.com/moja-global/flint.cloud

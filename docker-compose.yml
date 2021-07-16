@@ -1,0 +1,23 @@
+
+version: '3'
+services:
+  flint.api:
+    build:
+      context: ./flint.cloud/rest_api_flint.example
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: flint.cloud.api
+    volumes:
+       - ./FLINT.Cloud/rest_api_flint.example/output:/server/output
+  flint.ui:
+    build:
+      context: ./flint.ui
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    container_name: flint.ui
+    volumes:
+       - ./flint.ui:/usr/src/app/flint.ui
+       - ./flint.cloud/rest_api_flint.example/output:/server/output
+       - /usr/src/app/flint.ui/node_modules
