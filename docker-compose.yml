@@ -1,15 +1,24 @@
 
 version: '3'
 services:
-  flint.api:
+  flint.example.api:
     build:
-      context: ./flint.cloud/rest_api_flint.example
+      context: ./flint.cloud/local/rest_api_flint.example
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    container_name: flint.cloud.api
+    container_name: flint.example.api
     volumes:
-       - ./FLINT.Cloud/rest_api_flint.example/output:/server/output
+       - ./flint.cloud/local/rest_api_flint.example/output:/server/output
+  flint.gcbm.api:
+    build:
+      context: ./flint.cloud/rest_api_gcbm/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    container_name: flint.gcbm.api
+    volumes:
+       - ./flint.cloud/rest_api_gcbm/output:/server/output     
   flint.ui:
     build:
       context: ./flint.ui
@@ -19,5 +28,5 @@ services:
     container_name: flint.ui
     volumes:
        - ./flint.ui:/usr/src/app/flint.ui
-       - ./flint.cloud/rest_api_flint.example/output:/server/output
+       - ./flint.cloud/local/rest_api_flint.example/output:/server/output
        - /usr/src/app/flint.ui/node_modules
