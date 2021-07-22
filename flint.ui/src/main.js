@@ -10,7 +10,7 @@ import Gcbm from "@/layouts/Gcbm.vue";
 
 import Dashboard from "@/views/flint/Dashboard.vue";
 import Configurations from "@/views/flint/Configurations.vue";
-import ConfigurationsPoint from "@/views/flint/ConfigurationsPoint.vue"
+import ConfigurationsPoint from "@/views/flint/ConfigurationsPoint.vue";
 import ConfigurationsRothc from "@/views/flint/ConfigurationsRothc.vue";
 import Outputs from "@/views/flint/Outputs.vue";
 
@@ -20,7 +20,7 @@ import GcbmOutputs from "@/views/gcbm/GcbmOutputs.vue";
 
 import Landing from "@/views/Landing.vue";
 
-const routes = [
+const routes: any = [
   {
     path: "/flint",
     redirect: "/flint/dashboard",
@@ -78,7 +78,7 @@ const routes = [
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
-const router = createRouter({
+const router: any = createRouter({
   history: createWebHistory(),
   routes,
 });
