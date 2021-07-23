@@ -8,7 +8,6 @@
     <p class="text-gray-700">Input the custom values in the fields below. Default values as placeholder text will be used if none provided.</p>
   </div>
 
-<!-- -->
           <div class="flex flex-wrap mt-10"> 
 
           <Rothctemplate 
@@ -41,18 +40,11 @@
 
 <script>
 import Rothctemplate from "@/views/flint/Rothctemplate.vue"
-
 export default {
-  components: {
-    Rothctemplate
-
-  },
   data() {
-      return {
-
-      }},
-       
-  methods: {
-    
-  }}
+  },
+  components: {
+    Rothctemplate,
+  },
+}
 </script>
