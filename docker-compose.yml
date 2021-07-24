@@ -10,6 +10,7 @@ services:
     container_name: flint.example.api
     volumes:
        - ./flint.cloud/local/rest_api_flint.example/output:/server/output
+       - ./flint.cloud/local/rest_api_flint.example/config:/server/config
   flint.gcbm.api:
     build:
       context: ./flint.cloud/rest_api_gcbm/
