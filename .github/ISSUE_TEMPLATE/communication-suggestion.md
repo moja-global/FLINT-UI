@@ -1,10 +1,9 @@
 ---
 name: Communication Suggestion
-about: 'Propose a way to better communicate a feature '
-title: ''
-labels: ''
-assignees: ''
-
+about: "Propose a way to better communicate a feature "
+title: ""
+labels: ""
+assignees: ""
 ---
 
 **Describe how we are communicating and why it is not optimal.**

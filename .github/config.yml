@@ -2,15 +2,15 @@
 
 # Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
 
-# Comment to be posted to on first time issues
+# Comment to be posted on first-time issues
 newIssueWelcomeComment: |
   Hello there!👋 Welcome to moja global!💖
 
   Thank you and congratulations 🎉 for opening your very first issue in this project.
-  Moja global fosters an open and welcoming environment for al our contributors.🌸 Please adhere to our [Code Of Conduct](https://github.com/moja-global/About_moja_global/blob/master/CODE_OF_CONDUCT.md).
+  Moja global fosters an open and welcoming environment for all our contributors.🌸 Please adhere to our [Code Of Conduct](https://github.com/moja-global/About_moja_global/blob/master/CODE_OF_CONDUCT.md).
 
-  Incase you want to claim this issue, please comment down below!
-  Please checkout if any of the already existing issue template fits for your isssue or you may open a blank issue as well ✨
+  In case you want to claim this issue, please comment down below!
+  Please check out if any of the already existing issue templates fit your issue or you may open a blank issue as well ✨
   We will try to get back to you as soon as we can.👀
 
   Feel free to join us on [moja global Private Slack](https://mojaglobal.slack.com/) by dropping an email [here](mailto:info@moja.global).👩‍💻 We would love to hear your interesting ideas and engage in discussions.💖
@@ -18,13 +18,13 @@ newIssueWelcomeComment: |
 
 # Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
 
-# Comment to be posted to on PRs from first time contributors in your repository
+# Comment to be posted to on PRs from first-time contributors in your repository
 newPRWelcomeComment: |
   Hello there!👋 Welcome to moja global!💖
   Thank you and congrats 🎉 for opening your first PR on this project.✨
-  We will review it soon! Till then you can checkout the `README.md` for more details on it.
+  We will review it soon! Till then you can check out the `README.md` for more details on it.
 
-  Moja global fosters an open and welcoming environment for al our contributors.🌸 Please adhere to our [Code Of Conduct](https://github.com/moja-global/About_moja_global/blob/master/CODE_OF_CONDUCT.md).
+  Moja global fosters an open and welcoming environment for all our contributors.🌸 Please adhere to our [Code Of Conduct](https://github.com/moja-global/About_moja_global/blob/master/CODE_OF_CONDUCT.md).
 
   Feel free to join us on [moja global Private Slack](https://mojaglobal.slack.com/) by dropping an email [here](mailto:info@moja.global).👩‍💻 We would love to hear your interesting ideas and engage in discussions.💖
   Moja global is delighted to have you here :)
@@ -44,6 +44,5 @@ firstPRMergeComment: |
   <p>Help them setup this project and resolve their queries! 🌸 </p>
   <p>Create a welcoming or beginner friendly issue for someone else! 😄 🎉 </p>
   </details>
-
 
 # It is recommended to include as many gifs and emojis as possible!
