@@ -1,7 +1,7 @@
 <div align="center">
 <h1>FLINT UI</h1>
 <p>
-UI for FLINT.Cloud project which aims to build a continuous deployment pipeline to offer FLINT as a SaaS overcloud
+A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs.
 </p>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
@@ -11,7 +11,7 @@ UI for FLINT.Cloud project which aims to build a continuous deployment pipeline 
 
 ## About Project
 
-This project is UI and dashboard for [FLINT.Cloud](https://github.com/moja-global/FLINT.Cloud) project which aims to build a continuous deployment pipeline to offer FLINT as a SaaS overcloud. The project also aims to simplify the process of installation by supporting a single command or step installation process.
+This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your own cloud instance or customizing the client.
 
 ## Usage
 
@@ -26,10 +26,24 @@ docker build --build-arg NUM_CPU=8 -t moja/flint.example:bionic .
 
 It will take some time to build the image. For more information, you can follow [https://docs.moja.global/en/latest/DevelopmentSetup/docker_installation_example.html](https://docs.moja.global/en/latest/DevelopmentSetup/docker_installation_example.html).
 
-1. Clone [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository and get inside the repository directory. Now you have to build a `docker-compose.yml` file so follow the below command:
+2. Clone [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository:
+
+When using submodules the installation code needs to be:
 
 ```shell
-docker-compose up -d
+git clone --recursive https://github.com/moja-global/flint-ui
+```
+
+Or if you've already initialized the repository without the submodule
+
+```shell
+git submodule update --init --recursive
+```
+
+Now you have to get inside the repository directory and to build the `docker-compose.yml` file follow the below command:
+
+```shell
+docker-compose up
 ```
 
 This will build all the docker images inside the `docker-compose.yml` file. It will take some time and after that, you can see all images list in the Docker app.
@@ -38,22 +52,28 @@ This will build all the docker images inside the `docker-compose.yml` file. It w
 <img src="assets/docker-images.jpg">
 </div>
 
-Now you can run any all the containers by clicking on the `RUN` button. You can use the command line too to run these images. All containers list will look like this in the Docker app:
+`docker-compose.yml` file is compose of three services i.e. `flint.example.api`, `flint.gcbm.api` and `flint.ui`.
 
-**NOTE:** You may encounter a problem with the `flint-ui_flint.gcbm.api` image because it is not refactored for a local environment yet.
+Now you can run any all the containers by clicking on the `RUN` button. You can use the command line too to run these images. All containers list will look like this in the Docker app:
 
 <div align="center">
 <img src="assets/docker-containers.jpg">
 </div>
 
-1. Now you can run the Vue app to get the dashboard. Go to the `flint.ui` folder of [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository and run the below command:
+<br />
+
+> You may encounter a problem with the `flint.gcbm.api` containers because it is not refactored for a local environment yet.
+
+Also, if you feel like running Vue app locally you can follow the below procedure:
+
+Go to the `flint.ui` folder of [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository and run the below command:
 
 ```shell
 npm install
-npm run serves
+npm run serve
 ```
 
-Now you can redirect to `http://localhost:8080/` and you will be able to see the dashboard soemting like this:
+Now you can redirect to `http://localhost:8080/` and you will be able to see the dashboard someting like this:
 
 <div align="center">
 <img src="assets/dashboard.jpg">
