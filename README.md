@@ -11,7 +11,7 @@ A FLINT client, written in Vue, to provide an awesome user interface for configu
 
 ## About Project
 
-This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your own cloud instance or customizing the client.
+This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
 
 ## Usage
 
@@ -40,7 +40,7 @@ Or if you've already initialized the repository without the submodule
 git submodule update --init --recursive
 ```
 
-Now you have to get inside the repository directory and to build the `docker-compose.yml` file follow the below command:
+3. Now you have to get inside the repository directory and to build the `docker-compose.yml` file follow the below command:
 
 ```shell
 docker-compose up
@@ -54,7 +54,7 @@ This will build all the docker images inside the `docker-compose.yml` file. It w
 
 `docker-compose.yml` file is compose of three services i.e. `flint.example.api`, `flint.gcbm.api` and `flint.ui`.
 
-Now you can run any all the containers by clicking on the `RUN` button. You can use the command line too to run these images. All containers list will look like this in the Docker app:
+Now you can start any all the containers by clicking on the `START` button. You can also use the command line to start these containers by using the command `docker start {name of the container}`. All containers list will look like this in the Docker app:
 
 <div align="center">
 <img src="assets/docker-containers.jpg">
@@ -62,7 +62,17 @@ Now you can run any all the containers by clicking on the `RUN` button. You can 
 
 <br />
 
+You can shutdown container services separately by clicking on the `STOP` button for every container. You can also use the command line to stop these containers by using the command `docker stop {name of the container you want to stop}`. Also, to shut down, the whole `docker-compose.yml` file and all services inside use the command `docker-compose down`.
+
+> You can also run `Detached mode` in Detached mode. Detached mode, shown by the option `--detach` or `-d`, means that a Docker container runs in the background of your terminal. It does not receive input or display output. So the command for running `docker-compose up` in Detached mode is `docker-compose up -d`.
+
 > You may encounter a problem with the `flint.gcbm.api` containers because it is not refactored for a local environment yet.
+
+4. To view the UI please navigate to [localhost:8080](http://localhost:8080/). UI will look someting like this:
+
+<div align="center">
+<img src="assets/dashboard.jpg">
+</div>
 
 Also, if you feel like running Vue app locally you can follow the below procedure:
 
@@ -72,12 +82,6 @@ Go to the `flint.ui` folder of [FLINT.UI](https://github.com/moja-global/FLINT-U
 npm install
 npm run serve
 ```
-
-Now you can redirect to `http://localhost:8080/` and you will be able to see the dashboard someting like this:
-
-<div align="center">
-<img src="assets/dashboard.jpg">
-</div>
 
 ## How to Get Involved?
 
