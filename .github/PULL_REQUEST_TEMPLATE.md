@@ -26,15 +26,15 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 ## Checklist:
 
 - [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have performed a self-review of my code
+- [ ] I have commented on my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
 - [ ] I have checked my code and corrected any misspellings
-- [ ] I have tagged the reviewers in a comment below incase my pull request is ready for a review
+- [ ] I have tagged the reviewers in a comment below in case my pull request is ready for a review
 - [ ] I have signed the commit message to agree to Developer Certificate of Origin (DCO) (to certify that you wrote or otherwise have the right to submit your contribution to the project.) by adding "--signoff" to my git commit command.
 
 <!--- Thanks for opening this pull request! If the tests fail, please feel free to reach out to us by leaving a comment down below and we will be happy to take a look --->
