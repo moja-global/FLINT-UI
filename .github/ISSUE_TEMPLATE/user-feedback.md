@@ -1,10 +1,9 @@
 ---
 name: User Feedback
 about: Describe how we can improve your experience
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 **Describe what you are trying to do and why it is not optimal.**
