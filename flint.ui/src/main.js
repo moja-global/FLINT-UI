@@ -1,9 +1,12 @@
 import { createApp } from "vue";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
 import { createWebHistory, createRouter } from "vue-router";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "@/assets/styles/tailwind.css";
+import "./assets/styles/tailwind.css";
 
-import App from "@/App.vue";
+import App from "./App.vue";
 import store  from "./store";
 
 import Flint from "@/layouts/Flint.vue";
@@ -110,4 +113,4 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).use(store).mount("#app");
+createApp(App).use(Toast).use(router).use(store).mount("#app");

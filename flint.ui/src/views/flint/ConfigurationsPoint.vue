@@ -69,6 +69,16 @@
 import Slider from "@vueform/slider";
 
 export default {
+  setup() {
+      const toast = useToast();
+      toast("I'm a toast!");
+
+      toast.success("My toast content", {
+          timeout: 1000
+        });
+
+        return { toast }
+  },
   components: {
     Slider,
   },

@@ -127,19 +127,19 @@ export default {
     startApiCalls({cardMethodName}) {
       this.isConfirmRunModalVisible = false;
       let api_route = {cardMethodName}.cardMethodName;
-      if (api_route == "spec") {
-        this.apiRoute_spec() 
-        this.delayAlert()
-      }
-      else if (api_route == "help") {
-        this.apiRoute_help()
-        this.delayAlert()
-      }
-      else if (api_route == "version") { 
-        this.apiRoute_version()
-        this.delayAlert()        
-      }
-      else if (api_route == "point") {
+      // if (api_route == "spec") {
+      //   this.apiRoute_spec() 
+      //   this.delayAlert()
+      // }
+      // else if (api_route == "help") {
+      //   this.apiRoute_help()
+      //   this.delayAlert()
+      // }
+      // else if (api_route == "version") { 
+      //   this.apiRoute_version()
+      //   this.delayAlert()        
+      // }
+      if (api_route == "point") {
         this.apiRoute_point()
         this.delayAlert()
       }
@@ -151,41 +151,43 @@ export default {
         this.apiRoute_nonexistent()
     },
     // button linking to api end-points
-    apiRoute_spec() {
-      // fetch('http://127.0.0.1:8080/spec')
-      // .then(response => response.json())
-      // .then(json => console.log(json))
-      console.log('SPEC route invoked')
-      axios.get('http://127.0.0.1:8080/spec')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
-    },
-    apiRoute_help() {
-      console.log('HELP route invoked')
-      axios.get('http://127.0.0.1:8080/help/all')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // this.title = 'HELP route invoked'
+    // apiRoute_spec() {
+    //   // fetch('http://127.0.0.1:8080/spec')
+    //   // .then(response => response.json())
+    //   // .then(json => console.log(json))
+    //   console.log('SPEC route invoked')
+    //   axios.get('http://127.0.0.1:8080/spec')
+    //     .then(response => console.log(response))
+    //     .catch(error => console.log(error))
+    //   // return this.title
+    // },
+    // apiRoute_help() {
+    //   console.log('HELP route invoked')
+    //   axios.get('http://127.0.0.1:8080/help/all')
+    //     .then(response => console.log(response))
+    //     .catch(error => console.log(error))
+    //   // this.title = 'HELP route invoked'
 
-      // return this.title
-    },
-    apiRoute_version() {
-      console.log('VERSION route invoked')
-      axios.get('http://127.0.0.1:8080/version')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
-    },
+    //   // return this.title
+    // },
+    // apiRoute_version() {
+    //   console.log('VERSION route invoked')
+    //   axios.get('http://127.0.0.1:8080/version')
+    //     .then(response => console.log(response))
+    //     .catch(error => console.log(error))
+    //   // return this.title
+    // },
     apiRoute_point() {
-      console.log('POINT route invoked')      
+      //sending the new config
+      console.log('POINT route invoked with new configs')      
       axios.post('http://127.0.0.1:8080/point')
         .then(response => console.log(response))
         .catch(error => console.log(error))
       // return this.title
     },
     apiRoute_rothc() {
-      console.log('ROTHC route invoked')
+      // sending the new config
+      console.log('ROTHC route invoked with new configs')
       axios.post('http://127.0.0.1:8080/rothc')
         .then(response => console.log(response))
         .catch(error => console.log(error))

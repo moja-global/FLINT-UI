@@ -31,7 +31,13 @@
         <h1 class="flex-auto text-xl font-semibold">
         soilCover - data_firstmonthcopy
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_soilcover_data_firstmonthcopy"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" 
+    placeholder="" 
+    v-model="newconfig_soilcover_data_firstmonthcopy"
+    >
+    </textarea>
     
   </div>
 
@@ -39,7 +45,13 @@
         <h1 class="flex-auto text-xl font-semibold">
         soilCover - data_month_avg
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_soilcover_data_month_avg"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" 
+    placeholder="" 
+    v-model="newconfig_soilcover_data_month_avg"
+    >
+    </textarea>
     
   </div>
 
@@ -47,7 +59,13 @@
         <h1 class="flex-auto text-xl font-semibold">
         soilCover - data_lastyearcopy
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_soilcover_data_lastyearcopy"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" 
+    placeholder="" 
+    v-model="newconfig_soilcover_data_lastyearcopy"
+    >
+    </textarea>
     
   </div>
 
@@ -60,12 +78,22 @@
 </template>
 
 <script>
-
+import { useToast } from "vue-toastification";
 // import index from "src/"
-// import "@/store/index.js"
+// import "./store/index.js"
 // import { ref, reactive } from "vue";
 
 export default {
+  setup() {
+    const toast = useToast();
+    toast("I'm a toast!");
+
+    toast.success("My toast content", {
+        timeout: 2000
+      });
+
+      return { toast }
+  },
 
   components: {
     
@@ -73,18 +101,47 @@ export default {
   computed: {
     newconfig_soilcover_data_orig: {
       get() {
-         return this.$store.state.Variables[8].rainfall.transform.data_orig
+         return this.$store.state.RothC_config.Variables[12].soilCover.transform.data_orig
       },
       set(newValue) {
-        // console.log(newValue)
         let tempval = newValue;
-        this.$store.commit('setNewConfig', tempval)
+        this.$store.commit('setNewConfig_soilCover_data_orig', tempval)
       }
-    }
+    },
+
+    newconfig_soilcover_data_firstmonthcopy: {
+      get() {
+         return this.$store.state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_soilCover_data_firstmonthcopy', tempval)
+      }
+    },
+
+    newconfig_soilcover_data_month_avg: {
+      get() {
+         return this.$store.state.RothC_config.Variables[12].soilCover.transform.data_month_avg
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_soilCover_data_month_avg', tempval)
+      }
+    },
+
+    newconfig_soilcover_data_lastyearcopy: {
+      get() {
+         return this.$store.state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_soilCover_data_lastyearcopy', tempval)
+      }
+    },
   },
   data() {
       return {
-        //  config_soilcover_data_orig: "1.0, 1.000, 0.900, 0.800, 0.359, 0.100, 0.200, 0.200, 0.500, 0.800, 0.289, 1.000, 0.600, 0.200, 1.000, 0.800, 0.587, 0.027, 0.100, 0.300, 0.173, 0.900, 0.486, 0.200, 0.800, 0.600, 0.000, 0.700, 0.400, 0.500, 0.400, 0.800, 0.200, 0.250, 0.000, 0.100, 0.700, 0.800, 0.680, 0.900, 0.213, 0.973, 0.200, 0.999, 0.227, 0.140, 0.996, 0.200, 0.600",
+         config_soilcover_data_orig: "1.0, 1.000, 0.900, 0.800, 0.359, 0.100, 0.200, 0.200, 0.500, 0.800, 0.289, 1.000, 0.600, 0.200, 1.000, 0.800, 0.587, 0.027, 0.100, 0.300, 0.173, 0.900, 0.486, 0.200, 0.800, 0.600, 0.000, 0.700, 0.400, 0.500, 0.400, 0.800, 0.200, 0.250, 0.000, 0.100, 0.700, 0.800, 0.680, 0.900, 0.213, 0.973, 0.200, 0.999, 0.227, 0.140, 0.996, 0.200, 0.600",
          config_soilcover_data_firstmonthcopy: "1.0, 1.000, 0.900, 0.800, 0.359, 0.100, 0.200, 0.200, 0.500, 0.800, 0.289, 1.000, 0.600, 0.200, 1.000, 0.800, 0.587, 0.027, 0.100, 0.300, 0.173, 0.900, 0.486, 0.200, 0.800, 0.600, 0.000, 0.700, 0.400, 0.500, 0.400, 0.800, 0.200, 0.250, 0.000, 0.100, 0.700, 0.800, 0.680, 0.900, 0.213, 0.973, 0.200, 0.999, 0.227, 0.140, 0.996, 0.200, 0.600, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0",
          config_soilcover_data_month_avg: "1.0, 1.00, 0.90, 0.80, 0.36, 0.10, 0.20, 0.20, 0.50, 0.80, 0.29, 1.00, 0.60, 0.20, 1.00, 0.80, 0.59, 0.03, 0.10, 0.30, 0.17, 0.90, 0.49, 0.20, 0.80, 0.60, 0.00, 0.70, 0.40, 0.50, 0.40, 0.80, 0.20, 0.25, 0.00, 0.10, 0.70, 0.80, 0.68, 0.90, 0.21, 0.97, 0.20, 1.00, 0.23, 0.14, 1.00, 0.20, 0.60, 0.65, 0.65, 0.80, 0.39, 0.40, 0.23, 0.57, 0.28, 0.52, 0.44, 0.38, 0.68",
          config_soilcover_data_lastyearcopy: "1.0, 1.000, 0.900, 0.800, 0.359, 0.100, 0.200, 0.200, 0.500, 0.800, 0.289, 1.000, 0.600, 0.200, 1.000, 0.800, 0.587, 0.027, 0.100, 0.300, 0.173, 0.900, 0.486, 0.200, 0.800, 0.600, 0.000, 0.700, 0.400, 0.500, 0.400, 0.800, 0.200, 0.250, 0.000, 0.100, 0.700, 0.800, 0.680, 0.900, 0.213, 0.973, 0.200, 0.999, 0.227, 0.140, 0.996, 0.200, 0.600, 0.800, 0.680, 0.900, 0.213, 0.973, 0.200, 0.999, 0.227, 0.140, 0.996, 0.200, 0.600",
@@ -103,14 +160,14 @@ export default {
        
   methods: {
     yut () {
-      console.log(this.$store.state.Variables[8]);
-         console.log(this.$store.state.Variables[8].rainfall.transform.data_orig);
+      console.log(this.$store.state.RothC_config.Variables[12]);
+         console.log(this.$store.state.RothC_config.Variables[12].soilCover.transform.data_orig);
       console.log("Sss");
     },
     foobar (event) {
     
          console.log(event.target.value);
-        console.log(this.$store.state.Variables[8].rainfall.transform.data_orig);
+        console.log(this.$store.state.RothC_config.Variables[12].soilCover.transform.data_orig);
         // console.log("haaaa");
       
       // checkExist(event){

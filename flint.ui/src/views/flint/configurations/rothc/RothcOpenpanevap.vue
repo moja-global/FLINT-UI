@@ -15,7 +15,13 @@
         <h1 class="flex-auto text-xl font-semibold">
         openPanEvap - data_orig
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_openpanevap_data_orig"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" 
+    placeholder="" 
+    v-model="newconfig_openPanEvap_data_orig"
+    >
+    </textarea>
     
   </div>
 
@@ -23,7 +29,13 @@
         <h1 class="flex-auto text-xl font-semibold">
         openPanEvap - data_month_avg
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_openpanevap_data_month_avg"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" 
+    placeholder="" 
+    v-model="newconfig_openPanEvap_data_month_avg"
+    >
+    </textarea>
     
   </div>
 
@@ -31,7 +43,12 @@
         <h1 class="flex-auto text-xl font-semibold">
         openPanEvap - data_lastyearcopy
         </h1>
-    <textarea class="form-textarea mt-1 block w-full" rows="5" placeholder="" v-model="config_openpanevap_data_lastyearcopy"></textarea>
+    <textarea 
+    class="form-textarea mt-1 block w-full" 
+    rows="5" placeholder="" 
+    v-model="newconfig_openPanEvap_data_lastyearcopy"
+    >
+    </textarea>
     
   </div>
 
@@ -49,6 +66,37 @@
 
 
 export default {
+  computed: {
+    newconfig_openPanEvap_data_orig: {
+      get() {
+         return this.$store.state.RothC_config.Variables[9].openPanEvap.transform.data_orig
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_openPanEvap_data_orig', tempval)
+      }
+    },
+
+    newconfig_openPanEvap_data_month_avg: {
+      get() {
+         return this.$store.state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_openPanEvap_data_month_avg', tempval)
+      }
+    },
+
+    newconfig_openPanEvap_data_lastyearcopy: {
+      get() {
+         return this.$store.state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy
+      },
+      set(newValue) {
+        let tempval = newValue;
+        this.$store.commit('setNewConfig_openPanEvap_data_lastyearcopy', tempval)
+      }
+    },
+  },
   components: {
     
   },
