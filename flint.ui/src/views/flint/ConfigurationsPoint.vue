@@ -55,10 +55,6 @@
             <i class="fas fa-check"></i> Confirm and run with the new Pool
             configuration
           </button>
-
-          <!-- <button @click="runUpdatedConfig" class="inline-block align-middle w-full mt-4 flex-initial bg-white hover:bg-blue-500 hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-           <i class="far fa-play-circle"></i> Run with new Config
-          </button> -->
         </div>
       </div>
     </div>
@@ -69,16 +65,6 @@
 import Slider from "@vueform/slider";
 
 export default {
-  setup() {
-      const toast = useToast();
-      toast("I'm a toast!");
-
-      toast.success("My toast content", {
-          timeout: 1000
-        });
-
-        return { toast }
-  },
   components: {
     Slider,
   },
@@ -87,27 +73,25 @@ export default {
       pool1: {
         min: 0.0,
         max: 400.0,
-        step: 10.0,
+        step: 5.0,
         value: 100.0,
       },
       pool2: {
         min: 0.0,
         max: 400.0,
-        step: 10.0,
+        step: 5.0,
         value: 100.0,
       },
       pool3: {
         min: 0.0,
         max: 400.0,
-        step: 10.0,
+        step: 5.0,
         value: 100.0,
       },
-      // configvalidated: false
     };
   },
   methods: {
     loggingVal1() {
-      //   console .log(typeof(this.pool1.value).toFixed(1));
       console.log(this.pool1.value.toFixed(1));
     },
     loggingVal2() {
@@ -130,9 +114,6 @@ export default {
 
       this.$store.dispatch('send_pointConfig');
     },
-    // runUpdatedConfig () {
-    //     console.log("Or can we do all at one go!!")
-    // },
   },
 };
 </script>

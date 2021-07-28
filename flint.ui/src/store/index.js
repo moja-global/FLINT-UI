@@ -366,44 +366,210 @@ export default createStore({
     },
   },
   mutations: {
-    // soil_func_data_orig (state) {
-    // state.Variables[8].rainfall.transform.data_orig = "cool";
-    // console.log(state);
-    // },
-    setNewConfig(state, newValue) {
-      state.Variables[8].rainfall.transform.data_orig = newValue;
+    setNewConfig_dpmaCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue
     },
+
+    setNewConfig_rpmaCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.rpmaCMInit = newValue
+    },
+
+    setNewConfig_biofCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.biofCMInit = newValue
+    },
+
+    setNewConfig_biosCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.biosCMInit = newValue
+    },
+
+    setNewConfig_humsCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.humsCMInit = newValue
+    },
+
+    setNewConfig_inrtCMInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.inrtCMInit = newValue
+    },
+
+    setNewConfig_TSMDInit(state, newValue) {
+      state.RothC_config.Variables[13].initSoil.TSMDInit = newValue
+    },
+
+    ////
+
+    setNewConfig_rainfall_data_orig(state, newValue) {
+      state.RothC_config.Variables[8].rainfall.transform.data_orig = newValue
+    },
+
+    setNewConfig_rainfall_data_month_avg(state, newValue) {
+        state.RothC_config.Variables[8].rainfall.transform.data_month_avg = newValue
+    },
+
+    setNewConfig_rainfall_data_lastyearcopy(state, newValue) {
+      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy = newValue
+    },
+
+    ////
+
+    setNewConfig_openPanEvap_data_orig(state, newValue) {
+      state.RothC_config.Variables[9].openPanEvap.transform.data_orig = newValue
+    },
+
+    setNewConfig_openPanEvap_data_month_avg(state, newValue) {
+      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg = newValue
+    },
+
+    setNewConfig_openPanEvap_data_lastyearcopy(state, newValue) {
+      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy = newValue
+    },
+
+    ////
+
+    setNewConfig_avgAirTemp_data_orig(state, newValue) {
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_orig = newValue
+    },
+
+    setNewConfig_avgAirTemp_data_month_avg(state, newValue) {
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg = newValue
+    },
+
+    setNewConfig_avgAirTemp_data_lastyearcopy(state, newValue) {
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy = newValue
+    },
+
+    ////
+
+    setNewConfig_presCM_data_orig(state, newValue) {
+      state.RothC_config.Variables[11].presCM.transform.data_orig = newValue
+    },
+    
+    setNewConfig_presCM_data_month_avg(state, newValue) {
+      state.RothC_config.Variables[11].presCM.transform.data_month_avg = newValue
+    },
+
+    setNewConfig_presCM_data_lastyearcopy(state, newValue) {
+      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy = newValue
+    },
+
+    ////
+
+    setNewConfig_soilCover_data_orig(state, newValue) {
+      state.RothC_config.Variables[12].soilCover.transform.data_orig = newValue
+    },
+
+    setNewConfig_soilCover_data_firstmonthcopy(state, newValue) {
+        state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy = newValue
+    },
+
+    setNewConfig_soilCover_data_month_avg(state, newValue) {
+        state.RothC_config.Variables[12].soilCover.transform.data_month_avg = newValue
+    },
+
+    setNewConfig_soilCover_data_lastyearcopy(state, newValue) {
+      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy = newValue
+    },
+
+    setNewConfig_bToCMaxTSMDRatio (state, newValue) {
+        state.RothC_config.Variables[14].soil.bToCMaxTSMDRatio = newValue
+    },
+    setNewConfig_dToRRatioInPres (state, newValue) {
+        state.RothC_config.Variables[14].soil.dToRRatioInPres = newValue
+    },
+    setNewConfig_encpFracHums (state, newValue) {
+        state.RothC_config.Variables[14].soil.encpFracHums = newValue
+    },
+    setNewConfig_evapoOpenRatio (state, newValue) {
+        state.RothC_config.Variables[14].soil.evapoOpenRatio = newValue
+    },
+    setNewConfig_fracHumsToBios (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracHumsToBios = newValue
+    },
+    setNewConfig_fracManuCMToBiof (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracManuCMToBiof = newValue
+    },
+    setNewConfig_fracManuCMToBios (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracManuCMToBios = newValue
+    },
+    setNewConfig_fracManuCMToDpma (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracManuCMToDpma = newValue
+    },
+    setNewConfig_fracManuCMToRpma (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracManuCMToRpma = newValue
+    },
+    setNewConfig_fracPbioToBiof (state, newValue) {
+        state.RothC_config.Variables[14].soil.fracPbioToBiof = newValue
+    },
+    setNewConfig_sampleDepth (state, newValue) {
+        state.RothC_config.Variables[14].soil.sampleDepth = newValue
+    },
+    setNewConfig_sdcmRateMultBiof (state, newValue) {
+        state.RothC_config.Variables[14].soil.sdcmRateMultBiof = newValue
+    },
+    setNewConfig_sdcmRateMultBios (state, newValue) {
+        state.RothC_config.Variables[14].soil.sdcmRateMultBios = newValue
+    },
+    setNewConfig_sdcmRateMultDpm (state, newValue) {
+        state.RothC_config.Variables[14].soil.sdcmRateMultDpm = newValue
+    },
+    setNewConfig_sdcmRateMultHums (state, newValue) {
+        state.RothC_config.Variables[14].soil.sdcmRateMultHums = newValue
+    },
+    setNewConfig_sdcmRateMultRpm (state, newValue) {
+        state.RothC_config.Variables[14].soil.sdcmRateMultRpm = newValue
+    },
+    
+    //Point Sim config
     set_pointConfig_Pool_1(state, pool_1_value) {
-      var pool_1_valuex = "#$" + pool_1_value + "#$";
+      let pool_1_valuex = "#$" + pool_1_value + "#$";
       state.Point_config["Pools"][0]["Pool 1"] = pool_1_valuex;
     },
     set_pointConfig_Pool_2(state, pool_2_value) {
       console.log(state.Point_config);
-      var pool_2_valuex = "#$" + pool_2_value + "#$";
+      let pool_2_valuex = "#$" + pool_2_value + "#$";
       state.Point_config["Pools"][1]["Pool 2"] = pool_2_valuex;
     },
     set_pointConfig_Pool_3(state, pool_3_value) {
-      var pool_3_valuex = "#$" + pool_3_value + "#$";
+      let pool_3_valuex = "#$" + pool_3_value + "#$";
       state.Point_config["Pools"][2]["Pool 3"] = pool_3_valuex;
       console.log(state.Point_config);
     },
+
+},
+actions: {
+  send_pointConfig() {
+    let FLINT_config_string = JSON.stringify(this.state.Point_config);
+    let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
+      '"#$',
+      " "
+    );
+    let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
+      '#$"',
+      " "
+    );
+    axios
+      .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   },
-  actions: {
-    send_pointConfig() {
-      var FLINT_config_string = JSON.stringify(this.state.Point_config);
-      var preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
-        '"#$',
-        " "
-      );
-      var final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-        '#$"',
-        " "
-      );
-      axios
-        .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
+
+  send_rothcConfig() {
+    console.log(this.state.RothC_config);
+    let final_RothC_string = JSON.stringify(this.state.RothC_config);
+    let preprocessed_RothC_string = final_RothC_string.replaceAll(
+    '"#$',
+    ' '
+    );
+    let final_RothC_config_string = preprocessed_RothC_string.replaceAll(
+      '#$"',
+      ' '
+    );
+    axios
+      .post("http://127.0.0.1:8080/rothc", final_RothC_config_string)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
     },
-  },
-  modules: {},
+},
+modules: {
+
+}
+
 });

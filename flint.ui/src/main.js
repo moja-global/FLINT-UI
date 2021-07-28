@@ -21,6 +21,8 @@ import RothcOpenpanevap from "@/views/flint/configurations/rothc/RothcOpenpaneva
 import RothcAvgairtemp from "@/views/flint/configurations/rothc/RothcAvgairtemp.vue";
 import RothcPrescm from "@/views/flint/configurations/rothc/RothcPrescm.vue";
 import RothcSoilcover from "@/views/flint/configurations/rothc/RothcSoilcover.vue";
+import RothcInitsoil from "@/views/flint/configurations/rothc/RothcInitsoil.vue";
+import RothcSoil from "@/views/flint/configurations/rothc/RothcSoil.vue";
 
 import Outputs from "@/views/flint/Outputs.vue";
 
@@ -71,6 +73,14 @@ const routes = [
       {
         path: "/flint/configurations/rothc/soilCover",
         component: RothcSoilcover,
+      },
+      {
+        path: "/flint/configurations/rothc/initSoil",
+        component: RothcInitsoil,
+      },
+      {
+        path: "/flint/configurations/rothc/soil",
+        component: RothcSoil,
       },
       {
         path: "/flint/outputs",

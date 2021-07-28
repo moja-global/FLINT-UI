@@ -8,7 +8,6 @@
     <p class="text-gray-700">Input the custom values in the fields below. Default values as placeholder text will be used if none provided.</p>
   </div>
 
-  <Drag />
 
           <div class="flex flex-wrap mt-10"> 
 
@@ -32,6 +31,14 @@
           configParamtype="soilCover"
           />
 
+          <Rothctemplate
+          configParamtype="initSoil"
+          />
+
+          <Rothctemplate
+          configParamtype="soil"
+          />
+
           </div>
 
         </div>
@@ -42,25 +49,13 @@
 
 <script>
 import Rothctemplate from "@/views/flint/Rothctemplate.vue"
-import { useToast } from "vue-toastification";
-import Drag from "@/components/Sliders/Drag.vue"
 
 export default {
-  setup() {
-      const toast = useToast();
-      toast("I'm a toast!");
 
-      toast.success("My toast content", {
-          timeout: 1000
-        });
-
-        return { toast }
-  },
   data() {
   },
   components: {
     Rothctemplate,
-    Drag
   },
 }
 </script>

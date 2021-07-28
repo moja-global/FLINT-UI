@@ -23,12 +23,9 @@
     "form-data": "^4.0.0",
     "fs": "0.0.1-security",
     "tailwindcss": "2.0.4",
-    "v-file-upload": "^3.1.7",
     "vue": "^3.0.7",
-    "vue-material": "^1.0.0-beta-15",
     "vue-router": "4.0.5",
     "vue-toastification": "^2.0.0-rc.1",
-    "vue-upload-component": "^3.0.50",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
