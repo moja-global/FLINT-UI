@@ -3,16 +3,18 @@
     <div class="flex flex-wrap">
     </div>
     <div class="flex flex-wrap mt-4">
-      <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-      
-      </div>
+      <ExampleCardsRun2/>
     </div>
   </div>
 </template>
+
 <script>
+import ExampleCardsRun2 from "@/components/Headers/ExampleCardsRun2.vue";
 
 export default {
+  name: "dashboard-page",
   components: {
+    ExampleCardsRun2,
   },
-}
+};
 </script>

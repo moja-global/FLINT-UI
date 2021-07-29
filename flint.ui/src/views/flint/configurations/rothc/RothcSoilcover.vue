@@ -7,7 +7,8 @@
     <h2 class="text-2xl font-bold mb-2 text-gray-800">RothC example simulation configuration</h2>
     <p class="text-gray-700">Input the custom values in the fields below. Default values as placeholder text will be used if none provided.</p>
   </div>
-  
+
+
 <div class="flex flex-wrap mt-10"> 
 
   <div class="w-full px-4 content-center rounded-md m-12 mb-5">
@@ -75,10 +76,8 @@
 </template>
 
 <script>
-
 export default {
   components: {
-    
   },
   computed: {
     newconfig_soilcover_data_orig: {
@@ -121,10 +120,5 @@ export default {
       }
     },
   },
-  data() {
-      return {
-      }},
-  methods: {
-    },
-  }
+}
 </script>
