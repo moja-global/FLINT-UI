@@ -58,6 +58,12 @@ export default {
         else if (config_type == "soilCover") {
             this.$router.push('/flint/configurations/rothc/soilCover');
         }
+        else if (config_type == "initSoil") {
+            this.$router.push('/flint/configurations/rothc/initSoil')
+        }
+        else if (config_type == "soil") {
+            this.$router.push('/flint/configurations/rothc/soil')
+        }
       },
   }
 };

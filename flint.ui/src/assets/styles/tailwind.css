@@ -2096,6 +2096,10 @@ select {
   margin: 2rem;
 }
 
+.m-12 {
+  margin: 3rem;
+}
+
 .m-14 {
   margin: 3.5rem;
 }
@@ -2106,6 +2110,11 @@ select {
 
 .-m-24 {
   margin: -6rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .my-4 {
@@ -2156,6 +2165,10 @@ select {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mr-6 {
@@ -2368,6 +2381,10 @@ select {
   padding: 1rem;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
@@ -2429,6 +2446,10 @@ select {
 
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .pt-4 {

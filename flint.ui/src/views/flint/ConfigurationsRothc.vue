@@ -8,6 +8,7 @@
     <p class="text-gray-700">Input the custom values in the fields below. Default values as placeholder text will be used if none provided.</p>
   </div>
 
+
           <div class="flex flex-wrap mt-10"> 
 
           <Rothctemplate 
@@ -30,6 +31,14 @@
           configParamtype="soilCover"
           />
 
+          <Rothctemplate
+          configParamtype="initSoil"
+          />
+
+          <Rothctemplate
+          configParamtype="soil"
+          />
+
           </div>
 
         </div>
@@ -40,7 +49,9 @@
 
 <script>
 import Rothctemplate from "@/views/flint/Rothctemplate.vue"
+
 export default {
+
   data() {
   },
   components: {
