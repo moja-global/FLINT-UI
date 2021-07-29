@@ -13,7 +13,7 @@ import store from "./store";
 
 // router setup
 import routes from "./routes/routes";
-import VueCircleSlider from "vue-circle-slider";
+// import VueCircleSlider from "vue-circle-slider";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
@@ -26,7 +26,7 @@ const router = new VueRouter({
 
 Vue.use(VueRouter);
 Vue.use(VueCompositionAPI);
-Vue.use(VueCircleSlider);
+// Vue.use(VueCircleSlider);
 Vue.use(Toast);
 Vue.use(Vuex);
 

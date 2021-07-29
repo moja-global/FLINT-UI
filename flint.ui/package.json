@@ -17,11 +17,13 @@
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
     "@vueform/slider": "^2.0.3",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "core-js": "3.6.4",
     "fs": "0.0.1-security",
     "google-maps": "4.2.3",
-    "tailwindcss": "2.0.4",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "vue": "2.6.11",
     "vue-clickaway": "2.2.2",
     "vue-github-buttons": "3.1.0",
@@ -37,13 +39,11 @@
     "@vue/cli-service": "4.2.3",
     "@vue/composition-api": "^1.0.4",
     "@vue/eslint-config-prettier": "6.0.0",
-    "autoprefixer": "^10.0.2",
-    "babel-eslint": "10.1.0",
+    "babel-eslint": "^10.1.0",
     "es6-promise": "4.2.8",
     "eslint": "6.8.0",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-vue": "6.2.2",
-    "postcss": "8.2.14",
     "prettier": "1.19.1",
     "vue-template-compiler": "2.6.11"
   },
@@ -52,14 +52,7 @@
     "env": {
       "node": true
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    }
+    "parser": "babel-eslint"
   },
   "postcss": {
     "plugins": {
