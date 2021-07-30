@@ -10,7 +10,6 @@
               cardDescription="Specifications"
               cardFunctionRun="Run"
               cardMethodName="spec"
-              cardAlertConfirmation="Specifications route ran successfully"
             />
           </div>
                   
@@ -21,7 +20,6 @@
               cardDescription="Show all possible options"
               cardFunctionRun="Run"
               cardMethodName="help"
-              cardAlertConfirmation="Help options route ran successfully"
 
             />
           </div>
@@ -32,7 +30,6 @@
               cardDescription="Version check"
               cardFunctionRun="Run"
               cardMethodName="version"
-              cardAlertConfirmation="Version route ran successfully"
 
             />
           </div>
@@ -43,7 +40,6 @@
               cardDescription="Point example"
               cardFunctionRun="Run"
               cardMethodName="point"
-              cardAlertConfirmation="Point route ran successfully"
 
             />
           </div>
@@ -54,7 +50,6 @@
               cardDescription="RothC example"
               cardFunctionRun="Run"
               cardMethodName="rothc"
-              cardAlertConfirmation="RothC route ran successfully"
 
             />
           </div>

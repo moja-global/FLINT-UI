@@ -2,13 +2,12 @@
   "name": "flint-ui",
   "version": "1.1.0",
   "description": "This project aims to implement a user-friendly UI for FLINT and GCBM runs",
-  "author": "waridrox <mohdwarid4@gmail.com>",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
+    "dev": "npm run serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run serve"
   },
@@ -16,43 +15,42 @@
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
-    "@vue/compiler-sfc": "3.0.7",
     "@vueform/slider": "^2.0.3",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
-    "core-js": "3.9.1",
-    "form-data": "^4.0.0",
+    "core-js": "3.6.4",
     "fs": "0.0.1-security",
-    "tailwindcss": "2.0.4",
-    "vue": "^3.0.7",
-    "vue-router": "4.0.5",
-    "vue-toastification": "^2.0.0-rc.1",
-    "vuex": "^4.0.2"
+    "google-maps": "4.2.3",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
+    "vue": "2.6.11",
+    "vue-clickaway": "2.2.2",
+    "vue-github-buttons": "3.1.0",
+    "vue-router": "3.1.6",
+    "vue-slider-component": "^3.2.14",
+    "vue-toastification": "^1.7.11",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@babel/core": "7.13.10",
-    "@babel/eslint-parser": "7.13.10",
-    "@vue/cli-plugin-babel": "5.0.0-alpha.7",
-    "@vue/cli-plugin-eslint": "5.0.0-alpha.7",
-    "@vue/cli-service": "5.0.0-alpha.7",
-    "autoprefixer": "10.2.5",
-    "eslint": "7.22.0",
-    "eslint-plugin-vue": "7.7.0",
-    "postcss": "8.2.8",
-    "vue-template-compiler": "2.6.12"
+    "@vue/cli-plugin-babel": "4.2.3",
+    "@vue/cli-plugin-router": "4.2.3",
+    "@vue/cli-service": "4.2.3",
+    "@vue/composition-api": "^1.0.4",
+    "@vue/eslint-config-prettier": "6.0.0",
+    "babel-eslint": "^10.1.0",
+    "es6-promise": "4.2.8",
+    "eslint": "6.8.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-vue": "6.2.2",
+    "prettier": "1.19.1",
+    "vue-template-compiler": "2.6.11"
   },
   "eslintConfig": {
     "root": true,
     "env": {
       "node": true
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    }
+    "parser": "babel-eslint"
   },
   "postcss": {
     "plugins": {
