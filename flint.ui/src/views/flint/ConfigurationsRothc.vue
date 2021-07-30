@@ -51,7 +51,9 @@
 import Rothctemplate from "@/views/flint/Rothctemplate.vue"
 
 export default {
-  
+
+  data() {
+  },
   components: {
     Rothctemplate,
   },

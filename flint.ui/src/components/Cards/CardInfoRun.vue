@@ -27,12 +27,17 @@
       </p>
       </div>
     </div>
+    <Alert
+    v-show="alertOpen"
+    v-bind:alertText="{cardAlertConfirmation}.cardAlertConfirmation"
+    ></Alert>
   </div>
 </template>
 <script>
 
 const axios = require('axios')
 import ConfirmRun from "@/components/Prompts/ConfirmRun";
+import Alert from "@/components/Alerts/Alert";
 
 export default {
   name: "card-info-run",
@@ -56,17 +61,29 @@ export default {
     cardMethodName: {
       type: String, 
       default: "spec",
-    }
+    },
+    cardAlertConfirmation: {
+      type: String, 
+      default: "___ route ran successfully",
+    },
   },
   components: {
-    ConfirmRun
+    ConfirmRun, 
+    Alert
   },
   data() {
     return {
       isConfirmRunModalVisible: false,
+      alertOpen: false,
     };
   },
   methods: {
+    delayAlert() {
+      this.alertOpen = true
+      setTimeout(()=> {
+        this.alertOpen = false
+      }, 2500)
+    },
     showConfirmRunModal() {
       this.isConfirmRunModalVisible = true;
     },
@@ -79,87 +96,96 @@ export default {
       let api_route = {cardMethodName}.cardMethodName;
       if (api_route == "spec") {
         this.apiRoute_spec()
+        this.delayAlert()
       }
       else if (api_route == "help") {
         this.apiRoute_help()
+        this.delayAlert()
       }
       else if (api_route == "version") { 
         this.apiRoute_version()
+        this.delayAlert()        
       }
       else if (api_route == "point") {
         this.apiRoute_point()
+        this.delayAlert()
       }
       else if (api_route == "rothc") {
         this.apiRoute_rothc()
+        this.delayAlert()
       }
       else 
         this.apiRoute_nonexistent()
     },
     // button linking to api end-points
     apiRoute_spec() {
-      console.log('SPEC route invoked');
+      // fetch('http://127.0.0.1:8080/spec')
+      // .then(response => response.json())
+      // .then(json => console.log(json))
+      console.log('SPEC route invoked')
       axios.get('http://127.0.0.1:8080/spec')
-        .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-          })
-        .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+      // return this.title
     },
     apiRoute_help() {
       console.log('HELP route invoked')
       axios.get('http://127.0.0.1:8080/help/all')
-        .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-          })
-        .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+      // this.title = 'HELP route invoked'
+
+      // return this.title
     },
     apiRoute_version() {
       console.log('VERSION route invoked')
       axios.get('http://127.0.0.1:8080/version')
-        .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-          })
-        .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+      // return this.title
     },
     apiRoute_point() {
       console.log('POINT route invoked')      
       axios.post('http://127.0.0.1:8080/point')
-        .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-          })
-        .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+      // return this.title
     },
     apiRoute_rothc() {
       console.log('ROTHC route invoked')
       axios.post('http://127.0.0.1:8080/rothc')
-        .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-          })
-        .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+      // return this.title
     },
     apiRoute_nonexistent() {
-      this.$toast.warning("No such route exists!", { timeout: 2000 });
       console.log("No such route exists!")
     },
+    // send_point_config() {
+    //   var file = require('./FLINT_configs/point_example.json')
+    //   // var formData = new FormData()
+    //   // formData.append('modified_point_example.json', JSON)
+    //   // console.log(file)
+    //   var formData = new FormData()
+    //   formData.append('modified_point_example.json', file)
+    //   // console.log([...formData])
+    //   axios.post('http://127.0.0.1:8080/point',
+    //     formData,
+    //     {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data'
+    //       }
+    //     }
+    //   ).then(function () {
+    //     console.log('SUCCESS!!')
+    //   })
+    //     .catch(function () {
+    //       console.log('FAILURE!!')
+    //     })
+
+    //   this.title = 'Config sent'
+    //   return this.title
+    // },
   }
 };
 </script>

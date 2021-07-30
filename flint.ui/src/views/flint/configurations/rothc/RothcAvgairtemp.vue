@@ -95,5 +95,10 @@ export default {
       }
     },
   },
-}
+  components: {
+  },
+  data() {
+  },     
+  methods: {
+  }}
 </script>

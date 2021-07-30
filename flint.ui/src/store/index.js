@@ -1,10 +1,7 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 import axios from "axios";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
   state: {
     Point_config: {
       LocalDomain: {
@@ -550,14 +547,8 @@ actions: {
     );
     axios
       .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
-      .then((response) => {
-        Vue.$toast.success(`${response}`, { timeout: 2000 });
-        console.log(response);
-        })
-      .catch(error => {
-        Vue.$toast.error(`${error}`, { timeout: 2000 });
-        console.log(error);
-      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   },
 
   send_rothcConfig() {
@@ -573,14 +564,12 @@ actions: {
     );
     axios
       .post("http://127.0.0.1:8080/rothc", final_RothC_config_string)
-      .then((response) => {
-        Vue.$toast.success(`${response}`, { timeout: 2000 });
-        console.log(response);
-      })
-      .catch(error => {
-        Vue.$toast.error(`${error}`, { timeout: 2000 });
-        console.log(error);
-      });
-  },
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+    },
+},
+modules: {
+
 }
+
 });

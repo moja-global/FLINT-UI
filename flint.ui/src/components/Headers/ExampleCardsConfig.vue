@@ -11,6 +11,7 @@
               cardFunctionRun="Run"
               cardFunctionConfig="Configure"
               cardMethodName="point"
+              cardAlertConfirmation="Point route ran successfully"
             />
           </div>
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center">
@@ -21,6 +22,7 @@
               cardFunctionRun="Run"
               cardFunctionConfig="Configure"
               cardMethodName="rothc"
+              cardAlertConfirmation="RothC route ran successfully"
             />
           </div>
         </div>

@@ -62,13 +62,11 @@
 </template>
 
 <script>
-import Slider from "@vueform/slider/dist/slider.vue2.js";
-// import Slider from "@vueform/slider";
-// import Slider from "@vueform/slider/dist/slider.vue2.js";
+import Slider from "@vueform/slider";
 
 export default {
   components: {
-    Slider
+    Slider,
   },
   data() {
     return {
@@ -120,6 +118,7 @@ export default {
 };
 </script>
 
+<style src="@vueform/slider/themes/default.css"></style>
 
 <style>
 .slider-component {

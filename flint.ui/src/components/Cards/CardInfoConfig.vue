@@ -37,12 +37,18 @@
       </p>
       </div>
     </div>
+    <Alert
+    v-show="alertOpen"
+    v-bind:alertText="{cardAlertConfirmation}.cardAlertConfirmation"
+    ></Alert>
   </div>
 </template>
 <script>
 
+// const axios = require('axios')
 import ConfirmRun from "@/components/Prompts/ConfirmRun";
 import ConfirmConfig from "@/components/Prompts/ConfirmConfig";
+import Alert from "@/components/Alerts/Alert";
 
 export default {
   name: "card-info-config",
@@ -71,15 +77,21 @@ export default {
       type: String, 
       default: "spec",
     },
+    cardAlertConfirmation: {
+      type: String, 
+      default: "___ route ran successfully",
+    },
   },
   components: {
     ConfirmRun,
-    ConfirmConfig
+    ConfirmConfig,
+    Alert,
   },
   data() {
     return {
       isConfirmRunModalVisible: false,
-      isConfirmConfigModalVisible: false
+      alertOpen: false,
+      isConfirmConfigModalVisible: false,
     };
   },
   methods: {
@@ -88,6 +100,12 @@ export default {
     },
     closeConfirmConfigModal() {
       this.isConfirmConfigModalVisible = false;
+    },
+    delayAlert() {
+      this.alertOpen = true
+      setTimeout(()=> {
+        this.alertOpen = false
+      }, 2500)
     },
     showConfirmRunModal() {
       this.isConfirmRunModalVisible = true;
@@ -112,17 +130,23 @@ export default {
   
       if (api_route == "point") {
         this.apiRoute_point()
+        this.delayAlert()
       }
       else if (api_route == "rothc") {
         this.apiRoute_rothc()
+        this.delayAlert()
       }
       else 
         this.apiRoute_nonexistent()
     },
 
     apiRoute_point() {
-      //sending the new point config
-      console.log('POINT route invoked with new configs')
+      //sending the new config
+      console.log('POINT route invoked with new configs')      
+      // axios.post('http://127.0.0.1:8080/point')
+      //   .then(response => console.log(response))
+      //   .catch(error => console.log(error))
+      // return this.title
     },
     apiRoute_rothc() {
       // sending the new rothc config
