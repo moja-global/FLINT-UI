@@ -13,13 +13,14 @@ services:
        - ./flint.cloud/local/rest_api_flint.example/config:/server/config
   flint.gcbm.api:
     build:
-      context: ./flint.cloud/rest_api_gcbm/
+      context: ./flint.cloud/local/rest_api_gcbm/
       dockerfile: Dockerfile
     ports:
-      - "8081:8081"
+      - "8081:8080"
     container_name: flint.gcbm.api
     volumes:
-       - ./flint.cloud/rest_api_gcbm/output:/server/output     
+       - ./flint.cloud/local/rest_api_gcbm/output:/server/output
+       - ./flint.cloud/local/rest_api_gcbm/config:/server/config
   flint.ui:
     build:
       context: ./flint.ui
