@@ -362,11 +362,12 @@ export default new Vuex.Store({
           settings: {
             output_filename: "Example_RothC_Point_Flux.csv",
             output_to_screen: false,
-            output_info_header: true
-          }
-        }
-      }
-    }
+            output_info_header: true,
+          },
+        },
+      },
+    },
+    received_data: {},
   },
   mutations: {
     setNewConfig_dpmaCMInit(state, newValue) {
@@ -558,6 +559,36 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+  },
+  getters: {
+    received_data: state => {
+      return state.received_data;
+    }
+  },
+  actions: {
+    send_pointConfig() {
+      let FLINT_config_string = JSON.stringify(this.state.Point_config);
+      let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
+        '"#$',
+        " "
+      );
+      let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
+        '#$"',
+        " "
+      );
+      axios
+        .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
+        .then((response) => {
+          Vue.$toast.success(`${response}`, { timeout: 2000 });
+          console.log(response);
+          this.state.received_data = response.data;
+          console.log(this.state.received_data);
+        })
+        .catch((error) => {
+          Vue.$toast.error(`${error}`, { timeout: 2000 });
+          console.log(error);
+        });
+    },
 
     send_rothcConfig() {
       console.log(this.state.RothC_config);
@@ -569,14 +600,14 @@ export default new Vuex.Store({
       );
       axios
         .post("http://127.0.0.1:8080/rothc", final_RothC_config_string)
-        .then(response => {
+        .then((response) => {
           Vue.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           Vue.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
-    }
-  }
+    },
+  },
 });

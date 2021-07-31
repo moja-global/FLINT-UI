@@ -17,10 +17,12 @@ import routes from "./routes/routes";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+import "@/plugins/apexcharts";
+
 // configure router
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 Vue.use(VueRouter);
@@ -34,6 +36,6 @@ new Vue({
   el: "#app",
   store,
   router,
+  render: (h) => h(App),
   data: {},
-  render: h => h(App)
 });
