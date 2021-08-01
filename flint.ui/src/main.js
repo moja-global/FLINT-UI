@@ -8,7 +8,7 @@ import App from "./App";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
 
-import VueCompositionAPI from "@vue/composition-api"
+import VueCompositionAPI from "@vue/composition-api";
 import store from "./store";
 
 // router setup
@@ -23,7 +23,6 @@ const router = new VueRouter({
   routes
 });
 
-
 Vue.use(VueRouter);
 Vue.use(VueCompositionAPI);
 // Vue.use(VueCircleSlider);
@@ -35,6 +34,6 @@ new Vue({
   el: "#app",
   store,
   router,
-  render: h => h(App),
-  data: {}
+  data: {},
+  render: h => h(App)
 });

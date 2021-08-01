@@ -15,6 +15,7 @@
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
+    "@vue/cli-plugin-eslint": "^4.5.13",
     "@vueform/slider": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
@@ -39,10 +40,12 @@
     "@vue/eslint-config-prettier": "6.0.0",
     "babel-eslint": "^10.1.0",
     "es6-promise": "4.2.8",
-    "eslint": "6.8.0",
-    "eslint-plugin-prettier": "3.1.2",
-    "eslint-plugin-vue": "6.2.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.2.2",
     "prettier": "1.19.1",
+    "vue-eslint-parser": "^7.10.0",
     "vue-template-compiler": "2.6.11"
   },
   "eslintConfig": {
