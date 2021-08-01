@@ -16,7 +16,7 @@ import Sidebar from "@/components/Sidebar/Sidebar.vue";
 // import ExampleCards from "@/components/Headers/ExampleCards.vue";
 
 export default {
-  name: "GcbmLayout",
+  name: "GCBMLayout",
   components: {
     Sidebar
     // ExampleCards,

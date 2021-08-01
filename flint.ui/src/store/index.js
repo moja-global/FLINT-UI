@@ -350,7 +350,7 @@ export default new Vuex.Store({
           library: "internal.flint",
           order: 11,
           settings: {
-            output_filename: "Example_Rothc_Point_Stock.csv",
+            output_filename: "Example_RothC_Point_Stock.csv",
             output_to_screen: true,
             output_info_header: true
           }
@@ -360,7 +360,7 @@ export default new Vuex.Store({
           library: "internal.flint",
           order: 12,
           settings: {
-            output_filename: "Example_Rothc_Point_Flux.csv",
+            output_filename: "Example_RothC_Point_Flux.csv",
             output_to_screen: false,
             output_info_header: true
           }
