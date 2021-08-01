@@ -85,7 +85,21 @@ npm run serve
 
 ## Code Style
 
-- The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+
+We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easy. There are official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
+
+If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
+
+```
+eslint --ext .js,.vue src
+```
+
+Minor errors can be fixed automatically:
+
+```
+eslint --fix --ext .js,.vue src
+```
 
 ## How to Get Involved?
 
