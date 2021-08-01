@@ -87,6 +87,15 @@ npm run serve
 
 - The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
 
+## Storybook
+
+To run Storybook locally, you can follow the below procedure:
+
+1. Go to the `flint.ui` folder and run `npm install`.
+2. Run `npm run storybook` to start the Storybook server.
+3. Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
+
+
 ## How to Get Involved?
 
 moja global welcomes a wide range of contributions as explained in [Contributing document](https://github.com/moja-global/About-moja-global/blob/master/CONTRIBUTING.md) and the [About moja-global Wiki](https://github.com/moja-global/.github/wiki).
