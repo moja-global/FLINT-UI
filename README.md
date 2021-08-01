@@ -83,9 +83,13 @@ npm install
 npm run serve
 ```
 
+## Code Style
+
+- The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+
 ## Storybook
 
-To run Stroybook locally, you can follow the below procedure:
+To run Storybook locally, you can follow the below procedure:
 
 1. Go to the `flint.ui` folder and run `npm install`.
 2. Run `npm run storybook` to start the Storybook server.

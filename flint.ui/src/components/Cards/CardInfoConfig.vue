@@ -37,18 +37,12 @@
       </p>
       </div>
     </div>
-    <Alert
-    v-show="alertOpen"
-    v-bind:alertText="{cardAlertConfirmation}.cardAlertConfirmation"
-    ></Alert>
   </div>
 </template>
 <script>
 
-const axios = require('axios')
 import ConfirmRun from "@/components/Prompts/ConfirmRun";
 import ConfirmConfig from "@/components/Prompts/ConfirmConfig";
-import Alert from "@/components/Alerts/Alert";
 
 export default {
   name: "card-info-config",
@@ -77,21 +71,15 @@ export default {
       type: String, 
       default: "spec",
     },
-    cardAlertConfirmation: {
-      type: String, 
-      default: "___ route ran successfully",
-    },
   },
   components: {
     ConfirmRun,
-    ConfirmConfig,
-    Alert,
+    ConfirmConfig
   },
   data() {
     return {
       isConfirmRunModalVisible: false,
-      alertOpen: false,
-      isConfirmConfigModalVisible: false,
+      isConfirmConfigModalVisible: false
     };
   },
   methods: {
@@ -100,12 +88,6 @@ export default {
     },
     closeConfirmConfigModal() {
       this.isConfirmConfigModalVisible = false;
-    },
-    delayAlert() {
-      this.alertOpen = true
-      setTimeout(()=> {
-        this.alertOpen = false
-      }, 2500)
     },
     showConfirmRunModal() {
       this.isConfirmRunModalVisible = true;
@@ -127,69 +109,25 @@ export default {
     startApiCalls({cardMethodName}) {
       this.isConfirmRunModalVisible = false;
       let api_route = {cardMethodName}.cardMethodName;
-      if (api_route == "spec") {
-        this.apiRoute_spec() 
-        this.delayAlert()
-      }
-      else if (api_route == "help") {
-        this.apiRoute_help()
-        this.delayAlert()
-      }
-      else if (api_route == "version") { 
-        this.apiRoute_version()
-        this.delayAlert()        
-      }
-      else if (api_route == "point") {
+  
+      if (api_route == "point") {
         this.apiRoute_point()
-        this.delayAlert()
       }
       else if (api_route == "rothc") {
         this.apiRoute_rothc()
-        this.delayAlert()
       }
       else 
         this.apiRoute_nonexistent()
     },
-    // button linking to api end-points
-    apiRoute_spec() {
-      // fetch('http://127.0.0.1:8080/spec')
-      // .then(response => response.json())
-      // .then(json => console.log(json))
-      console.log('SPEC route invoked')
-      axios.get('http://127.0.0.1:8080/spec')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
-    },
-    apiRoute_help() {
-      console.log('HELP route invoked')
-      axios.get('http://127.0.0.1:8080/help/all')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // this.title = 'HELP route invoked'
 
-      // return this.title
-    },
-    apiRoute_version() {
-      console.log('VERSION route invoked')
-      axios.get('http://127.0.0.1:8080/version')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
-    },
     apiRoute_point() {
-      console.log('POINT route invoked')      
-      axios.post('http://127.0.0.1:8080/point')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
+      //sending the new point config
+      console.log('POINT route invoked with new configs')
     },
     apiRoute_rothc() {
-      console.log('ROTHC route invoked')
-      axios.post('http://127.0.0.1:8080/rothc')
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-      // return this.title
+      // sending the new rothc config
+      console.log('ROTHC route invoked with new configs')
+      this.$store.dispatch('send_rothcConfig');
     },
     apiRoute_nonexistent() {
       console.log("No such route exists!")
