@@ -87,6 +87,14 @@ npm run serve
 
 The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
 
+One exception is the case used to describe the ecological models exposed to the our FLINT client. Because model names, and sometimes model variables, often use acronyms these remain capitalised.
+
+Obvious examples are:
+
+- GCBM: Generic Carbon Budget model
+- FLINT: Full Lands Integration Tool
+- RothC: Rothamstead Carbon model
+
 We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easy. There are official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
 
 If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
