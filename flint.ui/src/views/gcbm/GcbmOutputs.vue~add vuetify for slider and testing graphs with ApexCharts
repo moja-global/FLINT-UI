@@ -1,0 +1,25 @@
+<template>
+  <div class="slider">
+      <ExampleCardsRun2/>      
+  </div>
+</template>
+
+<script>
+import ExampleCardsRun2 from "@/components/Sliders/Slider.vue";
+
+export default {
+  name: "dashboard-page",
+  components: {
+    ExampleCardsRun2,
+  },
+};
+</script>
+
+<style>
+div.slider {
+  display: flow;
+  align-items: center;
+  justify-content: center;
+padding: 200px 0;
+}
+</style>

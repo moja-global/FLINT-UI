@@ -10,6 +10,11 @@ import "@/assets/styles/tailwind.css";
 
 import VueCompositionAPI from "@vue/composition-api";
 import store from "./store";
+const dataForge = require("data-forge");
+
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
+Vue.use(Vuetify);
 
 // router setup
 import routes from "./routes/routes";
@@ -17,7 +22,15 @@ import routes from "./routes/routes";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import "@/plugins/apexcharts";
+import Chart from "chart.js";
+import LineChart from "@/components/Chart.vue";
+
+import VueApexCharts from "vue-apexcharts";
+Vue.use(VueApexCharts);
+
+Vue.component("apexchart", VueApexCharts);
+
+import vuetify from "./plugins/vuetify";
 
 // configure router
 const router = new VueRouter({
@@ -37,5 +50,6 @@ new Vue({
   store,
   router,
   render: (h) => h(App),
+  vuetify,
   data: {},
 });

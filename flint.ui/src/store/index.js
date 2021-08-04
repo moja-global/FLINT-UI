@@ -603,6 +603,8 @@ export default new Vuex.Store({
         .then((response) => {
           Vue.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
+          this.state.received_data = response.data;
+          console.log(this.state.received_data);
         })
         .catch((error) => {
           Vue.$toast.error(`${error}`, { timeout: 2000 });
