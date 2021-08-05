@@ -28,41 +28,12 @@ Vue.component("apexchart", VueApexCharts);
 
 export default {
   name: "BrushCharts",
+  beforeMount(){
+    this.processDataset;
+  },
   computed: {
     received_data() {
-      var dataset = this.$store.state.received_data;
-      var pool_1 = [],
-        pool_2 = [],
-        pool_3 = [],
-        simulation_step = [];
-
-      var lines = dataset.split("\n");
-      lines.splice(0, 4);
-      lines.splice(-4);
-      var dataset = lines.join("\n");
-      const df = dataForge.fromCSV(dataset);
-      var df_as_array = df.toArray();
-      console.log(typeof df_as_array);
-      console.log("array1");
-      console.log(df_as_array[0]["Pool 1"]);
-      console.log(df_as_array.length);
-
-      for (var step = 0; step < df_as_array.length; step++) {
-        pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
-        pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
-        pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
-        var x = step.toString();
-        simulation_step[step] = x;
-      }
-
-      console.log("pool 1");
-      for (var step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step.toString()]);
-      }
-      console.log(simulation_step);
-      console.log(pool_1);
-      console.log(pool_2);
-      console.log(pool_3);
+      return this.$store.state.received_data;
     },
   },
   data: function() {
@@ -156,6 +127,41 @@ export default {
       }
 
       return series;
+    },
+    processDataset: function() {
+      var dataset = this.received_data;
+      var pool_1 = [],
+        pool_2 = [],
+        pool_3 = [],
+        simulation_step = [];
+
+      var lines = dataset.split("\n");
+      lines.splice(0, 4);
+      lines.splice(-4);
+      var dataset = lines.join("\n");
+      const df = dataForge.fromCSV(dataset);
+      var df_as_array = df.toArray();
+      console.log(typeof df_as_array);
+      console.log("array1");
+      console.log(df_as_array[0]["Pool 1"]);
+      console.log(df_as_array.length);
+
+      for (var step = 0; step < df_as_array.length; step++) {
+        pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
+        pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
+        pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
+        var x = step.toString();
+        simulation_step[step] = x;
+      }
+
+      console.log("pool 1");
+      for (var step = 0; step < df_as_array.length; step++) {
+        console.log(pool_1[step.toString()]);
+      }
+      console.log(simulation_step);
+      console.log(pool_1);
+      console.log(pool_2);
+      console.log(pool_3);
     },
   },
 };

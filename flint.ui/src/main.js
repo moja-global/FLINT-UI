@@ -22,7 +22,6 @@ import routes from "./routes/routes";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import Chart from "chart.js";
 import LineChart from "@/components/Chart.vue";
 
 import VueApexCharts from "vue-apexcharts";
