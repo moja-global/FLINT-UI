@@ -5,6 +5,11 @@ import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    flint_point, 
+    flint_rothc,
+    lat_long
+  },
   state: {
     Point_config: {
       LocalDomain: {
