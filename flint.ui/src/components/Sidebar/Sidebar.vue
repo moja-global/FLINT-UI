@@ -49,13 +49,6 @@
         </div>
 
         <hr class="my-4 md:min-w-full" />
-        <!-- <h6
-          class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-        >
-         HOME
-        </h6>
-
-        <hr class="my-4 md:min-w-full" /> -->
         <h6
           class="md:min-w-full text-blueGray-500 text-lg uppercase font-bold block pt-1 pb-4 no-underline"
         >
@@ -127,10 +120,10 @@
                 @click="navigate"
               >
                 <i
-                  class="fas fa-layer-group mr-2 text-sm"
+                  class="fas fa-chart-bar mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Outputs
+                Visualise
               </a>
             </router-link>
           </li>
