@@ -16,10 +16,10 @@ import Sidebar from "@/components/Sidebar/Sidebar.vue";
 // import ExampleCards from "@/components/Headers/ExampleCards.vue";
 
 export default {
-  name: "gcbm-layout",
+  name: "GCBMLayout",
   components: {
-    Sidebar,
+    Sidebar
     // ExampleCards,
-  },
+  }
 };
 </script>

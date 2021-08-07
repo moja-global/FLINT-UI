@@ -1,19 +1,19 @@
 <template>
   <div>
     <a
+      ref="btnDropdownRef"
       class="text-blueGray-500 py-1 px-3"
       href="#pablo"
-      ref="btnDropdownRef"
-      v-on:click="toggleDropdown($event)"
+      @click="toggleDropdown($event)"
     >
       <i class="fas fa-ellipsis-v"></i>
     </a>
     <div
       ref="popoverDropdownRef"
       class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-      v-bind:class="{
+      :class="{
         hidden: !dropdownPopoverShow,
-        block: dropdownPopoverShow,
+        block: dropdownPopoverShow
       }"
     >
       <a
@@ -43,21 +43,21 @@ import { createPopper } from "@popperjs/core";
 export default {
   data() {
     return {
-      dropdownPopoverShow: false,
+      dropdownPopoverShow: false
     };
   },
   methods: {
-    toggleDropdown: function (event) {
+    toggleDropdown: function(event) {
       event.preventDefault();
       if (this.dropdownPopoverShow) {
         this.dropdownPopoverShow = false;
       } else {
         this.dropdownPopoverShow = true;
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start",
+          placement: "bottom-start"
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>

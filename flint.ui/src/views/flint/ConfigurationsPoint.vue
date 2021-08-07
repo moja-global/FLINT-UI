@@ -19,7 +19,7 @@
               <Slider
                 v-model="pool1.value"
                 v-bind="pool1"
-                v-on:change="loggingVal1"
+                @change="loggingVal1"
               ></Slider>
             </div>
           </div>
@@ -31,7 +31,7 @@
               <Slider
                 v-model="pool2.value"
                 v-bind="pool2"
-                v-on:change="loggingVal2"
+                @change="loggingVal2"
               ></Slider>
             </div>
           </div>
@@ -43,14 +43,14 @@
               <Slider
                 v-model="pool3.value"
                 v-bind="pool1"
-                v-on:change="loggingVal3"
+                @change="loggingVal3"
               ></Slider>
             </div>
           </div>
 
           <button
-            @click="finalPoolValues"
             class="inline-block align-middle w-full mt-4 flex-initial bg-white hover:bg-red-500 hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            @click="finalPoolValues"
           >
             <i class="fas fa-check"></i> Confirm and run with the new Pool
             configuration
@@ -76,20 +76,20 @@ export default {
         min: 0.0,
         max: 400.0,
         step: 5.0,
-        value: 100.0,
+        value: 100.0
       },
       pool2: {
         min: 0.0,
         max: 400.0,
         step: 5.0,
-        value: 100.0,
+        value: 100.0
       },
       pool3: {
         min: 0.0,
         max: 400.0,
         step: 5.0,
-        value: 100.0,
-      },
+        value: 100.0
+      }
     };
   },
   methods: {
@@ -114,12 +114,11 @@ export default {
       this.$store.commit("set_pointConfig_Pool_2", this.pool2.value.toFixed(1));
       this.$store.commit("set_pointConfig_Pool_3", this.pool3.value.toFixed(1));
 
-      this.$store.dispatch('send_pointConfig');
-    },
-  },
+      this.$store.dispatch("send_pointConfig");
+    }
+  }
 };
 </script>
-
 
 <style>
 .slider-component {

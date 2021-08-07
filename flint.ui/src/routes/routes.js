@@ -1,23 +1,23 @@
-import Flint from "@/layouts/Flint.vue";
-import Gcbm from "@/layouts/Gcbm.vue";
+import FLINT from "@/layouts/FLINT.vue";
+import GCBM from "@/layouts/GCBM.vue";
 
 import Dashboard from "@/views/flint/Dashboard.vue";
 import Configurations from "@/views/flint/Configurations.vue";
-import ConfigurationsPoint from "@/views/flint/ConfigurationsPoint.vue"
-import ConfigurationsRothc from "@/views/flint/ConfigurationsRothc.vue";
-import RothcRainfall from "@/views/flint/configurations/rothc/RothcRainfall.vue";
-import RothcOpenpanevap from "@/views/flint/configurations/rothc/RothcOpenpanevap.vue";
-import RothcAvgairtemp from "@/views/flint/configurations/rothc/RothcAvgairtemp.vue";
-import RothcPrescm from "@/views/flint/configurations/rothc/RothcPrescm.vue";
-import RothcSoilcover from "@/views/flint/configurations/rothc/RothcSoilcover.vue";
-import RothcInitsoil from "@/views/flint/configurations/rothc/RothcInitsoil.vue";
-import RothcSoil from "@/views/flint/configurations/rothc/RothcSoil.vue";
+import ConfigurationsPoint from "@/views/flint/ConfigurationsPoint.vue";
+import ConfigurationsRothC from "@/views/flint/ConfigurationsRothC.vue";
+import RothCRainfall from "@/views/flint/configurations/rothc/RothCRainfall.vue";
+import RothCOpenPanEvap from "@/views/flint/configurations/rothc/RothCOpenPanEvap.vue";
+import RothCAvgAirTemp from "@/views/flint/configurations/rothc/RothCAvgAirTemp.vue";
+import RothCPresCM from "@/views/flint/configurations/rothc/RothCPresCM.vue";
+import RothCSoilCover from "@/views/flint/configurations/rothc/RothCSoilCover.vue";
+import RothCInitSoil from "@/views/flint/configurations/rothc/RothCInitSoil.vue";
+import RothCSoil from "@/views/flint/configurations/rothc/RothCSoil.vue";
 
 import Outputs from "@/views/flint/Outputs.vue";
 
-import GcbmDashboard from "@/views/gcbm/GcbmDashboard.vue";
-import GcbmConfigurations from "@/views/gcbm/GcbmConfigurations.vue";
-import GcbmOutputs from "@/views/gcbm/GcbmOutputs.vue";
+import GCBMDashboard from "@/views/gcbm/GCBMDashboard.vue";
+import GCBMConfigurations from "@/views/gcbm/GCBMConfigurations.vue";
+import GCBMOutputs from "@/views/gcbm/GCBMOutputs.vue";
 
 import Landing from "@/views/Landing.vue";
 
@@ -25,86 +25,86 @@ const routes = [
   {
     path: "/flint",
     redirect: "/flint/dashboard",
-    component: Flint,
+    component: FLINT,
     children: [
       {
         path: "/flint/dashboard",
-        component: Dashboard,
+        component: Dashboard
       },
       {
         path: "/flint/configurations",
-        component: Configurations,
+        component: Configurations
       },
       {
         path: "/flint/configurations/point",
-        component: ConfigurationsPoint,
+        component: ConfigurationsPoint
       },
       {
         path: "/flint/configurations/rothc",
-        component: ConfigurationsRothc,
+        component: ConfigurationsRothC
       },
       {
         path: "/flint/configurations/rothc/rainfall",
-        component: RothcRainfall,
+        component: RothCRainfall
       },
       {
         path: "/flint/configurations/rothc/openPanEvap",
-        component: RothcOpenpanevap,
+        component: RothCOpenPanEvap
       },
       {
         path: "/flint/configurations/rothc/avgAirTemp",
-        component: RothcAvgairtemp,
+        component: RothCAvgAirTemp
       },
       {
         path: "/flint/configurations/rothc/presCM",
-        component: RothcPrescm,
+        component: RothCPresCM
       },
       {
         path: "/flint/configurations/rothc/soilCover",
-        component: RothcSoilcover,
+        component: RothCSoilCover
       },
       {
         path: "/flint/configurations/rothc/initSoil",
-        component: RothcInitsoil,
+        component: RothCInitSoil
       },
       {
         path: "/flint/configurations/rothc/soil",
-        component: RothcSoil,
+        component: RothCSoil
       },
       {
         path: "/flint/outputs",
-        component: Outputs,
-      },
-    ],
+        component: Outputs
+      }
+    ]
   },
   {
     path: "/gcbm",
     redirect: "/gcbm/dashboard",
-    component: Gcbm,
+    component: GCBM,
     children: [
       {
         path: "/gcbm/dashboard",
-        component: GcbmDashboard,
+        component: GCBMDashboard
       },
       {
         path: "/gcbm/configurations",
-        component: GcbmConfigurations,
+        component: GCBMConfigurations
       },
       {
         path: "/gcbm/outputs",
-        component: GcbmOutputs,
-      },
-    ],
+        component: GCBMOutputs
+      }
+    ]
   },
   {
     path: "/landing",
-    component: Landing,
+    component: Landing
   },
   {
     path: "/",
-    component: Landing,
+    component: Landing
   },
-  { path: "/:pathMatch(.*)*", redirect: "/" },
+  { path: "/:pathMatch(.*)*", redirect: "/" }
 ];
 
 export default routes;
