@@ -7,22 +7,22 @@
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center">
             <card-info-config
-              card-subtitle="POINT route"
-              card-title="POINT"
-              card-description="Point example"
-              card-function-run="Run"
-              card-function-config="Configure"
-              card-method-name="point"
+              cardSubtitle="POINT route"
+              cardTitle="POINT"
+              cardDescription="Point example"
+              cardFunctionRun="Run"
+              cardFunctionConfig="Configure"
+              cardMethodName="point"
             />
           </div>
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center">
             <card-info-config
-              card-subtitle="ROTHC route"
-              card-title="ROTHC"
-              card-description="RothC example"
-              card-function-run="Run"
-              card-function-config="Configure"
-              card-method-name="rothc"
+              cardSubtitle="ROTHC route"
+              cardTitle="ROTHC"
+              cardDescription="RothC example"
+              cardFunctionRun="Run"
+              cardFunctionConfig="Configure"
+              cardMethodName="rothc"
             />
           </div>
         </div>

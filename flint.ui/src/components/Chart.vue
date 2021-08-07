@@ -1,66 +1,53 @@
 <template>
-  <div class="chart-wrapper">
-    <div id="charts">
-      <div id="chart1">
-        <apexchart
-          type="line"
-          height="230"
-          :options="chartOptionsArea"
-          :series="series"
-        />
-      </div>
-      <div id="chart2">
-        <apexchart
-          type="area"
-          height="130"
-          :options="chartOptionsBrush"
-          :series="series"
-        />
-      </div>
+  <div id="charts">
+    <div id="chart1">
+      <apexchart
+        type="line"
+        height="230"
+        :options="chartOptionsArea"
+        :series="series"
+      />
+    </div>
+    <div id="chart2">
+      <apexchart
+        type="area"
+        height="130"
+        :options="chartOptionsBrush"
+        :series="series"
+      />
     </div>
   </div>
 </template>
 
 <script>
-const dataForge = require("data-forge");
+import Vue from "vue";
+
+import VueApexCharts from "vue-apexcharts";
+Vue.use(VueApexCharts);
+Vue.component("apexchart", VueApexCharts);
 
 export default {
   name: "BrushCharts",
-  beforeMount() {
-    this.$store.dispatch("process_point_config");
-    console.log("from outputs.vue - this.Point_config_pool_1");
-    console.log(typeof this.$store.state.Point_config_pool_1);
+  beforeMount(){
+    this.processDataset;
   },
   computed: {
-    received_data: {
-      get() {
-        return this.$store.state.received_data;
-      },
-    },
-    Point_config_pool_1() {
-      return this.$store.state.Point_config_pool_1;
-    },
-    Point_config_pool_2() {
-      return this.$store.state.Point_config_pool_2;
-    },
-    Point_config_pool_3() {
-      return this.$store.state.Point_config_pool_3;
+    received_data() {
+      return this.$store.state.received_data;
     },
   },
   data: function() {
     return {
       series: [
         {
-          name: "Pool 1",
-          data: this.$store.state.Point_config_pool_1,
-        },
-        {
-          name: "Pool 2",
-          data: this.$store.state.Point_config_pool_2,
-        },
-        {
-          name: "Pool 3",
-          data: this.$store.state.Point_config_pool_3,
+          data: this.generateDayWiseTimeSeries(
+            new Date("11 Feb 2017").getTime(),
+            185,
+            {
+              min: 30,
+              max: 90,
+            }
+          ),
         },
       ],
       chartOptionsArea: {
@@ -71,7 +58,7 @@ export default {
             show: false,
           },
         },
-        colors: ["#546E7A", "#0ff1ce", "#bada55"],
+        colors: ["#546E7A"],
         stroke: {
           width: 3,
         },
@@ -85,7 +72,7 @@ export default {
           size: 0,
         },
         xaxis: {
-          type: "numeric",
+          type: "datetime",
         },
       },
       chartOptionsBrush: {
@@ -94,13 +81,12 @@ export default {
           brush: {
             target: "chartArea",
             enabled: true,
-            autoScaleYaxis: false,
           },
           selection: {
             enabled: true,
             xaxis: {
-              min: 1,
-              max: 20,
+              min: new Date("19 Jun 2017").getTime(),
+              max: new Date("14 Aug 2017").getTime(),
             },
           },
         },
@@ -113,7 +99,7 @@ export default {
           },
         },
         xaxis: {
-          type: "numeric",
+          type: "datetime",
           tooltip: {
             enabled: false,
           },
@@ -139,8 +125,6 @@ export default {
         baseval += 86400000;
         i++;
       }
-      console.log("example series");
-      console.log(series);
 
       return series;
     },
@@ -166,45 +150,43 @@ export default {
         pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
         pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
         pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
-        var x = step;
+        var x = step.toString();
         simulation_step[step] = x;
       }
 
       console.log("pool 1");
       for (var step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step]);
+        console.log(pool_1[step.toString()]);
       }
       console.log(simulation_step);
       console.log(pool_1);
       console.log(pool_2);
       console.log(pool_3);
     },
-
-    get_Point_config_pool_1() {
-      var arr = this.$store.state.Point_config_pool_1;
-      console.log("pool 1 from state");
-      console.log(arr);
-      return arr;
-    },
-
-    get_Point_config_pool_2() {
-      var arr = this.$store.state.Point_config_pool_2;
-      console.log("pool 2 from state");
-      console.log(arr);
-      return arr;
-    },
-
-    get_Point_config_pool_3() {
-      var arr = this.$store.state.Point_config_pool_3;
-      console.log("pool 3 from state");
-      console.log(arr);
-      return arr;
-    },
   },
 };
 </script>
-<style>
-div.chart-wrapper {
-  padding-top: 100px;
+
+<style scoped>
+#chart1,
+#chart2 {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+#chart2 {
+  position: relative;
+  margin-top: -70px;
+  margin-bottom: 0px;
+}
+
+#app {
+  padding-top: 20px;
+  padding-left: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 22px 35px -16px rgba(0, 0, 0, 0.1);
+  max-width: 650px;
+  margin: 35px auto;
 }
 </style>

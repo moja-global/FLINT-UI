@@ -10,6 +10,9 @@ import "@/assets/styles/tailwind.css";
 
 import VueCompositionAPI from "@vue/composition-api";
 import store from "./store";
+const dataForge = require("data-forge");
+
+
 
 // router setup
 import routes from "./routes/routes";
@@ -17,10 +20,18 @@ import routes from "./routes/routes";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+import LineChart from "@/components/Chart.vue";
+
+import VueApexCharts from "vue-apexcharts";
+Vue.use(VueApexCharts);
+
+Vue.component("apexchart", VueApexCharts);
+
+
 // configure router
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 Vue.use(VueRouter);
@@ -34,6 +45,6 @@ new Vue({
   el: "#app",
   store,
   router,
+  render: (h) => h(App),
   data: {},
-  render: h => h(App)
 });

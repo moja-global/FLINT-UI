@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
 import axios from "axios";
 
 Vue.use(Vuex);
@@ -362,13 +362,32 @@ export default new Vuex.Store({
           settings: {
             output_filename: "Example_RothC_Point_Flux.csv",
             output_to_screen: false,
-            output_info_header: true
-          }
-        }
-      }
-    }
+            output_info_header: true,
+          },
+        },
+      },
+    },
+    received_data: {},
+    Point_config_pool_1: [],
+    Point_config_pool_2: [],
+    Point_config_pool_3: [],
   },
   mutations: {
+    update_Point_config_pool_1(state, pool_1) {
+      console.log("updated pool 1 in state");
+      console.log(this.state.Point_config_pool_1);
+      Vue.set(state, "Point_config_pool_1", pool_1);
+    },
+    update_Point_config_pool_2(state, pool_2) {
+      console.log("updated pool 2 in state");
+      console.log(this.state.Point_config_pool_2);
+      Vue.set(state, "Point_config_pool_2", pool_2);
+    },
+    update_Point_config_pool_3(state, pool_3) {
+      console.log("updated pool 3 in state");
+      console.log(this.state.Point_config_pool_3);
+      Vue.set(state, "Point_config_pool_3", pool_3);
+    },
     setNewConfig_dpmaCMInit(state, newValue) {
       state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue;
     },
@@ -522,16 +541,16 @@ export default new Vuex.Store({
 
     //Point Sim config
     set_pointConfig_Pool_1(state, pool_1_value) {
-      let pool_1_valuex = "#$" + pool_1_value + "#$";
+      var pool_1_valuex = "#$" + pool_1_value + "#$";
       state.Point_config["Pools"][0]["Pool 1"] = pool_1_valuex;
     },
     set_pointConfig_Pool_2(state, pool_2_value) {
       console.log(state.Point_config);
-      let pool_2_valuex = "#$" + pool_2_value + "#$";
+      var pool_2_valuex = "#$" + pool_2_value + "#$";
       state.Point_config["Pools"][1]["Pool 2"] = pool_2_valuex;
     },
     set_pointConfig_Pool_3(state, pool_3_value) {
-      let pool_3_valuex = "#$" + pool_3_value + "#$";
+      var pool_3_valuex = "#$" + pool_3_value + "#$";
       state.Point_config["Pools"][2]["Pool 3"] = pool_3_valuex;
       console.log(state.Point_config);
     }
@@ -558,7 +577,104 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+    set_received_point_example_data(state, response) {
+      state.received_data = response;
+      console.log("received_data sent to state");
+    },
+  },
+  getters: {
+    received_data: (state) => {
+      return state.received_data;
+    },
+    Point_config_pool_1: (state) => {
+      return state.Point_config_pool_1;
+    },
+    Point_config_pool_2: (state) => {
+      return state.Point_config_pool_2;
+    },
+    Point_config_pool_3: (state) => {
+      return state.Point_config_pool_3;
+    },
+  },
+  actions: {
+    send_pointConfig({ commit }) {
+      let FLINT_config_string = JSON.stringify(this.state.Point_config);
+      let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
+        '"#$',
+        " "
+      );
+      let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
+        '#$"',
+        " "
+      );
 
+      axios
+        .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
+        .then((response) => {
+          Vue.$toast.success(`${response}`, { timeout: 2000 });
+          console.log(response);
+          //this.state.received_data = response.data;
+          commit("set_received_point_example_data", response.data);
+          console.log(this.state.received_data);
+        })
+        .catch((error) => {
+          Vue.$toast.error(`${error}`, { timeout: 2000 });
+          console.log(error);
+        });
+    },
+    process_point_config({ commit }) {
+      const dataForge = require("data-forge");
+
+      console.log("running from state");
+      var dataset = this.state.received_data;
+      var pool_1 = [],
+        pool_2 = [],
+        pool_3 = [],
+        simulation_step = [];
+
+      var lines = dataset.split("\n");
+      lines.splice(0, 4);
+      lines.splice(-4);
+      var dataset = lines.join("\n");
+      const df = dataForge.fromCSV(dataset);
+      var df_as_array = df.toArray();
+      console.log(typeof df_as_array);
+      console.log("array1");
+      console.log(df_as_array[0]["Pool 1"]);
+      console.log(df_as_array.length);
+
+      for (var step = 0; step < df_as_array.length; step++) {
+        pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
+        pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
+        pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
+        var x = step;
+        simulation_step[step] = x;
+      }
+
+      console.log("pool 1");
+      for (var step = 0; step < df_as_array.length; step++) {
+        console.log(pool_1[step]);
+      }
+      console.log(simulation_step);
+      console.log(pool_1);
+      console.log(pool_2);
+      console.log(pool_3);
+
+      this.Point_config_pool_1 = pool_1;
+      this.Point_config_pool_2 = pool_2;
+      this.Point_config_pool_3 = pool_3;
+
+      commit("update_Point_config_pool_1", pool_1);
+      commit("update_Point_config_pool_2", pool_2);
+      commit("update_Point_config_pool_3", pool_3);
+
+      console.log("this.Point_config_pool_1");
+      console.log(this.Point_config_pool_1);
+      console.log("this.Point_config_pool_2");
+      console.log(this.Point_config_pool_2);
+      console.log("this.Point_config_pool_3");
+      console.log(this.Point_config_pool_3);
+    },
     send_rothcConfig() {
       console.log(this.state.RothC_config);
       let final_RothC_string = JSON.stringify(this.state.RothC_config);
@@ -569,14 +685,16 @@ export default new Vuex.Store({
       );
       axios
         .post("http://127.0.0.1:8080/rothc", final_RothC_config_string)
-        .then(response => {
+        .then((response) => {
           Vue.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
+          this.state.received_data = response.data;
+          console.log(this.state.received_data);
         })
-        .catch(error => {
+        .catch((error) => {
           Vue.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
-    }
-  }
+    },
+  },
 });

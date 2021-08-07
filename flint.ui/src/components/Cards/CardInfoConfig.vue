@@ -12,29 +12,29 @@
             {{ cardTitle }}
           </span>
           <button
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             @click="showConfirmRunModal()"
+            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
             <i class="far fa-play-circle"></i> {{ cardFunctionRun }}
           </button>
 
           <confirm-run
             v-show="isConfirmRunModalVisible"
-            run-message="Are you sure you want to run this?"
+            RunMessage="Are you sure you want to run this?"
             @close="closeConfirmRunModal"
             @startApicalls="startApiCalls({ cardMethodName })"
           ></confirm-run>
 
           <button
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             @click="showConfirmConfigModal()"
+            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
             <i class="far fa-edit"></i> {{ cardFunctionConfig }}
           </button>
 
           <confirm-config
             v-show="isConfirmConfigModalVisible"
-            config-message="Are you sure you want to change the configuration?"
+            ConfigMessage="Are you sure you want to change the configuration?"
             @close="closeConfirmConfigModal"
             @startApicalls="configSim({ cardMethodName })"
           ></confirm-config>
@@ -75,17 +75,21 @@ export default {
     },
     cardFunctionConfig: {
       type: String,
-      default: "Configure"
+      default: "Configure",
     },
     cardMethodName: {
       type: String,
-      default: "spec"
-    }
+      default: "spec",
+    },
+  },
+  components: {
+    ConfirmRun,
+    ConfirmConfig,
   },
   data() {
     return {
       isConfirmRunModalVisible: false,
-      isConfirmConfigModalVisible: false
+      isConfirmConfigModalVisible: false,
     };
   },
   methods: {
@@ -133,7 +137,7 @@ export default {
     },
     apiRoute_nonexistent() {
       console.log("No such route exists!");
-    }
-  }
+    },
+  },
 };
 </script>
