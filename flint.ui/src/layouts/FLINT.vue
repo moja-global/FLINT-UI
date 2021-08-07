@@ -12,9 +12,9 @@
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
 
 export default {
-  name: "flint-layout",
+  name: "FLINTLayout",
   components: {
-    Sidebar,
-  },
+    Sidebar
+  }
 };
 </script>
