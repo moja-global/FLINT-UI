@@ -52,9 +52,13 @@ This will build all the docker images inside the `docker-compose.yml` file. It w
 <img src="assets/docker-images.jpg">
 </div>
 
-`docker-compose.yml` file is compose of three services i.e. `flint.example.api`, `flint.gcbm.api` and `flint.ui`.
+<br />
 
-Now you can start any all the containers by clicking on the `START` button. You can also use the command line to start these containers by using the command `docker start {name of the container}`. All containers list will look like this in the Docker app:
+`docker-compose.yml` file is compose of four services i.e. `flint.example.api`, `flint.gcbm.api`, `flint.ui` and `storybook`.
+
+Now you can start all the containers by clicking on the `START` button or using the command `docker-compose up`. You can also use the command `docker start {name of the container}` to start the only specific container.
+
+All containers list will look like this in the Docker app:
 
 <div align="center">
 <img src="assets/docker-containers.jpg">
@@ -62,7 +66,9 @@ Now you can start any all the containers by clicking on the `START` button. You 
 
 <br />
 
-You can shutdown container services separately by clicking on the `STOP` button for every container. You can also use the command line to stop these containers by using the command `docker stop {name of the container you want to stop}`. Also, to shut down, the whole `docker-compose.yml` file and all services inside use the command `docker-compose down`.
+If you want to shut down a specific container click on the `STOP` button of that specific container in the Docker app. You can also use the command line to stop a specific container by using the command `docker stop {name of the container you want to stop}`
+
+To shutdown, the whole `docker-compose.yml` file and all services inside it then use the command `docker-compose down`.
 
 > You can also run `Detached mode` in Detached mode. Detached mode, shown by the option `--detach` or `-d`, means that a Docker container runs in the background of your terminal. It does not receive input or display output. So the command for running `docker-compose up` in Detached mode is `docker-compose up -d`.
 
@@ -74,16 +80,24 @@ You can shutdown container services separately by clicking on the `STOP` button 
 <img src="assets/dashboard.jpg">
 </div>
 
-Also, if you feel like running Vue app locally you can follow the below procedure:
+## Vue app
 
-Go to the `flint.ui` folder of [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository and run the below command:
+To run the Vue app locally, you can follow the below procedure:
 
-```shell
-npm install
-npm run serve
-```
+1. Go to the `flint.ui` folder and run `npm install`.
+2. Run `npm run serve` to start the Vue app server.
+3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
+
+## Storybook
+
+To run Storybook locally, you can follow the below procedure:
+
+1. Go to the `flint.ui` folder and run `npm install`.
+2. Run `npm run storybook` to start the Storybook server.
+3. Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
 ## Code Style
+
 
 The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
 
