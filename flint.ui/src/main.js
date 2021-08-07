@@ -12,9 +12,7 @@ import VueCompositionAPI from "@vue/composition-api";
 import store from "./store";
 const dataForge = require("data-forge");
 
-import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
-Vue.use(Vuetify);
+
 
 // router setup
 import routes from "./routes/routes";
@@ -29,7 +27,6 @@ Vue.use(VueApexCharts);
 
 Vue.component("apexchart", VueApexCharts);
 
-import vuetify from "./plugins/vuetify";
 
 // configure router
 const router = new VueRouter({
@@ -49,6 +46,5 @@ new Vue({
   store,
   router,
   render: (h) => h(App),
-  vuetify,
   data: {},
 });

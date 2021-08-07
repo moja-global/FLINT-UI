@@ -34,7 +34,6 @@
     "vue-router": "3.1.6",
     "vue-slider-component": "^3.2.14",
     "vue-toastification": "^1.7.11",
-    "vuelayers": "^0.11.36",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
