@@ -120,71 +120,66 @@ export default {
       console.log('SPEC route invoked')
       axios
         .get('http://127.0.0.1:8080/spec')
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-
     },
     apiRoute_help() {
       console.log('HELP route invoked')
       axios
         .get('http://127.0.0.1:8080/help/all')
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-
     },
     apiRoute_version() {
       console.log('VERSION route invoked')
       axios
         .get('http://127.0.0.1:8080/version')
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-
     },
     apiRoute_point() {
       console.log('POINT route invoked')
       axios
         .post('http://127.0.0.1:8080/point')
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-
     },
     apiRoute_rothc() {
       console.log('ROTHC route invoked')
       axios
         .post('http://127.0.0.1:8080/rothc')
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-
     },
     apiRoute_nonexistent() {
       this.$toast.warning('No such route exists!', { timeout: 2000 })

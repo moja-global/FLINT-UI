@@ -1,7 +1,15 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full"
-    style="height: auto;"
+    class="
+      relative
+      bg-gradient-to-r
+      from-green-400
+      to-blue-500
+      md:pt-32
+      pt-12
+      w-full
+    "
+    style="height: auto"
   >
     <div class="px-4 md:px-10 mx-auto w-full h-screen">
       <div>

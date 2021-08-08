@@ -35,7 +35,7 @@ Vue.use(MdField)
 
 Vue.use(VueRouter)
 Vue.use(VueApexCharts)
-Vue.component('apexchart', VueApexCharts)
+Vue.component('Apexchart', VueApexCharts)
 Vue.use(VueCompositionAPI)
 Vue.use(Toast)
 Vue.use(Vuex)
@@ -50,5 +50,5 @@ new Vue({
   store,
   router,
   data: {},
-  render: h => h(App)
+  render: (h) => h(App)
 })

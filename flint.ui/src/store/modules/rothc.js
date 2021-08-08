@@ -267,11 +267,13 @@ export default {
     },
 
     setNewConfig_rainfall_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_month_avg = newValue
+      state.RothC_config.Variables[8].rainfall.transform.data_month_avg =
+        newValue
     },
 
     setNewConfig_rainfall_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy = newValue
+      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy =
+        newValue
     },
 
     ////
@@ -281,11 +283,13 @@ export default {
     },
 
     setNewConfig_openPanEvap_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg = newValue
+      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg =
+        newValue
     },
 
     setNewConfig_openPanEvap_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy = newValue
+      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy =
+        newValue
     },
 
     ////
@@ -295,11 +299,13 @@ export default {
     },
 
     setNewConfig_avgAirTemp_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg = newValue
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg =
+        newValue
     },
 
     setNewConfig_avgAirTemp_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy = newValue
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy =
+        newValue
     },
 
     ////
@@ -309,11 +315,13 @@ export default {
     },
 
     setNewConfig_presCM_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_month_avg = newValue
+      state.RothC_config.Variables[11].presCM.transform.data_month_avg =
+        newValue
     },
 
     setNewConfig_presCM_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy = newValue
+      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy =
+        newValue
     },
 
     ////
@@ -323,15 +331,18 @@ export default {
     },
 
     setNewConfig_soilCover_data_firstmonthcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy = newValue
+      state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy =
+        newValue
     },
 
     setNewConfig_soilCover_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_month_avg = newValue
+      state.RothC_config.Variables[12].soilCover.transform.data_month_avg =
+        newValue
     },
 
     setNewConfig_soilCover_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy = newValue
+      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy =
+        newValue
     },
 
     setNewConfig_bToCMaxTSMDRatio(state, newValue) {
@@ -395,11 +406,11 @@ export default {
       )
       axios
         .post('http://127.0.0.1:8080/rothc', final_RothC_config_string)
-        .then(response => {
+        .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
         })
-        .catch(error => {
+        .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })

@@ -15,8 +15,8 @@
         <vl-feature>
           <vl-geom-point
             :coordinates="[
-              this.$store.state.vuelayers.coordinates[0],
-              this.$store.state.vuelayers.coordinates[1]
+              $store.state.vuelayers.coordinates[0],
+              $store.state.vuelayers.coordinates[1]
             ]"
           />
         </vl-feature>
@@ -28,7 +28,16 @@
           <div>
             <input
               v-model="getlatitude"
-              class="w-full h-10 px-3 text-base placeholder-gray-400 border rounded-lg focus:shadow-outline"
+              class="
+                w-full
+                h-10
+                px-3
+                text-base
+                placeholder-gray-400
+                border
+                rounded-lg
+                focus:shadow-outline
+              "
               type="text"
               placeholder=""
             />
@@ -41,7 +50,16 @@
           <div>
             <input
               v-model="getlongitude"
-              class="w-full h-10 px-3 text-base placeholder-gray-400 border rounded-lg focus:shadow-outline"
+              class="
+                w-full
+                h-10
+                px-3
+                text-base
+                placeholder-gray-400
+                border
+                rounded-lg
+                focus:shadow-outline
+              "
               type="text"
               placeholder=""
             />

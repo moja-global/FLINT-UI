@@ -88,9 +88,9 @@ export default {
     }
   },
   methods: {
-    toggleDropdown: function(event) {
+    toggleDropdown: function (event) {
       event.preventDefault()
-      
+
       if (this.dropdownPopoverShow) {
         this.dropdownPopoverShow = false
       } else {

@@ -343,7 +343,7 @@ export default {
     }
   },
   methods: {
-    toggleCollapseShow: function(classes) {
+    toggleCollapseShow: function (classes) {
       this.collapseShow = classes
     }
   }

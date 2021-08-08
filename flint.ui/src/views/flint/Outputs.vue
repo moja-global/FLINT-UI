@@ -27,7 +27,7 @@ import dataForge from 'data-forge'
 
 export default {
   name: 'BrushCharts',
-  data: function() {
+  data: function () {
     return {
       series: [
         {
@@ -120,35 +120,15 @@ export default {
       return this.$store.state.point.Point_config_pool_3
     }
   },
+
   beforeMount() {
     this.$store.dispatch('process_point_config')
     console.log('from outputs.vue - this.Point_config_pool_1')
     console.log(typeof this.$store.state.point.Point_config_pool_1)
   },
-  computed: {
-    received_data: {
-      get() {
-        return this.$store.state.received_data;
-      }
-    },
-    Point_config_pool_1() {
-      return this.$store.state.Point_config_pool_1;
-    },
-    Point_config_pool_2() {
-      return this.$store.state.Point_config_pool_2;
-    },
-    Point_config_pool_3() {
-      return this.$store.state.Point_config_pool_3;
-    }
-  },
-  beforeMount() {
-    this.$store.dispatch("process_point_config");
-    console.log("from outputs.vue - this.Point_config_pool_1");
-    console.log(typeof this.$store.state.Point_config_pool_1);
-  },
 
   methods: {
-    generateDayWiseTimeSeries: function(baseval, count, yrange) {
+    generateDayWiseTimeSeries: function (baseval, count, yrange) {
       let i = 0
       let series = []
       while (i < count) {
@@ -165,7 +145,7 @@ export default {
 
       return series
     },
-    processDataset: function() {
+    processDataset: function () {
       var dataset = this.point.received_data
       // console.log(dataset);
       let pool_1 = [],

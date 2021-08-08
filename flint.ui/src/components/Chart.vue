@@ -26,13 +26,13 @@ import Vue from 'vue'
 
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
-Vue.component('apexchart', VueApexCharts)
+Vue.component('Apexchart', VueApexCharts)
 
 // const dataForge = require('data-forge')
 
 export default {
   name: 'BrushCharts',
-  data: function() {
+  data: function () {
     return {
       series: [
         {
@@ -111,20 +111,13 @@ export default {
       return this.$store.state.received_data
     }
   },
+
   beforeMount() {
     this.processDataset
   },
-  computed: {
-    received_data() {
-      return this.$store.state.received_data;
-    }
-  },
-  beforeMount() {
-    this.processDataset;
-  },
 
   methods: {
-    generateDayWiseTimeSeries: function(baseval, count, yrange) {
+    generateDayWiseTimeSeries: function (baseval, count, yrange) {
       var i = 0
       var series = []
       while (i < count) {
@@ -139,7 +132,7 @@ export default {
 
       return series
     },
-    processDataset: function() {
+    processDataset: function () {
       var dataset = this.received_data
       var pool_1 = [],
         pool_2 = [],
@@ -176,7 +169,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>

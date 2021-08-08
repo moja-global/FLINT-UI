@@ -212,21 +212,19 @@ export default {
         '"#$',
         ' '
       )
-      let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-        '#$"',
-        ' '
-      )
+      let final_FLINT_config_string =
+        preprocessed_FLINT_config_string.replaceAll('#$"', ' ')
 
       axios
         .post('http://127.0.0.1:8080/point', final_FLINT_config_string)
-        .then(response => {
+        .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
           //this.state.received_data = response.data;
           commit('set_received_point_example_data', response.data)
           console.log(this.state.received_data)
         })
-        .catch(error => {
+        .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
@@ -286,16 +284,16 @@ export default {
     }
   },
   getters: {
-    received_data: state => {
+    received_data: (state) => {
       return state.received_data
     },
-    Point_config_pool_1: state => {
+    Point_config_pool_1: (state) => {
       return state.Point_config_pool_1
     },
-    Point_config_pool_2: state => {
+    Point_config_pool_2: (state) => {
       return state.Point_config_pool_2
     },
-    Point_config_pool_3: state => {
+    Point_config_pool_3: (state) => {
       return state.Point_config_pool_3
     }
   }

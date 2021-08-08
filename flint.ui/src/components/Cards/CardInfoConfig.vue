@@ -22,7 +22,22 @@
             {{ cardTitle }}
           </span>
           <button
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            class="
+              w-full
+              mt-4
+              block
+              align-middle
+              flex-initial
+              bg-white
+              hover:bg-black hover:text-white
+              text-gray-800
+              font-semibold
+              py-2
+              px-4
+              border border-gray-400
+              rounded
+              shadow
+            "
             @click="configSim({ cardMethodName })"
           >
             <i class="far fa-edit" /> {{ cardFunctionConfig }}
