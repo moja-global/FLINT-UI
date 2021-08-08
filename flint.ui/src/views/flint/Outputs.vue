@@ -125,6 +125,27 @@ export default {
     console.log('from outputs.vue - this.Point_config_pool_1')
     console.log(typeof this.$store.state.point.Point_config_pool_1)
   },
+  computed: {
+    received_data: {
+      get() {
+        return this.$store.state.received_data;
+      }
+    },
+    Point_config_pool_1() {
+      return this.$store.state.Point_config_pool_1;
+    },
+    Point_config_pool_2() {
+      return this.$store.state.Point_config_pool_2;
+    },
+    Point_config_pool_3() {
+      return this.$store.state.Point_config_pool_3;
+    }
+  },
+  beforeMount() {
+    this.$store.dispatch("process_point_config");
+    console.log("from outputs.vue - this.Point_config_pool_1");
+    console.log(typeof this.$store.state.Point_config_pool_1);
+  },
 
   methods: {
     generateDayWiseTimeSeries: function(baseval, count, yrange) {

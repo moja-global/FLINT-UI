@@ -29,8 +29,7 @@
               align-middle
               flex-initial
               bg-white
-              hover:bg-black
-              hover:text-white
+              hover:bg-black hover:text-white
               text-gray-800
               font-semibold
               py-2
@@ -129,6 +128,7 @@ export default {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+
     },
     apiRoute_help() {
       console.log('HELP route invoked')
@@ -142,6 +142,7 @@ export default {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+
     },
     apiRoute_version() {
       console.log('VERSION route invoked')
@@ -155,6 +156,7 @@ export default {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+
     },
     apiRoute_point() {
       console.log('POINT route invoked')
@@ -168,6 +170,7 @@ export default {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+
     },
     apiRoute_rothc() {
       console.log('ROTHC route invoked')
@@ -181,6 +184,7 @@ export default {
           this.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+
     },
     apiRoute_nonexistent() {
       this.$toast.warning('No such route exists!', { timeout: 2000 })

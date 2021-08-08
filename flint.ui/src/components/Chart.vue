@@ -114,6 +114,14 @@ export default {
   beforeMount() {
     this.processDataset
   },
+  computed: {
+    received_data() {
+      return this.$store.state.received_data;
+    }
+  },
+  beforeMount() {
+    this.processDataset;
+  },
 
   methods: {
     generateDayWiseTimeSeries: function(baseval, count, yrange) {
@@ -168,6 +176,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped>

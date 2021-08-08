@@ -6,12 +6,24 @@
       >
         <div class="w-full md:w-4/12 px-4">
           <div
-            class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left"
+            class="
+              text-sm text-blueGray-500
+              font-semibold
+              py-1
+              text-center
+              md:text-left
+            "
           >
             Copyright © {{ date }}
             <a
               href="https://moja.global"
-              class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
+              class="
+                text-blueGray-500
+                hover:text-blueGray-700
+                text-sm
+                font-semibold
+                py-1
+              "
             >
               moja global
             </a>

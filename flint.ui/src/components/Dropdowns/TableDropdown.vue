@@ -10,7 +10,18 @@
     </a>
     <div
       ref="popoverDropdownRef"
-      class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+      class="
+        bg-white
+        text-base
+        z-50
+        float-left
+        py-2
+        list-none
+        text-left
+        rounded
+        shadow-lg
+        min-w-48
+      "
       :class="{
         hidden: !dropdownPopoverShow,
         block: dropdownPopoverShow
@@ -18,19 +29,49 @@
     >
       <a
         href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-blueGray-700
+        "
       >
         Action
       </a>
       <a
         href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-blueGray-700
+        "
       >
         Another action
       </a>
       <a
         href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-blueGray-700
+        "
       >
         Something else here
       </a>
@@ -49,6 +90,7 @@ export default {
   methods: {
     toggleDropdown: function(event) {
       event.preventDefault()
+      
       if (this.dropdownPopoverShow) {
         this.dropdownPopoverShow = false
       } else {

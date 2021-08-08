@@ -1,6 +1,15 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pb-32 pt-12 w-full"
+    class="
+      relative
+      bg-gradient-to-r
+      from-green-400
+      to-blue-500
+      md:pt-32
+      pb-32
+      pt-12
+      w-full
+    "
   >
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
@@ -16,16 +25,13 @@
 
         <div class="flex flex-wrap mt-10">
           <div class="w-full px-4 content-center rounded-md m-12 mb-5">
-            <h1 class="flex-auto text-xl font-semibold">
-              presCM - data_orig
-            </h1>
+            <h1 class="flex-auto text-xl font-semibold">presCM - data_orig</h1>
             <textarea
               v-model="newconfig_presCM_data_orig"
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
 
           <div class="w-full px-4 content-center rounded-md m-12 mb-5">
@@ -37,8 +43,7 @@
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
 
           <div class="w-full px-4 content-center rounded-md m-12 mb-5">
@@ -50,8 +55,7 @@
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
         </div>
       </div>

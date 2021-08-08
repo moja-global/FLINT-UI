@@ -1,5 +1,4 @@
 // enable vue in eslint
-
 module.exports = {
   root: true,
   env: {
