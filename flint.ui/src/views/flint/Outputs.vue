@@ -22,8 +22,7 @@
 </template>
 
 <script>
-import dataForge from 'data-forge'
-// const dataForge = require("data-forge");
+import { fromCSV } from 'data-forge'
 
 export default {
   name: 'BrushCharts',
@@ -157,7 +156,7 @@ export default {
       lines.splice(0, 4)
       lines.splice(-4)
       dataset = lines.join('\n')
-      const df = dataForge.fromCSV(dataset)
+      const df = fromCSV(dataset)
       let df_as_array = df.toArray()
       console.log(typeof df_as_array)
       console.log('array1')
