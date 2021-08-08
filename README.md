@@ -80,7 +80,9 @@ To shutdown, the whole `docker-compose.yml` file and all services inside it then
 <img src="assets/dashboard.jpg">
 </div>
 
-## Vue app
+
+## Developer notes
+### Vue app
 
 To run the Vue app locally, you can follow the below procedure:
 
@@ -88,7 +90,7 @@ To run the Vue app locally, you can follow the below procedure:
 2. Run `npm run serve` to start the Vue app server.
 3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
 
-## Storybook
+### Storybook
 
 To run Storybook locally, you can follow the below procedure:
 
@@ -96,8 +98,20 @@ To run Storybook locally, you can follow the below procedure:
 2. Run `npm run storybook` to start the Storybook server.
 3. Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
-## Code Style
+### Dependency management
 
+Our `package.json` file is gitignored to enforce strict management of our client dependencies.
+
+In order to add a new dependency, please:
+
+1. use `npm install <your-package>`
+2. `git checkout -b dependency/<your-package>`
+3. `git add --force flint.ui/package.json`
+4. `git push` and submit a PR with only the `package.json` changes
+
+Our CI build will test for conflicts and your new dependency will be added after your PR has been reviewed. 
+
+### Code Style
 
 The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
 
