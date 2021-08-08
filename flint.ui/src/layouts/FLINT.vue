@@ -9,12 +9,12 @@
   </div>
 </template>
 <script>
-import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import Sidebar from '@/components/Sidebar/Sidebar.vue'
 
 export default {
-  name: "FLINTLayout",
+  name: 'FLINTLayout',
   components: {
     Sidebar
   }
-};
+}
 </script>

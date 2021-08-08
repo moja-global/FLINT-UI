@@ -12,32 +12,11 @@
             {{ cardTitle }}
           </span>
           <button
-            @click="showConfirmRunModal()"
             class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-          >
-            <i class="far fa-play-circle"></i> {{ cardFunctionRun }}
-          </button>
-
-          <confirm-run
-            v-show="isConfirmRunModalVisible"
-            RunMessage="Are you sure you want to run this?"
-            @close="closeConfirmRunModal"
-            @startApicalls="startApiCalls({ cardMethodName })"
-          ></confirm-run>
-
-          <button
-            @click="showConfirmConfigModal()"
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            @click="configSim({ cardMethodName })"
           >
             <i class="far fa-edit"></i> {{ cardFunctionConfig }}
           </button>
-
-          <confirm-config
-            v-show="isConfirmConfigModalVisible"
-            ConfigMessage="Are you sure you want to change the configuration?"
-            @close="closeConfirmConfigModal"
-            @startApicalls="configSim({ cardMethodName })"
-          ></confirm-config>
         </div>
         <p class="text-sm text-blueGray-400 mt-4">
           <span class="whitespace-nowrap">{{ cardDescription }}</span>
@@ -47,97 +26,63 @@
   </div>
 </template>
 <script>
-import ConfirmRun from "@/components/Prompts/ConfirmRun";
-import ConfirmConfig from "@/components/Prompts/ConfirmConfig";
-
 export default {
-  name: "CardInfoConfig",
-  components: {
-    ConfirmRun,
-    ConfirmConfig
-  },
+  name: 'CardInfoConfig',
   props: {
     cardSubtitle: {
       type: String,
-      default: "Example route"
+      default: 'Example route'
     },
     cardTitle: {
       type: String,
-      default: "EXAMPLE"
+      default: 'EXAMPLE'
     },
     cardDescription: {
       type: String,
-      default: "info about the card"
+      default: 'info about the card'
     },
     cardFunctionRun: {
       type: String,
-      default: "Run"
+      default: 'Run'
     },
     cardFunctionConfig: {
       type: String,
-      default: "Configure",
+      default: 'Configure'
     },
     cardMethodName: {
       type: String,
-      default: "spec",
-    },
+      default: 'spec'
+    }
   },
-  components: {
-    ConfirmRun,
-    ConfirmConfig,
-  },
-  data() {
-    return {
-      isConfirmRunModalVisible: false,
-      isConfirmConfigModalVisible: false,
-    };
-  },
+
   methods: {
-    showConfirmConfigModal() {
-      this.isConfirmConfigModalVisible = true;
-    },
-    closeConfirmConfigModal() {
-      this.isConfirmConfigModalVisible = false;
-    },
-    showConfirmRunModal() {
-      this.isConfirmRunModalVisible = true;
-    },
-    closeConfirmRunModal() {
-      this.isConfirmRunModalVisible = false;
-    },
     configSim({ cardMethodName }) {
-      let config_model = { cardMethodName }.cardMethodName;
-      if (config_model == "point") {
-        console.log("POINT CONFIG REQ");
-        this.$router.push("/flint/configurations/point");
-      } else if (config_model == "rothc") {
-        console.log("ROTHC CONFIG REQ");
-        this.$router.push("/flint/configurations/rothc");
+      let config_model = { cardMethodName }.cardMethodName
+      if (config_model == 'point') {
+        console.log('POINT CONFIG REQ')
+        this.$router.push('/flint/configurations/point')
+      } else if (config_model == 'rothc') {
+        console.log('ROTHC CONFIG REQ')
+        this.$router.push('/flint/configurations/rothc')
       }
     },
     startApiCalls({ cardMethodName }) {
-      this.isConfirmRunModalVisible = false;
-      let api_route = { cardMethodName }.cardMethodName;
+      let api_route = { cardMethodName }.cardMethodName
 
-      if (api_route == "point") {
-        this.apiRoute_point();
-      } else if (api_route == "rothc") {
-        this.apiRoute_rothc();
-      } else this.apiRoute_nonexistent();
+      if (api_route == 'point') {
+        this.apiRoute_point()
+      } else if (api_route == 'rothc') {
+        this.apiRoute_rothc()
+      } else this.apiRoute_nonexistent()
     },
 
-    apiRoute_point() {
-      //sending the new point config
-      console.log("POINT route invoked with new configs");
-    },
     apiRoute_rothc() {
-      // sending the new rothc config
-      console.log("ROTHC route invoked with new configs");
-      this.$store.dispatch("send_rothcConfig");
+      console.log('ROTHC route invoked with new configs')
+      this.$store.dispatch('send_rothcConfig')
     },
     apiRoute_nonexistent() {
-      console.log("No such route exists!");
-    },
-  },
-};
+      console.log('No such route exists!')
+    }
+  }
+}
 </script>

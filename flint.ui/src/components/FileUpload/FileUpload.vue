@@ -8,10 +8,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'FileField',
-    data: () => ({
-      multiple: null
-    })
-  }
+export default {
+  name: 'FileField',
+  data: () => ({
+    multiple: null
+  })
+}
 </script>

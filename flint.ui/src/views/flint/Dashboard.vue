@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-wrap"></div>
+    <div class="flex flex-wrap" />
     <div class="flex flex-wrap mt-4">
       <ExampleCardsRun />
     </div>
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import ExampleCardsRun from "@/components/Headers/ExampleCardsRun.vue";
+import ExampleCardsRun from '@/components/Headers/ExampleCardsRun.vue'
 
 export default {
-  name: "DashboardPage",
+  name: 'DashboardPage',
   components: {
     ExampleCardsRun
   }
-};
+}
 </script>

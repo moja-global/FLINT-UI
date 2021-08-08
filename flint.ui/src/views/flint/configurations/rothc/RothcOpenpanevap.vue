@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pb-32 pt-12 w-full"
+    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full"
   >
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
@@ -56,47 +56,54 @@
         </div>
       </div>
     </div>
+
+    <Stepper />
   </div>
 </template>
 
 <script>
+import Stepper from '@/components/Stepper/StepperRothc.vue'
+
 export default {
+  components: {
+    Stepper
+  },
   computed: {
     newconfig_openPanEvap_data_orig: {
       get() {
-        return this.$store.state.RothC_config.Variables[9].openPanEvap.transform
-          .data_orig;
+        return this.$store.state.rothc.RothC_config.Variables[9].openPanEvap
+          .transform.data_orig
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_openPanEvap_data_orig", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_openPanEvap_data_orig', tempval)
       }
     },
 
     newconfig_openPanEvap_data_month_avg: {
       get() {
-        return this.$store.state.RothC_config.Variables[9].openPanEvap.transform
-          .data_month_avg;
+        return this.$store.state.rothc.RothC_config.Variables[9].openPanEvap
+          .transform.data_month_avg
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_openPanEvap_data_month_avg", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_openPanEvap_data_month_avg', tempval)
       }
     },
 
     newconfig_openPanEvap_data_lastyearcopy: {
       get() {
-        return this.$store.state.RothC_config.Variables[9].openPanEvap.transform
-          .data_lastyearcopy;
+        return this.$store.state.rothc.RothC_config.Variables[9].openPanEvap
+          .transform.data_lastyearcopy
       },
       set(newValue) {
-        let tempval = newValue;
+        let tempval = newValue
         this.$store.commit(
-          "setNewConfig_openPanEvap_data_lastyearcopy",
+          'setNewConfig_openPanEvap_data_lastyearcopy',
           tempval
-        );
+        )
       }
     }
   }
-};
+}
 </script>

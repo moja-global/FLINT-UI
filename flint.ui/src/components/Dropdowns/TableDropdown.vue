@@ -6,7 +6,7 @@
       href="#pablo"
       @click="toggleDropdown($event)"
     >
-      <i class="fas fa-ellipsis-v"></i>
+      <i class="fas fa-ellipsis-v" />
     </a>
     <div
       ref="popoverDropdownRef"
@@ -38,26 +38,26 @@
   </div>
 </template>
 <script>
-import { createPopper } from "@popperjs/core";
+import { createPopper } from '@popperjs/core'
 
 export default {
   data() {
     return {
       dropdownPopoverShow: false
-    };
+    }
   },
   methods: {
     toggleDropdown: function(event) {
-      event.preventDefault();
+      event.preventDefault()
       if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
+        this.dropdownPopoverShow = false
       } else {
-        this.dropdownPopoverShow = true;
+        this.dropdownPopoverShow = true
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start"
-        });
+          placement: 'bottom-start'
+        })
       }
     }
   }
-};
+}
 </script>

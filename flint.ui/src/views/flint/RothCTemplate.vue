@@ -47,7 +47,7 @@
               "
               @click="ConfigData"
             >
-              <i class="far fa-edit"></i> {{ configDataexample }}
+              <i class="far fa-edit" /> {{ configDataexample }}
             </button>
           </div>
         </div>
@@ -58,41 +58,41 @@
 
 <script>
 export default {
-  name: "CardRothConfig",
+  name: 'CardRothConfig',
   components: {},
   props: {
     configParamtype: {
       type: String,
-      default: "Config params for xyz"
+      default: 'Config params for xyz'
     },
     configDataexample: {
       type: String,
-      default: "Configure"
+      default: 'Configure'
     }
   },
   data() {
-    return {};
+    return {}
   },
   methods: {
     ConfigData() {
-      let config_type = this.configParamtype;
-      console.log(config_type);
-      if (config_type == "rainfall") {
-        this.$router.push("/flint/configurations/rothc/rainfall");
-      } else if (config_type == "openPanEvap") {
-        this.$router.push("/flint/configurations/rothc/openPanEvap");
-      } else if (config_type == "avgAirTemp") {
-        this.$router.push("/flint/configurations/rothc/avgAirTemp");
-      } else if (config_type == "presCM") {
-        this.$router.push("/flint/configurations/rothc/presCM");
-      } else if (config_type == "soilCover") {
-        this.$router.push("/flint/configurations/rothc/soilCover");
-      } else if (config_type == "initSoil") {
-        this.$router.push("/flint/configurations/rothc/initSoil");
-      } else if (config_type == "soil") {
-        this.$router.push("/flint/configurations/rothc/soil");
+      let config_type = this.configParamtype
+      console.log(config_type)
+      if (config_type == 'rainfall') {
+        this.$router.push('/flint/configurations/rothc/rainfall')
+      } else if (config_type == 'openPanEvap') {
+        this.$router.push('/flint/configurations/rothc/openPanEvap')
+      } else if (config_type == 'avgAirTemp') {
+        this.$router.push('/flint/configurations/rothc/avgAirTemp')
+      } else if (config_type == 'presCM') {
+        this.$router.push('/flint/configurations/rothc/presCM')
+      } else if (config_type == 'soilCover') {
+        this.$router.push('/flint/configurations/rothc/soilCover')
+      } else if (config_type == 'initSoil') {
+        this.$router.push('/flint/configurations/rothc/initSoil')
+      } else if (config_type == 'soil') {
+        this.$router.push('/flint/configurations/rothc/soil')
       }
     }
   }
-};
+}
 </script>

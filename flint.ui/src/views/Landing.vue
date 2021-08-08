@@ -12,7 +12,7 @@
         <span
           id="blackOverlay"
           class="w-full h-full absolute opacity-75 bg-black"
-        ></span>
+        />
       </div>
       <div class="container relative mx-auto">
         <div class="items-center flex flex-wrap">
@@ -47,7 +47,7 @@
           <polygon
             class="text-blueGray-200 fill-current"
             points="2560 0 2560 100 0 100"
-          ></polygon>
+          />
         </svg>
       </div>
     </div>
@@ -70,5 +70,5 @@
 <script>
 export default {
   components: {}
-};
+}
 </script>

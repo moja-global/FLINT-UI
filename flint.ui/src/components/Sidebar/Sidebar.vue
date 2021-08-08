@@ -10,7 +10,7 @@
         type="button"
         @click="toggleCollapseShow('bg-white m-2 py-3 px-6')"
       >
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars" />
       </button>
 
       <router-link
@@ -42,7 +42,7 @@
                 class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                 @click="toggleCollapseShow('hidden')"
               >
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" />
               </button>
             </div>
           </div>
@@ -74,7 +74,7 @@
                 <i
                   class="fas fa-home mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Dashboard
               </a>
             </router-link>
@@ -98,7 +98,7 @@
                 <i
                   class="fas fa-cogs mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Configurations
               </a>
             </router-link>
@@ -122,7 +122,7 @@
                 <i
                   class="fas fa-chart-bar mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Visualise
               </a>
             </router-link>
@@ -154,7 +154,7 @@
                 <i
                   class="fas fa-home mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Dashboard
               </a>
             </router-link>
@@ -178,7 +178,7 @@
                 <i
                   class="fas fa-cogs mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Configurations
               </a>
             </router-link>
@@ -202,7 +202,7 @@
                 <i
                   class="fas fa-layer-group mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                ></i>
+                />
                 Outputs
               </a>
             </router-link>
@@ -219,13 +219,13 @@ export default {
   components: {},
   data() {
     return {
-      collapseShow: "hidden"
-    };
+      collapseShow: 'hidden'
+    }
   },
   methods: {
     toggleCollapseShow: function(classes) {
-      this.collapseShow = classes;
+      this.collapseShow = classes
     }
   }
-};
+}
 </script>

@@ -12,14 +12,14 @@
 </template>
 <script>
 // import MainNavbar from "@/components/Navbars/MainNavbar.vue";
-import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import Sidebar from '@/components/Sidebar/Sidebar.vue'
 // import ExampleCards from "@/components/Headers/ExampleCards.vue";
 
 export default {
-  name: "GCBMLayout",
+  name: 'GCBMLayout',
   components: {
     Sidebar
     // ExampleCards,
   }
-};
+}
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pb-32 pt-12 w-full"
+    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full"
   >
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
@@ -122,81 +122,95 @@
         </div>
       </div>
     </div>
+
+    <Stepper />
   </div>
 </template>
 
 <script>
+import Stepper from '@/components/Stepper/StepperRothc.vue'
+
 export default {
+  components: {
+    Stepper
+  },
   computed: {
     newconfig_dpmaCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.dpmaCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .dpmaCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_dpmaCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_dpmaCMInit', tempval)
       }
     },
 
     newconfig_rpmaCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.rpmaCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .rpmaCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_rpmaCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_rpmaCMInit', tempval)
       }
     },
 
     newconfig_biofCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.biofCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .biofCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_biofCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_biofCMInit', tempval)
       }
     },
 
     newconfig_biosCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.biosCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .biosCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_biosCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_biosCMInit', tempval)
       }
     },
 
     newconfig_humsCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.humsCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .humsCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_humsCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_humsCMInit', tempval)
       }
     },
 
     newconfig_inrtCMInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.inrtCMInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .inrtCMInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_inrtCMInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_inrtCMInit', tempval)
       }
     },
 
     newconfig_TSMDInit: {
       get() {
-        return this.$store.state.RothC_config.Variables[13].initSoil.TSMDInit;
+        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
+          .TSMDInit
       },
       set(newValue) {
-        let tempval = newValue;
-        this.$store.commit("setNewConfig_TSMDInit", tempval);
+        let tempval = newValue
+        this.$store.commit('setNewConfig_TSMDInit', tempval)
       }
     }
   }
-};
+}
 </script>

@@ -41,7 +41,7 @@
             "
             @click="showConfirmRunModal()"
           >
-            <i class="far fa-play-circle"></i> {{ cardFunctionRun }}
+            <i class="far fa-play-circle" /> {{ cardFunctionRun }}
           </button>
 
           <confirm-run
@@ -49,7 +49,7 @@
             run-message="Are you sure you want to run this?"
             @close="closeConfirmRunModal"
             @startApicalls="startApiCalls({ cardMethodName })"
-          ></confirm-run>
+          />
         </div>
         <p class="text-sm text-blueGray-400 mt-4">
           <span class="whitespace-nowrap">{{ cardDescription }}</span>
@@ -59,133 +59,133 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import ConfirmRun from "@/components/Prompts/ConfirmRun";
+import axios from 'axios'
+import ConfirmRun from '@/components/Prompts/ConfirmRun'
 
 export default {
-  name: "CardInfoRun",
+  name: 'CardInfoRun',
   components: {
     ConfirmRun
   },
   props: {
     cardSubtitle: {
       type: String,
-      default: "Example route"
+      default: 'Example route'
     },
     cardTitle: {
       type: String,
-      default: "EXAMPLE"
+      default: 'EXAMPLE'
     },
     cardDescription: {
       type: String,
-      default: "info about the card"
+      default: 'info about the card'
     },
     cardFunctionRun: {
       type: String,
-      default: "Run"
+      default: 'Run'
     },
     cardMethodName: {
       type: String,
-      default: "spec"
+      default: 'spec'
     }
   },
   data() {
     return {
       isConfirmRunModalVisible: false
-    };
+    }
   },
   methods: {
     showConfirmRunModal() {
-      this.isConfirmRunModalVisible = true;
+      this.isConfirmRunModalVisible = true
     },
     closeConfirmRunModal() {
-      this.isConfirmRunModalVisible = false;
+      this.isConfirmRunModalVisible = false
     },
     startApiCalls({ cardMethodName }) {
-      this.isConfirmRunModalVisible = false;
-      let api_route = { cardMethodName }.cardMethodName;
-      if (api_route == "spec") {
-        this.apiRoute_spec();
-      } else if (api_route == "help") {
-        this.apiRoute_help();
-      } else if (api_route == "version") {
-        this.apiRoute_version();
-      } else if (api_route == "point") {
-        this.apiRoute_point();
-      } else if (api_route == "rothc") {
-        this.apiRoute_rothc();
-      } else this.apiRoute_nonexistent();
+      this.isConfirmRunModalVisible = false
+      let api_route = { cardMethodName }.cardMethodName
+      if (api_route == 'spec') {
+        this.apiRoute_spec()
+      } else if (api_route == 'help') {
+        this.apiRoute_help()
+      } else if (api_route == 'version') {
+        this.apiRoute_version()
+      } else if (api_route == 'point') {
+        this.apiRoute_point()
+      } else if (api_route == 'rothc') {
+        this.apiRoute_rothc()
+      } else this.apiRoute_nonexistent()
     },
     // button linking to api end-points
     apiRoute_spec() {
-      console.log("SPEC route invoked");
+      console.log('SPEC route invoked')
       axios
-        .get("http://127.0.0.1:8080/spec")
+        .get('http://127.0.0.1:8080/spec')
         .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
+          this.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
         })
         .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
+          this.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
     },
     apiRoute_help() {
-      console.log("HELP route invoked");
+      console.log('HELP route invoked')
       axios
-        .get("http://127.0.0.1:8080/help/all")
+        .get('http://127.0.0.1:8080/help/all')
         .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
+          this.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
         })
         .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
+          this.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
     },
     apiRoute_version() {
-      console.log("VERSION route invoked");
+      console.log('VERSION route invoked')
       axios
-        .get("http://127.0.0.1:8080/version")
+        .get('http://127.0.0.1:8080/version')
         .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
+          this.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
         })
         .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
+          this.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
     },
     apiRoute_point() {
-      console.log("POINT route invoked");
+      console.log('POINT route invoked')
       axios
-        .post("http://127.0.0.1:8080/point")
+        .post('http://127.0.0.1:8080/point')
         .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
+          this.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
         })
         .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
+          this.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
     },
     apiRoute_rothc() {
-      console.log("ROTHC route invoked");
+      console.log('ROTHC route invoked')
       axios
-        .post("http://127.0.0.1:8080/rothc")
+        .post('http://127.0.0.1:8080/rothc')
         .then(response => {
-          this.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
+          this.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
         })
         .catch(error => {
-          this.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
+          this.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
     },
     apiRoute_nonexistent() {
-      this.$toast.warning("No such route exists!", { timeout: 2000 });
-      console.log("No such route exists!");
+      this.$toast.warning('No such route exists!', { timeout: 2000 })
+      console.log('No such route exists!')
     }
   }
-};
+}
 </script>

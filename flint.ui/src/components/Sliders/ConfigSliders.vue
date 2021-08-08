@@ -1,13 +1,15 @@
 <template>
   <div class="example">
-    <h3 id="example-1">{{ poolTitle }}</h3>
+    <h3 id="example-1">
+      {{ poolTitle }}
+    </h3>
     <div class="output">{{ poolNumber }}: {{ pool.value }}</div>
-    <Slider v-model="pool.value" v-bind="pool"></Slider>
+    <Slider v-model="pool.value" v-bind="pool" />
   </div>
 </template>
 
 <script>
-import Slider from "@vueform/slider/dist/slider.vue2.js";
+import Slider from '@vueform/slider/dist/slider.vue2.js'
 
 export default {
   components: {
@@ -17,11 +19,11 @@ export default {
   props: {
     poolTitle: {
       type: String,
-      default: "Pool title"
+      default: 'Pool title'
     },
     poolNumber: {
       type: String,
-      default: "Pool number"
+      default: 'Pool number'
     },
     minPoolval: {
       type: Number,
@@ -37,11 +39,11 @@ export default {
         step: 10,
         value: 180
       }
-    };
+    }
   },
 
   methods: {}
-};
+}
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>

@@ -16,7 +16,7 @@
         "
       >
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div class="absolute inset-0 bg-gray-500 opacity-75" />
         </div>
 
         <span
@@ -148,7 +148,7 @@
 </template>
 <script>
 export default {
-  name: "Modal",
+  name: 'Modal',
   props: {
     configMessage: {
       type: String,
@@ -157,12 +157,12 @@ export default {
   },
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit('close')
     },
     startApicalls() {
-      this.$emit("close");
-      this.$emit("startApicalls");
+      this.$emit('close')
+      this.$emit('startApicalls')
     }
   }
-};
+}
 </script>

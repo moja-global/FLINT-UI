@@ -58,11 +58,11 @@
 </template>
 
 <script>
-import CardInfoRun from "@/components/Cards/CardInfoRun.vue";
+import CardInfoRun from '@/components/Cards/CardInfoRun.vue'
 
 export default {
   components: {
     CardInfoRun
   }
-};
+}
 </script>
