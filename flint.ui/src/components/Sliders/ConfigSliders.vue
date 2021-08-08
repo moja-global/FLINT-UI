@@ -1,8 +1,10 @@
 <template>
   <div class="example">
-    <h3 id="example-1">{{ poolTitle }}</h3>
+    <h3 id="example-1">
+      {{ poolTitle }}
+    </h3>
     <div class="output">{{ poolNumber }}: {{ pool.value }}</div>
-    <Slider v-model="pool.value" v-bind="pool"></Slider>
+    <Slider v-model="pool.value" v-bind="pool" />
   </div>
 </template>
 

@@ -33,8 +33,7 @@
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
 
           <div class="w-full px-4 content-center rounded-md m-12 mb-5">
@@ -46,8 +45,7 @@
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
 
           <div class="w-full px-4 content-center rounded-md m-12 mb-5">
@@ -59,8 +57,7 @@
               class="form-textarea mt-1 block w-full"
               rows="5"
               placeholder=""
-            >
-            </textarea>
+            />
           </div>
         </div>
       </div>

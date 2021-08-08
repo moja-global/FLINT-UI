@@ -24,19 +24,13 @@ import Vue from "vue";
 
 import VueApexCharts from "vue-apexcharts";
 Vue.use(VueApexCharts);
-Vue.component("apexchart", VueApexCharts);
+Vue.component("Apexchart", VueApexCharts);
+
+import { fromCSV } from "data-forge";
 
 export default {
   name: "BrushCharts",
-  beforeMount(){
-    this.processDataset;
-  },
-  computed: {
-    received_data() {
-      return this.$store.state.received_data;
-    },
-  },
-  data: function() {
+  data: function () {
     return {
       series: [
         {
@@ -45,74 +39,82 @@ export default {
             185,
             {
               min: 30,
-              max: 90,
+              max: 90
             }
-          ),
-        },
+          )
+        }
       ],
       chartOptionsArea: {
         chart: {
           id: "chartArea",
           toolbar: {
             autoSelected: "pan",
-            show: false,
-          },
+            show: false
+          }
         },
         colors: ["#546E7A"],
         stroke: {
-          width: 3,
+          width: 3
         },
         dataLabels: {
-          enabled: false,
+          enabled: false
         },
         fill: {
-          opacity: 1,
+          opacity: 1
         },
         markers: {
-          size: 0,
+          size: 0
         },
         xaxis: {
-          type: "datetime",
-        },
+          type: "datetime"
+        }
       },
       chartOptionsBrush: {
         chart: {
           id: "chartBrush",
           brush: {
             target: "chartArea",
-            enabled: true,
+            enabled: true
           },
           selection: {
             enabled: true,
             xaxis: {
               min: new Date("19 Jun 2017").getTime(),
-              max: new Date("14 Aug 2017").getTime(),
-            },
-          },
+              max: new Date("14 Aug 2017").getTime()
+            }
+          }
         },
         colors: ["#008FFB"],
         fill: {
           gradient: {
             enabled: true,
             opacityFrom: 0.91,
-            opacityTo: 0.1,
-          },
+            opacityTo: 0.1
+          }
         },
         xaxis: {
           type: "datetime",
           tooltip: {
-            enabled: false,
-          },
+            enabled: false
+          }
         },
         yaxis: {
-          tickAmount: 2,
-        },
-      },
+          tickAmount: 2
+        }
+      }
     };
+  },
+  computed: {
+    received_data() {
+      return this.$store.state.received_data;
+    }
+  },
+  beforeMount() {
+    this.processDataset;
   },
 
   methods: {
-    generateDayWiseTimeSeries: function(baseval, count, yrange) {
+    generateDayWiseTimeSeries: function (baseval, count, yrange) {
       var i = 0;
       var series = [];
       while (i < count) {
@@ -128,25 +130,28 @@ export default {
 
       return series;
     },
-    processDataset: function() {
+    processDataset: function () {
       var dataset = this.received_data;
       var pool_1 = [],
         pool_2 = [],
         pool_3 = [],
         simulation_step = [];
 
+      // remove header and footer
       var lines = dataset.split("\n");
       lines.splice(0, 4);
       lines.splice(-4);
-      var dataset = lines.join("\n");
-      const df = dataForge.fromCSV(dataset);
+
+      dataset = lines.join("\n");
+
+      const df = fromCSV(dataset);
       var df_as_array = df.toArray();
       console.log(typeof df_as_array);
       console.log("array1");
       console.log(df_as_array[0]["Pool 1"]);
       console.log(df_as_array.length);
 
-      for (var step = 0; step < df_as_array.length; step++) {
+      for (let step = 0; step < df_as_array.length; step++) {
         pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
         pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
         pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
@@ -155,15 +160,15 @@ export default {
       }
 
       console.log("pool 1");
-      for (var step = 0; step < df_as_array.length; step++) {
+      for (let step = 0; step < df_as_array.length; step++) {
         console.log(pool_1[step.toString()]);
       }
       console.log(simulation_step);
       console.log(pool_1);
       console.log(pool_2);
       console.log(pool_3);
-    },
-  },
+    }
+  }
 };
 </script>
 

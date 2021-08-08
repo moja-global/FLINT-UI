@@ -1,6 +1,8 @@
 import Vue from "vue";
-import Vuex, { Store } from "vuex";
+import Vuex from "vuex";
 import axios from "axios";
+
+import { fromCSV } from "data-forge";
 
 Vue.use(Vuex);
 
@@ -362,15 +364,15 @@ export default new Vuex.Store({
           settings: {
             output_filename: "Example_RothC_Point_Flux.csv",
             output_to_screen: false,
-            output_info_header: true,
-          },
-        },
-      },
+            output_info_header: true
+          }
+        }
+      }
     },
     received_data: {},
     Point_config_pool_1: [],
     Point_config_pool_2: [],
-    Point_config_pool_3: [],
+    Point_config_pool_3: []
   },
   mutations: {
     update_Point_config_pool_1(state, pool_1) {
@@ -423,39 +425,47 @@ export default new Vuex.Store({
     },
 
     setNewConfig_rainfall_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_month_avg = newValue;
+      state.RothC_config.Variables[8].rainfall.transform.data_month_avg =
+        newValue;
     },
 
     setNewConfig_rainfall_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy = newValue;
+      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy =
+        newValue;
     },
 
     ////
 
     setNewConfig_openPanEvap_data_orig(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_orig = newValue;
+      state.RothC_config.Variables[9].openPanEvap.transform.data_orig =
+        newValue;
     },
 
     setNewConfig_openPanEvap_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg = newValue;
+      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg =
+        newValue;
     },
 
     setNewConfig_openPanEvap_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy = newValue;
+      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy =
+        newValue;
     },
 
     ////
 
     setNewConfig_avgAirTemp_data_orig(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_orig = newValue;
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_orig =
+        newValue;
     },
 
     setNewConfig_avgAirTemp_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg = newValue;
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg =
+        newValue;
     },
 
     setNewConfig_avgAirTemp_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy = newValue;
+      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy =
+        newValue;
     },
 
     ////
@@ -465,11 +475,13 @@ export default new Vuex.Store({
     },
 
     setNewConfig_presCM_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_month_avg = newValue;
+      state.RothC_config.Variables[11].presCM.transform.data_month_avg =
+        newValue;
     },
 
     setNewConfig_presCM_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy = newValue;
+      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy =
+        newValue;
     },
 
     ////
@@ -479,15 +491,18 @@ export default new Vuex.Store({
     },
 
     setNewConfig_soilCover_data_firstmonthcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy = newValue;
+      state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy =
+        newValue;
     },
 
     setNewConfig_soilCover_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_month_avg = newValue;
+      state.RothC_config.Variables[12].soilCover.transform.data_month_avg =
+        newValue;
     },
 
     setNewConfig_soilCover_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy = newValue;
+      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy =
+        newValue;
     },
 
     setNewConfig_bToCMaxTSMDRatio(state, newValue) {
@@ -555,33 +570,7 @@ export default new Vuex.Store({
       console.log(state.Point_config);
     }
   },
-  actions: {
-    send_pointConfig() {
-      let FLINT_config_string = JSON.stringify(this.state.Point_config);
-      let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
-        '"#$',
-        " "
-      );
-      let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-        '#$"',
-        " "
-      );
-      axios
-        .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
-        .then(response => {
-          Vue.$toast.success(`${response}`, { timeout: 2000 });
-          console.log(response);
-        })
-        .catch(error => {
-          Vue.$toast.error(`${error}`, { timeout: 2000 });
-          console.log(error);
-        });
-    },
-    set_received_point_example_data(state, response) {
-      state.received_data = response;
-      console.log("received_data sent to state");
-    },
-  },
+
   getters: {
     received_data: (state) => {
       return state.received_data;
@@ -594,7 +583,7 @@ export default new Vuex.Store({
     },
     Point_config_pool_3: (state) => {
       return state.Point_config_pool_3;
-    },
+    }
   },
   actions: {
     send_pointConfig({ commit }) {
@@ -603,10 +592,8 @@ export default new Vuex.Store({
         '"#$',
         " "
       );
-      let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-        '#$"',
-        " "
-      );
+      let final_FLINT_config_string =
+        preprocessed_FLINT_config_string.replaceAll('#$"', " ");
 
       axios
         .post("http://127.0.0.1:8080/point", final_FLINT_config_string)
@@ -622,9 +609,11 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+    set_received_point_example_data(state, response) {
+      state.received_data = response;
+      console.log("received_data sent to state");
+    },
     process_point_config({ commit }) {
-      const dataForge = require("data-forge");
-
       console.log("running from state");
       var dataset = this.state.received_data;
       var pool_1 = [],
@@ -632,11 +621,13 @@ export default new Vuex.Store({
         pool_3 = [],
         simulation_step = [];
 
+      // remove header and footer
       var lines = dataset.split("\n");
       lines.splice(0, 4);
       lines.splice(-4);
-      var dataset = lines.join("\n");
-      const df = dataForge.fromCSV(dataset);
+
+      dataset = lines.join("\n");
+      const df = fromCSV(dataset);
       var df_as_array = df.toArray();
       console.log(typeof df_as_array);
       console.log("array1");
@@ -652,7 +643,7 @@ export default new Vuex.Store({
       }
 
       console.log("pool 1");
-      for (var step = 0; step < df_as_array.length; step++) {
+      for (let step = 0; step < df_as_array.length; step++) {
         console.log(pool_1[step]);
       }
       console.log(simulation_step);
@@ -695,6 +686,6 @@ export default new Vuex.Store({
           Vue.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
-    },
-  },
+    }
+  }
 });
