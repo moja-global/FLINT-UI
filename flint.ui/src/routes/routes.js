@@ -1,110 +1,110 @@
-import FLINT from "@/layouts/FLINT.vue";
-import GCBM from "@/layouts/GCBM.vue";
+import FLINT from '@/layouts/FLINT.vue'
+import GCBM from '@/layouts/GCBM.vue'
 
-import Dashboard from "@/views/flint/Dashboard.vue";
-import Configurations from "@/views/flint/Configurations.vue";
-import ConfigurationsPoint from "@/views/flint/ConfigurationsPoint.vue";
-import ConfigurationsRothC from "@/views/flint/ConfigurationsRothC.vue";
-import RothCRainfall from "@/views/flint/configurations/rothc/RothCRainfall.vue";
-import RothCOpenPanEvap from "@/views/flint/configurations/rothc/RothCOpenPanEvap.vue";
-import RothCAvgAirTemp from "@/views/flint/configurations/rothc/RothCAvgAirTemp.vue";
-import RothCPresCM from "@/views/flint/configurations/rothc/RothCPresCM.vue";
-import RothCSoilCover from "@/views/flint/configurations/rothc/RothCSoilCover.vue";
-import RothCInitSoil from "@/views/flint/configurations/rothc/RothCInitSoil.vue";
-import RothCSoil from "@/views/flint/configurations/rothc/RothCSoil.vue";
+import Dashboard from '@/views/flint/Dashboard.vue'
+import Configurations from '@/views/flint/Configurations.vue'
+import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
+import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
+import RothCRainfall from '@/views/flint/configurations/rothc/RothCRainfall.vue'
+import RothCOpenPanEvap from '@/views/flint/configurations/rothc/RothCOpenPanEvap.vue'
+import RothCAvgAirTemp from '@/views/flint/configurations/rothc/RothCAvgAirTemp.vue'
+import RothCPresCM from '@/views/flint/configurations/rothc/RothCPresCM.vue'
+import RothCSoilCover from '@/views/flint/configurations/rothc/RothCSoilCover.vue'
+import RothCInitSoil from '@/views/flint/configurations/rothc/RothCInitSoil.vue'
+import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
-import Outputs from "@/views/flint/Outputs.vue";
+import Outputs from '@/views/flint/Outputs.vue'
 
-import GCBMDashboard from "@/views/gcbm/GCBMDashboard.vue";
-import GCBMConfigurations from "@/views/gcbm/GCBMConfigurations.vue";
-import GCBMOutputs from "@/views/gcbm/GCBMOutputs.vue";
+import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
+import GCBMConfigurations from '@/views/gcbm/GCBMConfigurations.vue'
+import GCBMOutputs from '@/views/gcbm/GCBMOutputs.vue'
 
-import Landing from "@/views/Landing.vue";
+import Landing from '@/views/Landing.vue'
 
 const routes = [
   {
-    path: "/flint",
-    redirect: "/flint/dashboard",
+    path: '/flint',
+    redirect: '/flint/dashboard',
     component: FLINT,
     children: [
       {
-        path: "/flint/dashboard",
+        path: '/flint/dashboard',
         component: Dashboard
       },
       {
-        path: "/flint/configurations",
+        path: '/flint/configurations',
         component: Configurations
       },
       {
-        path: "/flint/configurations/point",
+        path: '/flint/configurations/point',
         component: ConfigurationsPoint
       },
       {
-        path: "/flint/configurations/rothc",
+        path: '/flint/configurations/rothc',
         component: ConfigurationsRothC
       },
       {
-        path: "/flint/configurations/rothc/rainfall",
+        path: '/flint/configurations/rothc/rainfall',
         component: RothCRainfall
       },
       {
-        path: "/flint/configurations/rothc/openPanEvap",
+        path: '/flint/configurations/rothc/openPanEvap',
         component: RothCOpenPanEvap
       },
       {
-        path: "/flint/configurations/rothc/avgAirTemp",
+        path: '/flint/configurations/rothc/avgAirTemp',
         component: RothCAvgAirTemp
       },
       {
-        path: "/flint/configurations/rothc/presCM",
+        path: '/flint/configurations/rothc/presCM',
         component: RothCPresCM
       },
       {
-        path: "/flint/configurations/rothc/soilCover",
+        path: '/flint/configurations/rothc/soilCover',
         component: RothCSoilCover
       },
       {
-        path: "/flint/configurations/rothc/initSoil",
+        path: '/flint/configurations/rothc/initSoil',
         component: RothCInitSoil
       },
       {
-        path: "/flint/configurations/rothc/soil",
+        path: '/flint/configurations/rothc/soil',
         component: RothCSoil
       },
       {
-        path: "/flint/outputs",
+        path: '/flint/outputs',
         component: Outputs
       }
     ]
   },
   {
-    path: "/gcbm",
-    redirect: "/gcbm/dashboard",
+    path: '/gcbm',
+    redirect: '/gcbm/dashboard',
     component: GCBM,
     children: [
       {
-        path: "/gcbm/dashboard",
+        path: '/gcbm/dashboard',
         component: GCBMDashboard
       },
       {
-        path: "/gcbm/configurations",
+        path: '/gcbm/configurations',
         component: GCBMConfigurations
       },
       {
-        path: "/gcbm/outputs",
+        path: '/gcbm/outputs',
         component: GCBMOutputs
       }
     ]
   },
   {
-    path: "/landing",
+    path: '/landing',
     component: Landing
   },
   {
-    path: "/",
+    path: '/',
     component: Landing
   },
-  { path: "/:pathMatch(.*)*", redirect: "/" }
-];
+  { path: '/:pathMatch(.*)*', redirect: '/' }
+]
 
-export default routes;
+export default routes

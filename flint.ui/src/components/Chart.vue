@@ -20,22 +20,24 @@
 </template>
 
 <script>
-import Vue from "vue";
+import dataForge from 'data-forge'
 
-import VueApexCharts from "vue-apexcharts";
-Vue.use(VueApexCharts);
-Vue.component("Apexchart", VueApexCharts);
+import Vue from 'vue'
 
-import { fromCSV } from "data-forge";
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+Vue.component('Apexchart', VueApexCharts)
+
+// const dataForge = require('data-forge')
 
 export default {
-  name: "BrushCharts",
+  name: 'BrushCharts',
   data: function () {
     return {
       series: [
         {
           data: this.generateDayWiseTimeSeries(
-            new Date("11 Feb 2017").getTime(),
+            new Date('11 Feb 2017').getTime(),
             185,
             {
               min: 30,
@@ -46,13 +48,13 @@ export default {
       ],
       chartOptionsArea: {
         chart: {
-          id: "chartArea",
+          id: 'chartArea',
           toolbar: {
-            autoSelected: "pan",
+            autoSelected: 'pan',
             show: false
           }
         },
-        colors: ["#546E7A"],
+        colors: ['#546E7A'],
         stroke: {
           width: 3
         },
@@ -66,25 +68,25 @@ export default {
           size: 0
         },
         xaxis: {
-          type: "datetime"
+          type: 'datetime'
         }
       },
       chartOptionsBrush: {
         chart: {
-          id: "chartBrush",
+          id: 'chartBrush',
           brush: {
-            target: "chartArea",
+            target: 'chartArea',
             enabled: true
           },
           selection: {
             enabled: true,
             xaxis: {
-              min: new Date("19 Jun 2017").getTime(),
-              max: new Date("14 Aug 2017").getTime()
+              min: new Date('19 Jun 2017').getTime(),
+              max: new Date('14 Aug 2017').getTime()
             }
           }
         },
-        colors: ["#008FFB"],
+        colors: ['#008FFB'],
         fill: {
           gradient: {
             enabled: true,
@@ -93,7 +95,7 @@ export default {
           }
         },
         xaxis: {
-          type: "datetime",
+          type: 'datetime',
           tooltip: {
             enabled: false
           }
@@ -102,74 +104,71 @@ export default {
           tickAmount: 2
         }
       }
-    };
+    }
   },
   computed: {
     received_data() {
-      return this.$store.state.received_data;
+      return this.$store.state.received_data
     }
   },
+
   beforeMount() {
-    this.processDataset;
+    this.processDataset
   },
 
   methods: {
     generateDayWiseTimeSeries: function (baseval, count, yrange) {
-      var i = 0;
-      var series = [];
+      var i = 0
+      var series = []
       while (i < count) {
-        var x = baseval;
-        var y =
-          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) +
-          yrange.min;
+        let x = baseval
+        let y =
+          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
 
-        series.push([x, y]);
-        baseval += 86400000;
-        i++;
+        series.push([x, y])
+        baseval += 86400000
+        i++
       }
 
-      return series;
+      return series
     },
     processDataset: function () {
-      var dataset = this.received_data;
+      var dataset = this.received_data
       var pool_1 = [],
         pool_2 = [],
         pool_3 = [],
-        simulation_step = [];
+        simulation_step = []
 
-      // remove header and footer
-      var lines = dataset.split("\n");
-      lines.splice(0, 4);
-      lines.splice(-4);
-
-      dataset = lines.join("\n");
-
-      const df = fromCSV(dataset);
-      var df_as_array = df.toArray();
-      console.log(typeof df_as_array);
-      console.log("array1");
-      console.log(df_as_array[0]["Pool 1"]);
-      console.log(df_as_array.length);
+      let lines = dataset.split('\n')
+      lines.splice(0, 4)
+      lines.splice(-4)
+      dataset = lines.join('\n')
+      const df = dataForge.fromCSV(dataset)
+      let df_as_array = df.toArray()
+      console.log(typeof df_as_array)
+      console.log('array1')
+      console.log(df_as_array[0]['Pool 1'])
+      console.log(df_as_array.length)
 
       for (let step = 0; step < df_as_array.length; step++) {
-        pool_1[step] = parseFloat(df_as_array[step]["Pool 1"]);
-        pool_2[step] = parseFloat(df_as_array[step]["Pool 2"]);
-        pool_3[step] = parseFloat(df_as_array[step]["Pool 3"]);
-        var x = step.toString();
-        simulation_step[step] = x;
+        pool_1[step] = parseFloat(df_as_array[step]['Pool 1'])
+        pool_2[step] = parseFloat(df_as_array[step]['Pool 2'])
+        pool_3[step] = parseFloat(df_as_array[step]['Pool 3'])
+        let x = step.toString()
+        simulation_step[step] = x
       }
 
-      console.log("pool 1");
+      console.log('pool 1')
       for (let step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step.toString()]);
+        console.log(pool_1[step.toString()])
       }
-      console.log(simulation_step);
-      console.log(pool_1);
-      console.log(pool_2);
-      console.log(pool_3);
+      console.log(simulation_step)
+      console.log(pool_1)
+      console.log(pool_2)
+      console.log(pool_3)
     }
   }
-};
+}
 </script>
 
 <style scoped>

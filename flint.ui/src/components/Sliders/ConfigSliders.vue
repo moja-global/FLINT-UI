@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Slider from "@vueform/slider/dist/slider.vue2.js";
+import Slider from '@vueform/slider/dist/slider.vue2.js'
 
 export default {
   components: {
@@ -19,11 +19,11 @@ export default {
   props: {
     poolTitle: {
       type: String,
-      default: "Pool title"
+      default: 'Pool title'
     },
     poolNumber: {
       type: String,
-      default: "Pool number"
+      default: 'Pool number'
     },
     minPoolval: {
       type: Number,
@@ -39,11 +39,11 @@ export default {
         step: 10,
         value: 180
       }
-    };
+    }
   },
 
   methods: {}
-};
+}
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>

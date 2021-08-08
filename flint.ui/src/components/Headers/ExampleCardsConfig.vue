@@ -42,11 +42,11 @@
 </template>
 
 <script>
-import CardInfoConfig from "@/components/Cards/CardInfoConfig.vue";
+import CardInfoConfig from '@/components/Cards/CardInfoConfig.vue'
 
 export default {
   components: {
     CardInfoConfig
   }
-};
+}
 </script>

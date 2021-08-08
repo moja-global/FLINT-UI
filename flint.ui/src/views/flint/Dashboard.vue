@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import ExampleCardsRun from "@/components/Headers/ExampleCardsRun.vue";
+import ExampleCardsRun from '@/components/Headers/ExampleCardsRun.vue'
 
 export default {
-  name: "DashboardPage",
+  name: 'DashboardPage',
   components: {
     ExampleCardsRun
   }
-};
+}
 </script>

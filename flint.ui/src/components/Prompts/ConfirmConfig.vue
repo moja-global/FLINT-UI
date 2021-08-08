@@ -141,7 +141,7 @@
 </template>
 <script>
 export default {
-  name: "Modal",
+  name: 'Modal',
   props: {
     configMessage: {
       type: String,
@@ -150,12 +150,12 @@ export default {
   },
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit('close')
     },
     startApicalls() {
-      this.$emit("close");
-      this.$emit("startApicalls");
+      this.$emit('close')
+      this.$emit('startApicalls')
     }
   }
-};
+}
 </script>
