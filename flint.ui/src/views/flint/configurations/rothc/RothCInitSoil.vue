@@ -1,6 +1,15 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pb-32 pt-12 w-full"
+    class="
+      relative
+      bg-gradient-to-r
+      from-green-400
+      to-blue-500
+      md:pt-32
+      pb-32
+      pt-12
+      w-full
+    "
   >
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
@@ -23,7 +32,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_dpmaCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -38,7 +56,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_rpmaCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -53,7 +80,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_biofCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -68,7 +104,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_biosCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -83,7 +128,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_humsCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -98,7 +152,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_inrtCMInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>
@@ -113,7 +176,16 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_TSMDInit"
-                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                  class="
+                    w-full
+                    h-10
+                    px-3
+                    text-base
+                    placeholder-gray-600
+                    border
+                    rounded-lg
+                    focus:shadow-outline
+                  "
                   type="text"
                 />
               </div>

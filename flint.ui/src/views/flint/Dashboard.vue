@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-wrap"></div>
+    <div class="flex flex-wrap" />
     <div class="flex flex-wrap mt-4">
       <ExampleCardsRun />
     </div>

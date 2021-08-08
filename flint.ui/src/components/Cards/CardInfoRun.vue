@@ -29,8 +29,7 @@
               align-middle
               flex-initial
               bg-white
-              hover:bg-black
-              hover:text-white
+              hover:bg-black hover:text-white
               text-gray-800
               font-semibold
               py-2
@@ -41,7 +40,7 @@
             "
             @click="showConfirmRunModal()"
           >
-            <i class="far fa-play-circle"></i> {{ cardFunctionRun }}
+            <i class="far fa-play-circle" /> {{ cardFunctionRun }}
           </button>
 
           <confirm-run
@@ -49,7 +48,7 @@
             run-message="Are you sure you want to run this?"
             @close="closeConfirmRunModal"
             @startApicalls="startApiCalls({ cardMethodName })"
-          ></confirm-run>
+          />
         </div>
         <p class="text-sm text-blueGray-400 mt-4">
           <span class="whitespace-nowrap">{{ cardDescription }}</span>
@@ -121,11 +120,11 @@ export default {
       console.log("SPEC route invoked");
       axios
         .get("http://127.0.0.1:8080/spec")
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
@@ -134,11 +133,11 @@ export default {
       console.log("HELP route invoked");
       axios
         .get("http://127.0.0.1:8080/help/all")
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
@@ -147,11 +146,11 @@ export default {
       console.log("VERSION route invoked");
       axios
         .get("http://127.0.0.1:8080/version")
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
@@ -160,11 +159,11 @@ export default {
       console.log("POINT route invoked");
       axios
         .post("http://127.0.0.1:8080/point")
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });
@@ -173,11 +172,11 @@ export default {
       console.log("ROTHC route invoked");
       axios
         .post("http://127.0.0.1:8080/rothc")
-        .then(response => {
+        .then((response) => {
           this.$toast.success(`${response}`, { timeout: 2000 });
           console.log(response);
         })
-        .catch(error => {
+        .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 });
           console.log(error);
         });

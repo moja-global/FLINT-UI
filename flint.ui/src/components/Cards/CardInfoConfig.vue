@@ -1,6 +1,16 @@
 <template>
   <div
-    class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
+    class="
+      relative
+      flex flex-col
+      min-w-0
+      break-words
+      bg-white
+      rounded
+      mb-6
+      xl:mb-0
+      shadow-lg
+    "
   >
     <div class="flex-auto p-4">
       <div class="flex flex-wrap">
@@ -12,32 +22,62 @@
             {{ cardTitle }}
           </span>
           <button
+            class="
+              w-full
+              mt-4
+              block
+              align-middle
+              flex-initial
+              bg-white
+              hover:bg-black hover:text-white
+              text-gray-800
+              font-semibold
+              py-2
+              px-4
+              border border-gray-400
+              rounded
+              shadow
+            "
             @click="showConfirmRunModal()"
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
-            <i class="far fa-play-circle"></i> {{ cardFunctionRun }}
+            <i class="far fa-play-circle" /> {{ cardFunctionRun }}
           </button>
 
           <confirm-run
             v-show="isConfirmRunModalVisible"
-            RunMessage="Are you sure you want to run this?"
+            run-message="Are you sure you want to run this?"
             @close="closeConfirmRunModal"
             @startApicalls="startApiCalls({ cardMethodName })"
-          ></confirm-run>
+          />
 
           <button
+            class="
+              w-full
+              mt-4
+              block
+              align-middle
+              flex-initial
+              bg-white
+              hover:bg-black hover:text-white
+              text-gray-800
+              font-semibold
+              py-2
+              px-4
+              border border-gray-400
+              rounded
+              shadow
+            "
             @click="showConfirmConfigModal()"
-            class="w-full mt-4 block align-middle flex-initial bg-white hover:bg-black hover:text-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           >
-            <i class="far fa-edit"></i> {{ cardFunctionConfig }}
+            <i class="far fa-edit" /> {{ cardFunctionConfig }}
           </button>
 
           <confirm-config
             v-show="isConfirmConfigModalVisible"
-            ConfigMessage="Are you sure you want to change the configuration?"
+            config-message="Are you sure you want to change the configuration?"
             @close="closeConfirmConfigModal"
             @startApicalls="configSim({ cardMethodName })"
-          ></confirm-config>
+          />
         </div>
         <p class="text-sm text-blueGray-400 mt-4">
           <span class="whitespace-nowrap">{{ cardDescription }}</span>
@@ -75,21 +115,17 @@ export default {
     },
     cardFunctionConfig: {
       type: String,
-      default: "Configure",
+      default: "Configure"
     },
     cardMethodName: {
       type: String,
-      default: "spec",
-    },
-  },
-  components: {
-    ConfirmRun,
-    ConfirmConfig,
+      default: "spec"
+    }
   },
   data() {
     return {
       isConfirmRunModalVisible: false,
-      isConfirmConfigModalVisible: false,
+      isConfirmConfigModalVisible: false
     };
   },
   methods: {
@@ -137,7 +173,7 @@ export default {
     },
     apiRoute_nonexistent() {
       console.log("No such route exists!");
-    },
-  },
+    }
+  }
 };
 </script>

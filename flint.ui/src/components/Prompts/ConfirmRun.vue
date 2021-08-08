@@ -11,12 +11,11 @@
           px-4
           pb-20
           text-center
-          sm:block
-          sm:p-0
+          sm:block sm:p-0
         "
       >
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div class="absolute inset-0 bg-gray-500 opacity-75" />
         </div>
 
         <span
@@ -35,10 +34,7 @@
             shadow-xl
             transform
             transition-all
-            sm:my-8
-            sm:align-middle
-            sm:max-w-lg
-            sm:w-full
+            sm:my-8 sm:align-middle sm:max-w-lg sm:w-full
           "
           role="dialog"
           aria-modal="true"
@@ -56,9 +52,7 @@
                   w-12
                   rounded-full
                   bg-red-100
-                  sm:mx-0
-                  sm:h-10
-                  sm:w-10
+                  sm:mx-0 sm:h-10 sm:w-10
                 "
               >
                 <svg
@@ -101,10 +95,10 @@
                 text-base
                 font-medium
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-red-500
-                sm:ml-3
-                sm:w-auto
-                sm:text-sm
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-red-500
+                sm:ml-3 sm:w-auto sm:text-sm
                 bg-green-200
                 hover:bg-green-500
               "
@@ -128,11 +122,10 @@
                 text-base
                 font-medium
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-                sm:mt-0
-                sm:ml-3
-                sm:w-auto
-                sm:text-sm
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-indigo-500
+                sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
                 bg-red-300
                 hover:bg-red-500
               "
