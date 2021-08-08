@@ -16,6 +16,7 @@
     "@popperjs/core": "2.9.3",
     "@tailwindcss/forms": "0.3.3",
     "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "@vueform/slider": "^2.0.4",
     "apexcharts": "^3.27.3",
     "axios": "^0.21.1",
