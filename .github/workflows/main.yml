@@ -8,6 +8,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -17,6 +18,8 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    # Ignore draft PRs
+    if: github.event.pull_request.draft == false
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -24,6 +27,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Client container build
-      - name: docker-client
+      
+      - name: Build FLINT UI Client container
         run: docker build flint.ui --file flint.ui/Dockerfile --tag client:latest
