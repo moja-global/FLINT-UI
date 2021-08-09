@@ -1,20 +1,40 @@
 <template>
   <div class="chart-wrapper">
+    <span>Point module</span>
+
     <div id="charts">
       <div id="chart1">
         <apexchart
           type="line"
           height="230"
-          :options="chartOptionsArea"
-          :series="series"
+          :options="chartOptionsArea1"
+          :series="series1"
         />
       </div>
       <div id="chart2">
         <apexchart
           type="area"
           height="130"
-          :options="chartOptionsBrush"
-          :series="series"
+          :options="chartOptionsBrush1"
+          :series="series1"
+        />
+      </div>
+      <span>RothC module</span>
+
+      <div id="chart3">
+        <apexchart
+          type="line"
+          height="230"
+          :options="chartOptionsArea2"
+          :series="series2"
+        />
+      </div>
+      <div id="chart4">
+        <apexchart
+          type="area"
+          height="130"
+          :options="chartOptionsBrush2"
+          :series="series2"
         />
       </div>
     </div>
@@ -22,33 +42,46 @@
 </template>
 
 <script>
-import dataForge from 'data-forge'
-// const dataForge = require("data-forge");
+const dataForge = require('data-forge')
 
 export default {
   name: 'BrushCharts',
   data: function () {
     return {
-      series: [
+      series1: [
         {
           name: 'Pool 1',
-          data: this.$store.state.point.Point_config_pool_1
+          data: this.get_Point_config_pool_1()
         },
         {
           name: 'Pool 2',
-          data: this.$store.state.point.Point_config_pool_2
+          data: this.get_Point_config_pool_2()
         },
         {
           name: 'Pool 3',
-          data: this.$store.state.point.Point_config_pool_3
+          data: this.get_Point_config_pool_3()
         }
       ],
-      chartOptionsArea: {
+      series2: [
+        {
+          name: 'Pool 1',
+          data: this.get_Point_config_pool_1()
+        },
+        {
+          name: 'Pool 2',
+          data: this.get_Point_config_pool_2()
+        },
+        {
+          name: 'Pool 3',
+          data: this.get_Point_config_pool_3()
+        }
+      ],
+      chartOptionsArea1: {
         chart: {
-          id: 'chartArea',
+          id: 'chartArea1',
           toolbar: {
             autoSelected: 'pan',
-            show: false
+            show: true
           }
         },
         colors: ['#546E7A', '#0ff1ce', '#bada55'],
@@ -68,13 +101,13 @@ export default {
           type: 'numeric'
         }
       },
-      chartOptionsBrush: {
+      chartOptionsBrush1: {
         chart: {
-          id: 'chartBrush',
+          id: 'chartBrush1',
           brush: {
-            target: 'chartArea',
+            target: 'chartArea1',
             enabled: true,
-            autoScaleYaxis: false
+            autoScaleYaxis: true
           },
           selection: {
             enabled: true,
@@ -95,7 +128,66 @@ export default {
         xaxis: {
           type: 'numeric',
           tooltip: {
-            enabled: false
+            enabled: true
+          }
+        },
+        yaxis: {
+          tickAmount: 2
+        }
+      },
+      chartOptionsArea2: {
+        chart: {
+          id: 'chartArea2',
+          toolbar: {
+            autoSelected: 'pan',
+            show: true
+          }
+        },
+        colors: ['#546E7A', '#0ff1ce', '#bada55'],
+        stroke: {
+          width: 3
+        },
+        dataLabels: {
+          enabled: false
+        },
+        fill: {
+          opacity: 1
+        },
+        markers: {
+          size: 0
+        },
+        xaxis: {
+          type: 'numeric'
+        }
+      },
+      chartOptionsBrush2: {
+        chart: {
+          id: 'chartBrush2',
+          brush: {
+            target: 'chartArea2',
+            enabled: true,
+            autoScaleYaxis: true
+          },
+          selection: {
+            enabled: true,
+            xaxis: {
+              min: 1,
+              max: 20
+            }
+          }
+        },
+        colors: ['#008FFB'],
+        fill: {
+          gradient: {
+            enabled: true,
+            opacityFrom: 0.91,
+            opacityTo: 0.1
+          }
+        },
+        xaxis: {
+          type: 'numeric',
+          tooltip: {
+            enabled: true
           }
         },
         yaxis: {
@@ -124,7 +216,7 @@ export default {
   beforeMount() {
     this.$store.dispatch('process_point_config')
     console.log('from outputs.vue - this.Point_config_pool_1')
-    console.log(typeof this.$store.state.point.Point_config_pool_1)
+    console.log(this.$store.state.point.Point_config_pool_1)
   },
 
   methods: {
