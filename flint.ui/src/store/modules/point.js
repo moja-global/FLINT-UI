@@ -287,7 +287,7 @@ export default {
       console.log(this.state.point.Point_config_pool_2)
       console.log('this.Point_config_pool_3')
       console.log(this.state.point.Point_config_pool_3)
-    }
+    },
   },
   getters: {
     received_point_example_data: (state) => {
