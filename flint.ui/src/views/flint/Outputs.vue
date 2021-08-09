@@ -22,8 +22,7 @@
 </template>
 
 <script>
-import dataForge from 'data-forge'
-// const dataForge = require("data-forge");
+const dataForge = require('data-forge')
 
 export default {
   name: 'BrushCharts',
@@ -32,15 +31,15 @@ export default {
       series: [
         {
           name: 'Pool 1',
-          data: this.$store.state.point.Point_config_pool_1
+          data: this.get_Point_config_pool_1()
         },
         {
           name: 'Pool 2',
-          data: this.$store.state.point.Point_config_pool_2
+          data: this.get_Point_config_pool_2()
         },
         {
           name: 'Pool 3',
-          data: this.$store.state.point.Point_config_pool_3
+          data: this.get_Point_config_pool_3()
         }
       ],
       chartOptionsArea: {
@@ -124,7 +123,7 @@ export default {
   beforeMount() {
     this.$store.dispatch('process_point_config')
     console.log('from outputs.vue - this.Point_config_pool_1')
-    console.log(typeof this.$store.state.point.Point_config_pool_1)
+    console.log(this.$store.state.point.Point_config_pool_1)
   },
 
   methods: {

@@ -10700,70 +10700,7 @@
     "source-map" "^0.6.1"
     "supports-color" "^5.4.0"
 
-"postcss@^7.0.0", "postcss@^7.0.32":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.1":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.14":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.26":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.27":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.5":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7.0.6":
-  "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
-  "version" "7.0.36"
-  dependencies:
-    "chalk" "^2.4.2"
-    "source-map" "^0.6.1"
-    "supports-color" "^6.1.0"
-
-"postcss@^7", "postcss@^7.0.0 || ^8.0.1", "postcss@^7.0.18", "postcss@^7.0.32", "postcss@^7.0.36", "postcss@^8.0.0", "postcss@^8.1.0":
+"postcss@^7", "postcss@^7.0.0", "postcss@^7.0.0 || ^8.0.1", "postcss@^7.0.1", "postcss@^7.0.14", "postcss@^7.0.18", "postcss@^7.0.26", "postcss@^7.0.27", "postcss@^7.0.32", "postcss@^7.0.36", "postcss@^7.0.5", "postcss@^7.0.6", "postcss@^8.0.0", "postcss@^8.1.0":
   "integrity" "sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.36.tgz"
   "version" "7.0.36"
@@ -12400,7 +12337,7 @@
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"
 
-"source-map@^0.6.1", "source-map@~0.6.1":
+"source-map@^0.6.1":
   "integrity" "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"

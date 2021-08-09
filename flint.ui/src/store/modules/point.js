@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Vue from 'vue'
 import axios from 'axios'
 
@@ -138,7 +140,7 @@ export default {
         }
       }
     },
-    received_data: {},
+    received_point_example_data: {},
     Point_config_pool_1: [],
     Point_config_pool_2: [],
     Point_config_pool_3: []
@@ -175,6 +177,11 @@ export default {
       let pool_3_valuex = '#$' + pool_3_value + '#$'
       state.Point_config['Pools'][2]['Pool 3'] = pool_3_valuex
       console.log(state.Point_config)
+    },
+    set_received_point_example_data(state, response) {
+      state.received_point_example_data = response
+      console.log('received_point_example_data sent to state')
+      //console.log(state.received_point_example_data)
     }
   },
 
@@ -202,10 +209,6 @@ export default {
     //       console.log(error)
     //     })
     // },
-    set_received_point_example_data(state, response) {
-      state.received_data = response
-      console.log('received_data sent to state')
-    },
     send_pointConfig({ commit }) {
       let FLINT_config_string = JSON.stringify(this.state.point.Point_config)
       let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
@@ -222,7 +225,7 @@ export default {
           console.log(response)
           //this.state.received_data = response.data;
           commit('set_received_point_example_data', response.data)
-          console.log(this.state.received_data)
+          console.log(this.state.point.received_point_example_data)
         })
         .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
@@ -230,10 +233,13 @@ export default {
         })
     },
     process_point_config({ commit }) {
+      console.log(this.state.point.received_point_example_data)
+
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      var dataset = this.state.received_data
+      console.log(this.state.point.received_point_example_data)
+      var dataset = this.state.point.received_point_example_data
       var pool_1 = [],
         pool_2 = [],
         pool_3 = [],
@@ -267,34 +273,34 @@ export default {
       console.log(pool_2)
       console.log(pool_3)
 
-      this.Point_config_pool_1 = pool_1
-      this.Point_config_pool_2 = pool_2
-      this.Point_config_pool_3 = pool_3
+      this.state.point.Point_config_pool_1 = pool_1
+      this.state.point.Point_config_pool_2 = pool_2
+      this.state.point.Point_config_pool_3 = pool_3
 
       commit('update_Point_config_pool_1', pool_1)
       commit('update_Point_config_pool_2', pool_2)
       commit('update_Point_config_pool_3', pool_3)
 
       console.log('this.Point_config_pool_1')
-      console.log(this.Point_config_pool_1)
+      console.log(this.state.point.Point_config_pool_1)
       console.log('this.Point_config_pool_2')
-      console.log(this.Point_config_pool_2)
+      console.log(this.state.point.Point_config_pool_2)
       console.log('this.Point_config_pool_3')
-      console.log(this.Point_config_pool_3)
+      console.log(this.state.point.Point_config_pool_3)
     }
   },
   getters: {
-    received_data: (state) => {
-      return state.received_data
+    received_point_example_data: (state) => {
+      return state.point.received_point_example_data
     },
     Point_config_pool_1: (state) => {
-      return state.Point_config_pool_1
+      return this.state.point.Point_config_pool_1
     },
     Point_config_pool_2: (state) => {
-      return state.Point_config_pool_2
+      return this.state.point.Point_config_pool_2
     },
     Point_config_pool_3: (state) => {
-      return state.Point_config_pool_3
+      return this.state.point.Point_config_pool_3
     }
   }
 }
