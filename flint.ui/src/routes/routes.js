@@ -13,7 +13,8 @@ import RothCSoilCover from '@/views/flint/configurations/rothc/RothCSoilCover.vu
 import RothCInitSoil from '@/views/flint/configurations/rothc/RothCInitSoil.vue'
 import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
-import Outputs from '@/views/flint/Outputs.vue'
+import PointOutput from '@/views/flint/PointOutput.vue'
+import RothCOutput from '@/views/flint/RothCOutput.vue'
 
 import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
 import GCBMConfigurations from '@/views/gcbm/GCBMConfigurations.vue'
@@ -72,8 +73,12 @@ const routes = [
         component: RothCSoil
       },
       {
-        path: '/flint/outputs',
-        component: Outputs
+        path: '/flint/point_output',
+        component: PointOutput
+      },
+      {
+        path: '/flint/rothc_output',
+        component: RothCOutput
       }
     ]
   },
