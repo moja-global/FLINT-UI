@@ -218,7 +218,7 @@
           <li class="items-center">
             <router-link
               v-slot="{ href, navigate, isActive }"
-              to="/flint/outputs"
+              to="/flint/point_output"
             >
               <a
                 :href="href"
@@ -234,10 +234,35 @@
                   class="fas fa-chart-bar mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 />
-                Visualise
+                Point Output
               </a>
             </router-link>
           </li>
+
+          <li class="items-center">
+            <router-link
+              v-slot="{ href, navigate, isActive }"
+              to="/flint/rothc_output"
+            >
+              <a
+                :href="href"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-emerald-500 hover:text-emerald-600'
+                    : 'text-blueGray-700 hover:text-blueGray-500'
+                ]"
+                @click="navigate"
+              >
+                <i
+                  class="fas fa-chart-bar mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
+                />
+                RothC Output
+              </a>
+            </router-link>
+          </li>
+
         </ul>
 
         <hr class="my-4 md:min-w-full" />
