@@ -1,7 +1,7 @@
 /* eslint-disable */
 
+import Vue from 'vue'
 import axios from 'axios'
-window.Vue = require('vue')
 
 export default {
   state: {
@@ -240,6 +240,31 @@ export default {
   },
 
   mutations: {
+    update_RothC_module_DPM(state, DPM) {
+      console.log('updated DPM in state')
+      console.log(this.state.rothc.RothC_module_DPM)
+      Vue.set(state, 'RothC_module_DPM', DPM)
+    },
+    update_RothC_module_RPM(state, RPM) {
+      console.log('updated RPM in state')
+      console.log(this.state.rothc.RothC_module_RPM)
+      Vue.set(state, 'RothC_module_RPM', RPM)
+    },
+    update_RothC_module_BIO(state, BIO) {
+      console.log('updated BIO in state')
+      console.log(this.state.rothc.RothC_module_BIO)
+      Vue.set(state, 'RothC_module_BIO', BIO)
+    },
+    update_RothC_module_HUM(state, HUM) {
+      console.log('updated HUM in state')
+      console.log(this.state.rothc.RothC_module_HUM)
+      Vue.set(state, 'RothC_module_HUM', HUM)
+    },
+    update_RothC_module_IOM(state, IOM) {
+      console.log('updated IOM in state')
+      console.log(this.state.rothc.RothC_module_IOM)
+      Vue.set(state, 'RothC_module_IOM', IOM)
+    },
     setNewConfig_dpmaCMInit(state, newValue) {
       state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue
     },
@@ -441,19 +466,19 @@ export default {
 
       console.log('running from state')
       console.log(this.state.rothc.received_rothc_example_data)
-      var dataset = this.state.rothc.received_rothc_example_data
-      var RothC_module_DPM = [],
-        RothC_module_RPM = [],
-        RothC_module_BIO = [],
-        RothC_module_HUM = [],
-        RothC_module_IOM = [],
+      var RothC_dataset = this.state.rothc.received_rothc_example_data
+      var DPM = [],
+        RPM = [],
+        BIO = [],
+        HUM = [],
+        IOM = [],
         simulation_step = []
 
-      let lines = (dataset || '').split('\n')
+      let lines = (RothC_dataset || '').split('\n')
       lines.splice(0, 4)
       lines.splice(-4)
-      dataset = lines.join('\n')
-      const df = dataForge.fromCSV(dataset)
+      RothC_dataset = lines.join('\n')
+      const df = dataForge.fromCSV(RothC_dataset)
       let df_as_array = df.toArray()
       console.log(typeof df_as_array)
       console.log('array1')
@@ -461,36 +486,39 @@ export default {
       console.log(df_as_array.length)
 
       for (let step = 0; step < df_as_array.length; step++) {
-        pool_1[step] = parseFloat(df_as_array[step]['Pool 1'])
-        pool_2[step] = parseFloat(df_as_array[step]['Pool 2'])
-        pool_3[step] = parseFloat(df_as_array[step]['Pool 3'])
+        DPM[step] = parseFloat(df_as_array[step]['SoilDPM'])
+        RPM[step] = parseFloat(df_as_array[step]['SoilRPM'])
+        BIO[step] = parseFloat(df_as_array[step]['SoilBioF'])
+        HUM[step] = parseFloat(df_as_array[step]['SoilHUM'])
+        IOM[step] = parseFloat(df_as_array[step]['SoilIOM'])
+
         let x = step
         simulation_step[step] = x
       }
 
-      console.log('pool 1')
-      for (let step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step])
-      }
       console.log(simulation_step)
-      console.log(pool_1)
-      console.log(pool_2)
-      console.log(pool_3)
+      console.log(DPM)
+      console.log(RPM)
+      console.log(BIO)
+      console.log(HUM)
+      console.log(IOM)
+      
+      commit('update_RothC_module_DPM', DPM)
+      commit('update_RothC_module_RPM', RPM)
+      commit('update_RothC_module_BIO', BIO)
+      commit('update_RothC_module_HUM', HUM)
+      commit('update_RothC_module_IOM', IOM)
 
-      this.state.rothc.Point_config_pool_1 = pool_1
-      this.state.rothc.Point_config_pool_2 = pool_2
-      this.state.rothc.Point_config_pool_3 = pool_3
-
-      commit('update_Point_config_pool_1', pool_1)
-      commit('update_Point_config_pool_2', pool_2)
-      commit('update_Point_config_pool_3', pool_3)
-
-      console.log('this.Point_config_pool_1')
-      console.log(this.state.rothc.Point_config_pool_1)
-      console.log('this.Point_config_pool_2')
-      console.log(this.state.rothc.Point_config_pool_2)
-      console.log('this.Point_config_pool_3')
-      console.log(this.state.rothc.Point_config_pool_3)
+      console.log('this.state.rothc.RothC_module_DPM')
+      console.log(this.state.rothc.RothC_module_DPM)
+      console.log('this.state.rothc.RothC_module_RPM')
+      console.log(this.state.rothc.RothC_module_RPM)
+      console.log('this.state.rothc.RothC_module_BIO')
+      console.log(this.state.rothc.RothC_module_BIO)
+      console.log('this.state.rothc.RothC_module_HUM')
+      console.log(this.state.rothc.RothC_module_HUM)
+      console.log('this.state.rothc.RothC_module_IOM')
+      console.log(this.state.rothc.RothC_module_IOM)
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <div class="chart-wrapper">
+    <span>RothC module</span>
     <div id="charts">
       <div id="chart1">
         <apexchart
@@ -22,25 +23,30 @@
 </template>
 
 <script>
-import dataForge from 'data-forge'
-// const dataForge = require("data-forge");
-
 export default {
   name: 'BrushCharts',
   data: function () {
     return {
       series: [
         {
-          name: 'Pool 1',
-          data: this.$store.state.point.Point_config_pool_1
+          name: 'SoilDPM',
+          data: this.$store.state.rothc.RothC_module_DPM
         },
         {
-          name: 'Pool 2',
-          data: this.$store.state.point.Point_config_pool_2
+          name: 'SoilRPM',
+          data: this.$store.state.rothc.RothC_module_RPM
         },
         {
-          name: 'Pool 3',
-          data: this.$store.state.point.Point_config_pool_3
+          name: 'SoilBioF',
+          data: this.$store.state.rothc.RothC_module_BIO
+        },
+        {
+          name: 'SoilHUM',
+          data: this.$store.state.rothc.RothC_module_HUM
+        },
+        {
+          name: 'SoilIOM',
+          data: this.$store.state.rothc.RothC_module_IOM
         }
       ],
       chartOptionsArea: {
@@ -51,7 +57,7 @@ export default {
             show: false
           }
         },
-        colors: ['#546E7A', '#0ff1ce', '#bada55'],
+        colors: ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C'],
         stroke: {
           width: 3
         },
@@ -122,83 +128,41 @@ export default {
   },
 
   beforeMount() {
-    this.$store.dispatch('process_point_config')
-    console.log('from outputs.vue - this.Point_config_pool_1')
-    console.log(typeof this.$store.state.point.Point_config_pool_1)
+    this.$store.dispatch('process_RothC_config')
   },
 
   methods: {
-    generateDayWiseTimeSeries: function (baseval, count, yrange) {
-      let i = 0
-      let series = []
-      while (i < count) {
-        let x = baseval
-        let y =
-          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
-
-        series.push([x, y])
-        baseval += 86400000
-        i++
-      }
-      console.log('example series')
-      console.log(series)
-
-      return series
-    },
-    processDataset: function () {
-      var dataset = this.point.received_data
-      // console.log(dataset);
-      let pool_1 = [],
-        pool_2 = [],
-        pool_3 = [],
-        simulation_step = []
-
-      let lines = dataset.split('\n')
-      lines.splice(0, 4)
-      lines.splice(-4)
-      dataset = lines.join('\n')
-      const df = dataForge.fromCSV(dataset)
-      let df_as_array = df.toArray()
-      console.log(typeof df_as_array)
-      console.log('array1')
-      console.log(df_as_array[0]['Pool 1'])
-      console.log(df_as_array.length)
-
-      for (let step = 0; step < df_as_array.length; step++) {
-        pool_1[step] = parseFloat(df_as_array[step]['Pool 1'])
-        pool_2[step] = parseFloat(df_as_array[step]['Pool 2'])
-        pool_3[step] = parseFloat(df_as_array[step]['Pool 3'])
-        let x = step
-        simulation_step[step] = x
-      }
-
-      console.log('pool 1')
-      for (let step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step])
-      }
-      console.log(simulation_step)
-      console.log(pool_1)
-      console.log(pool_2)
-      console.log(pool_3)
-    },
-
-    get_Point_config_pool_1() {
-      let arr = this.$store.state.point.Point_config_pool_1
-      console.log('pool 1 from state')
+    get_RothC_module_DPM() {
+      let arr = this.$store.state.rothc.RothC_module_DPM
+      console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_Point_config_pool_2() {
-      let arr = this.$store.state.point.Point_config_pool_2
-      console.log('pool 2 from state')
+    get_RothC_module_RPM() {
+      let arr = this.$store.state.rothc.RothC_module_RPM
+      console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_Point_config_pool_3() {
-      let arr = this.$store.state.point.Point_config_pool_3
-      console.log('pool 3 from state')
+    get_RothC_module_BIO() {
+      let arr = this.$store.state.rothc.RothC_module_BIO
+      console.log('DPM from state')
+      console.log(arr)
+      return arr
+    },
+
+    get_RothC_module_HUM() {
+      let arr = this.$store.state.rothc.RothC_module_HUM
+      console.log('DPM from state')
+      console.log(arr)
+      return arr
+    },
+
+    get_RothC_module_IOM() {
+      let arr = this.$store.state.rothc.RothC_module_IOM
+      console.log('DPM from state')
       console.log(arr)
       return arr
     }
