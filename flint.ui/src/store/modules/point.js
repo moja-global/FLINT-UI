@@ -186,30 +186,7 @@ export default {
   },
 
   actions: {
-    // send_pointConfig() {
-    //   let FLINT_config_string = JSON.stringify(
-    //     this.state.flint_point.Point_config
-    //   )
-    //   let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
-    //     '"#$',
-    //     ' '
-    //   )
-    //   let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-    //     '#$"',
-    //     ' '
-    //   )
-    //   axios
-    //     .post('http://127.0.0.1:8080/point', final_FLINT_config_string)
-    //     .then(response => {
-    //       this._vm.$toast.success(`${response}`, { timeout: 2000 })
-    //       console.log(response)
-    //     })
-    //     .catch(error => {
-    //       this._vm.$toast.error(`${error}`, { timeout: 2000 })
-    //       console.log(error)
-    //     })
-    // },
-    send_pointConfig({ commit }) {
+   send_pointConfig({ commit }) {
       let FLINT_config_string = JSON.stringify(this.state.point.Point_config)
       let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
         '"#$',
@@ -253,7 +230,6 @@ export default {
       let df_as_array = df.toArray()
       console.log(typeof df_as_array)
       console.log('array1')
-      // console.log(df_as_array[0]['Pool 1'])
       console.log(df_as_array.length)
 
       for (let step = 0; step < df_as_array.length; step++) {

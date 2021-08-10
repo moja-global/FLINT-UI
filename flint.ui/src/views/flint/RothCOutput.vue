@@ -5,7 +5,7 @@
       <div id="chart1">
         <apexchart
           type="line"
-          height="230"
+          height="300"
           :options="chartOptionsArea"
           :series="series"
         />
@@ -13,7 +13,7 @@
       <div id="chart2">
         <apexchart
           type="area"
-          height="130"
+          height="150"
           :options="chartOptionsBrush"
           :series="series"
         />
@@ -54,7 +54,7 @@ export default {
           id: 'chartArea',
           toolbar: {
             autoSelected: 'pan',
-            show: false
+            show: true
           }
         },
         colors: ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C'],
@@ -80,7 +80,7 @@ export default {
           brush: {
             target: 'chartArea',
             enabled: true,
-            autoScaleYaxis: false
+            autoScaleYaxis: true
           },
           selection: {
             enabled: true,
@@ -101,7 +101,7 @@ export default {
         xaxis: {
           type: 'numeric',
           tooltip: {
-            enabled: false
+            enabled: true
           }
         },
         yaxis: {
@@ -171,6 +171,6 @@ export default {
 </script>
 <style>
 div.chart-wrapper {
-  padding-top: 100px;
+  padding-top: 150px;
 }
 </style>

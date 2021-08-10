@@ -450,7 +450,6 @@ export default {
         .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
-          //this.state.received_data = response.data;
           commit('set_received_rothc_example_data', response.data)
           console.log(this.state.rothc.received_rothc_example_data)
         })
@@ -482,7 +481,6 @@ export default {
       let df_as_array = df.toArray()
       console.log(typeof df_as_array)
       console.log('array1')
-      // console.log(df_as_array[0]['Pool 1'])
       console.log(df_as_array.length)
 
       for (let step = 0; step < df_as_array.length; step++) {
