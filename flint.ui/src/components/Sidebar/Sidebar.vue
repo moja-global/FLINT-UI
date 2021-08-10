@@ -262,7 +262,6 @@
               </a>
             </router-link>
           </li>
-
         </ul>
 
         <hr class="my-4 md:min-w-full" />
