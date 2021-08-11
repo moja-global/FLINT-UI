@@ -231,39 +231,39 @@ export default {
         }
       }
     },
-    received_rothc_example_data: {},
-    RothC_module_DPM: [],
-    RothC_module_RPM: [],
-    RothC_module_BIO: [],
-    RothC_module_HUM: [],
-    RothC_module_IOM: []
+    results: {},
+    DPM: [],
+    RPM: [],
+    BIO: [],
+    HUM: [],
+    IOM: []
   },
 
   mutations: {
-    update_RothC_module_DPM(state, DPM) {
+    update_DPM(state, DPM) {
       console.log('updated DPM in state')
-      console.log(this.state.rothc.RothC_module_DPM)
-      Vue.set(state, 'RothC_module_DPM', DPM)
+      console.log(this.state.rothc.DPM)
+      Vue.set(state, 'DPM', DPM)
     },
-    update_RothC_module_RPM(state, RPM) {
+    update_RPM(state, RPM) {
       console.log('updated RPM in state')
-      console.log(this.state.rothc.RothC_module_RPM)
-      Vue.set(state, 'RothC_module_RPM', RPM)
+      console.log(this.state.rothc.RPM)
+      Vue.set(state, 'RPM', RPM)
     },
-    update_RothC_module_BIO(state, BIO) {
+    update_BIO(state, BIO) {
       console.log('updated BIO in state')
-      console.log(this.state.rothc.RothC_module_BIO)
-      Vue.set(state, 'RothC_module_BIO', BIO)
+      console.log(this.state.rothc.BIO)
+      Vue.set(state, 'BIO', BIO)
     },
-    update_RothC_module_HUM(state, HUM) {
+    update_HUM(state, HUM) {
       console.log('updated HUM in state')
-      console.log(this.state.rothc.RothC_module_HUM)
-      Vue.set(state, 'RothC_module_HUM', HUM)
+      console.log(this.state.rothc.HUM)
+      Vue.set(state, 'HUM', HUM)
     },
-    update_RothC_module_IOM(state, IOM) {
+    update_IOM(state, IOM) {
       console.log('updated IOM in state')
-      console.log(this.state.rothc.RothC_module_IOM)
-      Vue.set(state, 'RothC_module_IOM', IOM)
+      console.log(this.state.rothc.IOM)
+      Vue.set(state, 'IOM', IOM)
     },
     setNewConfig_dpmaCMInit(state, newValue) {
       state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue
@@ -427,8 +427,8 @@ export default {
       state.RothC_config.Variables[14].soil.sdcmRateMultRpm = newValue
     },
 
-    set_received_rothc_example_data(state, response) {
-      state.received_rothc_example_data = response
+    save_results(state, response) {
+      state.results = response
       console.log('received_rothc_example_data sent to state')
       //console.log(state.received_rothc_example_data)
     }
@@ -450,22 +450,22 @@ export default {
         .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
-          commit('set_received_rothc_example_data', response.data)
-          console.log(this.state.rothc.received_rothc_example_data)
+          commit('save_results', response.data)
+          console.log(this.state.rothc.results)
         })
         .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     },
-    process_RothC_config({ commit }) {
-      console.log(this.state.rothc.received_rothc_example_data)
+    parse_results({ commit }) {
+      console.log(this.state.rothc.results)
 
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      console.log(this.state.rothc.received_rothc_example_data)
-      var RothC_dataset = this.state.rothc.received_rothc_example_data
+      console.log(this.state.rothc.results)
+      var RothC_dataset = this.state.rothc.results
       var DPM = [],
         RPM = [],
         BIO = [],
@@ -501,22 +501,22 @@ export default {
       console.log(HUM)
       console.log(IOM)
       
-      commit('update_RothC_module_DPM', DPM)
-      commit('update_RothC_module_RPM', RPM)
-      commit('update_RothC_module_BIO', BIO)
-      commit('update_RothC_module_HUM', HUM)
-      commit('update_RothC_module_IOM', IOM)
+      commit('update_DPM', DPM)
+      commit('update_RPM', RPM)
+      commit('update_BIO', BIO)
+      commit('update_HUM', HUM)
+      commit('update_IOM', IOM)
 
-      console.log('this.state.rothc.RothC_module_DPM')
-      console.log(this.state.rothc.RothC_module_DPM)
-      console.log('this.state.rothc.RothC_module_RPM')
-      console.log(this.state.rothc.RothC_module_RPM)
-      console.log('this.state.rothc.RothC_module_BIO')
-      console.log(this.state.rothc.RothC_module_BIO)
-      console.log('this.state.rothc.RothC_module_HUM')
-      console.log(this.state.rothc.RothC_module_HUM)
-      console.log('this.state.rothc.RothC_module_IOM')
-      console.log(this.state.rothc.RothC_module_IOM)
+      console.log('this.state.rothc.DPM')
+      console.log(this.state.rothc.DPM)
+      console.log('this.state.rothc.RPM')
+      console.log(this.state.rothc.RPM)
+      console.log('this.state.rothc.BIO')
+      console.log(this.state.rothc.BIO)
+      console.log('this.state.rothc.HUM')
+      console.log(this.state.rothc.HUM)
+      console.log('this.state.rothc.IOM')
+      console.log(this.state.rothc.IOM)
     }
   }
 }

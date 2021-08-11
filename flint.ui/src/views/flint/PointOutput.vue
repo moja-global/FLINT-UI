@@ -30,15 +30,15 @@ export default {
       series: [
         {
           name: 'Pool 1',
-          data: this.$store.state.point.Point_config_pool_1
+          data: this.$store.state.point.pool_1
         },
         {
           name: 'Pool 2',
-          data: this.$store.state.point.Point_config_pool_2
+          data: this.$store.state.point.pool_2
         },
         {
           name: 'Pool 3',
-          data: this.$store.state.point.Point_config_pool_3
+          data: this.$store.state.point.pool_3
         }
       ],
       chartOptionsArea: {
@@ -108,40 +108,40 @@ export default {
         return this.$store.state.point.received_data
       }
     },
-    Point_config_pool_1() {
-      return this.$store.state.point.Point_config_pool_1
+    pool_1() {
+      return this.$store.state.point.pool_1
     },
-    Point_config_pool_2() {
-      return this.$store.state.point.Point_config_pool_2
+    pool_2() {
+      return this.$store.state.point.pool_2
     },
-    Point_config_pool_3() {
-      return this.$store.state.point.Point_config_pool_3
+    pool_3() {
+      return this.$store.state.point.pool_3
     }
   },
 
   beforeMount() {
     this.$store.dispatch('process_point_config')
-    console.log('from outputs.vue - this.Point_config_pool_1')
-    console.log(typeof this.$store.state.point.Point_config_pool_1)
+    console.log('from outputs.vue - this.pool_1')
+    console.log(typeof this.$store.state.point.pool_1)
   },
 
   methods: {
-    get_Point_config_pool_1() {
-      let arr = this.$store.state.point.Point_config_pool_1
+    get_pool_1() {
+      let arr = this.$store.state.point.pool_1
       console.log('pool 1 from state')
       console.log(arr)
       return arr
     },
 
-    get_Point_config_pool_2() {
-      let arr = this.$store.state.point.Point_config_pool_2
+    get_pool_2() {
+      let arr = this.$store.state.point.pool_2
       console.log('pool 2 from state')
       console.log(arr)
       return arr
     },
 
-    get_Point_config_pool_3() {
-      let arr = this.$store.state.point.Point_config_pool_3
+    get_pool_3() {
+      let arr = this.$store.state.point.pool_3
       console.log('pool 3 from state')
       console.log(arr)
       return arr

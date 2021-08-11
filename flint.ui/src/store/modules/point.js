@@ -140,27 +140,27 @@ export default {
         }
       }
     },
-    received_point_example_data: {},
-    Point_config_pool_1: [],
-    Point_config_pool_2: [],
-    Point_config_pool_3: []
+    results: {},
+    pool_1: [],
+    pool_2: [],
+    pool_3: []
   },
 
   mutations: {
-    update_Point_config_pool_1(state, pool_1) {
+    update_pool_1(state, pool_1) {
       console.log('updated pool 1 in state')
-      console.log(this.state.point.Point_config_pool_1)
-      Vue.set(state, 'Point_config_pool_1', pool_1)
+      console.log(this.state.point.pool_1)
+      Vue.set(state, 'pool_1', pool_1)
     },
-    update_Point_config_pool_2(state, pool_2) {
+    update_pool_2(state, pool_2) {
       console.log('updated pool 2 in state')
-      console.log(this.state.point.Point_config_pool_2)
-      Vue.set(state, 'Point_config_pool_2', pool_2)
+      console.log(this.state.point.pool_2)
+      Vue.set(state, 'pool_2', pool_2)
     },
-    update_Point_config_pool_3(state, pool_3) {
+    update_pool_3(state, pool_3) {
       console.log('updated pool 3 in state')
-      console.log(this.state.point.Point_config_pool_3)
-      Vue.set(state, 'Point_config_pool_3', pool_3)
+      console.log(this.state.point.pool_3)
+      Vue.set(state, 'pool_3', pool_3)
     },
 
     //Point Sim config
@@ -178,10 +178,10 @@ export default {
       state.Point_config['Pools'][2]['Pool 3'] = pool_3_valuex
       console.log(state.Point_config)
     },
-    set_received_point_example_data(state, response) {
-      state.received_point_example_data = response
-      console.log('received_point_example_data sent to state')
-      //console.log(state.received_point_example_data)
+    save_results(state, response) {
+      state.results= response
+      console.log('results sent to state')
+      //console.log(state.results)
     }
   },
 
@@ -201,8 +201,8 @@ export default {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
           //this.state.received_data = response.data;
-          commit('set_received_point_example_data', response.data)
-          console.log(this.state.point.received_point_example_data)
+          commit('save_results', response.data)
+          console.log(this.state.point.results)
         })
         .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
@@ -210,13 +210,13 @@ export default {
         })
     },
     process_point_config({ commit }) {
-      console.log(this.state.point.received_point_example_data)
+      console.log(this.state.point.results)
 
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      console.log(this.state.point.received_point_example_data)
-      var dataset = this.state.point.received_point_example_data
+      console.log(this.state.point.results)
+      var dataset = this.state.point.results
       var pool_1 = [],
         pool_2 = [],
         pool_3 = [],
@@ -240,43 +240,39 @@ export default {
         simulation_step[step] = x
       }
 
-      console.log('pool 1')
-      for (let step = 0; step < df_as_array.length; step++) {
-        console.log(pool_1[step])
-      }
       console.log(simulation_step)
       console.log(pool_1)
       console.log(pool_2)
       console.log(pool_3)
 
-      this.state.point.Point_config_pool_1 = pool_1
-      this.state.point.Point_config_pool_2 = pool_2
-      this.state.point.Point_config_pool_3 = pool_3
+      this.state.point.pool_1 = pool_1
+      this.state.point.pool_2 = pool_2
+      this.state.point.pool_3 = pool_3
 
-      commit('update_Point_config_pool_1', pool_1)
-      commit('update_Point_config_pool_2', pool_2)
-      commit('update_Point_config_pool_3', pool_3)
+      commit('update_pool_1', pool_1)
+      commit('update_pool_2', pool_2)
+      commit('update_pool_3', pool_3)
 
-      console.log('this.Point_config_pool_1')
-      console.log(this.state.point.Point_config_pool_1)
-      console.log('this.Point_config_pool_2')
-      console.log(this.state.point.Point_config_pool_2)
-      console.log('this.Point_config_pool_3')
-      console.log(this.state.point.Point_config_pool_3)
+      console.log('this.pool_1')
+      console.log(this.state.point.pool_1)
+      console.log('this.pool_2')
+      console.log(this.state.point.pool_2)
+      console.log('this.pool_3')
+      console.log(this.state.point.pool_3)
     },
   },
   getters: {
-    received_point_example_data: (state) => {
-      return state.point.received_point_example_data
+    results: (state) => {
+      return state.point.results
     },
-    Point_config_pool_1: (state) => {
-      return this.state.point.Point_config_pool_1
+    pool_1: (state) => {
+      return this.state.point.pool_1
     },
-    Point_config_pool_2: (state) => {
-      return this.state.point.Point_config_pool_2
+    pool_2: (state) => {
+      return this.state.point.pool_2
     },
-    Point_config_pool_3: (state) => {
-      return this.state.point.Point_config_pool_3
+    pool_3: (state) => {
+      return this.state.point.pool_3
     }
   }
 }

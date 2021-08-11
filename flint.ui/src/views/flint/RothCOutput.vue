@@ -30,23 +30,23 @@ export default {
       series: [
         {
           name: 'SoilDPM',
-          data: this.$store.state.rothc.RothC_module_DPM
+          data: this.$store.state.rothc.DPM
         },
         {
           name: 'SoilRPM',
-          data: this.$store.state.rothc.RothC_module_RPM
+          data: this.$store.state.rothc.RPM
         },
         {
           name: 'SoilBioF',
-          data: this.$store.state.rothc.RothC_module_BIO
+          data: this.$store.state.rothc.BIO
         },
         {
           name: 'SoilHUM',
-          data: this.$store.state.rothc.RothC_module_HUM
+          data: this.$store.state.rothc.HUM
         },
         {
           name: 'SoilIOM',
-          data: this.$store.state.rothc.RothC_module_IOM
+          data: this.$store.state.rothc.IOM
         }
       ],
       chartOptionsArea: {
@@ -116,52 +116,52 @@ export default {
         return this.$store.state.point.received_data
       }
     },
-    Point_config_pool_1() {
-      return this.$store.state.point.Point_config_pool_1
+    pool_1() {
+      return this.$store.state.point.pool_1
     },
-    Point_config_pool_2() {
-      return this.$store.state.point.Point_config_pool_2
+    pool_2() {
+      return this.$store.state.point.pool_2
     },
-    Point_config_pool_3() {
-      return this.$store.state.point.Point_config_pool_3
+    pool_3() {
+      return this.$store.state.point.pool_3
     }
   },
 
   beforeMount() {
-    this.$store.dispatch('process_RothC_config')
+    this.$store.dispatch('parse_results')
   },
 
   methods: {
-    get_RothC_module_DPM() {
-      let arr = this.$store.state.rothc.RothC_module_DPM
+    get_DPM() {
+      let arr = this.$store.state.rothc.DPM
       console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_RothC_module_RPM() {
-      let arr = this.$store.state.rothc.RothC_module_RPM
+    get_RPM() {
+      let arr = this.$store.state.rothc.RPM
       console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_RothC_module_BIO() {
-      let arr = this.$store.state.rothc.RothC_module_BIO
+    get_BIO() {
+      let arr = this.$store.state.rothc.BIO
       console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_RothC_module_HUM() {
-      let arr = this.$store.state.rothc.RothC_module_HUM
+    get_HUM() {
+      let arr = this.$store.state.rothc.HUM
       console.log('DPM from state')
       console.log(arr)
       return arr
     },
 
-    get_RothC_module_IOM() {
-      let arr = this.$store.state.rothc.RothC_module_IOM
+    get_IOM() {
+      let arr = this.$store.state.rothc.IOM
       console.log('DPM from state')
       console.log(arr)
       return arr
