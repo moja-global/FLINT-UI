@@ -29,23 +29,27 @@ export default {
     return {
       series: [
         {
-          name: 'SoilDPM',
+          name: 'Soil DPM',
           data: this.$store.state.rothc.DPM
         },
         {
-          name: 'SoilRPM',
+          name: 'Soil RPM',
           data: this.$store.state.rothc.RPM
         },
         {
-          name: 'SoilBioF',
-          data: this.$store.state.rothc.BIO
+          name: 'Soil BioF',
+          data: this.$store.state.rothc.BIOF
         },
         {
-          name: 'SoilHUM',
+          name: 'Soil BioS',
+          data: this.$store.state.rothc.BIOS
+        },
+        {
+          name: 'Soil HUM',
           data: this.$store.state.rothc.HUM
         },
         {
-          name: 'SoilIOM',
+          name: 'Soil IOM',
           data: this.$store.state.rothc.IOM
         }
       ],
@@ -57,7 +61,14 @@ export default {
             show: true
           }
         },
-        colors: ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C'],
+        colors: [
+          '#EF476F',
+          '#FFD166',
+          '#06D6A0',
+          '#118AB2',
+          '#073B4C',
+          '#008b8b'
+        ],
         stroke: {
           width: 3
         },

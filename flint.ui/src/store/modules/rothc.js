@@ -232,7 +232,8 @@ export default {
     results: {},
     DPM: [],
     RPM: [],
-    BIO: [],
+    BIOF: [],
+    BIOS: [],
     HUM: [],
     IOM: []
   },
@@ -248,10 +249,15 @@ export default {
       console.log(this.state.rothc.RPM)
       Vue.set(state, 'RPM', RPM)
     },
-    update_BIO(state, BIO) {
-      console.log('updated BIO in state')
-      console.log(this.state.rothc.BIO)
-      Vue.set(state, 'BIO', BIO)
+    update_BIOF(state, BIOF) {
+      console.log('updated BIOF in state')
+      console.log(this.state.rothc.BIOF)
+      Vue.set(state, 'BIOF', BIOF)
+    },
+    update_BIOS(state, BIOS) {
+      console.log('updated BIOS in state')
+      console.log(this.state.rothc.BIOS)
+      Vue.set(state, 'BIOS', BIOS)
     },
     update_HUM(state, HUM) {
       console.log('updated HUM in state')
@@ -459,7 +465,8 @@ export default {
       var dataset = this.state.rothc.results
       var DPM = [],
         RPM = [],
-        BIO = [],
+        BIOF = [],
+        BIOS = [],
         HUM = [],
         IOM = []
 
@@ -476,20 +483,23 @@ export default {
       for (let step = 0; step < df_as_array.length; step++) {
         DPM[step] = parseFloat(df_as_array[step]['SoilDPM'])
         RPM[step] = parseFloat(df_as_array[step]['SoilRPM'])
-        BIO[step] = parseFloat(df_as_array[step]['SoilBioF'])
+        BIOF[step] = parseFloat(df_as_array[step]['SoilBioF'])
+        BIOS[step] = parseFloat(df_as_array[step]['SoilBioS'])
         HUM[step] = parseFloat(df_as_array[step]['SoilHUM'])
         IOM[step] = parseFloat(df_as_array[step]['SoilIOM'])
       }
 
       console.log(DPM)
       console.log(RPM)
-      console.log(BIO)
+      console.log(BIOF)
+      console.log(BIOS)
       console.log(HUM)
       console.log(IOM)
 
       commit('update_DPM', DPM)
       commit('update_RPM', RPM)
-      commit('update_BIO', BIO)
+      commit('update_BIOF', BIOF)
+      commit('update_BIOS', BIOS)
       commit('update_HUM', HUM)
       commit('update_IOM', IOM)
 
@@ -497,8 +507,10 @@ export default {
       console.log(this.state.rothc.DPM)
       console.log('this.state.rothc.RPM')
       console.log(this.state.rothc.RPM)
-      console.log('this.state.rothc.BIO')
-      console.log(this.state.rothc.BIO)
+      console.log('this.state.rothc.BIOF')
+      console.log(this.state.rothc.BIOF)
+      console.log('this.state.rothc.BIOS')
+      console.log(this.state.rothc.BIOS)
       console.log('this.state.rothc.HUM')
       console.log(this.state.rothc.HUM)
       console.log('this.state.rothc.IOM')
