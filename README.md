@@ -68,7 +68,7 @@ All containers list will look like this in the Docker app:
 
 If you want to shut down a specific container click on the `STOP` button of that specific container in the Docker app. You can also use the command line to stop a specific container by using the command `docker stop {name of the container you want to stop}`
 
-To shutdown, the whole `docker-compose.yml` file and all services inside it then use the command `docker-compose down`.
+To shut down, the whole `docker-compose.yml` file and all services inside it then use the command `docker-compose down`.
 
 > You can also run `Detached mode` in Detached mode. Detached mode, shown by the option `--detach` or `-d`, means that a Docker container runs in the background of your terminal. It does not receive input or display output. So the command for running `docker-compose up` in Detached mode is `docker-compose up -d`.
 
@@ -80,7 +80,9 @@ To shutdown, the whole `docker-compose.yml` file and all services inside it then
 <img src="assets/dashboard.jpg">
 </div>
 
-## Vue app
+## Developer notes
+
+### Vue app
 
 To run the Vue app locally, you can follow the below procedure:
 
@@ -88,7 +90,7 @@ To run the Vue app locally, you can follow the below procedure:
 2. Run `npm run serve` to start the Vue app server.
 3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
 
-## Storybook
+### Storybook
 
 To run Storybook locally, you can follow the below procedure:
 
@@ -96,12 +98,37 @@ To run Storybook locally, you can follow the below procedure:
 2. Run `npm run storybook` to start the Storybook server.
 3. Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
-## Code Style
+### Dependency management
 
+Our `package.json` file is gitignored to enforce strict management of our client dependencies.
+
+In order to add a new dependency, please:
+
+1. use `npm install <your-package>`
+2. `git checkout -b dependency/<your-package>`
+3. `git add --force flint.ui/package.json`
+4. `git push` and submit a PR with only the `package.json` changes
+
+Our CI build will test for conflicts and your new dependency will be added after your PR has been reviewed.
+
+#### npm ci
+
+You can also use `npm ci` to test your changes locally. CI stands for continuous integration and `npm ci` is used to install all exact version dependencies or devDependencies from a `package-lock.json` file.
+
+- It is generally used to install dependencies.
+- It never writes to `package.json` or `package-lock.json`.
+- Individual dependencies cannot be added with this command.
+- It is faster in execution.
+- If any dependencies are missing or have incompatible versions, then `npm ci` will throw an error.
+- If a `node_modules` is already present, it will be automatically removed before `npm ci` begins its install.
+- It can not install global packages.
+- Used for the deterministic, repeatable build.
+
+### Code Style
 
 The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
 
-One exception is the case used to describe the ecological models exposed to the our FLINT client. Because model names, and sometimes model variables, often use acronyms these remain capitalised.
+One exception is the case used to describe the ecological models exposed to our FLINT client. Because model names, and sometimes model variables, often use acronyms these remain capitalized.
 
 Obvious examples are:
 
@@ -109,7 +136,7 @@ Obvious examples are:
 - FLINT: Full Lands Integration Tool
 - RothC: Rothamstead Carbon model
 
-We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easy. There are official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
+We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easily. There is official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
 
 If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
 
