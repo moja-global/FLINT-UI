@@ -102,50 +102,9 @@ export default {
       }
     }
   },
-  computed: {
-    received_data: {
-      get() {
-        return this.$store.state.point.received_data
-      }
-    },
-    pool_1() {
-      return this.$store.state.point.pool_1
-    },
-    pool_2() {
-      return this.$store.state.point.pool_2
-    },
-    pool_3() {
-      return this.$store.state.point.pool_3
-    }
-  },
 
   beforeMount() {
-    this.$store.dispatch('process_point_config')
-    console.log('from outputs.vue - this.pool_1')
-    console.log(typeof this.$store.state.point.pool_1)
-  },
-
-  methods: {
-    get_pool_1() {
-      let arr = this.$store.state.point.pool_1
-      console.log('pool 1 from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_pool_2() {
-      let arr = this.$store.state.point.pool_2
-      console.log('pool 2 from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_pool_3() {
-      let arr = this.$store.state.point.pool_3
-      console.log('pool 3 from state')
-      console.log(arr)
-      return arr
-    }
+    this.$store.dispatch('parse_point_results')
   }
 }
 </script>

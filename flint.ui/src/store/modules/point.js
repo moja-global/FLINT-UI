@@ -1,11 +1,9 @@
-/* eslint-disable */
-
 import Vue from 'vue'
 import axios from 'axios'
 
 export default {
   state: {
-    Point_config: {
+    config: {
       LocalDomain: {
         type: 'point',
         start_date: '1920/01/01',
@@ -166,37 +164,33 @@ export default {
     //Point Sim config
     set_pointConfig_Pool_1(state, pool_1_value) {
       let pool_1_valuex = '#$' + pool_1_value + '#$'
-      state.Point_config['Pools'][0]['Pool 1'] = pool_1_valuex
+      state.config['Pools'][0]['Pool 1'] = pool_1_valuex
     },
     set_pointConfig_Pool_2(state, pool_2_value) {
-      console.log(state.Point_config)
+      console.log(state.config)
       let pool_2_valuex = '#$' + pool_2_value + '#$'
-      state.Point_config['Pools'][1]['Pool 2'] = pool_2_valuex
+      state.config['Pools'][1]['Pool 2'] = pool_2_valuex
     },
     set_pointConfig_Pool_3(state, pool_3_value) {
       let pool_3_valuex = '#$' + pool_3_value + '#$'
-      state.Point_config['Pools'][2]['Pool 3'] = pool_3_valuex
-      console.log(state.Point_config)
+      state.config['Pools'][2]['Pool 3'] = pool_3_valuex
+      console.log(state.config)
     },
     save_results(state, response) {
-      state.results= response
+      state.results = response
       console.log('results sent to state')
       //console.log(state.results)
     }
   },
 
   actions: {
-   send_pointConfig({ commit }) {
-      let FLINT_config_string = JSON.stringify(this.state.point.Point_config)
-      let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
-        '"#$',
-        ' '
-      )
-      let final_FLINT_config_string =
-        preprocessed_FLINT_config_string.replaceAll('#$"', ' ')
+    send_pointConfig({ commit }) {
+      let config_string = JSON.stringify(this.state.point.config)
+      let parsed_config_string = config_string.replaceAll('"#$', ' ')
+      let final_config_string = parsed_config_string.replaceAll('#$"', ' ')
 
       axios
-        .post('http://127.0.0.1:8080/point', final_FLINT_config_string)
+        .post('http://127.0.0.1:8080/point', final_config_string)
         .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
@@ -209,7 +203,7 @@ export default {
           console.log(error)
         })
     },
-    process_point_config({ commit }) {
+    parse_point_results({ commit }) {
       console.log(this.state.point.results)
 
       const dataForge = require('data-forge')
@@ -219,8 +213,7 @@ export default {
       var dataset = this.state.point.results
       var pool_1 = [],
         pool_2 = [],
-        pool_3 = [],
-        simulation_step = []
+        pool_3 = []
 
       let lines = (dataset || '').split('\n')
       lines.splice(0, 4)
@@ -236,18 +229,11 @@ export default {
         pool_1[step] = parseFloat(df_as_array[step]['Pool 1'])
         pool_2[step] = parseFloat(df_as_array[step]['Pool 2'])
         pool_3[step] = parseFloat(df_as_array[step]['Pool 3'])
-        let x = step
-        simulation_step[step] = x
       }
 
-      console.log(simulation_step)
       console.log(pool_1)
       console.log(pool_2)
       console.log(pool_3)
-
-      this.state.point.pool_1 = pool_1
-      this.state.point.pool_2 = pool_2
-      this.state.point.pool_3 = pool_3
 
       commit('update_pool_1', pool_1)
       commit('update_pool_2', pool_2)
@@ -259,20 +245,6 @@ export default {
       console.log(this.state.point.pool_2)
       console.log('this.pool_3')
       console.log(this.state.point.pool_3)
-    },
-  },
-  getters: {
-    results: (state) => {
-      return state.point.results
-    },
-    pool_1: (state) => {
-      return this.state.point.pool_1
-    },
-    pool_2: (state) => {
-      return this.state.point.pool_2
-    },
-    pool_3: (state) => {
-      return this.state.point.pool_3
     }
   }
 }

@@ -110,62 +110,9 @@ export default {
       }
     }
   },
-  computed: {
-    received_data: {
-      get() {
-        return this.$store.state.point.received_data
-      }
-    },
-    pool_1() {
-      return this.$store.state.point.pool_1
-    },
-    pool_2() {
-      return this.$store.state.point.pool_2
-    },
-    pool_3() {
-      return this.$store.state.point.pool_3
-    }
-  },
 
   beforeMount() {
-    this.$store.dispatch('parse_results')
-  },
-
-  methods: {
-    get_DPM() {
-      let arr = this.$store.state.rothc.DPM
-      console.log('DPM from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_RPM() {
-      let arr = this.$store.state.rothc.RPM
-      console.log('DPM from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_BIO() {
-      let arr = this.$store.state.rothc.BIO
-      console.log('DPM from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_HUM() {
-      let arr = this.$store.state.rothc.HUM
-      console.log('DPM from state')
-      console.log(arr)
-      return arr
-    },
-
-    get_IOM() {
-      let arr = this.$store.state.rothc.IOM
-      console.log('DPM from state')
-      console.log(arr)
-      return arr
-    }
+    this.$store.dispatch('parse_RothC_results')
   }
 }
 </script>
