@@ -145,6 +145,15 @@ export default {
   },
 
   mutations: {
+    setNew_point_startDate(state, newValue) {
+      state.Point_config.LocalDomain.start_date = newValue
+      console.log(state.Point_config.LocalDomain.start_date)
+    },
+    setNew_point_endDate(state, newValue) {
+      state.Point_config.LocalDomain.end_date = newValue
+      console.log(state.Point_config.LocalDomain.end_date)
+    },
+
     update_Point_config_pool_1(state, pool_1) {
       console.log('updated pool 1 in state')
       console.log(this.state.point.Point_config_pool_1)
@@ -179,29 +188,6 @@ export default {
   },
 
   actions: {
-    // send_pointConfig() {
-    //   let FLINT_config_string = JSON.stringify(
-    //     this.state.flint_point.Point_config
-    //   )
-    //   let preprocessed_FLINT_config_string = FLINT_config_string.replaceAll(
-    //     '"#$',
-    //     ' '
-    //   )
-    //   let final_FLINT_config_string = preprocessed_FLINT_config_string.replaceAll(
-    //     '#$"',
-    //     ' '
-    //   )
-    //   axios
-    //     .post('http://127.0.0.1:8080/point', final_FLINT_config_string)
-    //     .then(response => {
-    //       this._vm.$toast.success(`${response}`, { timeout: 2000 })
-    //       console.log(response)
-    //     })
-    //     .catch(error => {
-    //       this._vm.$toast.error(`${error}`, { timeout: 2000 })
-    //       console.log(error)
-    //     })
-    // },
     set_received_point_example_data(state, response) {
       state.received_data = response
       console.log('received_data sent to state')

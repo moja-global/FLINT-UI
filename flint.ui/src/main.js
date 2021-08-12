@@ -13,11 +13,11 @@ import Toast from 'vue-toastification'
 import VueLayers from 'vuelayers'
 import VueSlider from 'vue-slider-component'
 
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
 import './index.css'
 import 'vue-toastification/dist/index.css'
 import VueApexCharts from 'vue-apexcharts'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
 import 'vuelayers/lib/style.css'
 import 'vue-slider-component/theme/default.css'
 
@@ -26,12 +26,18 @@ const router = new VueRouter({
   mode: 'history',
   routes
 })
-
-import { MdSteppers, MdButton, MdField } from 'vue-material/dist/components'
-
-Vue.use(MdSteppers)
-Vue.use(MdButton)
-Vue.use(MdField)
+// import { MdSteppers, MdButton, MdField, MdDatepicker, MdMenu, MdList, MdDialog, MdContent } from 'vue-material/dist/components'
+import VueMaterial from 'vue-material'
+// Vue.component(Button.name, Button)
+// Vue.use(MdSteppers)
+// Vue.use(MdButton)
+// Vue.use(MdField)
+// Vue.use(MdDatepicker)
+// Vue.use(MdMenu)
+// Vue.use(MdList)
+// Vue.use(MdDialog)
+// Vue.use(MdContent)
+Vue.use(VueMaterial)
 
 Vue.use(VueRouter)
 Vue.use(VueApexCharts)

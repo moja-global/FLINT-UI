@@ -11,7 +11,7 @@
     "
     style="height: auto"
   >
-    <div class="px-4 md:px-10 mx-auto w-full h-screen">
+    <div class="px-4 md:px-10 mx-auto w-full h-auto">
       <div>
         <div class="bg-white p-6 rounded-lg shadow-lg">
           <h2 class="text-2xl font-bold mb-2 text-gray-800">
@@ -25,7 +25,24 @@
           </p>
         </div>
 
-        <div class="flex flex-wrap">
+        <div v-if="isShow">
+          <Maptest />
+        </div>
+
+        <div class="px-4 md:px-10 mx-auto w-full h-auto m-8">
+          <div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h2 class="text-2xl font-bold mb-2 text-gray-800">
+                Start and End date of simulation
+              </h2>
+              <div>
+                <Datepicker />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap z-0">
           <div class="w-full lg:w-4/12 xl:w-4/12 px-4 content-center">
             <div class="slider-component justify-center">
               <div class="output">Pool 1: {{ pool1.value }}</div>
@@ -47,10 +64,6 @@
             </div>
           </div>
         </div>
-
-        <div v-if="isShow">
-          <Maptest />
-        </div>
       </div>
     </div>
     <Stepper />
@@ -60,15 +73,17 @@
 <script>
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Stepper from '@/components/Stepper/StepperPoint.vue'
+import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 
 export default {
   components: {
-    Maptest,
-    Stepper
+    Datepicker,
+    Stepper,
+    Maptest
   },
   data() {
     return {
-      isShow: true,
+      isShow: false,
 
       pool1: {
         min: 0.0,

@@ -25,6 +25,20 @@
             placeholder text will be used if none provided.
           </p>
         </div>
+
+        <div class="px-4 md:px-10 mx-auto w-full h-auto m-8">
+          <div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h2 class="text-2xl font-bold mb-2 text-gray-800">
+                Start and End date of simulation
+              </h2>
+              <div>
+                <Datepicker />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="flex flex-wrap mt-10">
           <RothCTemplate config-paramtype="rainfall" />
 
@@ -50,11 +64,13 @@
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Stepper from '@/components/Stepper/StepperRothc.vue'
+import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
 
 export default {
   components: {
     RothCTemplate,
-    Stepper
+    Stepper,
+    Datepicker
   }
 }
 </script>

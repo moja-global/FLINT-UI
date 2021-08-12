@@ -145,33 +145,33 @@ export default {
         },
         {
           initSoil: {
-            dpmaCMInit: '0.02',
-            rpmaCMInit: '8.681',
-            biofCMInit: '0.05',
-            biosCMInit: '0.03',
-            humsCMInit: '20.96',
-            inrtCMInit: '43.0',
-            TSMDInit: '35.21'
+            dpmaCMInit: '$#0.02$#',
+            rpmaCMInit: '$#8.681$#',
+            biofCMInit: '$#0.05$#',
+            biosCMInit: '$#0.03$#',
+            humsCMInit: '$#20.96$#',
+            inrtCMInit: '$#43.0$#',
+            TSMDInit: '$#35.21$#'
           }
         },
         {
           soil: {
-            fracManuCMToDpma: '0.49',
-            fracManuCMToRpma: '0.49',
-            fracManuCMToBiof: '0.0',
-            fracManuCMToBios: '0.0',
-            dToRRatioInPres: '2.84',
-            encpFracHums: '0.68',
-            sampleDepth: '26.0',
-            sdcmRateMultDpm: '12.0',
-            sdcmRateMultRpm: '0.5',
-            sdcmRateMultBiof: '0.0',
-            sdcmRateMultBios: '0.76',
-            sdcmRateMultHums: '0.05',
-            fracPbioToBiof: '0.49',
-            fracHumsToBios: '0.0',
-            evapoOpenRatio: '2.5',
-            bToCMaxTSMDRatio: '3.0'
+            fracManuCMToDpma: '$#0.49$#',
+            fracManuCMToRpma: '$#0.49$#',
+            fracManuCMToBiof: '$#0.0$#',
+            fracManuCMToBios: '$#0.0$#',
+            dToRRatioInPres: '$#2.84$#',
+            encpFracHums: '$#0.68$#',
+            sampleDepth: '$#26.0$#',
+            sdcmRateMultDpm: '$#12.0$#',
+            sdcmRateMultRpm: '$#0.5$#',
+            sdcmRateMultBiof: '$#0.0$#',
+            sdcmRateMultBios: '$#0.76$#',
+            sdcmRateMultHums: '$#0.05$#',
+            fracPbioToBiof: '$#0.49$#',
+            fracHumsToBios: '$#0.0$#',
+            evapoOpenRatio: '$#2.5$#',
+            bToCMaxTSMDRatio: '$#3.0$#'
           }
         }
       ],
@@ -232,6 +232,15 @@ export default {
   },
 
   mutations: {
+    setNew_rothc_startDate(state, newValue) {
+      state.RothC_config.LocalDomain.start_date = newValue
+      console.log(state.RothC_config.LocalDomain.start_date)
+    },
+    setNew_rothc_endDate(state, newValue) {
+      state.RothC_config.LocalDomain.end_date = newValue
+      console.log(state.RothC_config.LocalDomain.end_date)
+    },
+
     setNewConfig_dpmaCMInit(state, newValue) {
       state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue
     },
