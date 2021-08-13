@@ -79,7 +79,7 @@ export default {
   computed: {
     newconfig_avgAirTemp_data_orig: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[10].avgAirTemp.transform.data_orig
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig
           .substr(4)
           .slice(0, -4)
       },
@@ -93,7 +93,7 @@ export default {
 
     newconfig_avgAirTemp_data_month_avg: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg
           .substr(4)
           .slice(0, -4)
       },
@@ -107,7 +107,7 @@ export default {
 
     newconfig_avgAirTemp_data_lastyearcopy: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy
           .substr(4)
           .slice(0, -4)
       },

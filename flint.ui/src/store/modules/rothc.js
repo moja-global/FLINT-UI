@@ -233,12 +233,12 @@ export default {
 
   mutations: {
     setNew_rothc_startDate(state, newValue) {
-      state.RothC_config.LocalDomain.start_date = newValue
-      console.log(state.RothC_config.LocalDomain.start_date)
+      state.config.LocalDomain.start_date = newValue
+      console.log(state.config.LocalDomain.start_date)
     },
     setNew_rothc_endDate(state, newValue) {
-      state.RothC_config.LocalDomain.end_date = newValue
-      console.log(state.RothC_config.LocalDomain.end_date)
+      state.config.LocalDomain.end_date = newValue
+      console.log(state.config.LocalDomain.end_date)
     },
 
     setNewConfig_dpmaCMInit(state, newValue) {

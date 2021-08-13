@@ -146,12 +146,12 @@ export default {
 
   mutations: {
     setNew_point_startDate(state, newValue) {
-      state.Point_config.LocalDomain.start_date = newValue
-      console.log(state.Point_config.LocalDomain.start_date)
+      state.config.LocalDomain.start_date = newValue
+      console.log(state.config.LocalDomain.start_date)
     },
     setNew_point_endDate(state, newValue) {
-      state.Point_config.LocalDomain.end_date = newValue
-      console.log(state.Point_config.LocalDomain.end_date)
+      state.config.LocalDomain.end_date = newValue
+      console.log(state.config.LocalDomain.end_date)
     },
 
     update_Point_config_pool_1(state, pool_1) {

@@ -13,7 +13,7 @@ export default {
   computed: {
     selectedstartDate: {
       get() {
-        return this.$store.state.rothc.RothC_config.LocalDomain.start_date
+        return this.$store.state.rothc.config.LocalDomain.start_date
           .split('/')
           .join('-')
       },
@@ -27,7 +27,7 @@ export default {
 
     selectedendDate: {
       get() {
-        return this.$store.state.rothc.RothC_config.LocalDomain.end_date
+        return this.$store.state.rothc.config.LocalDomain.end_date
           .split('/')
           .join('-')
       },

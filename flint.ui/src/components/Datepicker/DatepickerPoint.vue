@@ -13,7 +13,7 @@ export default {
   computed: {
     selectedstartDate: {
       get() {
-        return this.$store.state.point.Point_config.LocalDomain.start_date
+        return this.$store.state.point.config.LocalDomain.start_date
           .split('/')
           .join('-')
       },
@@ -27,7 +27,7 @@ export default {
 
     selectedendDate: {
       get() {
-        return this.$store.state.point.Point_config.LocalDomain.end_date
+        return this.$store.state.point.config.LocalDomain.end_date
           .split('/')
           .join('-')
       },

@@ -208,7 +208,7 @@ export default {
   computed: {
     newconfig_dpmaCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.dpmaCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -219,7 +219,7 @@ export default {
 
     newconfig_rpmaCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.rpmaCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -230,7 +230,7 @@ export default {
 
     newconfig_biofCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.biofCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -241,7 +241,7 @@ export default {
 
     newconfig_biosCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.biosCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -252,7 +252,7 @@ export default {
 
     newconfig_humsCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.humsCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -263,7 +263,7 @@ export default {
 
     newconfig_inrtCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.inrtCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit
           .substr(2)
           .slice(0, -2)
       },
@@ -274,7 +274,7 @@ export default {
 
     newconfig_TSMDInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil.TSMDInit.substr(
+        return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit.substr(
           2
         ).slice(0, -2)
       },
