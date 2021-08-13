@@ -1,9 +1,9 @@
+import Vue from 'vue'
 import axios from 'axios'
-window.Vue = require('vue')
 
 export default {
   state: {
-    RothC_config: {
+    config: {
       LocalDomain: {
         type: 'point',
         start_date: '1920/01/01',
@@ -145,33 +145,33 @@ export default {
         },
         {
           initSoil: {
-            dpmaCMInit: '0.02',
-            rpmaCMInit: '8.681',
-            biofCMInit: '0.05',
-            biosCMInit: '0.03',
-            humsCMInit: '20.96',
-            inrtCMInit: '43.0',
-            TSMDInit: '35.21'
+            dpmaCMInit: '$#0.02$#',
+            rpmaCMInit: '$#8.681$#',
+            biofCMInit: '$#0.05$#',
+            biosCMInit: '$#0.03$#',
+            humsCMInit: '$#20.96$#',
+            inrtCMInit: '$#43.0$#',
+            TSMDInit: '$#35.21$#'
           }
         },
         {
           soil: {
-            fracManuCMToDpma: '0.49',
-            fracManuCMToRpma: '0.49',
-            fracManuCMToBiof: '0.0',
-            fracManuCMToBios: '0.0',
-            dToRRatioInPres: '2.84',
-            encpFracHums: '0.68',
-            sampleDepth: '26.0',
-            sdcmRateMultDpm: '12.0',
-            sdcmRateMultRpm: '0.5',
-            sdcmRateMultBiof: '0.0',
-            sdcmRateMultBios: '0.76',
-            sdcmRateMultHums: '0.05',
-            fracPbioToBiof: '0.49',
-            fracHumsToBios: '0.0',
-            evapoOpenRatio: '2.5',
-            bToCMaxTSMDRatio: '3.0'
+            fracManuCMToDpma: '$#0.49$#',
+            fracManuCMToRpma: '$#0.49$#',
+            fracManuCMToBiof: '$#0.0$#',
+            fracManuCMToBios: '$#0.0$#',
+            dToRRatioInPres: '$#2.84$#',
+            encpFracHums: '$#0.68$#',
+            sampleDepth: '$#26.0$#',
+            sdcmRateMultDpm: '$#12.0$#',
+            sdcmRateMultRpm: '$#0.5$#',
+            sdcmRateMultBiof: '$#0.0$#',
+            sdcmRateMultBios: '$#0.76$#',
+            sdcmRateMultHums: '$#0.05$#',
+            fracPbioToBiof: '$#0.49$#',
+            fracHumsToBios: '$#0.0$#',
+            evapoOpenRatio: '$#2.5$#',
+            bToCMaxTSMDRatio: '$#3.0$#'
           }
         }
       ],
@@ -228,192 +228,293 @@ export default {
           }
         }
       }
-    }
+    },
+    results: {},
+    DPM: [],
+    RPM: [],
+    BIOF: [],
+    BIOS: [],
+    HUM: [],
+    IOM: []
   },
 
   mutations: {
+    update_DPM(state, DPM) {
+      console.log('updated DPM in state')
+      console.log(this.state.rothc.DPM)
+      Vue.set(state, 'DPM', DPM)
+    },
+    update_RPM(state, RPM) {
+      console.log('updated RPM in state')
+      console.log(this.state.rothc.RPM)
+      Vue.set(state, 'RPM', RPM)
+    },
+    update_BIOF(state, BIOF) {
+      console.log('updated BIOF in state')
+      console.log(this.state.rothc.BIOF)
+      Vue.set(state, 'BIOF', BIOF)
+    },
+    update_BIOS(state, BIOS) {
+      console.log('updated BIOS in state')
+      console.log(this.state.rothc.BIOS)
+      Vue.set(state, 'BIOS', BIOS)
+    },
+    update_HUM(state, HUM) {
+      console.log('updated HUM in state')
+      console.log(this.state.rothc.HUM)
+      Vue.set(state, 'HUM', HUM)
+    },
+    update_IOM(state, IOM) {
+      console.log('updated IOM in state')
+      console.log(this.state.rothc.IOM)
+      Vue.set(state, 'IOM', IOM)
+    },
     setNewConfig_dpmaCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.dpmaCMInit = newValue
+      state.config.Variables[13].initSoil.dpmaCMInit = newValue
     },
 
     setNewConfig_rpmaCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.rpmaCMInit = newValue
+      state.config.Variables[13].initSoil.rpmaCMInit = newValue
     },
 
     setNewConfig_biofCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.biofCMInit = newValue
+      state.config.Variables[13].initSoil.biofCMInit = newValue
     },
 
     setNewConfig_biosCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.biosCMInit = newValue
+      state.config.Variables[13].initSoil.biosCMInit = newValue
     },
 
     setNewConfig_humsCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.humsCMInit = newValue
+      state.config.Variables[13].initSoil.humsCMInit = newValue
     },
 
     setNewConfig_inrtCMInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.inrtCMInit = newValue
+      state.config.Variables[13].initSoil.inrtCMInit = newValue
     },
 
     setNewConfig_TSMDInit(state, newValue) {
-      state.RothC_config.Variables[13].initSoil.TSMDInit = newValue
+      state.config.Variables[13].initSoil.TSMDInit = newValue
     },
 
     ////
 
     setNewConfig_rainfall_data_orig(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_orig = newValue
+      state.config.Variables[8].rainfall.transform.data_orig = newValue
     },
 
     setNewConfig_rainfall_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_month_avg =
-        newValue
+      state.config.Variables[8].rainfall.transform.data_month_avg = newValue
     },
 
     setNewConfig_rainfall_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[8].rainfall.transform.data_lastyearcopy =
-        newValue
+      state.config.Variables[8].rainfall.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_openPanEvap_data_orig(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_orig = newValue
+      state.config.Variables[9].openPanEvap.transform.data_orig = newValue
     },
 
     setNewConfig_openPanEvap_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_month_avg =
-        newValue
+      state.config.Variables[9].openPanEvap.transform.data_month_avg = newValue
     },
 
     setNewConfig_openPanEvap_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[9].openPanEvap.transform.data_lastyearcopy =
+      state.config.Variables[9].openPanEvap.transform.data_lastyearcopy =
         newValue
     },
 
     ////
 
     setNewConfig_avgAirTemp_data_orig(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_orig = newValue
+      state.config.Variables[10].avgAirTemp.transform.data_orig = newValue
     },
 
     setNewConfig_avgAirTemp_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_month_avg =
-        newValue
+      state.config.Variables[10].avgAirTemp.transform.data_month_avg = newValue
     },
 
     setNewConfig_avgAirTemp_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[10].avgAirTemp.transform.data_lastyearcopy =
+      state.config.Variables[10].avgAirTemp.transform.data_lastyearcopy =
         newValue
     },
 
     ////
 
     setNewConfig_presCM_data_orig(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_orig = newValue
+      state.config.Variables[11].presCM.transform.data_orig = newValue
     },
 
     setNewConfig_presCM_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_month_avg =
-        newValue
+      state.config.Variables[11].presCM.transform.data_month_avg = newValue
     },
 
     setNewConfig_presCM_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[11].presCM.transform.data_lastyearcopy =
-        newValue
+      state.config.Variables[11].presCM.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_soilCover_data_orig(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_orig = newValue
+      state.config.Variables[12].soilCover.transform.data_orig = newValue
     },
 
     setNewConfig_soilCover_data_firstmonthcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_firstmonthcopy =
+      state.config.Variables[12].soilCover.transform.data_firstmonthcopy =
         newValue
     },
 
     setNewConfig_soilCover_data_month_avg(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_month_avg =
-        newValue
+      state.config.Variables[12].soilCover.transform.data_month_avg = newValue
     },
 
     setNewConfig_soilCover_data_lastyearcopy(state, newValue) {
-      state.RothC_config.Variables[12].soilCover.transform.data_lastyearcopy =
+      state.config.Variables[12].soilCover.transform.data_lastyearcopy =
         newValue
     },
 
     setNewConfig_bToCMaxTSMDRatio(state, newValue) {
-      state.RothC_config.Variables[14].soil.bToCMaxTSMDRatio = newValue
+      state.config.Variables[14].soil.bToCMaxTSMDRatio = newValue
     },
     setNewConfig_dToRRatioInPres(state, newValue) {
-      state.RothC_config.Variables[14].soil.dToRRatioInPres = newValue
+      state.config.Variables[14].soil.dToRRatioInPres = newValue
     },
     setNewConfig_encpFracHums(state, newValue) {
-      state.RothC_config.Variables[14].soil.encpFracHums = newValue
+      state.config.Variables[14].soil.encpFracHums = newValue
     },
     setNewConfig_evapoOpenRatio(state, newValue) {
-      state.RothC_config.Variables[14].soil.evapoOpenRatio = newValue
+      state.config.Variables[14].soil.evapoOpenRatio = newValue
     },
     setNewConfig_fracHumsToBios(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracHumsToBios = newValue
+      state.config.Variables[14].soil.fracHumsToBios = newValue
     },
     setNewConfig_fracManuCMToBiof(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracManuCMToBiof = newValue
+      state.config.Variables[14].soil.fracManuCMToBiof = newValue
     },
     setNewConfig_fracManuCMToBios(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracManuCMToBios = newValue
+      state.config.Variables[14].soil.fracManuCMToBios = newValue
     },
     setNewConfig_fracManuCMToDpma(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracManuCMToDpma = newValue
+      state.config.Variables[14].soil.fracManuCMToDpma = newValue
     },
     setNewConfig_fracManuCMToRpma(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracManuCMToRpma = newValue
+      state.config.Variables[14].soil.fracManuCMToRpma = newValue
     },
     setNewConfig_fracPbioToBiof(state, newValue) {
-      state.RothC_config.Variables[14].soil.fracPbioToBiof = newValue
+      state.config.Variables[14].soil.fracPbioToBiof = newValue
     },
     setNewConfig_sampleDepth(state, newValue) {
-      state.RothC_config.Variables[14].soil.sampleDepth = newValue
+      state.config.Variables[14].soil.sampleDepth = newValue
     },
     setNewConfig_sdcmRateMultBiof(state, newValue) {
-      state.RothC_config.Variables[14].soil.sdcmRateMultBiof = newValue
+      state.config.Variables[14].soil.sdcmRateMultBiof = newValue
     },
     setNewConfig_sdcmRateMultBios(state, newValue) {
-      state.RothC_config.Variables[14].soil.sdcmRateMultBios = newValue
+      state.config.Variables[14].soil.sdcmRateMultBios = newValue
     },
     setNewConfig_sdcmRateMultDpm(state, newValue) {
-      state.RothC_config.Variables[14].soil.sdcmRateMultDpm = newValue
+      state.config.Variables[14].soil.sdcmRateMultDpm = newValue
     },
     setNewConfig_sdcmRateMultHums(state, newValue) {
-      state.RothC_config.Variables[14].soil.sdcmRateMultHums = newValue
+      state.config.Variables[14].soil.sdcmRateMultHums = newValue
     },
     setNewConfig_sdcmRateMultRpm(state, newValue) {
-      state.RothC_config.Variables[14].soil.sdcmRateMultRpm = newValue
+      state.config.Variables[14].soil.sdcmRateMultRpm = newValue
+    },
+
+    save_results(state, response) {
+      state.results = response
+      console.log('received rothc example results sent to state')
+      //console.log(state.received_rothc_example_data)
     }
   },
 
   actions: {
-    send_rothcConfig() {
-      console.log(this.state.rothc.RothC_config)
-      let final_RothC_string = JSON.stringify(this.state.rothc.RothC_config)
-      let preprocessed_RothC_string = final_RothC_string.replaceAll('"#$', ' ')
+    send_rothcConfig({ commit }) {
+      console.log(this.state.rothc.config)
+      let final_RothC_string = JSON.stringify(this.state.rothc.config)
+      let preprocessed_RothC_string = final_RothC_string.replaceAll('"$#', '')
       let final_RothC_config_string = preprocessed_RothC_string.replaceAll(
-        '#$"',
-        ' '
+        '$#"',
+        ''
       )
+
+      console.log(final_RothC_config_string)
       axios
         .post('http://127.0.0.1:8080/rothc', final_RothC_config_string)
         .then((response) => {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
+          commit('save_results', response.data)
+          console.log(this.state.rothc.results)
         })
         .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+    },
+    parse_RothC_results({ commit }) {
+      console.log(this.state.rothc.results)
+
+      const dataForge = require('data-forge')
+
+      console.log('running from state')
+      console.log(this.state.rothc.results)
+      var dataset = this.state.rothc.results
+      var DPM = [],
+        RPM = [],
+        BIOF = [],
+        BIOS = [],
+        HUM = [],
+        IOM = []
+
+      let lines = (dataset || '').split('\n')
+      lines.splice(0, 4)
+      lines.splice(-4)
+      dataset = lines.join('\n')
+      const df = dataForge.fromCSV(dataset)
+      let df_as_array = df.toArray()
+      console.log(typeof df_as_array)
+      console.log('array1')
+      console.log(df_as_array.length)
+
+      for (let step = 0; step < df_as_array.length; step++) {
+        DPM[step] = parseFloat(df_as_array[step]['SoilDPM'])
+        RPM[step] = parseFloat(df_as_array[step]['SoilRPM'])
+        BIOF[step] = parseFloat(df_as_array[step]['SoilBioF'])
+        BIOS[step] = parseFloat(df_as_array[step]['SoilBioS'])
+        HUM[step] = parseFloat(df_as_array[step]['SoilHUM'])
+        IOM[step] = parseFloat(df_as_array[step]['SoilIOM'])
+      }
+
+      console.log(DPM)
+      console.log(RPM)
+      console.log(BIOF)
+      console.log(BIOS)
+      console.log(HUM)
+      console.log(IOM)
+
+      commit('update_DPM', DPM)
+      commit('update_RPM', RPM)
+      commit('update_BIOF', BIOF)
+      commit('update_BIOS', BIOS)
+      commit('update_HUM', HUM)
+      commit('update_IOM', IOM)
+
+      console.log('this.state.rothc.DPM')
+      console.log(this.state.rothc.DPM)
+      console.log('this.state.rothc.RPM')
+      console.log(this.state.rothc.RPM)
+      console.log('this.state.rothc.BIOF')
+      console.log(this.state.rothc.BIOF)
+      console.log('this.state.rothc.BIOS')
+      console.log(this.state.rothc.BIOS)
+      console.log('this.state.rothc.HUM')
+      console.log(this.state.rothc.HUM)
+      console.log('this.state.rothc.IOM')
+      console.log(this.state.rothc.IOM)
     }
   }
 }

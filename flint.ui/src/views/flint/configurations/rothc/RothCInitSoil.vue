@@ -208,8 +208,7 @@ export default {
   computed: {
     newconfig_dpmaCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .dpmaCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -219,8 +218,7 @@ export default {
 
     newconfig_rpmaCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .rpmaCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -230,8 +228,7 @@ export default {
 
     newconfig_biofCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .biofCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -241,8 +238,7 @@ export default {
 
     newconfig_biosCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .biosCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -252,8 +248,7 @@ export default {
 
     newconfig_humsCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .humsCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -263,8 +258,7 @@ export default {
 
     newconfig_inrtCMInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .inrtCMInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit
       },
       set(newValue) {
         let tempval = newValue
@@ -274,8 +268,7 @@ export default {
 
     newconfig_TSMDInit: {
       get() {
-        return this.$store.state.rothc.RothC_config.Variables[13].initSoil
-          .TSMDInit
+        return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit
       },
       set(newValue) {
         let tempval = newValue
