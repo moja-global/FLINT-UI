@@ -21,5 +21,4 @@ yarn-error.log*
 *.sw?
 
 commit.sh
-package-lock.json
 yarn.lock
