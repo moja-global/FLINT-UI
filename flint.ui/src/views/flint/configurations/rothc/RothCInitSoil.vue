@@ -274,9 +274,9 @@ export default {
 
     newconfig_TSMDInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit
-          .substr(2)
-          .slice(0, -2)
+        return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit.substr(
+          2
+        ).slice(0, -2)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_TSMDInit', '$#' + newValue + '$#')
