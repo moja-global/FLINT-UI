@@ -238,6 +238,7 @@
                       </span>
 
                       <input
+                        v-model="simulation_title"
                         class="
                           w-full
                           mt-4
@@ -251,7 +252,7 @@
                           focus:shadow-outline
                         "
                         type="text"
-                        placeholder="Regular input"
+                        placeholder="Enter title for simulation"
                       />
 
                       <button
@@ -271,6 +272,9 @@
                           rounded
                           shadow
                         "
+                        :disabled="isTitle()"
+                        :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
+                        @click="setNewTitle"
                       >
                         <i class="fas fa-plus" /> New
                       </button>
@@ -310,7 +314,29 @@ export default {
   },
 
   data: () => ({
-    multiple: null
-  })
+    multiple: null,
+    simulation_title: ''
+  }),
+
+  methods: {
+    checkforSimtitle() {
+      if (this.simulation_title === '') return false
+      else {
+        console.log(this.simulation_title)
+        return true
+      }
+    },
+    isTitle() {
+      if (this.checkforSimtitle()) {
+        return false
+      } else {
+        return true
+      }
+    },
+    setNewTitle() {
+      //function for setting up a new title
+      console.log(this.simulation_title, ' goto /gcbm/new')
+    }
+  }
 }
 </script>
