@@ -239,6 +239,15 @@ export default {
   },
 
   mutations: {
+    setNew_rothc_startDate(state, newValue) {
+      state.config.LocalDomain.start_date = newValue
+      console.log(state.config.LocalDomain.start_date)
+    },
+    setNew_rothc_endDate(state, newValue) {
+      state.config.LocalDomain.end_date = newValue
+      console.log(state.config.LocalDomain.end_date)
+    },
+
     update_DPM(state, DPM) {
       console.log('updated DPM in state')
       console.log(this.state.rothc.DPM)
@@ -269,6 +278,7 @@ export default {
       console.log(this.state.rothc.IOM)
       Vue.set(state, 'IOM', IOM)
     },
+
     setNewConfig_dpmaCMInit(state, newValue) {
       state.config.Variables[13].initSoil.dpmaCMInit = newValue
     },

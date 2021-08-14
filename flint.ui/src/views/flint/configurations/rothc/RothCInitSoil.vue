@@ -209,70 +209,77 @@ export default {
     newconfig_dpmaCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_dpmaCMInit', tempval)
+        this.$store.commit('setNewConfig_dpmaCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_rpmaCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_rpmaCMInit', tempval)
+        this.$store.commit('setNewConfig_rpmaCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_biofCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_biofCMInit', tempval)
+        this.$store.commit('setNewConfig_biofCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_biosCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_biosCMInit', tempval)
+        this.$store.commit('setNewConfig_biosCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_humsCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_humsCMInit', tempval)
+        this.$store.commit('setNewConfig_humsCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_inrtCMInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_inrtCMInit', tempval)
+        this.$store.commit('setNewConfig_inrtCMInit', '$#' + newValue + '$#')
       }
     },
 
     newconfig_TSMDInit: {
       get() {
         return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_TSMDInit', tempval)
+        this.$store.commit('setNewConfig_TSMDInit', '$#' + newValue + '$#')
       }
     }
   }

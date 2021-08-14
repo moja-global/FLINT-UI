@@ -54,9 +54,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.dToRRatioInPres
-                  "
+                  v-model="newconfig_dToRRatioInPres"
                   class="
                     w-full
                     h-10
@@ -80,9 +78,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.encpFracHums
-                  "
+                  v-model="newconfig_encpFracHums"
                   class="
                     w-full
                     h-10
@@ -106,9 +102,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.evapoOpenRatio
-                  "
+                  v-model="newconfig_evapoOpenRatio"
                   class="
                     w-full
                     h-10
@@ -132,9 +126,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.fracHumsToBios
-                  "
+                  v-model="newconfig_fracHumsToBios"
                   class="
                     w-full
                     h-10
@@ -158,10 +150,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .fracManuCMToBiof
-                  "
+                  v-model="newconfig_fracManuCMToBiof"
                   class="
                     w-full
                     h-10
@@ -185,10 +174,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .fracManuCMToBios
-                  "
+                  v-model="newconfig_fracManuCMToBios"
                   class="
                     w-full
                     h-10
@@ -212,10 +198,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .fracManuCMToDpma
-                  "
+                  v-model="newconfig_fracManuCMToDpma"
                   class="
                     w-full
                     h-10
@@ -239,10 +222,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .fracManuCMToRpma
-                  "
+                  v-model="newconfig_fracManuCMToRpma"
                   class="
                     w-full
                     h-10
@@ -266,9 +246,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.fracPbioToBiof
-                  "
+                  v-model="newconfig_fracPbioToBiof"
                   class="
                     w-full
                     h-10
@@ -292,9 +270,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.sampleDepth
-                  "
+                  v-model="newconfig_sampleDepth"
                   class="
                     w-full
                     h-10
@@ -318,10 +294,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .sdcmRateMultBiof
-                  "
+                  v-model="newconfig_sdcmRateMultBiof"
                   class="
                     w-full
                     h-10
@@ -345,10 +318,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .sdcmRateMultBios
-                  "
+                  v-model="newconfig_sdcmRateMultBios"
                   class="
                     w-full
                     h-10
@@ -372,9 +342,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm
-                  "
+                  v-model="newconfig_sdcmRateMultDpm"
                   class="
                     w-full
                     h-10
@@ -398,10 +366,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil
-                      .sdcmRateMultHums
-                  "
+                  v-model="newconfig_sdcmRateMultHums"
                   class="
                     w-full
                     h-10
@@ -425,9 +390,7 @@
               </div>
               <div class="md:w-2/3 md:flex-grow">
                 <input
-                  v-model="
-                    $store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm
-                  "
+                  v-model="newconfig_sdcmRateMultRpm"
                   class="
                     w-full
                     h-10
@@ -460,169 +423,219 @@ export default {
   computed: {
     newconfig_bToCMaxTSMDRatio: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .bToCMaxTSMDRatio
+        return this.$store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_bToCMaxTSMDRatio', tempval)
+        this.$store.commit(
+          'setNewConfig_bToCMaxTSMDRatio',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_dToRRatioInPres: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.dToRRatioInPres
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_dToRRatioInPres', tempval)
+        this.$store.commit(
+          'setNewConfig_dToRRatioInPres',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_encpFracHums: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.encpFracHums
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_encpFracHums', tempval)
+        this.$store.commit('setNewConfig_encpFracHums', '$#' + newValue + '$#')
       }
     },
 
     newconfig_evapoOpenRatio: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.evapoOpenRatio
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_evapoOpenRatio', tempval)
+        this.$store.commit(
+          'setNewConfig_evapoOpenRatio',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracHumsToBios: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.fracHumsToBios
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracHumsToBios', tempval)
+        this.$store.commit(
+          'setNewConfig_fracHumsToBios',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracManuCMToBiof: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .fracManuCMToBiof
+        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBiof
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracManuCMToBiof', tempval)
+        this.$store.commit(
+          'setNewConfig_fracManuCMToBiof',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracManuCMToBios: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .fracManuCMToBios
+        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBios
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracManuCMToBios', tempval)
+        this.$store.commit(
+          'setNewConfig_fracManuCMToBios',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracManuCMToDpma: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .fracManuCMToDpma
+        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToDpma
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracManuCMToDpma', tempval)
+        this.$store.commit(
+          'setNewConfig_fracManuCMToDpma',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracManuCMToRpma: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .fracManuCMToRpma
+        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToRpma
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracManuCMToRpma', tempval)
+        this.$store.commit(
+          'setNewConfig_fracManuCMToRpma',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_fracPbioToBiof: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.fracPbioToBiof
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_fracPbioToBiof', tempval)
+        this.$store.commit(
+          'setNewConfig_fracPbioToBiof',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_sampleDepth: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.sampleDepth
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sampleDepth', tempval)
+        this.$store.commit('setNewConfig_sampleDepth', '$#' + newValue + '$#')
       }
     },
 
     newconfig_sdcmRateMultBiof: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .sdcmRateMultBiof
+        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sdcmRateMultBiof', tempval)
+        this.$store.commit(
+          'setNewConfig_sdcmRateMultBiof',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_sdcmRateMultBios: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .sdcmRateMultBios
+        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBios
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sdcmRateMultBios', tempval)
+        this.$store.commit(
+          'setNewConfig_sdcmRateMultBios',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_sdcmRateMultDpm: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sdcmRateMultDpm', tempval)
+        this.$store.commit(
+          'setNewConfig_sdcmRateMultDpm',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_sdcmRateMultHums: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil
-          .sdcmRateMultHums
+        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultHums
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sdcmRateMultHums', tempval)
+        this.$store.commit(
+          'setNewConfig_sdcmRateMultHums',
+          '$#' + newValue + '$#'
+        )
       }
     },
 
     newconfig_sdcmRateMultRpm: {
       get() {
         return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm
+          .substr(2)
+          .slice(0, -2)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_sdcmRateMultRpm', tempval)
+        this.$store.commit(
+          'setNewConfig_sdcmRateMultRpm',
+          '$#' + newValue + '$#'
+        )
       }
     }
   }

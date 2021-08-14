@@ -236,6 +236,24 @@
                       <span class="font-semibold text-xl text-blueGray-700">
                         Create a new Simulation
                       </span>
+
+                      <input
+                        class="
+                          w-full
+                          mt-4
+                          h-10
+                          px-3
+                          mb-2
+                          text-base text-gray-700
+                          placeholder-gray-600
+                          border
+                          rounded-lg
+                          focus:shadow-outline
+                        "
+                        type="text"
+                        placeholder="Regular input"
+                      />
+
                       <button
                         class="
                           w-full

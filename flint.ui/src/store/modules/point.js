@@ -145,6 +145,15 @@ export default {
   },
 
   mutations: {
+    setNew_point_startDate(state, newValue) {
+      state.config.LocalDomain.start_date = newValue
+      console.log(state.config.LocalDomain.start_date)
+    },
+    setNew_point_endDate(state, newValue) {
+      state.config.LocalDomain.end_date = newValue
+      console.log(state.config.LocalDomain.end_date)
+    },
+
     update_pool_1(state, pool_1) {
       console.log('updated pool 1 in state')
       console.log(this.state.point.pool_1)
@@ -184,6 +193,11 @@ export default {
   },
 
   actions: {
+    set_received_point_example_data(state, response) {
+      state.received_data = response
+      console.log('received_data sent to state')
+    },
+
     send_pointConfig({ commit }) {
       let config_string = JSON.stringify(this.state.point.config)
       let parsed_config_string = config_string.replaceAll('"#$', ' ')

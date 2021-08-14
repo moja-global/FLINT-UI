@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky bottom-0 mt-28">
+  <div class="sticky bottom-0 mt-28 z-50">
     <md-steppers md-sync-route md-dynamic-height>
       <md-step
         id="first"

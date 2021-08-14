@@ -79,34 +79,43 @@ export default {
   computed: {
     newconfig_avgAirTemp_data_orig: {
       get() {
-        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform
-          .data_orig
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig
+          .substr(4)
+          .slice(0, -4)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_avgAirTemp_data_orig', tempval)
+        this.$store.commit(
+          'setNewConfig_avgAirTemp_data_orig',
+          '$#[ ' + newValue + ' ]$#'
+        )
       }
     },
 
     newconfig_avgAirTemp_data_month_avg: {
       get() {
-        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform
-          .data_month_avg
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg
+          .substr(4)
+          .slice(0, -4)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_avgAirTemp_data_month_avg', tempval)
+        this.$store.commit(
+          'setNewConfig_avgAirTemp_data_month_avg',
+          '$#[ ' + newValue + ' ]$#'
+        )
       }
     },
 
     newconfig_avgAirTemp_data_lastyearcopy: {
       get() {
-        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform
-          .data_lastyearcopy
+        return this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy
+          .substr(4)
+          .slice(0, -4)
       },
       set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', tempval)
+        this.$store.commit(
+          'setNewConfig_avgAirTemp_data_lastyearcopy',
+          '$#[ ' + newValue + ' ]$#'
+        )
       }
     }
   }
