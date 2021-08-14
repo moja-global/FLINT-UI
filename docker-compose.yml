@@ -31,10 +31,10 @@ services:
       - ./flint.ui:/usr/src/app/flint.ui
       - ./flint.cloud/local/rest_api_flint.example/output:/server/output
       - /usr/src/app/flint.ui/node_modules
-  storybook:
-    container_name: storybook
-    ports:
-      - "6006:6006"
-    build:
-      context: ./flint.ui
-      dockerfile: ./.storybook/Dockerfile
+  # storybook:
+  #   container_name: storybook
+  #   ports:
+  #     - "6006:6006"
+  #   build:
+  #     context: ./flint.ui
+  #     dockerfile: ./.storybook/Dockerfile
