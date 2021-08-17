@@ -141,7 +141,11 @@ export default {
     results: {},
     pool_1: [],
     pool_2: [],
-    pool_3: []
+    pool_3: [],
+    step: [],
+    stepDate: [],
+    fracOfStep: [],
+    stepLenInYears: []
   },
 
   mutations: {
@@ -168,6 +172,21 @@ export default {
       console.log('updated pool 3 in state')
       console.log(this.state.point.pool_3)
       Vue.set(state, 'pool_3', pool_3)
+    },
+    update_stepLenInYears(state, stepLenInYears) {
+      console.log('updated stepLenInYears in state')
+      console.log(this.state.point.stepLenInYears)
+      Vue.set(state, 'stepLenInYears', stepLenInYears)
+    },
+    update_stepDate(state, stepDate) {
+      console.log('updated stepDate in state')
+      console.log(this.state.point.stepDate)
+      Vue.set(state, 'stepDate', stepDate)
+    },
+    update_step(state, step) {
+      console.log('updated step in state')
+      console.log(this.state.point.step)
+      Vue.set(state, 'step', step)
     },
 
     //Point Sim config
@@ -227,7 +246,10 @@ export default {
       var dataset = this.state.point.results
       var pool_1 = [],
         pool_2 = [],
-        pool_3 = []
+        pool_3 = [],
+        step = [],
+        stepDate = [],
+        stepLenInYears = []
 
       let lines = (dataset || '').split('\n')
       lines.splice(0, 4)
@@ -239,19 +261,41 @@ export default {
       console.log('array1')
       console.log(df_as_array.length)
 
-      for (let step = 0; step < df_as_array.length; step++) {
-        pool_1[step] = parseFloat(df_as_array[step]['Pool 1'])
-        pool_2[step] = parseFloat(df_as_array[step]['Pool 2'])
-        pool_3[step] = parseFloat(df_as_array[step]['Pool 3'])
+      for (
+        let simulation_step = 0;
+        simulation_step < df_as_array.length;
+        simulation_step++
+      ) {
+        pool_1[simulation_step] = parseFloat(
+          df_as_array[simulation_step]['Pool 1']
+        )
+        pool_2[simulation_step] = parseFloat(
+          df_as_array[simulation_step]['Pool 2']
+        )
+        pool_3[simulation_step] = parseFloat(
+          df_as_array[simulation_step]['Pool 3']
+        )
+        step[simulation_step] = parseInt(df_as_array[simulation_step]['step'])
+        stepDate[simulation_step] =
+          df_as_array[simulation_step]['stepDate'].toString()
+        stepLenInYears[simulation_step] = parseFloat(
+          df_as_array[simulation_step]['stepLenInYears']
+        )
       }
 
+      console.log(step)
+      console.log(stepDate)
       console.log(pool_1)
       console.log(pool_2)
       console.log(pool_3)
+      console.log(stepLenInYears)
 
       commit('update_pool_1', pool_1)
       commit('update_pool_2', pool_2)
       commit('update_pool_3', pool_3)
+      commit('update_stepLenInYears', stepLenInYears)
+      commit('update_step', step)
+      commit('update_stepDate', stepDate)
 
       console.log('this.pool_1')
       console.log(this.state.point.pool_1)
@@ -259,6 +303,12 @@ export default {
       console.log(this.state.point.pool_2)
       console.log('this.pool_3')
       console.log(this.state.point.pool_3)
+      console.log('this.step')
+      console.log(this.state.point.step)
+      console.log('this.stepDate')
+      console.log(this.state.point.stepDate)
+      console.log('this.stepLenInYears')
+      console.log(this.state.point.stepLenInYears)
     }
   }
 }

@@ -26,6 +26,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import VGrid from '@revolist/vue-datagrid'
 export default {
   components: {
@@ -35,25 +36,98 @@ export default {
     return {
       columns: [
         {
-          prop: 'name',
-          name: 'First'
+          prop: 'step',
+          name: 'step'
         },
         {
-          prop: 'details',
-          name: 'Second'
+          prop: 'stepDate',
+          name: 'stepDate'
+        },
+        {
+          prop: 'stepLenInYears',
+          name: 'stepLenInYears'
+        },
+        {
+          prop: 'pool_1',
+          name: 'Pool 1'
+        },
+        {
+          prop: 'pool_2',
+          name: 'Pool 2'
+        },
+        {
+          prop: 'pool_3',
+          name: 'Pool 3'
         }
       ],
-      rows: [
-        {
-          name: '1',
-          details: 'Item 1'
-        },
-        {
-          name: '2',
-          details: 'Item 2'
-        }
-      ]
+      rows: this.generateDataRows()
     }
+  },
+  methods: {
+    pool_1() {
+      console.log('this.$store.state.point.pool_1')
+      console.log(this.$store.state.point.pool_1)
+      return this.$store.state.point.pool_1
+    },
+    pool_2() {
+      console.log('this.$store.state.point.pool_2')
+      console.log(this.$store.state.point.pool_2)
+      return this.$store.state.point.pool_2
+    },
+    pool_3() {
+      console.log('this.$store.state.point.pool_3')
+      console.log(this.$store.state.point.pool_3)
+      return this.$store.state.point.pool_3
+    },
+    step() {
+      console.log('this.$store.state.point.step')
+      console.log(this.$store.state.point.step)
+      return this.$store.state.point.step
+    },
+    stepDate() {
+      console.log('this.$store.state.point.stepDate')
+      console.log(this.$store.state.point.stepDate)
+      return this.$store.state.point.stepDate
+    },
+    stepLenInYears() {
+      console.log('this.$store.state.point.stepLenInYears')
+      console.log(this.$store.state.point.stepLenInYears)
+      return this.$store.state.point.stepLenInYears
+    },
+    generateDataRows: function () {
+      var result = []
+      var pool_1 = this.pool_1(),
+        pool_2 = this.pool_2(),
+        pool_3 = this.pool_3(),
+        step = this.step(),
+        stepDate = this.stepDate(),
+        stepLenInYears = this.stepLenInYears()
+      console.log('pool_1 from generateDataRows')
+      console.log(pool_1)
+      console.log('pool_2 from generateDataRows')
+      console.log(pool_2)
+      console.log('pool_3 from generateDataRows')
+      console.log(pool_3)
+
+      for (let j = 0; j < step.length; j++) {
+        let row = j
+        if (!result[row]) {
+          result[row] = {}
+        }
+        result[row]['step'] = step[row]
+        result[row]['stepDate'] = stepDate[row]
+        result[row]['stepLenInYears'] = stepLenInYears[row]
+        result[row]['pool_1'] = pool_1[row]
+        result[row]['pool_2'] = pool_2[row]
+        result[row]['pool_3'] = pool_3[row]
+      }
+      console.log('result')
+      console.log(result)
+      return result
+    }
+  },
+  beforeMount() {
+    this.$store.dispatch('parse_point_results')
   }
 }
 </script>
