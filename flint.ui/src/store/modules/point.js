@@ -138,24 +138,23 @@ export default {
         }
       }
     },
-    results: {},
+    point_results: {},
     pool_1: [],
     pool_2: [],
     pool_3: [],
-    step: [],
-    stepDate: [],
-    fracOfStep: [],
-    stepLenInYears: []
+    point_step: [],
+    point_stepDate: [],
+    point_stepLenInYears: []
   },
 
   mutations: {
     setNew_point_startDate(state, newValue) {
-      state.config.LocalDomain.start_date = newValue
-      console.log(state.config.LocalDomain.start_date)
+      this.state.point.config.LocalDomain.start_date = newValue
+      console.log(this.state.point.config.LocalDomain.start_date)
     },
     setNew_point_endDate(state, newValue) {
-      state.config.LocalDomain.end_date = newValue
-      console.log(state.config.LocalDomain.end_date)
+      this.state.point.config.LocalDomain.end_date = newValue
+      console.log(this.state.point.config.LocalDomain.end_date)
     },
 
     update_pool_1(state, pool_1) {
@@ -173,40 +172,40 @@ export default {
       console.log(this.state.point.pool_3)
       Vue.set(state, 'pool_3', pool_3)
     },
-    update_stepLenInYears(state, stepLenInYears) {
-      console.log('updated stepLenInYears in state')
-      console.log(this.state.point.stepLenInYears)
-      Vue.set(state, 'stepLenInYears', stepLenInYears)
+    update_point_stepLenInYears(state, point_stepLenInYears) {
+      console.log('updated point_stepLenInYears in state')
+      console.log(this.state.point.point_stepLenInYears)
+      Vue.set(state, 'point_stepLenInYears', point_stepLenInYears)
     },
-    update_stepDate(state, stepDate) {
-      console.log('updated stepDate in state')
-      console.log(this.state.point.stepDate)
-      Vue.set(state, 'stepDate', stepDate)
+    update_point_stepDate(state, point_stepDate) {
+      console.log('updated point_stepDate in state')
+      console.log(this.state.point.point_stepDate)
+      Vue.set(state, 'point_stepDate', point_stepDate)
     },
-    update_step(state, step) {
-      console.log('updated step in state')
-      console.log(this.state.point.step)
-      Vue.set(state, 'step', step)
+    update_point_step(state, point_step) {
+      console.log('updated point_step in state')
+      console.log(this.state.point.point_step)
+      Vue.set(state, 'point_step', point_step)
     },
 
     //Point Sim config
     set_pointConfig_Pool_1(state, pool_1_value) {
       let pool_1_valuex = '#$' + pool_1_value + '#$'
-      state.config['Pools'][0]['Pool 1'] = pool_1_valuex
+      this.state.point.config['Pools'][0]['Pool 1'] = pool_1_valuex
     },
     set_pointConfig_Pool_2(state, pool_2_value) {
-      console.log(state.config)
+      console.log(this.state.point.config)
       let pool_2_valuex = '#$' + pool_2_value + '#$'
-      state.config['Pools'][1]['Pool 2'] = pool_2_valuex
+      this.state.point.config['Pools'][1]['Pool 2'] = pool_2_valuex
     },
     set_pointConfig_Pool_3(state, pool_3_value) {
       let pool_3_valuex = '#$' + pool_3_value + '#$'
-      state.config['Pools'][2]['Pool 3'] = pool_3_valuex
-      console.log(state.config)
+      this.state.point.config['Pools'][2]['Pool 3'] = pool_3_valuex
+      console.log(this.state.point.config)
     },
-    save_results(state, response) {
-      state.results = response
-      console.log('results sent to state')
+    save_point_results(state, response) {
+      state.point_results = response
+      console.log('point_results sent to state')
       //console.log(state.results)
     }
   },
@@ -228,8 +227,8 @@ export default {
           this._vm.$toast.success(`${response}`, { timeout: 2000 })
           console.log(response)
           //this.state.received_data = response.data;
-          commit('save_results', response.data)
-          console.log(this.state.point.results)
+          commit('save_point_results', response.data)
+          console.log(this.state.point.point_results)
         })
         .catch((error) => {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
@@ -237,19 +236,19 @@ export default {
         })
     },
     parse_point_results({ commit }) {
-      console.log(this.state.point.results)
+      console.log(this.state.point.point_results)
 
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      console.log(this.state.point.results)
-      var dataset = this.state.point.results
+      console.log(this.state.point.point_results)
+      var dataset = this.state.point.point_results
       var pool_1 = [],
         pool_2 = [],
         pool_3 = [],
-        step = [],
-        stepDate = [],
-        stepLenInYears = []
+        point_step = [],
+        point_stepDate = [],
+        point_stepLenInYears = []
 
       let lines = (dataset || '').split('\n')
       lines.splice(0, 4)
@@ -275,27 +274,29 @@ export default {
         pool_3[simulation_step] = parseFloat(
           df_as_array[simulation_step]['Pool 3']
         )
-        step[simulation_step] = parseInt(df_as_array[simulation_step]['step'])
-        stepDate[simulation_step] =
+        point_step[simulation_step] = parseInt(
+          df_as_array[simulation_step]['step']
+        )
+        point_stepDate[simulation_step] =
           df_as_array[simulation_step]['stepDate'].toString()
-        stepLenInYears[simulation_step] = parseFloat(
+        point_stepLenInYears[simulation_step] = parseFloat(
           df_as_array[simulation_step]['stepLenInYears']
         )
       }
 
-      console.log(step)
-      console.log(stepDate)
+      console.log(point_step)
+      console.log(point_stepDate)
       console.log(pool_1)
       console.log(pool_2)
       console.log(pool_3)
-      console.log(stepLenInYears)
+      console.log(point_stepLenInYears)
 
       commit('update_pool_1', pool_1)
       commit('update_pool_2', pool_2)
       commit('update_pool_3', pool_3)
-      commit('update_stepLenInYears', stepLenInYears)
-      commit('update_step', step)
-      commit('update_stepDate', stepDate)
+      commit('update_point_stepLenInYears', point_stepLenInYears)
+      commit('update_point_step', point_step)
+      commit('update_point_stepDate', point_stepDate)
 
       console.log('this.pool_1')
       console.log(this.state.point.pool_1)
@@ -303,12 +304,12 @@ export default {
       console.log(this.state.point.pool_2)
       console.log('this.pool_3')
       console.log(this.state.point.pool_3)
-      console.log('this.step')
-      console.log(this.state.point.step)
-      console.log('this.stepDate')
-      console.log(this.state.point.stepDate)
-      console.log('this.stepLenInYears')
-      console.log(this.state.point.stepLenInYears)
+      console.log('this.point_step')
+      console.log(this.state.point.point_step)
+      console.log('this.point_stepDate')
+      console.log(this.state.point.point_stepDate)
+      console.log('this.point_stepLenInYears')
+      console.log(this.state.point.point_stepLenInYears)
     }
   }
 }

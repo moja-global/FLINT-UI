@@ -36,15 +36,15 @@ export default {
     return {
       columns: [
         {
-          prop: 'step',
+          prop: 'point_step',
           name: 'step'
         },
         {
-          prop: 'stepDate',
+          prop: 'point_stepDate',
           name: 'stepDate'
         },
         {
-          prop: 'stepLenInYears',
+          prop: 'point_stepLenInYears',
           name: 'stepLenInYears'
         },
         {
@@ -79,29 +79,29 @@ export default {
       console.log(this.$store.state.point.pool_3)
       return this.$store.state.point.pool_3
     },
-    step() {
-      console.log('this.$store.state.point.step')
-      console.log(this.$store.state.point.step)
-      return this.$store.state.point.step
+    point_step() {
+      console.log('this.$store.state.point.point_step')
+      console.log(this.$store.state.point.point_step)
+      return this.$store.state.point.point_step
     },
-    stepDate() {
-      console.log('this.$store.state.point.stepDate')
-      console.log(this.$store.state.point.stepDate)
-      return this.$store.state.point.stepDate
+    point_stepDate() {
+      console.log('this.$store.state.point.point_stepDate')
+      console.log(this.$store.state.point.point_stepDate)
+      return this.$store.state.point.point_stepDate
     },
-    stepLenInYears() {
-      console.log('this.$store.state.point.stepLenInYears')
-      console.log(this.$store.state.point.stepLenInYears)
-      return this.$store.state.point.stepLenInYears
+    point_stepLenInYears() {
+      console.log('this.$store.state.point.point_stepLenInYears')
+      console.log(this.$store.state.point.point_stepLenInYears)
+      return this.$store.state.point.point_stepLenInYears
     },
     generateDataRows: function () {
       var result = []
       var pool_1 = this.pool_1(),
         pool_2 = this.pool_2(),
         pool_3 = this.pool_3(),
-        step = this.step(),
-        stepDate = this.stepDate(),
-        stepLenInYears = this.stepLenInYears()
+        point_step = this.point_step(),
+        point_stepDate = this.point_stepDate(),
+        point_stepLenInYears = this.point_stepLenInYears()
       console.log('pool_1 from generateDataRows')
       console.log(pool_1)
       console.log('pool_2 from generateDataRows')
@@ -109,14 +109,14 @@ export default {
       console.log('pool_3 from generateDataRows')
       console.log(pool_3)
 
-      for (let j = 0; j < step.length; j++) {
+      for (let j = 0; j < point_step.length; j++) {
         let row = j
         if (!result[row]) {
           result[row] = {}
         }
-        result[row]['step'] = step[row]
-        result[row]['stepDate'] = stepDate[row]
-        result[row]['stepLenInYears'] = stepLenInYears[row]
+        result[row]['point_step'] = point_step[row]
+        result[row]['point_stepDate'] = point_stepDate[row]
+        result[row]['point_stepLenInYears'] = point_stepLenInYears[row]
         result[row]['pool_1'] = pool_1[row]
         result[row]['pool_2'] = pool_2[row]
         result[row]['pool_3'] = pool_3[row]
