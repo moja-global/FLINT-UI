@@ -24,6 +24,7 @@
     "data-forge": "^1.8.17",
     "fs": "0.0.1-security",
     "google-maps": "4.3.3",
+    "moment": "^2.29.1",
     "ol": "^6.6.1",
     "vue": "2.6.14",
     "vue-apexcharts": "^1.6.2",
