@@ -1,8 +1,9 @@
 //import Vue from 'vue'
-//import axios from 'axios'
+import axios from 'axios'
 
 export default {
   state: {
+    title: '',
     pools_cbm: {
       Pools: {
         AboveGroundFastSoil: 0.0,
@@ -632,7 +633,37 @@ export default {
       }
     }
   },
-  mutations: {},
+  mutations: {
+    save_new_gcbm_job_title(state, title) {
+      console.log('passed title')
+      console.log(title)
+      state.title = title
+      console.log(state.title)
+    }
+  },
 
-  actions: {}
+  actions: {
+    title_setter({ commit }, payload) {
+      commit('save_new_gcbm_job_title', payload)
+      console.log('from title_setter')
+      console.log(this.state.gcbm.title)
+      //dispatch(this.send_new_gcbm_job_title)
+    },
+    send_new_gcbm_job_title() {
+      var bodyFormData = new FormData()
+      console.log(this.state.gcbm.title)
+      bodyFormData.append('title', this.state.gcbm.title)
+      console.log([...bodyFormData])
+      axios
+        .post('http://127.0.0.1:8081/gcbm/new', bodyFormData)
+        .then((response) => {
+          this._vm.$toast.success(`${response}`, { timeout: 2000 })
+          console.log(response)
+        })
+        .catch((error) => {
+          this._vm.$toast.error(`${error}`, { timeout: 2000 })
+          console.log(error)
+        })
+    }
+  }
 }

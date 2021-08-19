@@ -276,7 +276,31 @@
                         :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
                         @click="setNewTitle"
                       >
-                        <i class="fas fa-plus" /> New
+                        <i class="fas fa-plus" /> Set title
+                      </button>
+
+                      <button
+                        class="
+                          w-full
+                          mt-4
+                          block
+                          align-middle
+                          flex-initial
+                          bg-white
+                          hover:bg-black hover:text-white
+                          text-gray-800
+                          font-semibold
+                          py-2
+                          px-4
+                          border border-gray-400
+                          rounded
+                          shadow
+                        "
+                        :disabled="isTitle()"
+                        :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
+                        @click="sendToAPI"
+                      >
+                        <i class="fas fa-plus" /> Create run
                       </button>
                     </div>
                     <p class="text-sm text-blueGray-400 mt-4">
@@ -336,6 +360,17 @@ export default {
     setNewTitle() {
       //function for setting up a new title
       console.log(this.simulation_title, ' goto /gcbm/new')
+      var simulation_title = this.simulation_title
+      console.log('simulation_title')
+      console.log(simulation_title)
+
+      this.$store.dispatch('title_setter', simulation_title)
+      console.log('from set new title')
+      console.log(this.gcbm.state.Title)
+    },
+    sendToAPI() {
+      //function to send the title to API
+      this.$store.dispatch('send_new_gcbm_job_title')
     }
   }
 }
