@@ -657,7 +657,7 @@ export default {
       axios
         .post('http://127.0.0.1:8081/gcbm/new', bodyFormData)
         .then((response) => {
-          this._vm.$toast.success(`${response}`, { timeout: 2000 })
+          this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
           console.log(response)
         })
         .catch((error) => {

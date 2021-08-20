@@ -218,81 +218,10 @@
             <div class="flex flex-wrap my-5">
               <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
               <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
-                <div
-                  class="
-                    relative
-                    flex flex-col
-                    min-w-0
-                    break-words
-                    bg-white
-                    rounded
-                    mb-6
-                    xl:mb-0
-                    shadow-lg
-                  "
-                >
-                  <div class="flex-auto p-4">
-                    <div class="relative w-full max-w-full flex-grow flex-1">
-                      <span class="font-semibold text-xl text-blueGray-700">
-                        Create a new Simulation
-                      </span>
-
-                      <input
-                        v-model="simulation_title"
-                        class="
-                          w-full
-                          mt-4
-                          h-10
-                          px-3
-                          mb-2
-                          text-base text-gray-700
-                          placeholder-gray-600
-                          border
-                          rounded-lg
-                          focus:shadow-outline
-                        "
-                        type="text"
-                        placeholder="Enter title for simulation"
-                      />
-
-                      <button
-                        class="
-                          w-full
-                          mt-4
-                          block
-                          align-middle
-                          flex-initial
-                          bg-white
-                          hover:bg-black hover:text-white
-                          text-gray-800
-                          font-semibold
-                          py-2
-                          px-4
-                          border border-gray-400
-                          rounded
-                          shadow
-                        "
-                        :disabled="isTitle()"
-                        :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
-                        @click="sendToAPI"
-                      >
-                        <i class="fas fa-plus" /> Create run
-                      </button>
-                    </div>
-                    <p class="text-sm text-blueGray-400 mt-4">
-                      <span class="whitespace-nowrap"
-                        >Creates a new simulation run</span
-                      >
-                    </p>
-                  </div>
-                </div>
+                <FileUpload />
               </div>
 
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
-                <!--
-
-                <FileUpload /> -->
-              </div>
+              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
             </div>
           </div>
         </div>
@@ -305,13 +234,13 @@
 
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
-// import FileUpload from '@/components/FileUpload/FileUpload.vue'
+import FileUpload from '@/components/FileUpload/FileUpload.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
-    StepperGCBM
-    // FileUpload
+    StepperGCBM,
+    FileUpload
   },
 
   data: () => ({
@@ -349,3 +278,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.filepond--image-preview-wrapper {
+  display: none;
+}
+</style>
