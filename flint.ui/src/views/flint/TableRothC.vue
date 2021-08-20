@@ -13,14 +13,43 @@
   >
     <div class="px-4 md:px-10 mx-auto w-full h-auto">
       <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">
+        <div class="bg-white p-6 rounded-lg shadow-lg flex">
+          <h2 class="text-2xl font-bold text-gray-800 flex-1">
             ROTHC example data visualisation table
           </h2>
+
+          <router-link to="/flint/rothc_output">
+            <button
+              class="
+                inline-block
+                align-middle
+                flex-initial
+                bg-white
+                hover:bg-black hover:text-white
+                text-gray-800
+                font-semibold
+                py-2
+                px-4
+                border border-gray-400
+                rounded
+                shadow
+              "
+            >
+              <i class="far fa-image" /> Visualise on Graph
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
-    <v-grid theme="compact" :source="rows" :columns="columns"></v-grid>
+
+    <div class="h-2/3 mt-12 px-6">
+      <v-grid
+        style="height: 100%"
+        theme="default"
+        :source="rows"
+        :columns="columns"
+      ></v-grid>
+    </div>
   </div>
 </template>
 
@@ -35,51 +64,63 @@ export default {
       columns: [
         {
           prop: 'RothC_step',
-          name: 'step'
+          name: 'step',
+          size: 50
         },
         {
           prop: 'RothC_stepDate',
-          name: 'stepDate'
+          name: 'stepDate',
+          size: 200
         },
         {
           prop: 'RothC_stepLenInYears',
-          name: 'stepLenInYears'
+          name: 'stepLenInYears',
+          size: 150
         },
         {
           prop: 'initialValues',
-          name: 'initialValues'
+          name: 'initialValues',
+          size: 100
         },
         {
           prop: 'plantCM',
-          name: 'plantCM'
+          name: 'plantCM',
+          size: 100
         },
         {
           prop: 'DPM',
-          name: 'SoilDPM'
+          name: 'SoilDPM',
+          size: 150
         },
         {
           prop: 'RPM',
-          name: 'SoilRPM'
+          name: 'SoilRPM',
+          size: 150
         },
         {
           prop: 'BIOF',
-          name: 'SoilBioF'
+          name: 'SoilBioF',
+          size: 150
         },
         {
           prop: 'BIOS',
-          name: 'SoilBioS'
+          name: 'SoilBioS',
+          size: 150
         },
         {
           prop: 'HUM',
-          name: 'SoilHUM'
+          name: 'SoilHUM',
+          size: 150
         },
         {
           prop: 'IOM',
-          name: 'SoilIOM'
+          name: 'SoilIOM',
+          size: 100
         },
         {
           prop: 'atmosphere',
-          name: 'atmosphere'
+          name: 'atmosphere',
+          size: 150
         }
       ],
       rows: this.generateDataRows()

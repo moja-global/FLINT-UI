@@ -13,15 +13,43 @@
   >
     <div class="px-4 md:px-10 mx-auto w-full h-auto">
       <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">
+        <div class="bg-white p-6 rounded-lg shadow-lg flex">
+          <h2 class="text-2xl font-bold text-gray-800 flex-1">
             Point example data visualisation table
           </h2>
+
+          <router-link to="/flint/point_output">
+            <button
+              class="
+                inline-block
+                align-middle
+                flex-initial
+                bg-white
+                hover:bg-black hover:text-white
+                text-gray-800
+                font-semibold
+                py-2
+                px-4
+                border border-gray-400
+                rounded
+                shadow
+              "
+            >
+              <i class="far fa-image" /> Visualise on Graph
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
 
-    <v-grid theme="compact" :source="rows" :columns="columns"></v-grid>
+    <div class="h-2/3 mt-12 px-6">
+      <v-grid
+        style="height: 100%"
+        theme="default"
+        :source="rows"
+        :columns="columns"
+      ></v-grid>
+    </div>
   </div>
 </template>
 
@@ -37,29 +65,44 @@ export default {
       columns: [
         {
           prop: 'point_step',
-          name: 'step'
+          name: 'step',
+          size: 50
         },
         {
           prop: 'point_stepDate',
-          name: 'stepDate'
+          name: 'stepDate',
+          size: 200
         },
         {
           prop: 'point_stepLenInYears',
-          name: 'stepLenInYears'
+          name: 'stepLenInYears',
+          size: 200
         },
+        
+        // stacked column
         {
-          prop: 'pool_1',
-          name: 'Pool 1'
+        name: 'Pools',
+        children: [
+            {
+            prop: 'pool_1',
+            name: 'Pool 1',
+            size: 150
+          },
+          {
+            prop: 'pool_2',
+            name: 'Pool 2',
+            size: 150
+          },
+          {
+            prop: 'pool_3',
+            name: 'Pool 3',
+            size: 150
+          }
+        ],
+    
         },
-        {
-          prop: 'pool_2',
-          name: 'Pool 2'
-        },
-        {
-          prop: 'pool_3',
-          name: 'Pool 3'
-        }
       ],
+      
       rows: this.generateDataRows()
     }
   },
@@ -134,6 +177,19 @@ export default {
 
 <style>
 revo-grid {
-  height: 50%;
+  height: 100%;
+}
+
+div .rgHeaderCell, .header-rgRow{
+  background: #000000;
+  color: #fff;
+}
+
+div .header-content {
+  color: #fff;
+}
+
+.rgCell {
+  background-color: #fff;
 }
 </style>
