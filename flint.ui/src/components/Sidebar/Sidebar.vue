@@ -218,7 +218,7 @@
           <li class="items-center">
             <router-link
               v-slot="{ href, navigate, isActive }"
-              to="/flint/point_output"
+              to="/flint/point_output_table"
             >
               <a
                 :href="href"
@@ -234,7 +234,7 @@
                   class="fas fa-chart-bar mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 />
-                Point Output
+                Point Output Table
               </a>
             </router-link>
           </li>
@@ -242,7 +242,7 @@
           <li class="items-center">
             <router-link
               v-slot="{ href, navigate, isActive }"
-              to="/flint/rothc_output"
+              to="/flint/rothc_output_table"
             >
               <a
                 :href="href"
@@ -258,7 +258,7 @@
                   class="fas fa-chart-bar mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 />
-                RothC Output
+                RothC Output Table
               </a>
             </router-link>
           </li>
