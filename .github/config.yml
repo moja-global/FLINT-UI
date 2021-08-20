@@ -45,4 +45,25 @@ firstPRMergeComment: |
   <p>Create a welcoming or beginner friendly issue for someone else! 😄 🎉 </p>
   </details>
 
+# *Required* Comment to reply with
+requestInfoReplyComment: >
+  Hi,
+  Thanks for raising an issue/Pull Request! We at moja global appreciate your concerns and views to
+  help us improve. We capitalize on fostering a welcoming environment for all our contributors.
+  However we see that there is a lack of description in your Issue/Pull Request. We would appreciate
+  it if you could provide us with more info about this Issue/Pull Request. It would help our maintainers,
+  ambassadors and coaches to better review your Issue/PR and provide actionable feedback!
+  We are looking forward to your contributions!
+# *OPTIONAL* default titles to check against for lack of descriptiveness
+# MUST BE ALL LOWERCASE
+requestInfoDefaultTitles:
+  - update readme.md
+  - updates
+  - add files via upload
+  - readme.md
+  - changes made
+
+# *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
+requestInfoLabelToAdd: needs-more-info
+
 # It is recommended to include as many gifs and emojis as possible!

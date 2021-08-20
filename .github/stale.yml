@@ -1,0 +1,25 @@
+# Stale Bot Integration
+
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 30
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 7
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - help wanted
+  - question
+  - good first issue
+
+# Label to use when marking an issue as stale
+staleLabel: wontfix
+
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: >
+  Thank you for raising this issue. We at moja global appreciate your contribution to our project. Our community tries to foster a welcoming environment and we appreciate you helping us improve our software.
+
+  Your issue has not seen any activity for the past 30 days. If there are no updates [more concise] in the next 7 days, this issue will be automatically closed. Please comment if you would like further discussion of this issue. 
+
+  We truly appreciate your contributions and would love to hear your thoughts.
+
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: false
