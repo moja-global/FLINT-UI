@@ -90,13 +90,27 @@ To run the Vue app locally, you can follow the below procedure:
 2. Run `npm run serve` to start the Vue app server.
 3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
 
-### Storybook
+### Storybook in local development
 
-To run Storybook locally, you can follow the below procedure:
+Storybook dependencies and configuration are located under the `flint.ui/.storybook` directory.
 
-1. Go to the `flint.ui` folder and run `npm install`.
-2. Run `npm run storybook` to start the Storybook server.
-3. Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
+To build and launch Storybook locally, we have to follow the below procedure:
+
+Go to the `flint.ui` directory.
+
+1. Install Storybook dependencies:
+
+```shell
+npm install
+```
+
+2. Build the Storybook site:
+
+```shell
+npm run storybook
+```
+
+Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
 ### Dependency management
 
