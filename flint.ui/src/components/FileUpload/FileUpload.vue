@@ -1,55 +1,36 @@
 <template>
   <div>
-    <file-pond
-      ref="pond"
-      name="test"
-      label-idle="Drop files here..."
-      :allow-multiple="true"
-      acceipted-file-types="application/zip"
-      server="/api"
-      :files="myFiles"
-      @init="handleFilePondInit"
-    />
+    <vue-dropzone
+      id="dropzone"
+      ref="myVueDropzone"
+      :options="dropzoneOptions"
+    ></vue-dropzone>
+    <button @click="listFiles">
+      List uploaded files in console by clicking here
+    </button>
   </div>
 </template>
 
 <script>
-// accepted-file-types="image/tiff, image/x-tiff, application/json, application/x-geotiff, application/gml+xml, application/x-wms, text/xml"
-
-// Import Vue FilePond
-import vueFilePond from 'vue-filepond'
-
-// Import FilePond styles
-import 'filepond/dist/filepond.min.css'
-
-// Import FilePond plugins
-// Please note that you need to install these plugins separately
-
-// Import image preview plugin styles
-// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-
-// Import image preview and file type validation plugins
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
-// import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-
-// Create component
-const FilePond = vueFilePond(
-  FilePondPluginFileValidateType
-  // FilePondPluginImagePreview
-)
-
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
   components: {
-    FilePond
+    vueDropzone: vue2Dropzone
   },
   data: function () {
-    return { myFiles: [] }
+    return {
+      dropzoneOptions: {
+        url: 'https://httpbin.org/post',
+        thumbnailWidth: 150,
+        maxFilesize: 0.5,
+        headers: { 'My-Awesome-Header': 'header value' }
+      }
+    }
   },
   methods: {
-    handleFilePondInit: function () {
-      console.log('FilePond has initialized')
-
-      // FilePond instance methods are available on `this.$refs.pond`
+    listFiles: function () {
+      console.log(this.$refs.myVueDropzone.getAcceptedFiles())
     }
   }
 }
