@@ -30,11 +30,11 @@
               <h1 class="text-white font-semibold text-5xl">
                 About the FLINT UI.
               </h1>
-              <p class="mt-4 text-lg text-blueGray-200">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus consectetur vero molestias ab doloremque quia id
-                debitis nemo illum expedita. Quia cumque aut ipsam id dolores
-                est temporibus fugit blanditiis.
+              <p class="mt-4 text-lg text-white">
+               This project provides an intuitive way for new to explore some preconfigured FLINT modules,
+               including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT
+               system works. Our client is written as a Web application and can be used in a local or remote
+               environment.
               </p>
             </div>
           </div>
