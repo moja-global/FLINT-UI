@@ -12,7 +12,7 @@
           pb-32
           pt-12
           w-full
-          h-screen
+          h-auto
         "
       >
         <div class="px-4 md:px-10 mx-auto w-full">
@@ -216,12 +216,9 @@
             </div>
 
             <div class="flex flex-wrap my-5">
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
+              <div class="w-full px-4 content-center">
                 <FileUpload />
               </div>
-
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
             </div>
           </div>
         </div>
@@ -280,7 +277,66 @@ export default {
 </script>
 
 <style>
-.filepond--image-preview-wrapper {
+.vue-dropzone > .dz-preview .dz-progress .dz-upload {
+  background-color: #73e8a3;
+}
+
+div#dropzone {
+  border-radius: 10px;
+}
+
+.dz-default.dz-message {
+  font-size: larger;
+}
+
+.vue-dropzone > .dz-preview .dz-details {
+  background-color: #2e382b;
+}
+
+.dz-filename {
+  width: 100%;
+  height: 100%;
+}
+
+span.data-dz-name {
+  display: block;
+}
+
+#dropzone .dz-preview {
+  width: 29.1%;
+}
+
+#dropzone .dz-preview .dz-image {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+#dropzone .dz-preview .dz-image > div {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  background-size: contain;
+}
+#dropzone .dz-preview .dz-image > img {
+  width: 100%;
+  display: none;
+}
+
+.dropzone .dz-preview.dz-image-preview .dz-details {
+  opacity: 1;
+}
+
+#dropzone .dz-preview .dz-details {
+  color: white;
+  transition: opacity 0.2s linear;
+  text-align: center;
+}
+#dropzone .dz-success-mark,
+.dz-error-mark,
+.dz-remove,
+div.dz-image,
+div.dz-size {
   display: none;
 }
 </style>

@@ -12,7 +12,7 @@
           pb-32
           pt-12
           w-full
-          h-screen
+          h-auto
         "
       >
         <div class="px-4 md:px-10 mx-auto w-full">
