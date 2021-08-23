@@ -22,3 +22,7 @@ yarn-error.log*
 
 commit.sh
 yarn.lock
+
+# Storybook
+
+build-storybook.log
