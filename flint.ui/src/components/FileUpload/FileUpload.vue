@@ -9,6 +9,7 @@
       @vdropzone-success="uploadSuccess"
       @vdropzone-error="uploadError"
       @vdropzone-removed-file="fileRemoved"
+      @vdropzone-sending="sendingEvent"
     ></vue-dropzone>
     <br />
     <br />
@@ -35,11 +36,15 @@ export default {
     return {
       dropzoneOptions: {
         url: 'https://httpbin.org/post',
-        autoQueue: false,
-        method: 'POST',
+        autoQueue: true,
+        autoProcessQueue: false,
         addRemoveLinks: true,
         thumbnailWidth: 15,
-        maxFilesize: 1024
+        maxFilesize: 1024,
+        uploadMultiple: true,
+        parallelUploads: 100,
+        maxFiles: 100,
+        createImageThumbnails: false
       }
     }
   },
@@ -47,27 +52,39 @@ export default {
     listFiles: function () {
       console.log(this.$refs.myVueDropzone.getAcceptedFiles())
     },
-    uploadSuccess(file, response) {
+    uploadSuccess: function (file, response) {
       console.log('File Successfully Uploaded with file name: ' + response.file)
       this.fileName = response.file
     },
-    uploadError(file, message) {
+    uploadFailure: function (file, message) {
       console.log('An Error Occurred')
       console.log(file, message)
     },
-    triggerSend() {
-      if (this.$refs.myVueDropzone.getQueuedFiles().length) {
-        this.$refs.myVueDropzone.processQueue()
-      }
+    triggerSend: function () {
+      this.$refs.myVueDropzone.processQueue()
     },
-    sendingEvent(file, xhr, formData) {
-      console.log('file')
-      console.log(file)
+    sendingEvent: function (file, xhr, formData) {
+      console.log('file name')
+      if (file.name.includes('.db')) {
+        formData.append('db=@', file)
+        formData.append('input=@', file)
+      }
+      if (file.name.includes('.tiff')) {
+        formData.append('input=@', file)
+      }
+      if (file.name.includes('.json')) {
+        formData.append('input=@', file)
+      }
+      if (file.name.includes('.db')) {
+        formData.append('db=@', file)
+        formData.append('input=@', file)
+      }
+
       //formData.append('_token', token)
       console.log(formData)
+      formData.append('description', file)
     },
-
-    fileRemoved() {}
+    fileRemoved: function () {}
   }
 }
 </script>
