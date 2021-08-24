@@ -284,6 +284,9 @@
                         >Creates a new simulation run</span
                       >
                     </p>
+                    <button @click="check_status">
+                      Check for running simulations in console by clicking here
+                    </button>
                   </div>
                 </div>
               </div>
@@ -345,6 +348,9 @@ export default {
       console.log(this.$store.state.gcbm.title)
       //function to send the title to API
       this.$store.dispatch('send_new_gcbm_job_title')
+    },
+    check_status() {
+      this.$store.dispatch('check_gcbm_run_status')
     }
   }
 }

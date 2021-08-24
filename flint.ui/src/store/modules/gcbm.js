@@ -647,7 +647,6 @@ export default {
       commit('save_new_gcbm_job_title', payload)
       console.log('from title_setter')
       console.log(this.state.gcbm.title)
-      //dispatch(this.send_new_gcbm_job_title)
     },
     send_new_gcbm_job_title() {
       var bodyFormData = new FormData()
@@ -664,6 +663,12 @@ export default {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+    },
+    check_gcbm_run_status() {
+      axios.get('http://localhost:8081/gcbm/list').then((response) => {
+        this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
+        console.log(response.data)
+      })
     }
   }
 }
