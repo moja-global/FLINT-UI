@@ -5,7 +5,7 @@
 
       <md-step id="second" to="/gcbm/upload" md-label="Upload dataset" />
 
-      <md-step id="third" to="/gcbm/configurations" md-label="Configurations" />
+      <md-step id="third" to="/gcbm/dynamic" md-label="Dynamic" />
 
       <md-step id="fourth" md-label="Run" />
     </md-steppers>
