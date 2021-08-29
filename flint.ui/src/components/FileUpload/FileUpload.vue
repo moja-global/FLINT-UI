@@ -121,12 +121,9 @@ export default {
     //   console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
     // },
     add_title_to_formdata: function () {
-      if (this.formData.entries().next().done === true) {
-        this.formData.append(
-          'title',
-          this.$store.state.gcbm.DropdownSelectedSim
-        )
-      }
+      //if (this.formData.entries().next().done === true) {
+      this.formData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
+      // }
       console.log([...this.formData])
     },
     triggerSend: function () {
