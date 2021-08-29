@@ -120,12 +120,15 @@ export default {
     //   console.log('list of input files')
     //   console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
     // },
-    // add_title_to_formdata: function () {
-    //   if (this.formData.entries().next().done === true) {
-    //     this.formData.append('title', this.$store.state.gcbm.title)
-    //   }
-    //   console.log([...this.formData])
-    // },
+    add_title_to_formdata: function () {
+      if (this.formData.entries().next().done === true) {
+        this.formData.append(
+          'title',
+          this.$store.state.gcbm.DropdownSelectedSim
+        )
+      }
+      console.log([...this.formData])
+    },
     triggerSend: function () {
       console.log('list of config files')
       console.log(this.$refs.myVueDropzoneConfig.getAcceptedFiles())
@@ -133,24 +136,28 @@ export default {
       console.log(this.$refs.myVueDropzoneDB.getAcceptedFiles())
       console.log('list of input files')
       console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
-      // add_title_to_formdata: function () {
-      if (this.formData.entries().next().done === true) {
-        this.formData.append('title', this.$store.state.gcbm.title)
+
+      if (this.$store.state.gcbm.DropdownSelectedSim == '') {
+        this.$toast.error(
+          'Title cannot be empty, Select a valid simulation title from the dropdown',
+          { timeout: 5000 }
+        )
+      } else {
+        this.add_title_to_formdata()
+        console.log([...this.formData])
+
+        axios
+          .post('http://localhost:8081/gcbm/upload', this.formData)
+          .then((response) => {
+            this.$toast.success(`${response.data.data}`, { timeout: 3000 })
+            console.log(response)
+            console.log(response.data)
+          })
+          .catch((error) => {
+            this.$toast.error(`${error}`, { timeout: 2000 })
+            console.log(error)
+          })
       }
-      console.log([...this.formData])
-      // },
-      // console.log(...this.formData)
-      axios
-        .post('http://localhost:8081/gcbm/upload', this.formData)
-        .then((response) => {
-          this.$toast.success(`${response.data.data}`, { timeout: 3000 })
-          console.log(response)
-          console.log(response.data)
-        })
-        .catch((error) => {
-          // this._vm.$toast.error(`${error}`, { timeout: 2000 })
-          console.log(error)
-        })
     },
     fileAddedConfig(file) {
       this.formData.append('config_files', file)
