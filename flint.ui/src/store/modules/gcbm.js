@@ -643,8 +643,8 @@ export default {
     save_new_gcbm_job_title(state, title) {
       console.log('passed title')
       console.log(title)
-      state.title = title
-      console.log(state.title)
+      state.config.title = title
+      console.log(state.config.title)
     }
   },
 

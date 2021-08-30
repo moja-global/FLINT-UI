@@ -5,9 +5,9 @@
 
       <md-step id="second" to="/gcbm/upload" md-label="Upload dataset" />
 
-      <md-step id="third" to="/gcbm/dynamic" md-label="Dynamic" />
+      <md-step id="third" to="/gcbm/run" md-label="Run" />
 
-      <md-step id="fourth" md-label="Run" />
+      <md-step id="fourth" md-label="Download" />
     </md-steppers>
   </div>
 </template>
