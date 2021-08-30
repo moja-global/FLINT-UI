@@ -223,7 +223,7 @@ export default {
 
       axios
         .post('http://127.0.0.1:8081/gcbm/download', bodyFormData, {
-          responseType: 'text'
+          responseType: 'arraybuffer'
         })
         // .then((response) => {
         //   this.$toast.success(`${response}`, { timeout: 5000 })
@@ -237,7 +237,8 @@ export default {
         .then((response) => {
           this.$toast.success(`${response}`, { timeout: 5000 })
           console.log(response)
-          const url = new Blob([response.data], { type: 'application/zip' })
+          let blob = new Blob([response.data], { type: 'application/zip' })
+          const url = window.URL.createObjectURL(blob)
           console.log(response.data)
           const link = document.createElement('a')
           link.href = url
