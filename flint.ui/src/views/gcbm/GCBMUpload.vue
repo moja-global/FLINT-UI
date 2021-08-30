@@ -149,9 +149,6 @@ export default {
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
     },
     currentSimTitle: function () {
-      // this.simulation_title = this.$store.state.gcbm.DropdownSelectedSim
-      // console.log(this.simulation_title)
-      // return this.simulation_title
       return this.$store.state.gcbm.DropdownSelectedSim
     },
     getSimulations: function () {
@@ -159,7 +156,9 @@ export default {
       axios.get('http://localhost:8081/gcbm/list').then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
-        this.$toast.success(`${response.data.data}`, { timeout: 5000 })
+        this.$toast.success(`Ongoing simulations - ${response.data.data}`, {
+          timeout: 5000
+        })
         // console.log(response.data)
         // this.simulation_list.append
         console.log(response.data.data)

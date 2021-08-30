@@ -161,7 +161,7 @@ export default {
 
       this.$store.dispatch('title_setter', simulation_title)
       console.log('from set new title')
-      console.log(this.$store.state.gcbm.title)
+      console.log(this.$store.state.gcbm.config.title)
       //function to send the title to API
       this.$store.dispatch('send_new_gcbm_job_title')
     },
