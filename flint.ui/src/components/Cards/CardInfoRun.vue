@@ -121,7 +121,9 @@ export default {
       axios
         .get('http://127.0.0.1:8080/spec')
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 2000 })
+          this.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {
@@ -134,7 +136,9 @@ export default {
       axios
         .get('http://127.0.0.1:8080/help/all')
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 2000 })
+          this.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {
@@ -147,7 +151,9 @@ export default {
       axios
         .get('http://127.0.0.1:8080/version')
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 2000 })
+          this.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {
@@ -160,7 +166,9 @@ export default {
       axios
         .post('http://127.0.0.1:8080/point')
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 2000 })
+          this.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {
@@ -173,7 +181,9 @@ export default {
       axios
         .post('http://127.0.0.1:8080/rothc')
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 2000 })
+          this.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {

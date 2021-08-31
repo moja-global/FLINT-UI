@@ -37,6 +37,10 @@ import VueMaterial from 'vue-material'
 // Vue.use(MdList)
 // Vue.use(MdDialog)
 // Vue.use(MdContent)
+
+// import VueUploadComponent from 'vue-upload-component'
+// Vue.component('Fileupload', VueUploadComponent)
+
 Vue.use(VueMaterial)
 
 Vue.use(VueRouter)
