@@ -1,14 +1,14 @@
-import { Meta } from '@storybook/addon-docs';
-import Code from './assets/code-brackets.svg';
-import Colors from './assets/colors.svg';
-import Comments from './assets/comments.svg';
-import Direction from './assets/direction.svg';
-import Flow from './assets/flow.svg';
-import Plugin from './assets/plugin.svg';
-import Repo from './assets/repo.svg';
-import StackAlt from './assets/stackalt.svg';
+import { Meta } from '@storybook/addon-docs'
+import Code from './assets/code-brackets.svg'
+import Colors from './assets/colors.svg'
+import Comments from './assets/comments.svg'
+import Direction from './assets/direction.svg'
+import Flow from './assets/flow.svg'
+import Plugin from './assets/plugin.svg'
+import Repo from './assets/repo.svg'
+import StackAlt from './assets/stackalt.svg'
 
-<Meta title="Example/Introduction" />
+<Meta title="FLINT UI Storybook" />
 
 <style>{`
   .subheading {
@@ -73,7 +73,7 @@ import StackAlt from './assets/stackalt.svg';
     display: block;
     margin-bottom: 2px;
   }
-  
+
   .link-item img {
     height: 40px;
     width: 40px;
@@ -111,10 +111,22 @@ import StackAlt from './assets/stackalt.svg';
     display: inline-block;
   }
 
-  
+
 `}</style>
 
-# Welcome to Storybook
+<center>
+  <div>
+    <img
+      src="https://i0.wp.com/mojaglobal.kinsta.cloud/wp-content/uploads/2021/03/Asset-66@4x.png"
+      alt="FLINT UI logo"
+      width="200"
+    />
+  </div>
+</center>
+
+<br />
+
+# Welcome to FLINT UI Storybook
 
 Storybook helps you build UI components in isolation from your app's business logic, data, and context.
 That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
@@ -122,6 +134,48 @@ That makes it easy to develop hard-to-reach states. Save these UI states as **st
 Browse example stories now by navigating to them in the sidebar.
 View their code in the `src/stories` directory to learn how they work.
 We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
+
+The Storybook for the `FLINT UI` project is available on Chromatic.
+
+## Storybook in local development
+
+Storybook dependencies and configuration are located under the `flint.ui/.storybook` directory.
+
+To build and launch Storybook locally, we have to follow the below procedure:
+
+Go to the `flint.ui` directory.
+
+1. Install Storybook dependencies:
+
+```shell
+npm install
+```
+
+2. Build the Storybook site:
+
+```shell
+npm run storybook
+```
+
+Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
+
+## Adding components to Storybook
+
+Stories can be added for any Vue component in the `flint.ui/src/stories/**` directory.
+
+```shell
+flint.ui/
+├─ src/
+│  ├─ stories
+│  │  ├─ Button.stories.js
+```
+
+<div className="tip-wrapper">
+  <span className="tip">Tip</span>
+
+> Write the story as per the [official Storybook instructions](https://storybook.js.org/docs/vue/writing-stories/introduction/)
+
+</div>
 
 <div className="subheading">Configure</div>
 
@@ -182,14 +236,22 @@ We recommend building UIs with a [**component-driven**](https://componentdriven.
       Configure, customize, and extend
     </span>
   </a>
-  <a className="link-item" href="https://storybook.js.org/tutorials/" target="_blank">
+  <a
+    className="link-item"
+    href="https://storybook.js.org/tutorials/"
+    target="_blank"
+  >
     <img src={Direction} alt="direction" />
     <span>
       <strong>In-depth guides</strong>
       Best practices from leading teams
     </span>
   </a>
-  <a className="link-item" href="https://github.com/storybookjs/storybook" target="_blank">
+  <a
+    className="link-item"
+    href="https://github.com/storybookjs/storybook"
+    target="_blank"
+  >
     <img src={Code} alt="code" />
     <span>
       <strong>GitHub project</strong>

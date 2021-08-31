@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="classes" :style="style" @click="onClick">
+  <button type="button" :class="classes" @click="onClick" :style="style">
     {{ label }}
   </button>
 </template>
@@ -8,7 +8,7 @@
 import './button.css'
 
 export default {
-  name: 'MyButton',
+  name: 'my-button',
 
   props: {
     label: {
@@ -27,8 +27,7 @@ export default {
       }
     },
     backgroundColor: {
-      type: String,
-      required: true
+      type: String
     }
   },
 
