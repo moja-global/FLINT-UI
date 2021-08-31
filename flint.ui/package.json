@@ -7,9 +7,10 @@
     "serve": "vue-cli-service serve",
     "dev": "npm run serve",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "vue-cli-service lint"
+    "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
@@ -52,6 +53,8 @@
     "@vue/composition-api": "^1.0.5",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "chromatic": "^5.9.2",
     "es6-promise": "4.2.8",
     "eslint": "7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -63,7 +66,7 @@
     "sass-loader": "^12.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "vue-eslint-parser": "^7.10.0",
-    "vue-loader": "^16.5.0",
+    "vue-loader": "^15.9.8",
     "vue-template-compiler": "2.6.14"
   },
   "browserslist": [

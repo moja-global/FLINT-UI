@@ -589,6 +589,10 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 
+# Storybook
+
+build-storybook.log
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
