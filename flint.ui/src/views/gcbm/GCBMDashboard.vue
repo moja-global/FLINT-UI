@@ -12,7 +12,7 @@
           pb-32
           pt-12
           w-full
-          h-screen
+          h-auto
         "
       >
         <div class="px-4 md:px-10 mx-auto w-full">
@@ -25,197 +25,10 @@
             </p>
           </div>
 
-          <div class="flex flex-col">
-            <div class="mt-10">
-              <div class="flex">
-                <div class="w-1/3 text-center px-6">
-                  <div
-                    class="
-                      bg-gray-300
-                      rounded-lg
-                      flex
-                      items-center
-                      justify-center
-                      border border-gray-200
-                    "
-                  >
-                    <div
-                      class="
-                        w-1/3
-                        bg-transparent
-                        h-20
-                        flex
-                        items-center
-                        justify-center
-                        icon-step
-                      "
-                    >
-                      <i class="fas fa-plus fa-lg" />
-                    </div>
-                    <div
-                      class="
-                        w-2/3
-                        bg-gray-200
-                        h-24
-                        flex flex-col
-                        items-center
-                        justify-center
-                        px-1
-                        rounded-r-lg
-                        body-step
-                      "
-                    >
-                      <h2 class="font-bold text-sm">Create a new simulation</h2>
-                      <p class="text-xs text-gray-600">
-                        Click the new button below
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex-1 flex items-center justify-center">
-                  <i class="fas fa-arrow-right fa-2x" />
-                </div>
-                <div class="w-1/3 text-center px-6">
-                  <div
-                    class="
-                      bg-gray-300
-                      rounded-lg
-                      flex
-                      items-center
-                      justify-center
-                      border border-gray-200
-                    "
-                  >
-                    <div
-                      class="
-                        w-1/3
-                        bg-transparent
-                        h-20
-                        flex
-                        items-center
-                        justify-center
-                        icon-step
-                      "
-                    >
-                      <i class="far fa-file fa-lg" />
-                    </div>
-                    <div
-                      class="
-                        w-2/3
-                        bg-gray-200
-                        h-24
-                        flex flex-col
-                        items-center
-                        justify-center
-                        px-1
-                        rounded-r-lg
-                        body-step
-                      "
-                    >
-                      <h2 class="font-bold text-sm">Upload file</h2>
-                      <p class="text-xs text-gray-600">Dataset file for GCBM</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex-1 flex items-center justify-center">
-                  <i class="fas fa-arrow-right fa-2x" />
-                </div>
-                <div class="w-1/3 text-center px-6">
-                  <div
-                    class="
-                      bg-gray-300
-                      rounded-lg
-                      flex
-                      items-center
-                      justify-center
-                      border border-gray-200
-                    "
-                  >
-                    <div
-                      class="
-                        w-1/3
-                        bg-transparent
-                        h-20
-                        flex
-                        items-center
-                        justify-center
-                        icon-step
-                      "
-                    >
-                      <i class="fas fa-cogs fa-lg" />
-                    </div>
-                    <div
-                      class="
-                        w-2/3
-                        bg-gray-200
-                        h-24
-                        flex flex-col
-                        items-center
-                        justify-center
-                        px-1
-                        rounded-r-lg
-                        body-step
-                      "
-                    >
-                      <h2 class="font-bold text-sm">Configure</h2>
-                      <p class="text-xs text-gray-600">
-                        Change configuration parameters
-                      </p>
-                    </div>
-                  </div>
-                </div>
+          <div class="flex flex-col mt-4">
+            <StepperStatic />
 
-                <div class="flex-1 flex items-center justify-center">
-                  <i class="fas fa-arrow-right fa-2x" />
-                </div>
-                <div class="w-1/3 text-center px-6">
-                  <div
-                    class="
-                      bg-gray-300
-                      rounded-lg
-                      flex
-                      items-center
-                      justify-center
-                      border border-gray-200
-                    "
-                  >
-                    <div
-                      class="
-                        w-1/3
-                        bg-transparent
-                        h-20
-                        flex
-                        items-center
-                        justify-center
-                        icon-step
-                      "
-                    >
-                      <i class="fas fa-check fa-lg" />
-                    </div>
-                    <div
-                      class="
-                        w-2/3
-                        bg-gray-200
-                        h-24
-                        flex flex-col
-                        items-center
-                        justify-center
-                        px-1
-                        rounded-r-lg
-                        body-step
-                      "
-                    >
-                      <h2 class="font-bold text-sm">Run</h2>
-                      <p class="text-xs text-gray-600">
-                        Run the simulation with new configs
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap mt-10">
+            <div class="flex flex-wrap my-5">
               <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
               <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
                 <div
@@ -274,30 +87,6 @@
                         "
                         :disabled="isTitle()"
                         :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
-                        @click="setNewTitle"
-                      >
-                        <i class="fas fa-plus" /> Set title
-                      </button>
-
-                      <button
-                        class="
-                          w-full
-                          mt-4
-                          block
-                          align-middle
-                          flex-initial
-                          bg-white
-                          hover:bg-black hover:text-white
-                          text-gray-800
-                          font-semibold
-                          py-2
-                          px-4
-                          border border-gray-400
-                          rounded
-                          shadow
-                        "
-                        :disabled="isTitle()"
-                        :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
                         @click="sendToAPI"
                       >
                         <i class="fas fa-plus" /> Create run
@@ -308,15 +97,17 @@
                         >Creates a new simulation run</span
                       >
                     </p>
+                    <button @click="check_status">
+                      Check for running simulations in console by clicking here
+                    </button>
                   </div>
                 </div>
               </div>
 
               <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
-                <md-field>
-                  <label>Multiple</label>
-                  <md-file v-model="multiple" multiple />
-                </md-field>
+                <!--
+
+                <FileUpload /> -->
               </div>
             </div>
           </div>
@@ -330,11 +121,16 @@
 
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
+import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+
+// import FileUpload from '@/components/FileUpload/FileUpload.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
-    StepperGCBM
+    StepperGCBM,
+    StepperStatic
+    // FileUpload
   },
 
   data: () => ({
@@ -357,8 +153,7 @@ export default {
         return true
       }
     },
-    setNewTitle() {
-      //function for setting up a new title
+    sendToAPI() {
       console.log(this.simulation_title, ' goto /gcbm/new')
       var simulation_title = this.simulation_title
       console.log('simulation_title')
@@ -366,11 +161,12 @@ export default {
 
       this.$store.dispatch('title_setter', simulation_title)
       console.log('from set new title')
-      console.log(this.gcbm.state.Title)
-    },
-    sendToAPI() {
+      console.log(this.$store.state.gcbm.config.title)
       //function to send the title to API
       this.$store.dispatch('send_new_gcbm_job_title')
+    },
+    check_status() {
+      this.$store.dispatch('check_gcbm_run_status')
     }
   }
 }

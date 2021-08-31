@@ -19,7 +19,8 @@ import TableRothC from '@/views/flint/TableRothC.vue'
 import RothCOutput from '@/views/flint/RothCOutput.vue'
 
 import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
-import GCBMConfigurations from '@/views/gcbm/GCBMConfigurations.vue'
+import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
+import GCBMRun from '@/views/gcbm/GCBMRun.vue'
 import GCBMOutputs from '@/views/gcbm/GCBMOutputs.vue'
 
 import Landing from '@/views/Landing.vue'
@@ -102,8 +103,12 @@ const routes = [
         component: GCBMDashboard
       },
       {
-        path: '/gcbm/configurations',
-        component: GCBMConfigurations
+        path: '/gcbm/upload',
+        component: GCBMUpload
+      },
+      {
+        path: '/gcbm/run',
+        component: GCBMRun
       },
       {
         path: '/gcbm/outputs',

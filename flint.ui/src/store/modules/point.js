@@ -224,7 +224,9 @@ export default {
       axios
         .post('http://127.0.0.1:8080/point', final_config_string)
         .then((response) => {
-          this._vm.$toast.success(`${response}`, { timeout: 2000 })
+          this._vm.$toast.success(`${'Response status: ' + response.status}`, {
+            timeout: 2000
+          })
           console.log(response)
           //this.state.received_data = response.data;
           commit('save_point_results', response.data)
