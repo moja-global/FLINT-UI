@@ -71,7 +71,7 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 
 > You may encounter a problem with the `flint.gcbm.api` containers because it is not refactored for a local environment yet.
 
-4. To view the UI please navigate to [localhost:8080](http://localhost:8080/). UI will look something like this:
+4. To view the UI please navigate to [127.0.0.1:8000](http://127.0.0.1:8000/). UI will look something like this:
 
 <div align="center">
 <img src="assets/dashboard.jpg">
@@ -85,7 +85,7 @@ To run the Vue app locally, you can follow the below procedure:
 
 1. Go to the `flint.ui` folder and run `npm install`.
 2. Run `npm run serve` to start the Vue app server.
-3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
+3. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
 
 ### Storybook in local development
 
