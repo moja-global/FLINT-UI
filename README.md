@@ -17,14 +17,11 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 
 To set up this project locally follows the below procedure:
 
-1. Clone [FLINT.Example](https://github.com/moja-global/FLINT.Example) repository. A `Dockerfile` is inside the `Docker` folder. So to build the image follow the below command:
+1. Pull the below docker image to run flint.example:
 
 ```shell
-cd Docker
-docker build --build-arg NUM_CPU=8 -t moja/flint.example:bionic .
+docker pull shubhamkarande13/flint.example:bionic
 ```
-
-It will take some time to build the image. For more information, you can follow [https://docs.moja.global/en/latest/DevelopmentSetup/docker_installation_example.html](https://docs.moja.global/en/latest/DevelopmentSetup/docker_installation_example.html).
 
 2. Clone [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository:
 
@@ -74,7 +71,7 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 
 > You may encounter a problem with the `flint.gcbm.api` containers because it is not refactored for a local environment yet.
 
-4. To view the UI please navigate to [localhost:8080](http://localhost:8080/). UI will look someting like this:
+4. To view the UI please navigate to [127.0.0.1:8000](http://127.0.0.1:8000/). UI will look something like this:
 
 <div align="center">
 <img src="assets/dashboard.jpg">
@@ -88,7 +85,7 @@ To run the Vue app locally, you can follow the below procedure:
 
 1. Go to the `flint.ui` folder and run `npm install`.
 2. Run `npm run serve` to start the Vue app server.
-3. Go to [localhost:8000](http://localhost:8000/) to view the Vue app.
+3. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
 
 ### Storybook in local development
 
