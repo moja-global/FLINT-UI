@@ -634,7 +634,8 @@ export default {
         }
       }
     },
-    DropdownSelectedSim: ''
+    DropdownSelectedSim: '',
+    SimulationProgress: ''
   },
   mutations: {
     setDropdownSimState(state, newValue) {
@@ -645,6 +646,10 @@ export default {
       console.log(title)
       state.config.title = title
       console.log(state.config.title)
+    },
+
+    setSimulationProgressState(state, newValue) {
+      this.state.gcbm.SimulationProgress = newValue
     }
   },
 
