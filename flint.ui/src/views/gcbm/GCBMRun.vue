@@ -17,30 +17,24 @@
       >
         <div class="px-4 md:px-10 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-2 text-gray-800">
-              GCBM simulation workflow
-            </h2>
-            <p class="text-gray-700">
-              Follow the steps below to simulate GCBM runs.
-            </p>
+            <div>
+              <h2 class="text-2xl font-bold mb-2 text-gray-800">
+                GCBM simulation workflow
+              </h2>
+              <p class="text-gray-700">
+                Follow the steps below to simulate GCBM runs. Click the toggle
+                to auto download the simulation once complete.
+              </p>
+            </div>
+
+            <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
           </div>
 
           <div class="flex flex-col mt-4">
             <StepperStatic />
 
-            <div class="flex justify-center flex-wrap my-5">
-              <div class="w-full lg:w-6/12 xl:w-2/12 px-4 content-center" />
-              <div
-                class="
-                  flex
-                  w-full
-                  lg:w-6/12
-                  xl:w-8/12
-                  px-4
-                  content-center
-                  justify-center
-                "
-              >
+            <div class="w-full my-5">
+              <div class="w-8/12 px-4 mx-auto content-center justify-center">
                 <div
                   class="
                     relative
@@ -136,8 +130,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="w-full lg:w-6/12 xl:w-2/12 px-4 content-center" />
             </div>
           </div>
         </div>
@@ -151,32 +143,26 @@
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+import Toggle from '@/components/Sliders/Toggle.vue'
 import axios from 'axios'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
-    StepperStatic
+    StepperStatic,
+    Toggle
   },
 
   data: () => ({
-    // formData: new FormData(),
     simulation_title: ''
   }),
 
   methods: {
-    // add_title_to_formdata: function () {
-    //   this.formData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
-    //   console.log([...this.formData])
-    // },
     runSim: function () {
-      // var bodyFormData = new FormData()
-      // this.add_title_to_formdata()
       var bodyFormData = new FormData()
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
-      // bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       axios
@@ -192,19 +178,21 @@ export default {
     },
 
     checkStatus: function () {
-      // var bodyFormData = new FormData()
-      // this.add_title_to_formdata()
       var bodyFormData = new FormData()
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
-      // bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       axios
         .post('http://127.0.0.1:8081/gcbm/status', bodyFormData)
         .then((response) => {
-          this.$toast.success(`${response.data.finished}`, { timeout: 5000 })
+          this.$toast.info(`${response.data.finished}`, { timeout: 5000 })
+          this.$store.commit(
+            'setSimulationProgressState',
+            response.data.finished
+          )
           console.log(response)
+          console.log(this.$store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
           this.$toast.error(`${error}`, { timeout: 2000 })
@@ -213,36 +201,28 @@ export default {
     },
 
     downloadSim: function () {
-      // var bodyFormData = new FormData()
-      // this.add_title_to_formdata()
       var bodyFormData = new FormData()
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
-      // bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       axios
         .post('http://127.0.0.1:8081/gcbm/download', bodyFormData, {
           responseType: 'arraybuffer'
         })
-        // .then((response) => {
-        //   this.$toast.success(`${response}`, { timeout: 5000 })
-        //   console.log(response)
-        // })
-        // .catch((error) => {
-        //   this.$toast.error(`${error}`, { timeout: 2000 })
-        //   console.log(error)
-        // })
-
         .then((response) => {
-          this.$toast.success(`${response}`, { timeout: 5000 })
           console.log(response)
           let blob = new Blob([response.data], { type: 'application/zip' })
           const url = window.URL.createObjectURL(blob)
           console.log(response.data)
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', 'gcbm_run_ouput.zip')
+          link.setAttribute(
+            'download',
+            this.$store.state.gcbm.DropdownSelectedSim +
+              '_gcbm_run_ouput' +
+              '.zip'
+          )
           document.body.appendChild(link)
           link.click()
         })
