@@ -21,6 +21,9 @@
       "
       :class="{ 'bg-green-400': toggleActive }"
     >
+      <md-tooltip
+        >Toggle to check status and auto-download the simulation</md-tooltip
+      >
       <div
         class="
           bg-white
