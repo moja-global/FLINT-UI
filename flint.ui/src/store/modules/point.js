@@ -228,7 +228,6 @@ export default {
             timeout: 2000
           })
           console.log(response)
-          //this.state.received_data = response.data;
           commit('save_point_results', response.data)
           console.log(this.state.point.point_results)
         })

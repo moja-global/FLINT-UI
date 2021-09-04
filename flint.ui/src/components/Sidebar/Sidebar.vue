@@ -303,54 +303,6 @@
               </a>
             </router-link>
           </li>
-
-          <li class="items-center">
-            <router-link
-              v-slot="{ href, navigate, isActive }"
-              to="/gcbm/configurations"
-            >
-              <a
-                :href="href"
-                class="text-xs uppercase py-3 font-bold block"
-                :class="[
-                  isActive
-                    ? 'text-emerald-500 hover:text-emerald-600'
-                    : 'text-blueGray-700 hover:text-blueGray-500'
-                ]"
-                @click="navigate"
-              >
-                <i
-                  class="fas fa-cogs mr-2 text-sm"
-                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                />
-                Configurations
-              </a>
-            </router-link>
-          </li>
-
-          <li class="items-center">
-            <router-link
-              v-slot="{ href, navigate, isActive }"
-              to="/gcbm/outputs"
-            >
-              <a
-                :href="href"
-                class="text-xs uppercase py-3 font-bold block"
-                :class="[
-                  isActive
-                    ? 'text-emerald-500 hover:text-emerald-600'
-                    : 'text-blueGray-700 hover:text-blueGray-500'
-                ]"
-                @click="navigate"
-              >
-                <i
-                  class="fas fa-layer-group mr-2 text-sm"
-                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
-                />
-                Outputs
-              </a>
-            </router-link>
-          </li>
         </ul>
       </div>
     </div>

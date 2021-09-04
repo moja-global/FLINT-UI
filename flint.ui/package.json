@@ -22,6 +22,7 @@
     "@vueform/slider": "^2.0.4",
     "apexcharts": "^3.27.3",
     "axios": "^0.21.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "core-js": "^3.16.0",
     "data-forge": "^1.8.17",
     "fs": "0.0.1-security",

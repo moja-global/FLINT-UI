@@ -28,9 +28,8 @@
           <div class="flex flex-col mt-4">
             <StepperStatic />
 
-            <div class="flex flex-wrap my-5">
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center" />
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
+            <div class="w-full mt-6">
+              <div class="w-4/12 px-4 mx-auto content-center">
                 <div
                   class="
                     relative
@@ -97,17 +96,8 @@
                         >Creates a new simulation run</span
                       >
                     </p>
-                    <button @click="check_status">
-                      Check for running simulations in console by clicking here
-                    </button>
                   </div>
                 </div>
-              </div>
-
-              <div class="w-full lg:w-6/12 xl:w-4/12 px-4 content-center">
-                <!--
-
-                <FileUpload /> -->
               </div>
             </div>
           </div>
@@ -123,14 +113,11 @@
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 
-// import FileUpload from '@/components/FileUpload/FileUpload.vue'
-
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
     StepperStatic
-    // FileUpload
   },
 
   data: () => ({

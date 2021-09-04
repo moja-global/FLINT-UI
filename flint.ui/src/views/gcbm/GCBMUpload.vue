@@ -45,9 +45,8 @@
           <div class="flex flex-col mt-4">
             <StepperStatic />
 
-            <div class="flex flex-wrap my-5">
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center" />
-              <div class="w-full lg:w-6/12 xl:w-6/12 px-4 content-center">
+            <div class="w-full my-5">
+              <div class="w-6/12 px-4 mx-auto content-center">
                 <div
                   class="
                     relative
@@ -95,15 +94,10 @@
                   </div>
                 </div>
               </div>
-
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center" />
             </div>
-
-            <!-- <div class="flex flex-wrap my-5"> -->
             <div class="w-full px-4 content-center">
               <FileUpload ref="gcbmFileUpload" />
             </div>
-            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -152,15 +146,12 @@ export default {
       return this.$store.state.gcbm.DropdownSelectedSim
     },
     getSimulations: function () {
-      //axios.get('http://localhost:8081/gcbm/ + selected_simulation)
       axios.get('http://localhost:8081/gcbm/list').then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
-        this.$toast.success(`Ongoing simulations - ${response.data.data}`, {
+        this.$toast.info(`Ongoing simulations - ${response.data.data}`, {
           timeout: 5000
         })
-        // console.log(response.data)
-        // this.simulation_list.append
         console.log(response.data.data)
         console.log(this.simulation_list)
       })
