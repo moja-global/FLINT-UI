@@ -1,4 +1,7 @@
 // vue.config.js
 module.exports = {
-  runtimeCompiler: true,
-};
+  devServer: {
+    port: 8000
+  },
+  runtimeCompiler: true
+}

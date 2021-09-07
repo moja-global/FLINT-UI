@@ -1,5 +1,4 @@
-
-version: '3'
+version: "3"
 services:
   flint.example.api:
     build:
@@ -9,8 +8,8 @@ services:
       - "8080:8080"
     container_name: flint.example.api
     volumes:
-       - ./flint.cloud/local/rest_api_flint.example/output:/server/output
-       - ./flint.cloud/local/rest_api_flint.example/config:/server/config
+      - ./flint.cloud/local/rest_api_flint.example/output:/server/output
+      - ./flint.cloud/local/rest_api_flint.example/config:/server/config
   flint.gcbm.api:
     build:
       context: ./flint.cloud/local/rest_api_gcbm/
@@ -19,8 +18,8 @@ services:
       - "8081:8080"
     container_name: flint.gcbm.api
     volumes:
-       - ./flint.cloud/local/rest_api_gcbm/output:/server/output
-       - ./flint.cloud/local/rest_api_gcbm/config:/server/config
+      - ./flint.cloud/local/rest_api_gcbm/output:/server/output
+      - ./flint.cloud/local/rest_api_gcbm/config:/server/config
   flint.ui:
     build:
       context: ./flint.ui
@@ -29,6 +28,13 @@ services:
       - "8000:80"
     container_name: flint.ui
     volumes:
-       - ./flint.ui:/usr/src/app/flint.ui
-       - ./flint.cloud/local/rest_api_flint.example/output:/server/output
-       - /usr/src/app/flint.ui/node_modules
+      - ./flint.ui:/usr/src/app/flint.ui
+      - ./flint.cloud/local/rest_api_flint.example/output:/server/output
+      - /usr/src/app/flint.ui/node_modules
+  # storybook:
+  #   container_name: storybook
+  #   ports:
+  #     - "6006:6006"
+  #   build:
+  #     context: ./flint.ui
+  #     dockerfile: ./.storybook/Dockerfile

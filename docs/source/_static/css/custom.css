@@ -1,0 +1,81 @@
+/*
+Primary colors:
+Earth green: #475447
+Turquoise green: #73E8A3
+Sky blue: #CCE8F2
+Midnight green: #2E382B
+Moss green: #78B08A
+Marine blue: #388591
+Pebble green: #E3F2E8
+Stone grey: #F7F5F7
+*/
+
+body {
+    color: #382b2b;
+}
+
+.wy-side-nav-search>a {
+    font-family: 'DM Sans', sans-serif;
+    color: #2E382B;
+}
+
+.wy-side-nav-search {
+    background-color: #73E8A3;
+}
+
+.rst-content .toctree-wrapper>p.caption, h1, h2, h3, h4, h5, h6, legend {
+    font-family: 'DM Sans', sans-serif;
+    color: #388591;
+}
+
+.wy-menu-vertical {
+    background: #E3F2E8;
+}
+
+.wy-menu-vertical a {
+    color: #2E382B;
+}
+
+.wy-menu-vertical li.toctree-l2 a, .wy-menu-vertical li.toctree-l3 a, .wy-menu-vertical li.toctree-l4 a, .wy-menu-vertical li.toctree-l5 a, .wy-menu-vertical li.toctree-l6 a, .wy-menu-vertical li.toctree-l7 a, .wy-menu-vertical li.toctree-l8 a, .wy-menu-vertical li.toctree-l9 a, .wy-menu-vertical li.toctree-l10 a {
+    color: #2E382B;
+}
+
+.wy-menu-vertical a:hover {
+    color: #F7F5F7;
+    background-color: #388591;
+}
+
+.wy-nav-side {
+    color: #9b9b9b;
+    background: #475447;
+}
+
+a {
+    color: #78B08A;
+}
+
+.wy-nav-content {
+    background-color: #F7F5F7;
+}
+
+.btn-neutral {
+    background-color: #CCE8F2!important;
+}
+
+.btn-neutral:hover {
+    background-color: #73E8A3!important;
+}
+
+@media screen and (max-width: 768px) {
+    .wy-nav-top {
+    display: block;
+    background: #73E8A3;
+    color: #475447;
+    }
+}
+
+.wy-nav-top a {
+    color: #475447;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+}

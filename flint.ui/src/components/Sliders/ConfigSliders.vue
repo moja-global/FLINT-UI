@@ -1,59 +1,54 @@
 <template>
-    <div class="example">
-    <h3 id="example-1">{{PoolTitle}}</h3>
-    <div class="output">{{PoolNumber}}: {{ pool.value }} </div>
-    <Slider
-      v-model="pool.value"
-      v-bind="pool"
-    ></Slider>
+  <div class="example">
+    <h3 id="example-1">
+      {{ poolTitle }}
+    </h3>
+    <div class="output">{{ poolNumber }}: {{ pool.value }}</div>
+    <Slider v-model="pool.value" v-bind="pool" />
   </div>
 </template>
 
 <script>
-import Slider from "@vueform/slider/dist/slider.vue2.js";
-  
-  export default {
-    components: {
-      Slider,
-    },
+import Slider from '@vueform/slider/dist/slider.vue2.js'
 
-    props: {
-        PoolTitle: {
-            type: String,
-            default: "Pool title",
-        },
-        PoolNumber: {
-            type: String,
-            default: "Pool number",
-        },
-        minPoolval: {
-            type: Number,
-            default: 3,
-        }
-    },
+export default {
+  components: {
+    Slider
+  },
 
-    data() {
-      return {
-        pool: {
-            min: 0,   
-            max: 400,
-            step: 10,
-            value: 180
-        }
-      }
+  props: {
+    poolTitle: {
+      type: String,
+      default: 'Pool title'
     },
-
-    methods: {
-        
+    poolNumber: {
+      type: String,
+      default: 'Pool number'
+    },
+    minPoolval: {
+      type: Number,
+      default: 3
     }
-  }
-  
+  },
+
+  data() {
+    return {
+      pool: {
+        min: 0,
+        max: 400,
+        step: 10,
+        value: 180
+      }
+    }
+  },
+
+  methods: {}
+}
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
 
 <style>
-
 .example {
   background: #ffffff;
   margin: 20px;

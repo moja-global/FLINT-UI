@@ -1,3 +1,7 @@
+# Dependencie changes need to be force committed on a standalone PR
+# to better isolate any conflicts between packages and branches
+/flint.ui/package.json
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,vue,vuejs,visualstudiocode,sublimetext,visualstudio,vim,emacs
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,vue,vuejs,visualstudiocode,sublimetext,visualstudio,vim,emacs
@@ -585,7 +589,15 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 
+# Storybook
+
+build-storybook.log
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,vue,vuejs,visualstudiocode,sublimetext,visualstudio,vim,emacs
+
+### Sphinx build directory ###
+
+_build/
