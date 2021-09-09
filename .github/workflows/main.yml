@@ -27,6 +27,5 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
       - name: Build FLINT UI Client container
         run: docker build flint.ui --file flint.ui/Dockerfile --tag client:latest
