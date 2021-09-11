@@ -1,8 +1,10 @@
 <div align="center">
+<img src="https://i0.wp.com/mojaglobal.kinsta.cloud/wp-content/uploads/2021/03/Asset-66@4x.png" alt="FLINT UI logo" height ="auto" width="200" />
+<br />
 <h1>FLINT UI</h1>
-<p>
+<h6>
 A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs.
-</p>
+</h6>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/stargazers"><img src="https://img.shields.io/github/stars/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
@@ -37,7 +39,7 @@ Or if you've already initialized the repository without the submodule
 git submodule update --init --recursive
 ```
 
-3. Now you have to get inside the repository directory and to build the `docker-compose.yml` file follow the below command:
+3. Now get inside the repository directory and build the `docker-compose.yml` file by following the below command:
 
 ```shell
 docker-compose up
@@ -67,9 +69,7 @@ If you want to shut down a specific container click on the `STOP` button of that
 
 To shut down, the whole `docker-compose.yml` file and all services inside it then use the command `docker-compose down`.
 
-> You can also run `Detached mode` in Detached mode. Detached mode, shown by the option `--detach` or `-d`, means that a Docker container runs in the background of your terminal. It does not receive input or display output. So the command for running `docker-compose up` in Detached mode is `docker-compose up -d`.
-
-> You may encounter a problem with the `flint.gcbm.api` containers because it is not refactored for a local environment yet.
+> You can also run `docker-compose.yml` in Detached mode. Detached mode, shown by the option `--detach` or `-d`, means that a Docker container runs in the background of your terminal. It does not receive input or display output. So the command for running `docker-compose up` in Detached mode is `docker-compose up -d`.
 
 4. To view the UI please navigate to [127.0.0.1:8000](http://127.0.0.1:8000/). UI will look something like this:
 
@@ -83,8 +83,8 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 
 To run the Vue app locally, you can follow the below procedure:
 
-1. Go to the `flint.ui` folder and run `npm install`.
-2. Run `npm run serve` to start the Vue app server.
+1. Go to the `flint.ui` folder and run `yarn install`.
+2. Run `yarn serve` to start the Vue app server.
 3. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
 
 ### Storybook in local development
@@ -98,42 +98,31 @@ Go to the `flint.ui` directory.
 1. Install Storybook dependencies:
 
 ```shell
-npm install
+yarn install
 ```
 
 2. Build the Storybook site:
 
 ```shell
-npm run storybook
+yarn storybook
 ```
 
 Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
 ### Dependency management
 
+We are following [Yarn](https://yarnpkg.com/) package manager.
+
 Our `package.json` file is gitignored to enforce strict management of our client dependencies.
 
 In order to add a new dependency, please:
 
-1. use `npm install <your-package>`
+1. use `yarn add <your-package>`
 2. `git checkout -b dependency/<your-package>`
 3. `git add --force flint.ui/package.json`
 4. `git push` and submit a PR with only the `package.json` changes
 
 Our CI build will test for conflicts and your new dependency will be added after your PR has been reviewed.
-
-#### npm ci
-
-You can also use `npm ci` to test your changes locally. CI stands for continuous integration and `npm ci` is used to install all exact version dependencies or devDependencies from a `package-lock.json` file.
-
-- It is generally used to install dependencies.
-- It never writes to `package.json` or `package-lock.json`.
-- Individual dependencies cannot be added with this command.
-- It is faster in execution.
-- If any dependencies are missing or have incompatible versions, then `npm ci` will throw an error.
-- If a `node_modules` is already present, it will be automatically removed before `npm ci` begins its install.
-- It can not install global packages.
-- Used for the deterministic, repeatable build.
 
 ### Code Style
 
@@ -147,7 +136,7 @@ Obvious examples are:
 - FLINT: Full Lands Integration Tool
 - RothC: Rothamstead Carbon model
 
-We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easily. There is official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
+We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easy. There is official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
 
 If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
 
@@ -176,7 +165,7 @@ moja global welcomes a wide range of contributions as explained in [Contributing
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
