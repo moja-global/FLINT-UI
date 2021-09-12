@@ -109,6 +109,24 @@ yarn storybook
 
 Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
+### Storybook in production
+
+We have deployed Storybook on [Chromatic](https://www.chromatic.com/). It is made by Storybook maintainers. Chromatic automates gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
+
+- Get a permalink to FLINT-UI’s latest published Storybook on a given branch. Replace `<branch>` with the designated branch.
+
+```shell
+https://<branch>--612f3734da98c9003a398626.chromatic.com
+```
+
+- Get a permalink to the latest published component or library on a given branch. Add the `&branch=<branch>` query parameter to the url.
+
+```shell
+https://chromatic.com/library?appId=612f3734da98c9003a398626&branch=<branch>
+```
+
+Storybook live (master branch): [https://master--612f3734da98c9003a398626.chromatic.com](https://master--612f3734da98c9003a398626.chromatic.com)
+
 ### Dependency management
 
 We are following [Yarn](https://yarnpkg.com/) package manager.
