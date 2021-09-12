@@ -48,6 +48,7 @@
         theme="default"
         :source="rows"
         :columns="columns"
+        :readonly="true"
       ></v-grid>
     </div>
   </div>

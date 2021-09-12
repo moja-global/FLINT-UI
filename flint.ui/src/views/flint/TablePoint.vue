@@ -48,6 +48,7 @@
         theme="default"
         :source="rows"
         :columns="columns"
+        :readonly="true"
       ></v-grid>
     </div>
   </div>
@@ -78,7 +79,7 @@ export default {
           name: 'stepLenInYears',
           size: 200
         },
-        
+
         // stacked column
         {
         name: 'Pools',
@@ -99,10 +100,10 @@ export default {
             size: 150
           }
         ],
-    
+
         },
       ],
-      
+
       rows: this.generateDataRows()
     }
   },

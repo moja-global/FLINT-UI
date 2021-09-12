@@ -3,7 +3,7 @@
 <br />
 <h1>FLINT UI</h1>
 <h6>
-A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs.
+A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs
 </h6>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
@@ -19,7 +19,7 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 
 To set up this project locally follows the below procedure:
 
-1. Pull the below docker image to run flint.example:
+1. Pull the below docker image to run `flint.example`:
 
 ```shell
 docker pull shubhamkarande13/flint.example:bionic
@@ -53,7 +53,7 @@ This will build all the docker images inside the `docker-compose.yml` file. It w
 
 <br />
 
-`docker-compose.yml` file is compose of four services i.e. `flint.example.api`, `flint.gcbm.api`, `flint.ui` and `storybook`.
+`docker-compose.yml` file is compose of three services i.e. `flint.example.api`, `flint.gcbm.api`, `flint.ui`.
 
 Now you can start all the containers by clicking on the `START` button or using the command `docker-compose up`. You can also use the command `docker start {name of the container}` to start the only specific container.
 
@@ -74,7 +74,7 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 4. To view the UI please navigate to [127.0.0.1:8000](http://127.0.0.1:8000/). UI will look something like this:
 
 <div align="center">
-<img src="assets/dashboard.jpg">
+<img src="assets/flint-ui-dashboard.jpg">
 </div>
 
 ## Developer notes
@@ -101,7 +101,7 @@ Go to the `flint.ui` directory.
 yarn install
 ```
 
-2. Build the Storybook site:
+2. Start the Storybook in development mode:
 
 ```shell
 yarn storybook
@@ -136,17 +136,17 @@ Obvious examples are:
 - FLINT: Full Lands Integration Tool
 - RothC: Rothamstead Carbon model
 
-We recommend using ESLint and the prettier plugins to make conforming to the Vue style guide easy. There is official integration for VSCode and Atom editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
+We recommend using ESLint and the Prettier plugins to make conforming to the Vue style guide easy. There is official integration for VSCode and other editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
 
 If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
 
-```
+```shell
 eslint --ext .js,.vue src
 ```
 
 Minor errors can be fixed automatically:
 
-```
+```shell
 eslint --fix --ext .js,.vue src
 ```
 
