@@ -49,10 +49,10 @@
             @close="closeConfirmRunModal"
             @startApicalls="startApiCalls({ cardMethodName })"
           />
-        </div>
         <p class="text-sm text-blueGray-400 mt-4">
           <span class="whitespace-nowrap">{{ cardDescription }}</span>
         </p>
+        </div>
       </div>
     </div>
   </div>
