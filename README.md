@@ -17,7 +17,7 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 
 ## Usage
 
-To set up this project locally follows the below procedure:
+To set up this project locally follow the below procedure:
 
 1. Pull the below docker image to run `flint.example`:
 
@@ -53,7 +53,7 @@ This will build all the docker images inside the `docker-compose.yml` file. It w
 
 <br />
 
-`docker-compose.yml` file is compose of three services i.e. `flint.example.api`, `flint.gcbm.api`, `flint.ui`.
+`docker-compose.yml` file is composed of three services i.e. `flint.example.api`, `flint.gcbm.api`, `flint.ui`.
 
 Now you can start all the containers by clicking on the `START` button or using the command `docker-compose up`. You can also use the command `docker start {name of the container}` to start the only specific container.
 
@@ -65,7 +65,7 @@ All containers list will look like this in the Docker app:
 
 <br />
 
-If you want to shut down a specific container click on the `STOP` button of that specific container in the Docker app. You can also use the command line to stop a specific container by using the command `docker stop {name of the container you want to stop}`
+If you want to shut down a specific container click on the `STOP` button of that specific container in the Docker app. You can also use the command line to stop a specific container by using the command `docker stop {name of the container you want to stop}`.
 
 To shut down, the whole `docker-compose.yml` file and all services inside it then use the command `docker-compose down`.
 

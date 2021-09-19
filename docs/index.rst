@@ -23,4 +23,5 @@ and hence the tool can be customised for every module.
 .. toctree::
    :hidden:
 
+   installation
    DevelopmentGuide/index
