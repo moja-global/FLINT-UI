@@ -10,15 +10,15 @@ on:
     paths:
       - "!*"
       - ".github/workflows/**"
-      - "frontend/.storybook/**"
-      - "frontend/src/stories/**"
+      - "flint.ui/.storybook/**"
+      - "flint.ui/src/stories/**"
   pull_request:
     branches: [master]
     paths:
       - "!*"
       - ".github/workflows/**"
-      - "frontend/.storybook/**"
-      - "frontend/src/stories/**"
+      - "flint.ui/.storybook/**"
+      - "flint.ui/src/stories/**"
 
 # List of jobs
 jobs:
