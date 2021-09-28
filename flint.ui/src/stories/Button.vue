@@ -1,32 +1,50 @@
 <template>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }}</button>
+  <button type="button" :class="classes" :style="style" @click="onClick">
+    {{ label }}
+  </button>
 </template>
 
 <script>
-import './button.css';
-
+import './button.css'
 export default {
-  name: 'my-button',
+  name: 'MyButton',
 
   props: {
     label: {
       type: String,
-      required: true,
+      required: true
     },
     primary: {
       type: Boolean,
-      default: false,
+      default: false
+    },
+    secondary: {
+      type: Boolean,
+      default: false
+    },
+    success: {
+      type: Boolean,
+      default: false
+    },
+    danger: {
+      type: Boolean,
+      default: false
     },
     size: {
       type: String,
       default: 'medium',
       validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
-      },
+        return ['small', 'medium', 'large'].indexOf(value) !== -1
+      }
     },
+    // eslint-disable-next-line vue/require-default-prop
     backgroundColor: {
-      type: String,
+      type: String
     },
+    // eslint-disable-next-line vue/require-default-prop
+    borderRadius: {
+      type: String
+    }
   },
 
   computed: {
@@ -34,21 +52,24 @@ export default {
       return {
         'storybook-button': true,
         'storybook-button--primary': this.primary,
-        'storybook-button--secondary': !this.primary,
-        [`storybook-button--${this.size}`]: true,
-      };
+        'storybook-button--secondary': this.secondary,
+        'storybook-button--success': this.success,
+        'storybook-button--danger': this.danger,
+        [`storybook-button--${this.size}`]: true
+      }
     },
     style() {
       return {
         backgroundColor: this.backgroundColor,
-      };
-    },
+        borderRadius: this.borderRadius
+      }
+    }
   },
 
   methods: {
     onClick() {
-      this.$emit('onClick');
-    },
-  },
-};
+      this.$emit('onClick')
+    }
+  }
+}
 </script>
