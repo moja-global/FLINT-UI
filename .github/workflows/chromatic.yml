@@ -4,7 +4,21 @@
 name: 'Chromatic'
 
 # Event for the workflow
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
+    paths:
+      - "!*"
+      - ".github/workflows/**"
+      - "frontend/.storybook/**"
+      - "frontend/src/stories/**"
+  pull_request:
+    branches: [master]
+    paths:
+      - "!*"
+      - ".github/workflows/**"
+      - "frontend/.storybook/**"
+      - "frontend/src/stories/**"
 
 # List of jobs
 jobs:
