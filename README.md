@@ -83,9 +83,10 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 
 To run the Vue app locally, you can follow the below procedure:
 
-1. Go to the `flint.ui` folder and run `yarn install`.
-2. Run `yarn serve` to start the Vue app server.
-3. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
+1. Make sure that yarn is installed. If not go over [here.](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+2. Go to the `flint.ui` folder and run `yarn install`.
+3. Run `yarn serve` to start the Vue app server.
+4. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
 
 ### Storybook in local development
 

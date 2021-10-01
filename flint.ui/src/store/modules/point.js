@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import axios from 'axios'
 
@@ -144,7 +145,8 @@ export default {
     pool_3: [],
     point_step: [],
     point_stepDate: [],
-    point_stepLenInYears: []
+    point_stepLenInYears: [],
+    flag: 0 //Thiis is to check if whole Run works.
   },
 
   mutations: {
@@ -207,6 +209,11 @@ export default {
       state.point_results = response
       console.log('point_results sent to state')
       //console.log(state.results)
+    },
+    updateFlag(state, flag) {
+      state.flag = 1
+      console.log('flag')
+      //console.log(state.results)
     }
   },
 
@@ -235,6 +242,7 @@ export default {
           this._vm.$toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
+        commit('updateFlag', 1)
     },
     parse_point_results({ commit }) {
       console.log(this.state.point.point_results)
@@ -311,6 +319,8 @@ export default {
       console.log(this.state.point.point_stepDate)
       console.log('this.point_stepLenInYears')
       console.log(this.state.point.point_stepLenInYears)
+      //window.open('http://127.0.0.1:8000/flint/point_output_table',"_self")
+
     }
   }
 }
