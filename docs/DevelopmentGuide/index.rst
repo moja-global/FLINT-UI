@@ -7,9 +7,9 @@ the FLINT UI and the rationale behind it. More technical explanations of
 the source code should be found within the source directory of FLINT UI.
 
 This documentation is strongly related to a series of guides detailing
-how to set up and operate the FLINT UI and develop further on the same.
-We recommend that you have a look at them as well for a more fuller
-understanding of the domain.
+how to :ref:`set up <installation>` and operate the FLINT UI and develop
+further on the same. We recommend that you have a look at them as well for
+a more fuller understanding of the domain.
 
 Prerequisites
 -------------
