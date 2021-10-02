@@ -170,7 +170,7 @@ export default {
       return result
     }
   },
-  beforeMount() {
+  beforeCreate() {
     this.$store.dispatch('parse_point_results')
   }
 }
