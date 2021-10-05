@@ -2,21 +2,55 @@
 <img src="https://i0.wp.com/mojaglobal.kinsta.cloud/wp-content/uploads/2021/03/Asset-66@4x.png" alt="FLINT UI logo" height ="auto" width="200" />
 <br />
 <h1>FLINT UI</h1>
-<h6>
+<p>
 A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs
-</h6>
+</p>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/stargazers"><img src="https://img.shields.io/github/stars/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/blob/master/LICENSE"><img src="https://img.shields.io/github/license/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 </div>
 
-## About Project
+## Table of contents
+* [About Project](#about-project)
+* [Built with](#built-with)
+* [Getting started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Developer notes](#developer-notes)
+  * [Vue app](#vue-app)
+  * [Storybook in local development](#storybook-in-local-development)
+  * [Storybook in production](#storybook-in-production)
+  * [Dependency management](#dependency-management)
+  * [Code Style](#code-style)
+* [How to Get Involved?](#how-to-get-involved)
+* [Contributors](#contributors)
+* [Maintainers Reviewers Ambassadors Coaches](#maintainers-reviewers-ambassadors-coaches)
+* [License](#license)
 
+## About Project
 This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
 
-## Usage
+## Built with
+* [Vue.js](https://vuejs.org/)
+* [Fontawesome](https://fontawesome.com/)
+* [TailwindCSS](https://tailwindcss.com/)
+* [Apexcharts](https://apexcharts.com/)
+* [Moment.js](https://momentjs.com/)
+* [Google Maps](https://developers.google.com/maps)
 
+## Getting started
+### Prerequisites
+In order to use and work on this project you need to install Docker for running the Docker image and Yarn to run the Vue app locally.
+
+You can install Docker following the download's [instructions](https://docs.docker.com/get-docker/).
+
+In order to install Yarn, open a terminal and type:
+```shell
+npm install -g yarn
+```
+
+### Installation
 To set up this project locally follow the below procedure:
 
 1. Pull the below docker image to run `flint.example`:
@@ -78,9 +112,7 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 </div>
 
 ## Developer notes
-
 ### Vue app
-
 To run the Vue app locally, you can follow the below procedure:
 
 1. Go to the `flint.ui` folder and run `yarn install`.
@@ -113,13 +145,13 @@ Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
 
 We have deployed Storybook on [Chromatic](https://www.chromatic.com/). It is made by Storybook maintainers. Chromatic automates gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
 
-- Get a permalink to FLINT-UI’s latest published Storybook on a given branch. Replace `<branch>` with the designated branch.
+* Get a permalink to FLINT-UI’s latest published Storybook on a given branch. Replace `<branch>` with the designated branch.
 
 ```shell
 https://<branch>--612f3734da98c9003a398626.chromatic.com
 ```
 
-- Get a permalink to the latest published component or library on a given branch. Add the `&branch=<branch>` query parameter to the url.
+* Get a permalink to the latest published component or library on a given branch. Add the `&branch=<branch>` query parameter to the url.
 
 ```shell
 https://chromatic.com/library?appId=612f3734da98c9003a398626&branch=<branch>
@@ -169,20 +201,9 @@ eslint --fix --ext .js,.vue src
 ```
 
 ## How to Get Involved?
-
 moja global welcomes a wide range of contributions as explained in [Contributing document](https://github.com/moja-global/About-moja-global/blob/master/CONTRIBUTING.md) and the [About moja-global Wiki](https://github.com/moja-global/.github/wiki).
 
-## FAQ and Other Questions
-
-- You can find FAQs on the [Wiki](https://github.com/moja.global/.github/wiki).
-- If you have a question about the code, submit [user feedback](https://github.com/moja-global/About-moja-global/blob/master/Contributing/How-to-Provide-User-Feedback.md) in the relevant repository
-- If you have a general question about a project or repository or moja global, [join moja global](https://github.com/moja-global/About-moja-global/blob/master/Contributing/How-to-Join-moja-global.md) and
-  - [submit a discussion](https://help.github.com/en/articles/about-team-discussions) to the project, repository or moja global [team](https://github.com/orgs/moja-global/teams)
-  - [submit a message](https://get.slack.help/hc/en-us/categories/200111606#send-messages) to the relevant channel on [moja global's Slack workspace](mojaglobal.slack.com).
-- If you have other questions, please write to info@moja.global
-
 ## Contributors
-
 Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -194,16 +215,14 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
 ## Maintainers Reviewers Ambassadors Coaches
-
 The following people are Maintainers Reviewers Ambassadors or Coaches
 
 <table><tr><td align="center"><a href="http://moja.global"><img src="https://avatars1.githubusercontent.com/u/19564969?v=4" width="100px;" alt="moja global"/><br /><sub><b>moja global</b></sub></a><br /><a href="#projectManagement-moja-global" title="Project Management">📆</a></td></tr></table>
 
-**Maintainers** review and accept proposed changes
-**Reviewers** check proposed changes before they go to the Maintainers
-**Ambassadors** are available to provide training related to this repository
-**Coaches** are available to provide information to new contributors to this repository
+* **Maintainers** review and accept proposed changes
+* **Reviewers** check proposed changes before they go to the Maintainers
+* **Ambassadors** are available to provide training related to this repository
+* **Coaches** are available to provide information to new contributors to this repository
 
 ## License
-
-[Mozilla Public License Version 2.0](https://github.com/moja-global/FLINT-UI/blob/master/LICENSE)
+This project is released under the [Mozilla Public License Version 2.0](https://github.com/moja-global/FLINT-UI/blob/master/LICENSE).
