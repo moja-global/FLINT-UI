@@ -26,6 +26,7 @@ export default {
         return ['small', 'medium', 'large'].indexOf(value) !== -1
       }
     },
+    /* eslint-disable */
     backgroundColor: {
       type: String
     }
