@@ -506,7 +506,7 @@ export default {
       axios
         .post('http://127.0.0.1:8080/rothc', final_RothC_config_string)
         .then((response) => {
-          this._vm.$toast.success(`${'Response status: ' + response.status}`, {
+          this._vm.$toast.success(`Configuration loaded for RothC.`, {
             timeout: 2000
           })
           console.log(response)

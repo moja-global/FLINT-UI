@@ -41,3 +41,5 @@ parts of the documentation.
 
 .. toctree::
    :hidden:
+
+   DevelopmentNotes

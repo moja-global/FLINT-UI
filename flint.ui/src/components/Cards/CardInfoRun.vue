@@ -29,7 +29,8 @@
               align-middle
               flex-initial
               bg-white
-              hover:bg-black hover:text-white
+              hover:bg-black
+              hover:text-white
               text-gray-800
               font-semibold
               py-2
@@ -117,11 +118,11 @@ export default {
     },
     // button linking to api end-points
     apiRoute_spec() {
-      console.log('SPEC route invoked')
+      console.log('SPECIFICATION route invoked')
       axios
         .get('http://127.0.0.1:8080/spec')
         .then((response) => {
-          this.$toast.success(`${'Response status: ' + response.status}`, {
+          this.$toast.success(`Specification route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
@@ -136,7 +137,7 @@ export default {
       axios
         .get('http://127.0.0.1:8080/help/all')
         .then((response) => {
-          this.$toast.success(`${'Response status: ' + response.status}`, {
+          this.$toast.success(`Help route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
@@ -151,7 +152,7 @@ export default {
       axios
         .get('http://127.0.0.1:8080/version')
         .then((response) => {
-          this.$toast.success(`${'Response status: ' + response.status}`, {
+          this.$toast.success(`Version route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
@@ -166,9 +167,12 @@ export default {
       axios
         .post('http://127.0.0.1:8080/point')
         .then((response) => {
-          this.$toast.success(`${'Response status: ' + response.status}`, {
-            timeout: 2000
-          })
+          this.$toast.success(
+            `Point route has been invoked. You can see the output in Point Output Table.`,
+            {
+              timeout: 2000
+            }
+          )
           console.log(response)
         })
         .catch((error) => {
@@ -181,9 +185,12 @@ export default {
       axios
         .post('http://127.0.0.1:8080/rothc')
         .then((response) => {
-          this.$toast.success(`${'Response status: ' + response.status}`, {
-            timeout: 2000
-          })
+          this.$toast.success(
+            `RothC route has been invoked. You can see the output in RothC Output Table.`,
+            {
+              timeout: 2000
+            }
+          )
           console.log(response)
         })
         .catch((error) => {

@@ -224,7 +224,7 @@ export default {
       axios
         .post('http://127.0.0.1:8080/point', final_config_string)
         .then((response) => {
-          this._vm.$toast.success(`${'Response status: ' + response.status}`, {
+          this._vm.$toast.success(`Configuration loaded for Point.`, {
             timeout: 2000
           })
           console.log(response)

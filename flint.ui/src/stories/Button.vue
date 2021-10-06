@@ -20,7 +20,6 @@ export default {
     },
     secondary: {
       type: Boolean,
-      default: false
     },
     success: {
       type: Boolean,
@@ -31,8 +30,6 @@ export default {
       default: false
     },
     size: {
-      type: String,
-      default: 'medium',
       validator: function (value) {
         return ['small', 'medium', 'large'].indexOf(value) !== -1
       }
