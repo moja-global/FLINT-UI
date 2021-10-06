@@ -218,6 +218,10 @@ Minor errors can be fixed automatically:
 eslint --fix --ext .js,.vue src
 ```
 
+## Code Style
+
+- The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+
 ## How to Get Involved?
 moja global welcomes a wide range of contributions as explained in [Contributing document](https://github.com/moja-global/About-moja-global/blob/master/CONTRIBUTING.md) and the [About moja-global Wiki](https://github.com/moja-global/.github/wiki).
 
