@@ -129,98 +129,10 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 <img src="assets/flint-ui-dashboard.jpg">
 </div>
 
-## Developer notes
-### Vue app
-To run the Vue app locally, you can follow the below procedure:
-
-1. Go to the `flint.ui` folder and run `yarn install`.
-2. Run `yarn serve` to start the Vue app server.
-3. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
-
-### Storybook in local development
-
-Storybook dependencies and configuration are located under the `flint.ui/.storybook` directory.
-
-To build and launch Storybook locally, we have to follow the below procedure:
-
-Go to the `flint.ui` directory.
-
-1. Install Storybook dependencies:
-
-```shell
-yarn install
-```
-
-2. Start the Storybook in development mode:
-
-```shell
-yarn storybook
-```
-
-Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
-
-### Storybook in production
-
-We have deployed Storybook on [Chromatic](https://www.chromatic.com/). It is made by Storybook maintainers. Chromatic automates gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
-
-* Get a permalink to FLINT-UI’s latest published Storybook on a given branch. Replace `<branch>` with the designated branch.
-
-```shell
-https://<branch>--612f3734da98c9003a398626.chromatic.com
-```
-
-* Get a permalink to the latest published component or library on a given branch. Add the `&branch=<branch>` query parameter to the url.
-
-```shell
-https://chromatic.com/library?appId=612f3734da98c9003a398626&branch=<branch>
-```
-
-Storybook live (master branch): [https://master--612f3734da98c9003a398626.chromatic.com](https://master--612f3734da98c9003a398626.chromatic.com)
-
-### Dependency management
-
-We are following [Yarn](https://yarnpkg.com/) package manager.
-
-Our `package.json` file is gitignored to enforce strict management of our client dependencies.
-
-In order to add a new dependency, please:
-
-1. use `yarn add <your-package>`
-2. `git checkout -b dependency/<your-package>`
-3. `git add --force flint.ui/package.json`
-4. `git push` and submit a PR with only the `package.json` changes
-
-Our CI build will test for conflicts and your new dependency will be added after your PR has been reviewed.
-
-### Code Style
-
-The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
-
-One exception is the case used to describe the ecological models exposed to our FLINT client. Because model names, and sometimes model variables, often use acronyms these remain capitalized.
-
-Obvious examples are:
-
-- GCBM: Generic Carbon Budget model
-- FLINT: Full Lands Integration Tool
-- RothC: Rothamstead Carbon model
-
-We recommend using ESLint and the Prettier plugins to make conforming to the Vue style guide easy. There is official integration for VSCode and other editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
-
-If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
-
-```shell
-eslint --ext .js,.vue src
-```
-
-Minor errors can be fixed automatically:
-
-```shell
-eslint --fix --ext .js,.vue src
-```
-
-## Code Style
-
-- The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+## Contributing
+To contribute to FLINT-UI:
+1) Go through our contributing guidelines over [here.](https://github.com/moja-global/About_moja_global/tree/master/Contributing#community-contributions)
+2) Go through the Development Notes [here.](https://github.com/moja-global/FLINT-UI/blob/master/docs/DevelopmentGuide/DevelopmentNotes.rst).
 
 ## How to Get Involved?
 moja global welcomes a wide range of contributions as explained in [Contributing document](https://github.com/moja-global/About-moja-global/blob/master/CONTRIBUTING.md) and the [About moja-global Wiki](https://github.com/moja-global/.github/wiki).
