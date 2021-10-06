@@ -11,27 +11,45 @@ A FLINT client, written in Vue, to provide an awesome user interface for configu
 <a href="https://github.com/moja-global/FLINT-UI/blob/master/LICENSE"><img src="https://img.shields.io/github/license/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 </div>
 
-## Table of contents
-* [About Project](#about-project)
-* [Built with](#built-with)
-* [Getting started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Developer notes](#developer-notes)
-  * [Vue app](#vue-app)
-  * [Storybook in local development](#storybook-in-local-development)
-  * [Storybook in production](#storybook-in-production)
-  * [Dependency management](#dependency-management)
-  * [Code Style](#code-style)
-* [How to Get Involved?](#how-to-get-involved)
-* [Contributors](#contributors)
-* [Maintainers Reviewers Ambassadors Coaches](#maintainers-reviewers-ambassadors-coaches)
-* [License](#license)
+<br />
 
-## About Project
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#developer-notes">Developer notes</a>
+      <ul>
+        <li><a href="#vue-app">Vue app</a></li>
+        <li><a href="#storybook-in-local-development">Storybook in local development</a></li>
+        <li><a href="#storybook-in-production">Storybook in production</a></li>
+        <li><a href="#dependency-management">Dependency management</a></li>
+        <li><a href="#code-style">Code Style</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-get-involved">How to Get Involved?</a></li>
+    <li><a href="#faq-and-other-questions">FAQ and Other Questions</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#maintainers-reviewers-ambassadors-coaches">Maintainers Reviewers Ambassadors Coaches</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
+## About The Project
 This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
 
-## Built with
+### Built with
 * [Vue.js](https://vuejs.org/)
 * [Fontawesome](https://fontawesome.com/)
 * [TailwindCSS](https://tailwindcss.com/)
@@ -202,6 +220,14 @@ eslint --fix --ext .js,.vue src
 
 ## How to Get Involved?
 moja global welcomes a wide range of contributions as explained in [Contributing document](https://github.com/moja-global/About-moja-global/blob/master/CONTRIBUTING.md) and the [About moja-global Wiki](https://github.com/moja-global/.github/wiki).
+
+## FAQ and Other Questions
+- You can find FAQs on the [Wiki](https://github.com/moja.global/.github/wiki).
+- If you have a question about the code, submit [user feedback](https://github.com/moja-global/About-moja-global/blob/master/Contributing/How-to-Provide-User-Feedback.md) in the relevant repository
+- If you have a general question about a project or repository or moja global, [join moja global](https://github.com/moja-global/About-moja-global/blob/master/Contributing/How-to-Join-moja-global.md) and
+  - [submit a discussion](https://help.github.com/en/articles/about-team-discussions) to the project, repository or moja global [team](https://github.com/orgs/moja-global/teams)
+  - [submit a message](https://get.slack.help/hc/en-us/categories/200111606#send-messages) to the relevant channel on [moja global's Slack workspace](mojaglobal.slack.com).
+- If you have other questions, please write to info@moja.global
 
 ## Contributors
 Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
