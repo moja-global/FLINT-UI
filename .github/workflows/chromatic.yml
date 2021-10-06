@@ -1,24 +1,10 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Chromatic'
+name: "Chromatic"
 
 # Event for the workflow
-on:
-  push:
-    branches: [master]
-    paths:
-      - "!*"
-      - ".github/workflows/**"
-      - "flint.ui/.storybook/**"
-      - "flint.ui/src/stories/**"
-  pull_request:
-    branches: [master]
-    paths:
-      - "!*"
-      - ".github/workflows/**"
-      - "flint.ui/.storybook/**"
-      - "flint.ui/src/stories/**"
+on: [push, pull_request]
 
 # List of jobs
 jobs:
