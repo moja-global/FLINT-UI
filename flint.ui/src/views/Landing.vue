@@ -75,7 +75,7 @@
     <div class="container relative mx-auto">
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center mt-10">
-          <router-link to="/flint">
+        <!--  <router-link to="/flint">
             <button
               class="
                 bg-white
@@ -91,6 +91,65 @@
               "
             >
               Take me to FLINT UI
+            </button>
+          </router-link> -->
+
+          <router-link to="/flint/configurations/point">
+            <button
+              class="
+                bg-white
+                text-gray-800
+                hover:bg-green-200
+                font-semibold
+                py-2
+                px-4
+                border border-gray-400
+                hover:border-green-600
+                rounded
+                shadow
+              "
+            >
+              POINT
+            </button>
+          </router-link>
+          <br>
+          <br>
+          <router-link to="/flint/configurations/rothc">
+            <button
+              class="
+                bg-white
+                text-gray-800
+                hover:bg-green-200
+                font-semibold
+                py-2
+                px-4
+                border border-gray-400
+                hover:border-green-600
+                rounded
+                shadow
+              "
+            >
+              ROTHC
+            </button>
+          </router-link>
+          <br>
+          <br>
+          <router-link to="/gcbm/dashboard">
+            <button
+              class="
+                bg-white
+                text-gray-800
+                hover:bg-green-200
+                font-semibold
+                py-2
+                px-4
+                border border-gray-400
+                hover:border-green-600
+                rounded
+                shadow
+              "
+            >
+              GCBM
             </button>
           </router-link>
         </div>
