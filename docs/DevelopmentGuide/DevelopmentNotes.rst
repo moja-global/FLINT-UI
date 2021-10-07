@@ -61,6 +61,8 @@ work.
 Storybook live (master branch):
 https://master--612f3734da98c9003a398626.chromatic.com
 
+Storybook documentation can be found on the index page of https://master--612f3734da98c9003a398626.chromatic.com/.
+
 Dependency management
 ---------------------
 
