@@ -2,20 +2,78 @@
 <img src="https://i0.wp.com/mojaglobal.kinsta.cloud/wp-content/uploads/2021/03/Asset-66@4x.png" alt="FLINT UI logo" height ="auto" width="200" />
 <br />
 <h1>FLINT UI</h1>
-<h6>
+<p>
 A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs
-</h6>
+</p>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/stargazers"><img src="https://img.shields.io/github/stars/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/blob/master/LICENSE"><img src="https://img.shields.io/github/license/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
 </div>
 
-## About Project
+<br />
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#developer-notes">Developer notes</a>
+      <ul>
+        <li><a href="#vue-app">Vue app</a></li>
+        <li><a href="#developer-notes">Storybook in local development</a></li>
+        <li><a href="#developer-notes">Storybook in production</a></li>
+        <li><a href="#developer-notes">Dependency management</a></li>
+        <li><a href="#developer-notes">Code Style</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-get-involved">How to Get Involved?</a></li>
+    <li><a href="#faq-and-other-questions">FAQ and Other Questions</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#maintainers-reviewers-ambassadors-coaches">Maintainers Reviewers Ambassadors Coaches</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
+## About The Project
 
 This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
 
-## Usage
+### Built with
+
+- [Vue.js](https://vuejs.org/)
+- [Fontawesome](https://fontawesome.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Apexcharts](https://apexcharts.com/)
+- [Moment.js](https://momentjs.com/)
+- [Google Maps](https://developers.google.com/maps)
+
+## Getting started
+
+### Prerequisites
+
+In order to use and work on this project you need to install Docker for running the Docker image and Yarn to run the Vue app locally.
+
+You can install Docker following the download's [instructions](https://docs.docker.com/get-docker/).
+
+In order to install Yarn, open a terminal and type:
+
+```shell
+npm install -g yarn
+```
+
+### Installation
 
 To set up this project locally follow the below procedure:
 
@@ -79,99 +137,13 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 
 ## Developer notes
 
-### Vue app
+Go through the Development Notes [here.](https://github.com/moja-global/FLINT-UI/blob/master/docs/DevelopmentGuide/DevelopmentNotes.rst).
 
-To run the Vue app locally, you can follow the below procedure:
+## Contributing
 
-1. Make sure that yarn is installed. If not go over [here.](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
-2. Go to the `flint.ui` folder and run `yarn install`.
-3. Run `yarn serve` to start the Vue app server.
-4. Go to [127.0.0.1:8000](http://127.0.0.1:8000/) to view the Vue app.
+To contribute to FLINT-UI:
 
-### Storybook in local development
-
-Storybook dependencies and configuration are located under the `flint.ui/.storybook` directory.
-
-To build and launch Storybook locally, we have to follow the below procedure:
-
-Go to the `flint.ui` directory.
-
-1. Install Storybook dependencies:
-
-```shell
-yarn install
-```
-
-2. Start the Storybook in development mode:
-
-```shell
-yarn storybook
-```
-
-Go to [localhost:6006](http://localhost:6006/) to view the Storybook.
-
-### Storybook in production
-
-We have deployed Storybook on [Chromatic](https://www.chromatic.com/). It is made by Storybook maintainers. Chromatic automates gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
-
-- Get a permalink to FLINT-UI’s latest published Storybook on a given branch. Replace `<branch>` with the designated branch.
-
-```shell
-https://<branch>--612f3734da98c9003a398626.chromatic.com
-```
-
-- Get a permalink to the latest published component or library on a given branch. Add the `&branch=<branch>` query parameter to the url.
-
-```shell
-https://chromatic.com/library?appId=612f3734da98c9003a398626&branch=<branch>
-```
-
-Storybook live (master branch): [https://master--612f3734da98c9003a398626.chromatic.com](https://master--612f3734da98c9003a398626.chromatic.com)
-
-### Dependency management
-
-We are following [Yarn](https://yarnpkg.com/) package manager.
-
-Our `package.json` file is gitignored to enforce strict management of our client dependencies.
-
-In order to add a new dependency, please:
-
-1. use `yarn add <your-package>`
-2. `git checkout -b dependency/<your-package>`
-3. `git add --force flint.ui/package.json`
-4. `git push` and submit a PR with only the `package.json` changes
-
-Our CI build will test for conflicts and your new dependency will be added after your PR has been reviewed.
-
-### Code Style
-
-The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
-
-One exception is the case used to describe the ecological models exposed to our FLINT client. Because model names, and sometimes model variables, often use acronyms these remain capitalized.
-
-Obvious examples are:
-
-- GCBM: Generic Carbon Budget model
-- FLINT: Full Lands Integration Tool
-- RothC: Rothamstead Carbon model
-
-We recommend using ESLint and the Prettier plugins to make conforming to the Vue style guide easy. There is official integration for VSCode and other editors. Find out more [here](https://eslint.vuejs.org/user-guide/).
-
-If you have ESLint installed globally, you can run it from the `flint.ui` directory. For example, this will detect any errors in the `src` folder:
-
-```shell
-eslint --ext .js,.vue src
-```
-
-Minor errors can be fixed automatically:
-
-```shell
-eslint --fix --ext .js,.vue src
-```
-
-## Code Style
-
-- The Vue.js style guide has been used to maintain a consistent style throughout the project. Click [here](https://vuejs.org/v2/style-guide/) to learn more about the style guide.
+Go through our contributing guidelines over [here.](https://github.com/moja-global/About_moja_global/tree/master/Contributing#community-contributions).
 
 ## How to Get Involved?
 
@@ -204,11 +176,11 @@ The following people are Maintainers Reviewers Ambassadors or Coaches
 
 <table><tr><td align="center"><a href="http://moja.global"><img src="https://avatars1.githubusercontent.com/u/19564969?v=4" width="100px;" alt="moja global"/><br /><sub><b>moja global</b></sub></a><br /><a href="#projectManagement-moja-global" title="Project Management">📆</a></td></tr></table>
 
-**Maintainers** review and accept proposed changes
-**Reviewers** check proposed changes before they go to the Maintainers
-**Ambassadors** are available to provide training related to this repository
-**Coaches** are available to provide information to new contributors to this repository
+- **Maintainers** review and accept proposed changes
+- **Reviewers** check proposed changes before they go to the Maintainers
+- **Ambassadors** are available to provide training related to this repository
+- **Coaches** are available to provide information to new contributors to this repository
 
 ## License
 
-[Mozilla Public License Version 2.0](https://github.com/moja-global/FLINT-UI/blob/master/LICENSE)
+This project is released under the [Mozilla Public License Version 2.0](https://github.com/moja-global/FLINT-UI/blob/master/LICENSE).

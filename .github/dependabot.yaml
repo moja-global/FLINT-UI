@@ -1,0 +1,12 @@
+# Update dependencies
+
+version: 2
+updates:
+  # Update the git submodules
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "Flint.Cloud submodule"
