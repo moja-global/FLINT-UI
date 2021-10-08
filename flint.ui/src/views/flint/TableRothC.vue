@@ -127,7 +127,7 @@ export default {
       rows: this.generateDataRows()
     }
   },
-  beforeMount() {
+  beforeCreate() {
     this.$store.dispatch('parse_RothC_results')
   },
   methods: {

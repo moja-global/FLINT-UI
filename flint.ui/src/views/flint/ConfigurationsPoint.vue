@@ -63,6 +63,25 @@
               <vue-slider v-model="pool3.value" v-bind="pool3" />
             </div>
           </div>
+          <button
+            class="
+              inline-block
+              align-middle
+              flex-initial
+              bg-white
+              hover:bg-black hover:text-white
+              text-gray-800
+              font-semibold
+              py-2
+              px-4
+              border border-gray-400
+              rounded
+              shadow
+            "
+            @click="Run()"
+          >
+            <i class="far fa-image" /> Run
+          </button>
         </div>
       </div>
     </div>
@@ -122,6 +141,18 @@ export default {
       this.$store.commit('set_pointConfig_Pool_3', this.pool3.value.toFixed(1))
 
       this.$store.dispatch('send_pointConfig')
+    },
+
+    Run() {
+      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+
+      //If the setup is ok it will take the user to the Output else give an alert.
+      if (this.$store.state.point.flag === 1) {
+        this.$store.dispatch('parse_point_results')
+        window.open('http://127.0.0.1:8000/flint/point_output_table', '_self')
+      } else {
+        alert('Hey please check your setup')
+      }
     }
   }
 }
