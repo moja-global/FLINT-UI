@@ -4,7 +4,19 @@
 name: "Chromatic"
 
 # Event for the workflow
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
+    paths:
+      - "!*"
+      - "flint.ui/.storybook/**"
+      - "flint.ui/src/stories/**"
+  pull_request:
+    branches: [master]
+    paths:
+      - "!*"
+      - "flint.ui/.storybook/**"
+      - "flint.ui/src/stories/**"
 
 # List of jobs
 jobs:
