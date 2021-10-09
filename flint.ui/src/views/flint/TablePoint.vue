@@ -160,10 +160,10 @@ export default {
         }
         result[row]['point_step'] = point_step[row]
         result[row]['point_stepDate'] = point_stepDate[row]
-        result[row]['point_stepLenInYears'] = point_stepLenInYears[row]
-        result[row]['pool_1'] = pool_1[row]
-        result[row]['pool_2'] = pool_2[row]
-        result[row]['pool_3'] = pool_3[row]
+        result[row]['point_stepLenInYears'] = Math.trunc(point_stepLenInYears[row]*100000)/100000
+        result[row]['pool_1'] = Math.trunc(pool_1[row] * 100000) / 100000
+        result[row]['pool_2'] = Math.trunc(pool_2[row] * 100000) / 100000
+        result[row]['pool_3'] = Math.trunc(pool_3[row] * 100000) / 100000
       }
       console.log('result')
       console.log(result)

@@ -231,16 +231,16 @@ export default {
         }
         result[row]['RothC_step'] = RothC_step[row]
         result[row]['RothC_stepDate'] = RothC_stepDate[row]
-        result[row]['RothC_stepLenInYears'] = RothC_stepLenInYears[row]
-        result[row]['DPM'] = DPM[row]
-        result[row]['RPM'] = RPM[row]
-        result[row]['BIOF'] = BIOF[row]
-        result[row]['BIOS'] = BIOS[row]
-        result[row]['HUM'] = HUM[row]
-        result[row]['IOM'] = IOM[row]
-        result[row]['initialValues'] = initialValues[row]
-        result[row]['plantCM'] = plantCM[row]
-        result[row]['atmosphere'] = atmosphere[row]
+        result[row]['RothC_stepLenInYears'] = Math.trunc(RothC_stepLenInYears[row] * 100000) / 100000
+        result[row]['DPM'] = Math.trunc(DPM[row] * 100000) / 100000
+        result[row]['RPM'] = Math.trunc(RPM[row] * 100000) / 100000
+        result[row]['BIOF'] = Math.trunc(BIOF[row] * 100000) / 100000
+        result[row]['BIOS'] = Math.trunc(BIOS[row] * 100000) / 100000
+        result[row]['HUM'] = Math.trunc(HUM[row] * 100000) / 100000
+        result[row]['IOM'] = Math.trunc(IOM[row] * 100000) / 100000
+        result[row]['initialValues'] = Math.trunc(initialValues[row] * 100000) / 100000
+        result[row]['plantCM'] = Math.trunc(plantCM[row] * 100000) / 100000
+        result[row]['atmosphere'] = Math.trunc(atmosphere[row] * 100000) / 100000
       }
       console.log('result')
       console.log(result)
