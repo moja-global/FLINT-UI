@@ -6,10 +6,10 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,5 +27,22 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Build FLINT UI Client container
+
+      - name: Build FLINT UI Client container 🐳
         run: docker build flint.ui --file flint.ui/Dockerfile --tag client:latest
+
+      - name: Install 🔧
+        run: yarn install
+        working-directory: flint.ui
+
+      - name: Lint 🧐
+        run: yarn lint
+        working-directory: flint.ui
+
+      - name: Build 🏗️
+        run: yarn build
+        working-directory: flint.ui
+
+      - name: Storybook Build 🎨
+        run: yarn build-storybook -o ./path/to/build
+        working-directory: flint.ui
