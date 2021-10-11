@@ -74,16 +74,6 @@ export default {
           size: 200
         },
         {
-          prop: 'RothC_stepLenInYears',
-          name: 'stepLenInYears',
-          size: 150
-        },
-        {
-          prop: 'initialValues',
-          name: 'initialValues',
-          size: 100
-        },
-        {
           prop: 'plantCM',
           name: 'plantCM',
           size: 100
@@ -141,11 +131,6 @@ export default {
       console.log(this.$store.state.rothc.RothC_stepDate)
       return this.$store.state.rothc.RothC_stepDate
     },
-    RothC_stepLenInYears() {
-      console.log('this.$store.state.rothc.RothC_stepLenInYears')
-      console.log(this.$store.state.rothc.RothC_stepLenInYears)
-      return this.$store.state.rothc.RothC_stepLenInYears
-    },
     DPM() {
       console.log('this.$store.state.rothc.DPM')
       console.log(this.$store.state.rothc.DPM)
@@ -176,11 +161,6 @@ export default {
       console.log(this.$store.state.rothc.IOM)
       return this.$store.state.rothc.IOM
     },
-    initialValues() {
-      console.log('this.$store.state.rothc.initialValues')
-      console.log(this.$store.state.rothc.initialValues)
-      return this.$store.state.rothc.initialValues
-    },
     plantCM() {
       console.log('this.$store.state.rothc.plantCM')
       console.log(this.$store.state.rothc.plantCM)
@@ -201,8 +181,6 @@ export default {
         IOM = this.IOM(),
         RothC_step = this.RothC_step(),
         RothC_stepDate = this.RothC_stepDate(),
-        RothC_stepLenInYears = this.RothC_stepLenInYears(),
-        initialValues = this.initialValues(),
         plantCM = this.plantCM(),
         atmosphere = this.atmosphere()
       console.log('DPM from generateDataRows')
@@ -217,8 +195,6 @@ export default {
       console.log(HUM)
       console.log('IOM from generateDataRows')
       console.log(IOM)
-      console.log('initialValues from generateDataRows')
-      console.log(initialValues)
       console.log('plantCM from generateDataRows')
       console.log(plantCM)
       console.log('atmosphere from generateDataRows')
@@ -231,16 +207,14 @@ export default {
         }
         result[row]['RothC_step'] = RothC_step[row]
         result[row]['RothC_stepDate'] = RothC_stepDate[row]
-        result[row]['RothC_stepLenInYears'] = Math.trunc(RothC_stepLenInYears[row] * 100000) / 100000
-        result[row]['DPM'] = Math.trunc(DPM[row] * 100000) / 100000
-        result[row]['RPM'] = Math.trunc(RPM[row] * 100000) / 100000
-        result[row]['BIOF'] = Math.trunc(BIOF[row] * 100000) / 100000
-        result[row]['BIOS'] = Math.trunc(BIOS[row] * 100000) / 100000
-        result[row]['HUM'] = Math.trunc(HUM[row] * 100000) / 100000
-        result[row]['IOM'] = Math.trunc(IOM[row] * 100000) / 100000
-        result[row]['initialValues'] = Math.trunc(initialValues[row] * 100000) / 100000
-        result[row]['plantCM'] = Math.trunc(plantCM[row] * 100000) / 100000
-        result[row]['atmosphere'] = Math.trunc(atmosphere[row] * 100000) / 100000
+        result[row]['DPM'] = DPM[row].toFixed(5)
+        result[row]['RPM'] = RPM[row].toFixed(5)
+        result[row]['BIOF'] = BIOF[row].toFixed(5)
+        result[row]['BIOS'] = BIOS[row].toFixed(5)
+        result[row]['HUM'] = HUM[row].toFixed(5)
+        result[row]['IOM'] = IOM[row].toFixed(5)
+        result[row]['plantCM'] = plantCM[row].toFixed(5)
+        result[row]['atmosphere'] = atmosphere[row].toFixed(5)
       }
       console.log('result')
       console.log(result)
