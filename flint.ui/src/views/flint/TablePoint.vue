@@ -160,10 +160,10 @@ export default {
         }
         result[row]['point_step'] = point_step[row]
         result[row]['point_stepDate'] = point_stepDate[row]
-        result[row]['point_stepLenInYears'] = point_stepLenInYears[row].toFixed(5)
-        result[row]['pool_1'] = pool_1[row].toFixed(5)
-        result[row]['pool_2'] = pool_2[row].toFixed(5)
-        result[row]['pool_3'] = pool_3[row].toFixed(5)
+        result[row]['point_stepLenInYears'] = point_stepLenInYears[row].toPrecision(5)
+        result[row]['pool_1'] = pool_1[row].toPrecision(5)
+        result[row]['pool_2'] = pool_2[row].toPrecision(5)
+        result[row]['pool_3'] = pool_3[row].toPrecision(5)
       }
       console.log('result')
       console.log(result)

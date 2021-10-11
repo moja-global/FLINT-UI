@@ -207,14 +207,14 @@ export default {
         }
         result[row]['RothC_step'] = RothC_step[row]
         result[row]['RothC_stepDate'] = RothC_stepDate[row]
-        result[row]['DPM'] = DPM[row].toFixed(5)
-        result[row]['RPM'] = RPM[row].toFixed(5)
-        result[row]['BIOF'] = BIOF[row].toFixed(5)
-        result[row]['BIOS'] = BIOS[row].toFixed(5)
-        result[row]['HUM'] = HUM[row].toFixed(5)
-        result[row]['IOM'] = IOM[row].toFixed(5)
-        result[row]['plantCM'] = plantCM[row].toFixed(5)
-        result[row]['atmosphere'] = atmosphere[row].toFixed(5)
+        result[row]['DPM'] = DPM[row].toPrecision(5)
+        result[row]['RPM'] = RPM[row].toPrecision(5)
+        result[row]['BIOF'] = BIOF[row].toPrecision(5)
+        result[row]['BIOS'] = BIOS[row].toPrecision(5)
+        result[row]['HUM'] = HUM[row].toPrecision(5)
+        result[row]['IOM'] = IOM[row].toPrecision(5)
+        result[row]['plantCM'] = plantCM[row].toPrecision(5)
+        result[row]['atmosphere'] = atmosphere[row].toPrecision(5)
       }
       console.log('result')
       console.log(result)
