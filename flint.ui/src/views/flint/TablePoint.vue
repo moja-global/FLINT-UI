@@ -72,7 +72,7 @@ export default {
         {
           prop: 'point_stepDate',
           name: 'stepDate',
-          size: 200
+          size: 150
         },
         {
           prop: 'point_stepLenInYears',
@@ -152,14 +152,14 @@ export default {
       console.log(pool_2)
       console.log('pool_3 from generateDataRows')
       console.log(pool_3)
-
       for (let j = 0; j < point_step.length; j++) {
         let row = j
         if (!result[row]) {
           result[row] = {}
         }
         result[row]['point_step'] = point_step[row]
-        result[row]['point_stepDate'] = point_stepDate[row]
+        var defaultDateFormat = new Date(point_stepDate[row])
+        result[row]['point_stepDate'] = defaultDateFormat.toISOString().substring(0, 10);
         result[row]['point_stepLenInYears'] = point_stepLenInYears[row].toPrecision(5)
         result[row]['pool_1'] = pool_1[row].toPrecision(5)
         result[row]['pool_2'] = pool_2[row].toPrecision(5)

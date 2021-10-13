@@ -71,12 +71,12 @@ export default {
         {
           prop: 'RothC_stepDate',
           name: 'stepDate',
-          size: 200
+          size: 150
         },
         {
           prop: 'plantCM',
           name: 'plantCM',
-          size: 100
+          size: 150
         },
         {
           prop: 'DPM',
@@ -106,7 +106,7 @@ export default {
         {
           prop: 'IOM',
           name: 'SoilIOM',
-          size: 100
+          size: 150
         },
         {
           prop: 'atmosphere',
@@ -206,7 +206,8 @@ export default {
           result[row] = {}
         }
         result[row]['RothC_step'] = RothC_step[row]
-        result[row]['RothC_stepDate'] = RothC_stepDate[row]
+        var defaultDateFormat = new Date(RothC_stepDate[row])
+        result[row]['RothC_stepDate'] = defaultDateFormat.toISOString().substring(0, 10)
         result[row]['DPM'] = DPM[row].toPrecision(5)
         result[row]['RPM'] = RPM[row].toPrecision(5)
         result[row]['BIOF'] = BIOF[row].toPrecision(5)
