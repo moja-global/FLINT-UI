@@ -415,17 +415,17 @@
 
 <script>
 import Stepper from '@/components/Stepper/StepperRothc.vue'
+import formatData from '@/mixins/formatData'
 
 export default {
   components: {
     Stepper
   },
+  mixins: [formatData],
   computed: {
     newconfig_bToCMaxTSMDRatio: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio)
       },
       set(newValue) {
         this.$store.commit(
@@ -437,9 +437,7 @@ export default {
 
     newconfig_dToRRatioInPres: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.dToRRatioInPres
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.dToRRatioInPres)
       },
       set(newValue) {
         this.$store.commit(
@@ -451,9 +449,7 @@ export default {
 
     newconfig_encpFracHums: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.encpFracHums
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.encpFracHums)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_encpFracHums', '$#' + newValue + '$#')
@@ -462,9 +458,7 @@ export default {
 
     newconfig_evapoOpenRatio: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.evapoOpenRatio
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.evapoOpenRatio)
       },
       set(newValue) {
         this.$store.commit(
@@ -476,9 +470,7 @@ export default {
 
     newconfig_fracHumsToBios: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracHumsToBios
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracHumsToBios)
       },
       set(newValue) {
         this.$store.commit(
@@ -490,9 +482,7 @@ export default {
 
     newconfig_fracManuCMToBiof: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBiof
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBiof)
       },
       set(newValue) {
         this.$store.commit(
@@ -504,9 +494,7 @@ export default {
 
     newconfig_fracManuCMToBios: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBios
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBios)
       },
       set(newValue) {
         this.$store.commit(
@@ -518,9 +506,7 @@ export default {
 
     newconfig_fracManuCMToDpma: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToDpma
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToDpma)
       },
       set(newValue) {
         this.$store.commit(
@@ -532,9 +518,7 @@ export default {
 
     newconfig_fracManuCMToRpma: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracManuCMToRpma
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToRpma)
       },
       set(newValue) {
         this.$store.commit(
@@ -546,9 +530,7 @@ export default {
 
     newconfig_fracPbioToBiof: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.fracPbioToBiof
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracPbioToBiof)
       },
       set(newValue) {
         this.$store.commit(
@@ -560,9 +542,7 @@ export default {
 
     newconfig_sampleDepth: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sampleDepth
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sampleDepth)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_sampleDepth', '$#' + newValue + '$#')
@@ -571,9 +551,7 @@ export default {
 
     newconfig_sdcmRateMultBiof: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof)
       },
       set(newValue) {
         this.$store.commit(
@@ -585,9 +563,7 @@ export default {
 
     newconfig_sdcmRateMultBios: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBios
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBios)
       },
       set(newValue) {
         this.$store.commit(
@@ -599,9 +575,7 @@ export default {
 
     newconfig_sdcmRateMultDpm: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm)
       },
       set(newValue) {
         this.$store.commit(
@@ -613,9 +587,7 @@ export default {
 
     newconfig_sdcmRateMultHums: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultHums
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultHums)
       },
       set(newValue) {
         this.$store.commit(
@@ -627,9 +599,7 @@ export default {
 
     newconfig_sdcmRateMultRpm: {
       get() {
-        return this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm)
       },
       set(newValue) {
         this.$store.commit(
