@@ -1,6 +1,26 @@
 Development Notes
 =================
 
+Docker
+------
+
+Run commands from FLINT UI repo folder:
+
+FLINT Example
+
+1. To build image
+   docker build -t flint-api ./flint.cloud/local/rest_api_flint.example
+2. To run image
+   docker run --rm -d -p 8080:8080 flint-api
+
+GCBM
+
+1. To build image
+   docker build -t gcbm-api ./flint.cloud/local/rest_api_gcbm
+2. To run image
+   docker run --rm -d -p 8081:8080 gcbm-api
+
+
 Vue app
 -------
 
