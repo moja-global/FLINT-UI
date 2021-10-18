@@ -200,17 +200,17 @@
 
 <script>
 import Stepper from '@/components/Stepper/StepperRothc.vue'
+import formatData from '@/mixins/formatData'
 
 export default {
   components: {
     Stepper
   },
+  mixins: [formatData],
   computed: {
     newconfig_dpmaCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_dpmaCMInit', '$#' + newValue + '$#')
@@ -219,9 +219,7 @@ export default {
 
     newconfig_rpmaCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_rpmaCMInit', '$#' + newValue + '$#')
@@ -230,9 +228,7 @@ export default {
 
     newconfig_biofCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_biofCMInit', '$#' + newValue + '$#')
@@ -241,9 +237,7 @@ export default {
 
     newconfig_biosCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_biosCMInit', '$#' + newValue + '$#')
@@ -252,9 +246,7 @@ export default {
 
     newconfig_humsCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_humsCMInit', '$#' + newValue + '$#')
@@ -263,9 +255,7 @@ export default {
 
     newconfig_inrtCMInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit
-          .substr(2)
-          .slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_inrtCMInit', '$#' + newValue + '$#')
@@ -274,9 +264,7 @@ export default {
 
     newconfig_TSMDInit: {
       get() {
-        return this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit.substr(
-          2
-        ).slice(0, -2)
+        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit)
       },
       set(newValue) {
         this.$store.commit('setNewConfig_TSMDInit', '$#' + newValue + '$#')

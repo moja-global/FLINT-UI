@@ -69,17 +69,17 @@
 
 <script>
 import Stepper from '@/components/Stepper/StepperRothc.vue'
+import formatData from '@/mixins/formatData'
 
 export default {
   components: {
     Stepper
   },
+  mixins: [formatData],
   computed: {
     newconfig_presCM_data_orig: {
       get() {
-        return this.$store.state.rothc.config.Variables[11].presCM.transform.data_orig
-          .substr(4)
-          .slice(0, -4)
+        return this.formatArray(this.$store.state.rothc.config.Variables[11].presCM.transform.data_orig)
       },
       set(newValue) {
         this.$store.commit(
@@ -91,9 +91,7 @@ export default {
 
     newconfig_presCM_data_month_avg: {
       get() {
-        return this.$store.state.rothc.config.Variables[11].presCM.transform.data_month_avg
-          .substr(4)
-          .slice(0, -4)
+        return this.formatArray(this.$store.state.rothc.config.Variables[11].presCM.transform.data_month_avg)
       },
       set(newValue) {
         this.$store.commit(
@@ -105,9 +103,7 @@ export default {
 
     newconfig_presCM_data_lastyearcopy: {
       get() {
-        return this.$store.state.rothc.config.Variables[11].presCM.transform.data_lastyearcopy
-          .substr(4)
-          .slice(0, -4)
+        return this.formatArray(this.$store.state.rothc.config.Variables[11].presCM.transform.data_lastyearcopy)
       },
       set(newValue) {
         this.$store.commit(
