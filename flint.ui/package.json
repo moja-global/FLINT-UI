@@ -4,10 +4,10 @@
   "private": true,
   "description": "This project aims to implement a user-friendly UI for FLINT and GCBM runs",
   "scripts": {
-    "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "serve": "vue-cli-service --openssl-legacy-provider serve",
     "dev": "yarn serve",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-    "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
+    "build": "vue-cli-service --openssl-legacy-provider build",
+    "lint": "vue-cli-service --openssl-legacy-provider lint",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
