@@ -80,7 +80,9 @@
                   shadow
                 "
               >
-                <div data-v-step="1">POINT</div>
+                <div data-v-step="4">
+                  <div data-v-step="1">POINT</div>
+                </div>
               </button>
             </router-link>
 
@@ -152,8 +154,7 @@ export default {
       steps: [
         {
           target: '[data-v-step="1"]',
-          content:
-            'Point is a sample run of FLINT. To learn how to run the simulation using the FLINT UI dashboard follow the tour.',
+          content: 'Point is a simple three-pool example of a stock and flow model running in FLINT.',
           params: {
             placement: 'top'
           }
@@ -168,6 +169,13 @@ export default {
         {
           target: '[data-v-step="3"]',
           content: 'Click on this button to run The Generic Carbon Budget Model (GCBM) simulation.',
+          params: {
+            placement: 'top'
+          }
+        },
+        {
+          target: '[data-v-step="4"]',
+          content: 'Follow the tour by clicking here to learn how to run a simulation using the FLINT UI.',
           params: {
             placement: 'top'
           }
