@@ -1,56 +1,39 @@
 <template>
-  <div
-    class="
-      relative
-      bg-gradient-to-r
-      from-green-400
-      to-blue-500
-      md:pt-32
-      pt-12
-      w-full
-      h-full
-    "
-  >
+  <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
     <div class="px-4 md:px-10 mx-auto w-full h-auto">
       <div>
         <div class="bg-white p-6 rounded-lg shadow-lg flex">
-          <h2 class="text-2xl font-bold text-gray-800 flex-1">
-            Point example data visualisation table
-          </h2>
+          <h2 class="text-2xl font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
 
           <router-link to="/flint/point_output">
-            <button
-              class="
-                inline-block
-                align-middle
-                flex-initial
-                bg-white
-                hover:bg-black hover:text-white
-                text-gray-800
-                font-semibold
-                py-2
-                px-4
-                border border-gray-400
-                rounded
-                shadow
-              "
-            >
-              <i class="far fa-image" /> Visualise on Graph
-            </button>
+            <div data-v-step="1">
+              <button
+                class="
+                  inline-block
+                  align-middle
+                  flex-initial
+                  bg-white
+                  hover:bg-black hover:text-white
+                  text-gray-800
+                  font-semibold
+                  py-2
+                  px-4
+                  border border-gray-400
+                  rounded
+                  shadow
+                "
+              >
+                <i class="far fa-image" /> Visualise on Graph
+              </button>
+            </div>
           </router-link>
         </div>
       </div>
     </div>
-
     <div class="h-2/3 mt-12 px-6">
-      <v-grid
-        style="height: 100%"
-        theme="default"
-        :source="rows"
-        :columns="columns"
-        :readonly="true"
-      ></v-grid>
+      <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
     </div>
+    <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
   </div>
 </template>
 
@@ -63,6 +46,25 @@ export default {
   },
   data() {
     return {
+            myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Next',
+          buttonStop: 'Finish'
+        }
+      },
+      steps: [
+        {
+          target: '[data-v-step="1"]',
+          content:
+            'Click on this button to visualize the table output in the graph.',
+          params: {
+            placement: 'left'
+          }
+        }
+      ],
       columns: [
         {
           prop: 'point_step',
@@ -100,12 +102,14 @@ export default {
             size: 150
           }
         ],
-
         },
       ],
 
       rows: this.generateDataRows()
     }
+  },
+    mounted: function () {
+    this.$tours['MyTour'].start()
   },
   methods: {
     pool_1() {
@@ -172,7 +176,7 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch('parse_point_results')
-  }
+  },
 }
 </script>
 
