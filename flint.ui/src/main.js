@@ -62,3 +62,13 @@ new Vue({
   data: {},
   render: (h) => h(App)
 })
+
+import VueTour from 'vue-tour'
+
+require('vue-tour/dist/vue-tour.css')
+
+Vue.use(VueTour)
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')

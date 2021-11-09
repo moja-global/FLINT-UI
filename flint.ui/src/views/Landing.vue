@@ -68,3 +68,55 @@ export default {
   }
 }
 </script>
+
+<script>
+export default {
+  name: 'MyTour',
+  data() {
+    return {
+      myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Next',
+          buttonStop: 'Finish'
+        }
+      },
+      steps: [
+        {
+          target: '[data-v-step="1"]',
+          content: 'Point is a simple three-pool example of a stock and flow model running in FLINT.',
+          params: {
+            placement: 'top'
+          }
+        },
+        {
+          target: '[data-v-step="2"]',
+          content: 'Click on this button to run RothC simulation.',
+          params: {
+            placement: 'top'
+          }
+        },
+        {
+          target: '[data-v-step="3"]',
+          content: 'Click on this button to run The Generic Carbon Budget Model (GCBM) simulation.',
+          params: {
+            placement: 'top'
+          }
+        },
+        {
+          target: '[data-v-step="4"]',
+          content: 'Follow the tour by clicking here to learn how to run a simulation using the FLINT UI.',
+          params: {
+            placement: 'top'
+          }
+        }
+      ]
+    }
+  },
+  mounted: function () {
+    this.$tours['MyTour'].start()
+  }
+}
+</script>
