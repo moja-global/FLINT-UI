@@ -9,5 +9,13 @@ module.exports = {
     parser: 'babel-eslint'
   },
   plugins: ['vue'],
-  extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier']
+  extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier'],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
+    ]
+  }
 }
