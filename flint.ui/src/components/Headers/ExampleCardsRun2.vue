@@ -1,17 +1,6 @@
 <template>
   <div
-    class="
-      relative
-      bg-gradient-to-tl
-      from-green-300
-      via-blue-500
-      to-purple-600
-      md:pt-32
-      pb-32
-      pt-12
-      w-full
-      h-screen
-    "
+    class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-screen"
   >
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>

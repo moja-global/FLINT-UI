@@ -1,5 +1,5 @@
 <template>
-  <div class="w-72 rounded overflow-hidden">
+  <div class="w-96">
     <div class="px-6 py-4">
       <div class="py-2 font-bold text-2xl">
         {{ title }}
@@ -10,9 +10,23 @@
     </div>
     <div class="px-6 pt-4 pb-2">
       <router-link :to="link">
-        <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >Explore</span
+        <div
+          class="
+            inline-block
+            border border-solid border-light-blue-500
+            bg-gray-200
+            rounded-md
+            px-4
+            py-2
+            text-sm
+            font-semibold
+            text-gray-700
+            mr-2
+            mb-2
+          "
         >
+          Explore
+        </div>
       </router-link>
     </div>
   </div>

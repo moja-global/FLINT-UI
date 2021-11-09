@@ -19,7 +19,7 @@ export default {
       default: false
     },
     secondary: {
-      type: Boolean,
+      type: Boolean
     },
     success: {
       type: Boolean,

@@ -2,24 +2,11 @@
   <div>
     <div class="flex flex-wrap mt-4">
       <div
-        class="
-          relative
-          bg-gradient-to-tl
-          from-green-300
-          via-blue-500
-          to-purple-600
-          md:pt-32
-          pb-32
-          pt-12
-          w-full
-          h-auto
-        "
+        class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
       >
         <div class="px-4 md:px-10 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg flex">
-            <h2 class="text-2xl font-bold text-gray-800 flex-1">
-              GCBM simulation workflow
-            </h2>
+            <h2 class="text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
             <a @click="hello">
               <button
                 class="
@@ -64,32 +51,20 @@
                 >
                   <div class="flex-auto p-4">
                     <div class="relative w-full max-w-full flex-grow flex-1">
-                      <span class="font-semibold text-xl text-blueGray-700">
-                        List of ongoing simulations
-                      </span>
+                      <span class="font-semibold text-xl text-blueGray-700"> List of ongoing simulations </span>
 
                       <label class="block mt-4">
                         <span class="text-gray-700">Select a simulation: </span>
-                        <select
-                          v-model="sim_title"
-                          class="form-control"
-                          @change="onChangeSimulation($event)"
-                        >
+                        <select v-model="sim_title" class="form-control" @change="onChangeSimulation($event)">
                           <option></option>
-                          <option
-                            v-for="(sim, key) in simulation_list"
-                            :key="key"
-                            :value="sim"
-                          >
+                          <option v-for="(sim, key) in simulation_list" :key="key" :value="sim">
                             {{ sim }}
                           </option>
                         </select>
                       </label>
                     </div>
                     <p class="text-sm text-blueGray-400 mt-4">
-                      <span>
-                        Select a simulation from the dropdown to proceed</span
-                      >
+                      <span> Select a simulation from the dropdown to proceed</span>
                     </p>
                   </div>
                 </div>
