@@ -32,29 +32,21 @@
 
     <div>
       <div class="items-start md:flex flex-wrap w-full md:justify-center space-x-10 my-10 pb-20">
-        <div data-v-step="4">
-          <div data-v-step="1">
-            <LandingPageCard
-              title="Point"
-              description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
-              link="/flint/configurations/point"
-            />
-          </div>
-        </div>
-        <div data-v-step="2">
-          <LandingPageCard
-            title="RothC"
-            description="RothC is a model for the turnover of organic carbon in non-waterlogged topsoil that allows for the effects of soil type, temperature, soil moisture and plant cover on the turnover process."
-            link="/flint/configurations/rothc"
-          />
-        </div>
-        <div data-v-step="3">
-          <LandingPageCard
-            title="GCBM"
-            description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
-            link="/flint/configurations/point"
-          />
-        </div>
+        <LandingPageCard
+          title="Point"
+          description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
+          link="/flint/configurations/point"
+        />
+        <LandingPageCard
+          title="RothC"
+          description="RothC is a model for the turnover of organic carbon in non-waterlogged topsoil that allows for the effects of soil type, temperature, soil moisture and plant cover on the turnover process."
+          link="/flint/configurations/rothc"
+        />
+        <LandingPageCard
+          title="GCBM"
+          description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
+          link="/flint/configurations/point"
+        />
       </div>
     </div>
   </div>
@@ -63,6 +55,7 @@
 <script>
 import LandingPageNavbar from './../components/Navbars/LandingPageNavbar.vue'
 import LandingPageCard from './../components/Cards/LandingPageCard.vue'
+
 export default {
   name: 'MyTour',
   components: {
