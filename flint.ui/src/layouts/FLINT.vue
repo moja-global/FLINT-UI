@@ -12,4 +12,3 @@ export default {
   name: 'FLINTLayout'
 }
 </script>
-zzz
