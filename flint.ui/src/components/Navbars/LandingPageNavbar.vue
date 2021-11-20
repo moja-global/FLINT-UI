@@ -1,7 +1,9 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap px-16 py-6">
+  <nav class="flex items-center justify-between flex-wrap px-16 py-4">
     <div class="flex items-center flex-shrink-0 text-white">
-      <span class="font-semibold text-xl text-earth">moja global</span>
+      <span class="font-semibold text-xl text-earth"
+        ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
+      /></span>
     </div>
     <div class="block lg:hidden">
       <button
