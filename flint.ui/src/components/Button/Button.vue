@@ -1,6 +1,6 @@
 <template>
-  <button type="button" @click="onClick" :style="btnStyles">
-    {{ btnText }}
+  <button type="button" :style="btnStyles" @click="onClick">
+    <slot></slot>
   </button>
 </template>
 
@@ -9,10 +9,6 @@ export default {
   name: 'Button',
 
   props: {
-    btnText: {
-      type: String,
-      required: true
-    },
     isDisabled: {
       type: Boolean,
       default: false
@@ -44,11 +40,11 @@ export default {
 
 <style scoped>
 button {
-  padding: 12px 24px 12px 24px;
+  padding: 0.75rem 1.5rem;
   border: 1px solid #475447;
   border-radius: 5px;
   color: var(--btnColor);
-  width: var(--btnSize);
+  width: var(--width);
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
 }
