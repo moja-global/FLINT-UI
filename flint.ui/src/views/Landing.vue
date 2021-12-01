@@ -45,7 +45,7 @@
         <LandingPageCard
           title="GCBM"
           description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
-          link="/flint/configurations/point"
+          link="/gcbm/dashboard"
         />
       </div>
     </div>
