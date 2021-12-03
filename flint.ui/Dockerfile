@@ -1,4 +1,4 @@
-FROM node:jessie as build-stage
+FROM node:latest as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install
@@ -7,7 +7,7 @@ COPY ./ .
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN yarn run build
 
-FROM nginx:jessie as production-stage
+FROM nginx as production-stage
 RUN mkdir /app
 COPY --from=build-stage /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
