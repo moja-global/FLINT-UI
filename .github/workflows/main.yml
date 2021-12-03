@@ -47,6 +47,9 @@ jobs:
         run: yarn build-storybook -o ./storybook-build
         working-directory: flint.ui
 
-      - uses: hadolint/hadolint-action@v1.6.0
+      - name: Lint Dockerfiles
+        uses: jbergstroem/hadolint-gh-action@v1
         with:
-          dockerfile: flint.ui/Dockerfile
+          dockerfile: ./flint.ui/Dockerfile
+          error_level: 0
+          output_format: tty
