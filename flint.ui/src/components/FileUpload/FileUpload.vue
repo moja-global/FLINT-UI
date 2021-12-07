@@ -135,10 +135,7 @@ export default {
       console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
 
       if (this.$store.state.gcbm.DropdownSelectedSim == '') {
-        this.$toast.error(
-          'Title cannot be empty, Select a valid simulation title from the dropdown',
-          { timeout: 5000 }
-        )
+        this.$toast.error('Title cannot be empty, Select a valid simulation title from the dropdown', { timeout: 5000 })
       } else {
         this.add_title_to_formdata()
         console.log([...this.formData])

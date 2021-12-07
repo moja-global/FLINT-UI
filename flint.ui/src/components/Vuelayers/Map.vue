@@ -1,10 +1,6 @@
 <template>
   <vl-map data-projection="EPSG:4326" style="height: 300px; width: 600px">
-    <vl-view
-      :zoom.sync="zoom"
-      :center.sync="center"
-      :rotation.sync="rotation"
-    />
+    <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" />
 
     <vl-layer-tile>
       <vl-source-osm />

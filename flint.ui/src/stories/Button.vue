@@ -19,7 +19,7 @@ export default {
       default: false
     },
     secondary: {
-      type: Boolean,
+      type: Boolean
     },
     success: {
       type: Boolean,
@@ -32,7 +32,8 @@ export default {
     size: {
       validator: function (value) {
         return ['small', 'medium', 'large'].indexOf(value) !== -1
-      }
+      },
+      default: 'medium'
     },
     // eslint-disable-next-line vue/require-default-prop
     backgroundColor: {

@@ -2,28 +2,15 @@
   <div>
     <div class="flex flex-wrap mt-4">
       <div
-        class="
-          relative
-          bg-gradient-to-tl
-          from-green-300
-          via-blue-500
-          to-purple-600
-          md:pt-32
-          pb-32
-          pt-12
-          w-full
-          h-auto
-        "
+        class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
       >
         <div class="px-4 md:px-10 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg">
             <div>
-              <h2 class="text-2xl font-bold mb-2 text-gray-800">
-                GCBM simulation workflow
-              </h2>
+              <h2 class="text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
               <p class="text-gray-700">
-                Follow the steps below to simulate GCBM runs. Click the toggle
-                to auto download the simulation once complete.
+                Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once
+                complete.
               </p>
             </div>
 
@@ -52,14 +39,10 @@
                 >
                   <div class="flex-auto p-4">
                     <div class="relative w-full max-w-full flex-grow flex-1">
-                      <span class="font-semibold text-xl text-blueGray-700">
-                        Run a simulation
-                      </span>
+                      <span class="font-semibold text-xl text-blueGray-700"> Run a simulation </span>
 
                       <label class="block mt-4">
-                        <span class="text-gray-700 font-semibold text-lg"
-                          >Selected simulation title:
-                        </span>
+                        <span class="text-gray-700 font-semibold text-lg">Selected simulation title: </span>
                         <span class="text-red-600 font-semibold text-lg">{{
                           $store.state.gcbm.DropdownSelectedSim
                         }}</span>
@@ -187,10 +170,7 @@ export default {
         .post('http://127.0.0.1:8081/gcbm/status', bodyFormData)
         .then((response) => {
           this.$toast.info(`${response.data.finished}`, { timeout: 5000 })
-          this.$store.commit(
-            'setSimulationProgressState',
-            response.data.finished
-          )
+          this.$store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
           console.log(this.$store.state.gcbm.SimulationProgress)
         })
@@ -217,12 +197,7 @@ export default {
           console.log(response.data)
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute(
-            'download',
-            this.$store.state.gcbm.DropdownSelectedSim +
-              '_gcbm_run_ouput' +
-              '.zip'
-          )
+          link.setAttribute('download', this.$store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
           document.body.appendChild(link)
           link.click()
         })

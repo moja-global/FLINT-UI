@@ -2,11 +2,7 @@
   <div class="relative">
     <div class="absolute left-0">
       <vl-map data-projection="EPSG:4326" style="height: 300px; width: 600px">
-        <vl-view
-          :zoom.sync="zoom"
-          :center.sync="center"
-          :rotation.sync="rotation"
-        />
+        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" />
 
         <vl-layer-tile>
           <vl-source-osm />
@@ -14,10 +10,7 @@
 
         <vl-feature>
           <vl-geom-point
-            :coordinates="[
-              $store.state.vuelayers.coordinates[0],
-              $store.state.vuelayers.coordinates[1]
-            ]"
+            :coordinates="[$store.state.vuelayers.coordinates[0], $store.state.vuelayers.coordinates[1]]"
           />
         </vl-feature>
       </vl-map>
@@ -28,16 +21,7 @@
           <div>
             <input
               v-model="getlatitude"
-              class="
-                w-full
-                h-10
-                px-3
-                text-base
-                placeholder-gray-400
-                border
-                rounded-lg
-                focus:shadow-outline
-              "
+              class="w-full h-10 px-3 text-base placeholder-gray-400 border rounded-lg focus:shadow-outline"
               type="text"
               placeholder=""
             />
@@ -50,16 +34,7 @@
           <div>
             <input
               v-model="getlongitude"
-              class="
-                w-full
-                h-10
-                px-3
-                text-base
-                placeholder-gray-400
-                border
-                rounded-lg
-                focus:shadow-outline
-              "
+              class="w-full h-10 px-3 text-base placeholder-gray-400 border rounded-lg focus:shadow-outline"
               type="text"
               placeholder=""
             />
@@ -75,10 +50,7 @@ export default {
   data() {
     return {
       zoom: 15,
-      center: [
-        this.$store.state.vuelayers.coordinates[0],
-        this.$store.state.vuelayers.coordinates[1]
-      ],
+      center: [this.$store.state.vuelayers.coordinates[0], this.$store.state.vuelayers.coordinates[1]],
       rotation: 0
     }
   },

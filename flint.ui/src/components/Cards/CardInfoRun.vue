@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      relative
-      flex flex-col
-      min-w-0
-      break-words
-      bg-white
-      rounded
-      mb-6
-      xl:mb-0
-      shadow-lg
-    "
-  >
+  <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
     <div class="flex-auto p-4">
       <div class="flex flex-wrap">
         <div class="relative w-full max-w-full flex-grow flex-1">
@@ -29,8 +17,7 @@
               align-middle
               flex-initial
               bg-white
-              hover:bg-black
-              hover:text-white
+              hover:bg-black hover:text-white
               text-gray-800
               font-semibold
               py-2
@@ -167,12 +154,9 @@ export default {
       axios
         .post('http://127.0.0.1:8080/point')
         .then((response) => {
-          this.$toast.success(
-            `Point route has been invoked. You can see the output in Point Output Table.`,
-            {
-              timeout: 2000
-            }
-          )
+          this.$toast.success(`Point route has been invoked. You can see the output in Point Output Table.`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {
@@ -185,12 +169,9 @@ export default {
       axios
         .post('http://127.0.0.1:8080/rothc')
         .then((response) => {
-          this.$toast.success(
-            `RothC route has been invoked. You can see the output in RothC Output Table.`,
-            {
-              timeout: 2000
-            }
-          )
+          this.$toast.success(`RothC route has been invoked. You can see the output in RothC Output Table.`, {
+            timeout: 2000
+          })
           console.log(response)
         })
         .catch((error) => {

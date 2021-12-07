@@ -8,33 +8,12 @@
   >
     <div
       id="revert-toggle"
-      class="
-        w-10
-        h-6
-        items-center
-        bg-red-600
-        rounded-full
-        p-1
-        duration-300
-        ease-in-out
-        -mx-0
-      "
+      class="w-10 h-6 items-center bg-red-600 rounded-full p-1 duration-300 ease-in-out -mx-0"
       :class="{ 'bg-green-400': toggleActive }"
     >
-      <md-tooltip
-        >Toggle to check status and auto-download the simulation</md-tooltip
-      >
+      <md-tooltip>Toggle to check status and auto-download the simulation</md-tooltip>
       <div
-        class="
-          bg-white
-          w-4
-          h-4
-          rounded-full
-          shadow-md
-          transform
-          duration-300
-          ease-in-out
-        "
+        class="bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out"
         :class="{ 'translate-x-4': toggleActive }"
       ></div>
     </div>
@@ -58,10 +37,7 @@ export default {
         this.interval = setInterval(() => {
           this.$emit('checkstatus')
 
-          if (
-            this.$store.state.gcbm.SimulationProgress ==
-            'Output is ready to download at gcbm/download'
-          ) {
+          if (this.$store.state.gcbm.SimulationProgress == 'Output is ready to download at gcbm/download') {
             console.log('download now')
             this.$emit('downloadsim')
             this.isDownloaded = true
