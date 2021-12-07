@@ -1,24 +1,12 @@
 <template>
-  <div
-    class="
-      relative
-      bg-gradient-to-r
-      from-green-400
-      to-blue-500
-      md:pt-32
-      pt-12
-      w-full
-    "
-  >
+  <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full">
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
         <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">
-            RothC example simulation configuration
-          </h2>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">RothC example simulation configuration</h2>
           <p class="text-gray-700">
-            Input the custom values in the fields below. Default values as
-            placeholder text will be used if none provided.
+            Input the custom values in the fields below. Default values as placeholder text will be used if none
+            provided.
           </p>
         </div>
 
@@ -31,16 +19,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_bToCMaxTSMDRatio"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -55,16 +34,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_dToRRatioInPres"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -79,16 +49,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_encpFracHums"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -103,16 +64,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_evapoOpenRatio"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -127,16 +79,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracHumsToBios"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -151,16 +94,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracManuCMToBiof"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -175,16 +109,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracManuCMToBios"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -199,16 +124,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracManuCMToDpma"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -223,16 +139,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracManuCMToRpma"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -247,16 +154,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_fracPbioToBiof"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -271,16 +169,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sampleDepth"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -295,16 +184,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sdcmRateMultBiof"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -319,16 +199,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sdcmRateMultBios"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -343,16 +214,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sdcmRateMultDpm"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -367,16 +229,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sdcmRateMultHums"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -391,16 +244,7 @@
               <div class="md:w-2/3 md:flex-grow">
                 <input
                   v-model="newconfig_sdcmRateMultRpm"
-                  class="
-                    w-full
-                    h-10
-                    px-3
-                    text-base
-                    placeholder-gray-600
-                    border
-                    rounded-lg
-                    focus:shadow-outline
-                  "
+                  class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                   type="text"
                 />
               </div>
@@ -428,10 +272,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_bToCMaxTSMDRatio',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_bToCMaxTSMDRatio', '$#' + newValue + '$#')
       }
     },
 
@@ -440,10 +281,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.dToRRatioInPres)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_dToRRatioInPres',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_dToRRatioInPres', '$#' + newValue + '$#')
       }
     },
 
@@ -461,10 +299,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.evapoOpenRatio)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_evapoOpenRatio',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_evapoOpenRatio', '$#' + newValue + '$#')
       }
     },
 
@@ -473,10 +308,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracHumsToBios)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracHumsToBios',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracHumsToBios', '$#' + newValue + '$#')
       }
     },
 
@@ -485,10 +317,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBiof)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracManuCMToBiof',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracManuCMToBiof', '$#' + newValue + '$#')
       }
     },
 
@@ -497,10 +326,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBios)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracManuCMToBios',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracManuCMToBios', '$#' + newValue + '$#')
       }
     },
 
@@ -509,10 +335,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToDpma)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracManuCMToDpma',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracManuCMToDpma', '$#' + newValue + '$#')
       }
     },
 
@@ -521,10 +344,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToRpma)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracManuCMToRpma',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracManuCMToRpma', '$#' + newValue + '$#')
       }
     },
 
@@ -533,10 +353,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracPbioToBiof)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_fracPbioToBiof',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_fracPbioToBiof', '$#' + newValue + '$#')
       }
     },
 
@@ -554,10 +371,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_sdcmRateMultBiof',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_sdcmRateMultBiof', '$#' + newValue + '$#')
       }
     },
 
@@ -566,10 +380,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBios)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_sdcmRateMultBios',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_sdcmRateMultBios', '$#' + newValue + '$#')
       }
     },
 
@@ -578,10 +389,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_sdcmRateMultDpm',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_sdcmRateMultDpm', '$#' + newValue + '$#')
       }
     },
 
@@ -590,10 +398,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultHums)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_sdcmRateMultHums',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_sdcmRateMultHums', '$#' + newValue + '$#')
       }
     },
 
@@ -602,10 +407,7 @@ export default {
         return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm)
       },
       set(newValue) {
-        this.$store.commit(
-          'setNewConfig_sdcmRateMultRpm',
-          '$#' + newValue + '$#'
-        )
+        this.$store.commit('setNewConfig_sdcmRateMultRpm', '$#' + newValue + '$#')
       }
     }
   }

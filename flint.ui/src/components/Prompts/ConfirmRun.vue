@@ -1,28 +1,12 @@
 <template>
   <transition name="modal-fade">
     <div class="fixed z-10 inset-0 overflow-y-auto">
-      <div
-        class="
-          flex
-          items-end
-          justify-center
-          min-h-screen
-          pt-4
-          px-4
-          pb-20
-          text-center
-          sm:block sm:p-0
-        "
-      >
+      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
           <div class="absolute inset-0 bg-gray-500 opacity-75" />
         </div>
 
-        <span
-          class="hidden sm:inline-block sm:align-middle sm:h-screen"
-          aria-hidden="true"
-          >&#8203;</span
-        >
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div
           class="
             inline-block
@@ -94,10 +78,7 @@
                 py-2
                 text-base
                 font-medium
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-red-500
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500
                 sm:ml-3 sm:w-auto sm:text-sm
                 bg-green-200
                 hover:bg-green-500
@@ -121,10 +102,7 @@
                 bg-white
                 text-base
                 font-medium
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-indigo-500
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
                 bg-red-300
                 hover:bg-red-500

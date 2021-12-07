@@ -349,91 +349,75 @@ export default {
     ////
 
     setNewConfig_rainfall_data_orig(state, newValue) {
-      this.state.rothc.config.Variables[8].rainfall.transform.data_orig =
-        newValue
+      this.state.rothc.config.Variables[8].rainfall.transform.data_orig = newValue
     },
 
     setNewConfig_rainfall_data_month_avg(state, newValue) {
-      this.state.rothc.config.Variables[8].rainfall.transform.data_month_avg =
-        newValue
+      this.state.rothc.config.Variables[8].rainfall.transform.data_month_avg = newValue
     },
 
     setNewConfig_rainfall_data_lastyearcopy(state, newValue) {
-      this.state.rothc.config.Variables[8].rainfall.transform.data_lastyearcopy =
-        newValue
+      this.state.rothc.config.Variables[8].rainfall.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_openPanEvap_data_orig(state, newValue) {
-      this.state.rothc.config.Variables[9].openPanEvap.transform.data_orig =
-        newValue
+      this.state.rothc.config.Variables[9].openPanEvap.transform.data_orig = newValue
     },
 
     setNewConfig_openPanEvap_data_month_avg(state, newValue) {
-      this.state.rothc.config.Variables[9].openPanEvap.transform.data_month_avg =
-        newValue
+      this.state.rothc.config.Variables[9].openPanEvap.transform.data_month_avg = newValue
     },
 
     setNewConfig_openPanEvap_data_lastyearcopy(state, newValue) {
-      this.state.rothc.config.Variables[9].openPanEvap.transform.data_lastyearcopy =
-        newValue
+      this.state.rothc.config.Variables[9].openPanEvap.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_avgAirTemp_data_orig(state, newValue) {
-      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig =
-        newValue
+      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig = newValue
     },
 
     setNewConfig_avgAirTemp_data_month_avg(state, newValue) {
-      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg =
-        newValue
+      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg = newValue
     },
 
     setNewConfig_avgAirTemp_data_lastyearcopy(state, newValue) {
-      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy =
-        newValue
+      this.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_presCM_data_orig(state, newValue) {
-      this.state.rothc.config.Variables[11].presCM.transform.data_orig =
-        newValue
+      this.state.rothc.config.Variables[11].presCM.transform.data_orig = newValue
     },
 
     setNewConfig_presCM_data_month_avg(state, newValue) {
-      this.state.rothc.config.Variables[11].presCM.transform.data_month_avg =
-        newValue
+      this.state.rothc.config.Variables[11].presCM.transform.data_month_avg = newValue
     },
 
     setNewConfig_presCM_data_lastyearcopy(state, newValue) {
-      this.state.rothc.config.Variables[11].presCM.transform.data_lastyearcopy =
-        newValue
+      this.state.rothc.config.Variables[11].presCM.transform.data_lastyearcopy = newValue
     },
 
     ////
 
     setNewConfig_soilCover_data_orig(state, newValue) {
-      this.state.rothc.config.Variables[12].soilCover.transform.data_orig =
-        newValue
+      this.state.rothc.config.Variables[12].soilCover.transform.data_orig = newValue
     },
 
     setNewConfig_soilCover_data_firstmonthcopy(state, newValue) {
-      this.state.rothc.config.Variables[12].soilCover.transform.data_firstmonthcopy =
-        newValue
+      this.state.rothc.config.Variables[12].soilCover.transform.data_firstmonthcopy = newValue
     },
 
     setNewConfig_soilCover_data_month_avg(state, newValue) {
-      this.state.rothc.config.Variables[12].soilCover.transform.data_month_avg =
-        newValue
+      this.state.rothc.config.Variables[12].soilCover.transform.data_month_avg = newValue
     },
 
     setNewConfig_soilCover_data_lastyearcopy(state, newValue) {
-      this.state.rothc.config.Variables[12].soilCover.transform.data_lastyearcopy =
-        newValue
+      this.state.rothc.config.Variables[12].soilCover.transform.data_lastyearcopy = newValue
     },
 
     setNewConfig_bToCMaxTSMDRatio(state, newValue) {
@@ -497,10 +481,7 @@ export default {
       console.log(this.state.rothc.config)
       let final_RothC_string = JSON.stringify(this.state.rothc.config)
       let preprocessed_RothC_string = final_RothC_string.replaceAll('"$#', '')
-      let final_RothC_config_string = preprocessed_RothC_string.replaceAll(
-        '$#"',
-        ''
-      )
+      let final_RothC_config_string = preprocessed_RothC_string.replaceAll('$#"', '')
 
       console.log(final_RothC_config_string)
       axios
@@ -549,47 +530,20 @@ export default {
       console.log('array1')
       console.log(df_as_array.length)
 
-      for (
-        let simulation_step = 0;
-        simulation_step < df_as_array.length;
-        simulation_step++
-      ) {
-        DPM[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilDPM']
-        )
-        RPM[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilRPM']
-        )
-        BIOF[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilBioF']
-        )
-        BIOS[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilBioS']
-        )
-        HUM[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilHUM']
-        )
-        IOM[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['SoilIOM']
-        )
-        RothC_step[simulation_step] = parseInt(
-          df_as_array[simulation_step]['step']
-        )
-        RothC_stepDate[simulation_step] =
-          df_as_array[simulation_step]['stepDate'].toString()
+      for (let simulation_step = 0; simulation_step < df_as_array.length; simulation_step++) {
+        DPM[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilDPM'])
+        RPM[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilRPM'])
+        BIOF[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilBioF'])
+        BIOS[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilBioS'])
+        HUM[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilHUM'])
+        IOM[simulation_step] = parseFloat(df_as_array[simulation_step]['SoilIOM'])
+        RothC_step[simulation_step] = parseInt(df_as_array[simulation_step]['step'])
+        RothC_stepDate[simulation_step] = df_as_array[simulation_step]['stepDate'].toString()
 
-        RothC_stepLenInYears[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['stepLenInYears']
-        )
-        initialValues[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['initialValues']
-        )
-        plantCM[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['plantCM']
-        )
-        atmosphere[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['atmosphere']
-        )
+        RothC_stepLenInYears[simulation_step] = parseFloat(df_as_array[simulation_step]['stepLenInYears'])
+        initialValues[simulation_step] = parseFloat(df_as_array[simulation_step]['initialValues'])
+        plantCM[simulation_step] = parseFloat(df_as_array[simulation_step]['plantCM'])
+        atmosphere[simulation_step] = parseFloat(df_as_array[simulation_step]['atmosphere'])
       }
 
       console.log(DPM)

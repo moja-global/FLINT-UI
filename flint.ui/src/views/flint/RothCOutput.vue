@@ -3,20 +3,10 @@
     <span>RothC module</span>
     <div id="charts">
       <div id="chart1">
-        <apexchart
-          type="line"
-          height="300"
-          :options="chartOptionsArea"
-          :series="series"
-        />
+        <apexchart type="line" height="300" :options="chartOptionsArea" :series="series" />
       </div>
       <div id="chart2">
-        <apexchart
-          type="area"
-          height="150"
-          :options="chartOptionsBrush"
-          :series="series"
-        />
+        <apexchart type="area" height="150" :options="chartOptionsBrush" :series="series" />
       </div>
     </div>
   </div>
@@ -61,14 +51,7 @@ export default {
             show: true
           }
         },
-        colors: [
-          '#EF476F',
-          '#FFD166',
-          '#06D6A0',
-          '#118AB2',
-          '#073B4C',
-          '#008b8b'
-        ],
+        colors: ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', '#008b8b'],
         stroke: {
           width: 3
         },

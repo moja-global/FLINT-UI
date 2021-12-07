@@ -535,8 +535,7 @@ export default {
           },
           land_class_data: {
             transform: {
-              queryString:
-                'SELECT code AS land_class, is_forest, years_to_permanent FROM land_class lc',
+              queryString: 'SELECT code AS land_class, is_forest, years_to_permanent FROM land_class lc',
               type: 'SQLQueryTransform',
               library: 'internal.flint',
               provider: 'SQLite'

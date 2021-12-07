@@ -22,17 +22,17 @@ export default {
       default: '#475447'
     }
   },
-  methods: {
-    onClick() {
-      this.$emit('onClick')
-    }
-  },
   computed: {
     btnStyles() {
       return {
         '--color': this.btnColor,
         '--width': this.btnSize
       }
+    }
+  },
+  methods: {
+    onClick() {
+      this.$emit('onClick')
     }
   }
 }
@@ -51,6 +51,6 @@ button {
 button:hover {
   color: #fff;
   background-color: var(--color);
-  transition: all .5s;
+  transition: all 0.5s;
 }
 </style>

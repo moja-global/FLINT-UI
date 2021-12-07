@@ -13,31 +13,8 @@
       p-4
     "
   >
-    <div
-      class="
-        w-full
-        mx-autp
-        items-center
-        flex
-        justify-between
-        md:flex-nowrap
-        flex-wrap
-        md:px-10
-        px-4
-      "
-    >
-      <a
-        class="
-          text-white text-lg
-          uppercase
-          hidden
-          lg:inline-block
-          font-semibold
-        "
-        href="javascript:void(0)"
-      >
-        Home
-      </a>
+    <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+      <a class="text-white text-lg uppercase hidden lg:inline-block font-semibold" href="javascript:void(0)"> Home </a>
     </div>
   </nav>
 </template>
