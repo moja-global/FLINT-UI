@@ -1,10 +1,18 @@
 <template>
   <div>
     <md-button class="md-primary">Start Date</md-button>
-    <md-datepicker v-model="selectedstartDate" :md-model-type="String" />
-
+    <input type="date" 
+      class="datepicker-input" 
+      :class="[datepickerWidth]"
+      v-model="selectedstartDate" 
+    />
+    
     <md-button class="md-primary">End Date</md-button>
-    <md-datepicker v-model="selectedendDate" :md-model-type="String" />
+    <input type="date" 
+      class="datepicker-input" 
+      :class="[datepickerWidth]"
+      v-modal="selectedendDate" 
+    />
 
     <h3 class="text-xl font-bold mb-2 text-gray-600 justify-center">
       Simulation length is
@@ -17,6 +25,9 @@
 import moment from 'moment'
 
 export default {
+  props: {
+    datepickerWidth: String
+  },
   computed: {
     date_diff() {
       let start_date = this.$store.state.point.config.LocalDomain.start_date.split('/')
@@ -62,3 +73,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  input[type="date"].datepicker-input {
+    padding: 1em;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    border: 1px solid #828282;
+    border-radius: 12px;
+    &:hover {
+      background-color: rgba(0, 0, 255, 0.13);
+      border: 1px solid #a2a2a2;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  .small {
+    width: 30%;
+  }
+  .medium {
+    width: 60%;
+  }
+  .large {
+    width: 100%;
+  }
+</style>
