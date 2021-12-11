@@ -5,12 +5,13 @@
   "description": "This project aims to implement a user-friendly UI for FLINT and GCBM runs",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "yarn serve",
     "build": "vue-cli-service build",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
+    "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes",
+    "dev": "yarn serve",
+    "storybook": "start-storybook -p 6006 -s public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
@@ -51,6 +52,7 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/vue": "^6.3.9",
     "@vue/cli-plugin-babel": "4.5.13",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-router": "4.5.13",
     "@vue/cli-service": "4.5.13",
     "@vue/composition-api": "^1.0.5",
