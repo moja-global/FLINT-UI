@@ -1,0 +1,25 @@
+input[type="date"].datepicker-input {
+    padding: 1em;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    /* width: fit-content; */
+    border: 1px solid #828282;
+    border-radius: 12px;
+    &:hover {
+        background-color: rgba(0, 0, 255, 0.13);
+        border: 1px solid #a2a2a2;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+.small {
+width: 30%;
+}
+.medium {
+width: 60%;
+}
+.large {
+width: 100%;
+}
