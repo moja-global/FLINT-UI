@@ -74,6 +74,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import url('./Datepicker.component.scss');
+<style>
+@import url('./Datepicker.component.css');
 </style>
