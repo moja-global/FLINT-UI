@@ -20,6 +20,7 @@ import 'vue-toastification/dist/index.css'
 import VueApexCharts from 'vue-apexcharts'
 import 'vuelayers/lib/style.css'
 import 'vue-slider-component/theme/default.css'
+import './components/index.css';
 
 // configure router
 const router = new VueRouter({
