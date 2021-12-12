@@ -73,3 +73,30 @@ export default {
   }
 }
 </script>
+
+<style>
+.datepicker-input {
+  padding: 1em;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  border: 1px solid #828282;
+  border-radius: 12px;
+}
+.datepicker-input:hover {
+  background-color: rgba(0, 0, 255, 0.13);
+  border: 1px solid #a2a2a2;
+}
+.datepicker-input:focus {
+  outline: none;
+}
+.small {
+  width: 30%;
+}
+.medium {
+  width: 60%;
+}
+.large {
+  width: 100%;
+}
+</style>
