@@ -3,14 +3,14 @@
     <md-button class="md-primary">Start Date</md-button>
     <input type="date" 
       class="datepicker-input" 
-      :class="[datepickerWidth]"
+      :class="[size]"
       v-model="selectedstartDate" 
     />
     
     <md-button class="md-primary">End Date</md-button>
     <input type="date" 
       class="datepicker-input" 
-      :class="[datepickerWidth]"
+      :class="[size]"
       v-modal="selectedendDate" 
     />
 
@@ -25,9 +25,7 @@
 import moment from 'moment'
 
 export default {
-  props: {
-    datepickerWidth: String
-  },
+  props: ['size'],
   computed: {
     date_diff() {
       let start_date = this.$store.state.point.config.LocalDomain.start_date.split('/')
@@ -82,6 +80,7 @@ export default {
   font-size: 16px;
   border: 1px solid #828282;
   border-radius: 12px;
+  width: 60%;
 }
 .datepicker-input:hover {
   background-color: rgba(0, 0, 255, 0.13);
