@@ -19,7 +19,7 @@
             <div class="bg-white p-6 rounded-lg shadow-lg">
               <h2 class="text-2xl font-bold mb-2 text-gray-800">Start and End date of simulation</h2>
               <div>
-                <Datepicker datepickerWidth="large" />
+                <Datepicker size="large" />
               </div>
             </div>
           </div>
