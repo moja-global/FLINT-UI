@@ -25,7 +25,15 @@
 import moment from 'moment'
 
 export default {
-  props: ['size'],
+  props: {
+    size: {
+      type: String,
+      default: 'medium',
+      validator(value) {
+        return ['small', 'medium', 'large'].includes(value)
+      }
+    }
+  },
   computed: {
     date_diff() {
       let start_date = this.$store.state.rothc.config.LocalDomain.start_date.split('/')
