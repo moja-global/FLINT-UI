@@ -45,7 +45,7 @@
         <LandingPageCard
           title="GCBM"
           description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
-          link="/gcbm/dashboard"
+          link="/flint/configurations/point"
         />
       </div>
     </div>
@@ -55,12 +55,13 @@
 <script>
 import LandingPageNavbar from './../components/Navbars/LandingPageNavbar.vue'
 import LandingPageCard from './../components/Cards/LandingPageCard.vue'
-
+import FooterPage from './../components/Footer/Footer.vue'
 export default {
   name: 'MyTour',
   components: {
     LandingPageNavbar,
-    LandingPageCard
+    LandingPageCard,
+    FooterPage
   }
 }
 </script>
