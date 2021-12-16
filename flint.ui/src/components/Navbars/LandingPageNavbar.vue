@@ -47,14 +47,15 @@
       <div class="lg:flex-grow"></div>
       <div>
         <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">Documentation</button>
-        </a>
-        <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">About</button>
+          <button class="hover:text-earth">
+            <a href="https://docs.moja.global/projects/flint-ui/en/latest/"> Documentation </a>
+          </button>
         </a>
 
         <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">Contact</button>
+          <button class="hover:text-earth">
+            <a href="https://github.com/moja-global/FLINT-UI"> GitHub </a>
+          </button>
         </a>
       </div>
     </div>

@@ -23,9 +23,10 @@
       </div>
       <div class="bg-earth w-full lg:w-7/12 text-white flex items-center">
         <p class="text-lg text-white px-36 text-xl py-36">
-          This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the
-          Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is
-          written as a Web application and can be used in a local or remote environment.
+          FLINT-UI provides an intuitive way to explore preconfigured FLINT modules, including the Generic Budget Carbon
+          Model (GCBM). Through the FLINT-UI, you can provide relevant datasets from custom or public data providers,
+          dispatch the job to the FLINT engine for processing, through our user-interface on a local or remote
+          environment.
         </p>
       </div>
     </div>
