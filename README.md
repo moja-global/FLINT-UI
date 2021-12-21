@@ -129,8 +129,6 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 <img src="assets/flint-ui-dashboard.jpg">
 </div>
 
-## 
-
 ## Developer notes
 
 Go through the Development Notes [here.](https://github.com/moja-global/FLINT-UI/blob/master/docs/DevelopmentGuide/DevelopmentNotes.rst).
