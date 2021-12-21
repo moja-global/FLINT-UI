@@ -57,6 +57,12 @@
             <a href="https://github.com/moja-global/FLINT-UI"> GitHub </a>
           </button>
         </a>
+
+        <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
+          <button class="hover:text-earth">
+            <a href="mailto:info@moja.global"> Contact Us </a>
+          </button>
+        </a>
       </div>
     </div>
   </nav>
