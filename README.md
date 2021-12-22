@@ -48,6 +48,7 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 - [Vue.js](https://vuejs.org/)
 - [Fontawesome](https://fontawesome.com/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [Cypress](https://www.cypress.io/)
 - [Apexcharts](https://apexcharts.com/)
 - [Moment.js](https://momentjs.com/)
 - [Google Maps](https://developers.google.com/maps)

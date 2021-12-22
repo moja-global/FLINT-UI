@@ -43,6 +43,16 @@ To run the Vue app locally, you can follow the below procedure:
 2. Run ``yarn serve`` to start the Vue app server.
 3. Go to `127.0.0.1:8000`_ to view the Vue app.
 
+E2E Testing 
+-------
+
+To test the Vue app locally, you can follow the below procedure:
+
+1. Go to the ``flint.ui`` folder
+2. Run ``yarn test:e2e`` 
+3. This will run the app in production mode at `127.0.0.1:8000`_ for E2E testing.
+4. The Cypress interactive GUI will be opened where E2E testing can be run   
+
 Storybook in local development
 ------------------------------
 
