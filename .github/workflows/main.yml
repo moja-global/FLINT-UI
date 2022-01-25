@@ -35,7 +35,7 @@ jobs:
         run: yarn build-storybook -o ./storybook-build
         working-directory: flint.ui
 
-      - name: Lint Dockerfiles
+      - name: Lint Dockerfile
         uses: jbergstroem/hadolint-gh-action@v1
         with:
           dockerfile: ./flint.ui/Dockerfile
