@@ -4,6 +4,7 @@
   "private": true,
   "description": "This project aims to implement a user-friendly UI for FLINT and GCBM runs",
   "scripts": {
+    "preinstall": "cd .. && yarn install",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
