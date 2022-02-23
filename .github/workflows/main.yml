@@ -37,6 +37,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Cache Build 🌳
+        uses: actions/cache@v2
+        with:
+          path: flint.ui/dist
+          key: cache-dist-${{ github.sha }}
+          restore-keys: |
+            cache-dist-
+
       - name: Install 🔧
         run: yarn install
         working-directory: flint.ui
