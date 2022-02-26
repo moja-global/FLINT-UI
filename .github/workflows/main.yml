@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+ build:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
 
@@ -59,3 +59,23 @@ jobs:
           dockerfile: ./flint.ui/Dockerfile
           error_level: 0
           output_format: tty
+          
+ docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image 🔨
+      run: docker build --file flint.ui/Dockerfile --tag flint.ui:latest flint.ui/ 
+      
+    - name: Lint Dockerfile 🐳
+      uses: jbergstroem/hadolint-gh-action@v1
+      with:
+        dockerfile: ./flint.ui/Dockerfile
+        error_level: 0
+        output_fprmat: tty
+      
+    - name: Perform container scan for vulnerablities ⚠️
+      uses: azure/container-scan@v0
+      with:
+        image-name: flint.ui
