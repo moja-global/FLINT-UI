@@ -1,116 +1,120 @@
 <template>
-  <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full" style="height: auto">
-    <div class="px-4 md:px-10 mx-auto w-full h-auto">
-      <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">Point example simulation configuration</h2>
-          <p>
-            Was the simulation conducted at a specific place ? Click
-            <a> <span @click="isShow = !isShow">here</span> </a> to save latitude and longitude co-ordinates on a
-            <i class="fas fa-map mr-2 text-sm" />
-          </p>
-        </div>
+  <div>
+    <LandingPageNavbar />
+    <div class="px-8 pb-6 sm:px-16 md:px-24">
+      <div class="mt-14">
+        <h2 class="text-xl sm:text-2xl md:text-2xl text-earth mb-3">Point example simulation configuration</h2>
+        <p class="text-earth sm:text-base">
+          Was the simulation conducted at a specific place?
+          <a>
+            <span class="underline cursor-pointer text-earth" @click="isShow = !isShow">
+              {{ isShow ? 'Close' : 'Click here' }}</span
+            >
+          </a>
+          <span v-if="!isShow"> to save latitude and longitude co-ordinates on a map.</span>
+        </p>
 
         <div v-if="isShow">
           <Maptest />
         </div>
 
-        <div class="px-4 md:px-10 mx-auto w-full h-auto m-8">
-          <div>
-            <div data-v-step="1">
-              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-2 text-gray-800">Start and End date of simulation</h2>
-                <div>
-                  <Datepicker size="large" />
-                </div>
+        <div class="mt-16">
+          <div data-v-step="1">
+            <div class="">
+              <h2 class="text-xl mb-2 text-earth">Start and end date of simulation</h2>
+              <div>
+                <Datepicker size="large" />
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-wrap z-0">
-          <div class="w-full lg:w-4/12 xl:w-4/12 px-4 content-center">
-            <div class="slider-component justify-center">
+        <div class="flex justify-evenly gap-14 flex-wrap w-full mt-16 z-0">
+          <div class="flex-grow">
+            <div class="">
               <div data-v-step="2">
-                <div class="output">Pool 1: {{ pool1.value }}</div>
-                <vue-slider v-model="pool1.value" v-bind="pool1" />
+                <div class="text-earth flex gap-4 justify-between mb-6">
+                  <span>Pool 1: {{ pool1.value }}</span>
+                  <span>{{ pool1.max }}</span>
+                </div>
+                <vue-slider
+                  v-model="pool1.value"
+                  v-bind="pool1"
+                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                />
               </div>
             </div>
           </div>
 
-          <div class="w-full lg:w-4/12 xl:w-4/12 px-4 content-center">
-            <div class="slider-component">
+          <div class="flex-grow">
+            <div class="">
               <div data-v-step="3">
-                <div class="output">Pool 2: {{ pool2.value }}</div>
-                <vue-slider v-model="pool2.value" v-bind="pool2" />
+                <div class="text-earth flex gap-4 justify-between mb-6">
+                  <span>Pool 2: {{ pool2.value }}</span>
+                  <span>{{ pool2.max }}</span>
+                </div>
+                <vue-slider
+                  v-model="pool2.value"
+                  v-bind="pool2"
+                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                />
               </div>
             </div>
           </div>
 
-          <div class="w-full lg:w-4/12 xl:w-4/12 px-4 content-center">
-            <div class="slider-component">
+          <div class="flex-grow">
+            <div class="">
               <div data-v-step="4">
-                <div class="output">Pool 3: {{ pool3.value }}</div>
-                <vue-slider v-model="pool3.value" v-bind="pool3" />
+                <div class="text-earth flex gap-4 justify-between mb-6">
+                  <span>Pool 3: {{ pool3.value }}</span>
+                  <span>{{ pool3.max }}</span>
+                </div>
+                <vue-slider
+                  v-model="pool3.value"
+                  v-bind="pool3"
+                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                />
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="items-center flex flex-wrap justify-center">
-            <div class="p-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-8">
-              <button
-                class="
-                  bg-white
-                  text-lg text-gray-800
-                  hover:bg-black hover:text-white
-                  font-semibold
-                  py-4
-                  px-16
-                  border border-gray-400
-                  rounded
-                  shadow
-                "
-                @click="Run()"
-              >
-                <div data-v-step="5"><i class="far fa-play-circle" /> RUN</div>
-              </button>
+        <div class="mt-16 text-xl mb-2 text-earth">
+          Simulation length is
+          <!-- This can be updated later when we have the
+            DatepickerPoint component ready with the new UI. -->
+          <span class="text-blue-500">4.92 years</span>
+        </div>
 
-              <router-link to="/flint/point_output_table">
-                <button
-                  class="
-                    bg-white
-                    text-lg text-gray-800
-                    hover:bg-black hover:text-white
-                    font-semibold
-                    py-4
-                    px-16
-                    border border-gray-400
-                    rounded
-                    shadow
-                  "
-                >
-                  <div data-v-step="6"><i class="far fa-image" /> POINT OUTPUT TABLE</div>
-                </button>
-              </router-link>
-            </div>
+        <div class="my-16 flex gap-8 items-center">
+          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
+          <div data-v-step="6">
+            <Button :btn-size="'auto'" @click.native="showPointOutputTable()">Point Output Table</Button>
           </div>
         </div>
       </div>
+      <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
     </div>
-    <Stepper />
-    <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
   </div>
 </template>
 
 <script>
-import Maptest from '@/components/Vuelayers/Maptest.vue'
-import Stepper from '@/components/Stepper/StepperPoint.vue'
+import Button from '@/components/Button/Button.vue'
 import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
+import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
+import Maptest from '@/components/Vuelayers/Maptest.vue'
 
 export default {
   components: {
+    Button,
     Datepicker,
-    Stepper,
+    LandingPageNavbar,
     Maptest
   },
   data() {
@@ -149,7 +153,7 @@ export default {
           target: '[data-v-step="1"]',
           content: 'Set the Start and End date of simulation from the date picker.',
           params: {
-            placement: 'left'
+            placement: 'bottom'
           }
         },
         {
@@ -214,39 +218,13 @@ export default {
 
     Run() {
       this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+    },
+
+    showPointOutputTable() {
+      // this is a temporary function which can be removed when we have the
+      // PointOutputTable component ready.
+      this.$router.push('/flint/point_output_table')
     }
   }
 }
 </script>
-
-<style>
-.md-steppers-wrapper {
-  display: none;
-}
-
-.slider-component {
-  background: #ffffff;
-  margin: 20px;
-  border-color: #e7e7e7;
-  padding: 40px;
-}
-
-.slider-component pre {
-  background: #f9f9f9;
-  padding: 18px 6px;
-  overflow-x: scroll;
-  margin-top: 10px;
-}
-
-.output {
-  font-family: Courier, Courier New, Lucida Console, Monaco, Consolas;
-  background: #000000;
-  color: #ffffff;
-  padding: 20px;
-  margin-bottom: 50px;
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 13px;
-}
-</style>
