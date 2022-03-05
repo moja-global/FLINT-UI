@@ -2,7 +2,7 @@
   <div class="accordion__item cursor-pointer p-4 border-b-2">
     <div class="accoordion__trigger flex space-between" :class="{ accordion__trigger_active: visible }" @click="open">
       <!-- This slot will handle the title/header of the accordion and is the part you click on -->
-      <slot name="accordion-trigger">{{configParamtype}}</slot>
+      <slot name="accordion-trigger"></slot>
     </div>
     <transition name="accordion" @enter="start" @after-enter="end" @before-leave="start" @after-leave="end">
       <div v-show="visible" class="accordion__content">
@@ -18,16 +18,7 @@
 <script>
 export default {
   inject: ['Accordion'],
-  props: {
-      configParamtype: {
-      type: String,
-      default: 'parameters'
-    },
-    configDataexample: {
-      type: String,
-      default: 'Configure'
-    }
-  },
+  props: {},
   data() {
     return {
       index: null
@@ -66,7 +57,6 @@ export default {
   transition: height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
 }
-
 .accordion-enter,
 .accordion-leave-to {
   height: 0 !important;

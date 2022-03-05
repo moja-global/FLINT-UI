@@ -4,8 +4,8 @@
       <LandingPageNavbar />
       <div>
         <div>
-          <h2 class="mt-7 py-4 text-2xl font text-gray-800">RothC example simulation configuration</h2>
-          <p>
+          <h2 class="mt-7 py-4 text-2xl text-earth font text-gray-800">RothC example simulation configuration</h2>
+          <p class="text-earth sm:text-base">
             Was the simulation conducted at a specific place ? Click
             <span>here</span> to save latitude and longitude co-ordinates
           </p>
@@ -27,6 +27,7 @@
         </div>
 
         <h2 class="mt-7 py-4 text-2xl font text-gray-800">Configure Parameters</h2>
+        <!-- Will update this once all the changes are made -->
         <div class="flex flex-wrap mt-5">
           <Accordion config-paramtype="rainfall" />
 
@@ -42,6 +43,9 @@
 
           <RothCTemplate config-paramtype="soil" />
         </div>
+        <div class="mt-4">
+        <Button :btn-size="'auto'" @click="apiRoute_rothc">Run</Button>
+        </div>
       </div>
     </div>
   </div>
@@ -52,13 +56,22 @@ import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
 import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
+import Button from '@/components/Button/Button.vue'
 
 export default {
   components: {
     RothCTemplate,
     Datepicker,
     LandingPageNavbar,
-    Accordion
+    Accordion,
+    Button
+  },
+  methods: {
+    apiRoute_rothc() {
+      // sending the new rothc config
+      console.log('ROTHC route invoked with new configs')
+      this.$store.dispatch('send_rothcConfig', { root: true })
+    }
   }
 }
 </script>

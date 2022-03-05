@@ -9,16 +9,7 @@ export default {
   provide() {
     return { Accordion: this.Accordion }
   },
-  props: {
-    configParamtype: {
-      type: String,
-      default: 'Config params for xyz'
-    },
-    configDataexample: {
-      type: String,
-      default: 'Configure'
-    }
-  },
+  props: {},
   data() {
     return {
       Accordion: {
