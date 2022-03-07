@@ -4,7 +4,7 @@
       <LandingPageNavbar />
       <div>
         <div>
-          <h2 class="mt-7 py-4 text-2xl text-earth font text-gray-800">RothC example simulation configuration</h2>
+          <h2 class="mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
           <p class="text-earth sm:text-base">
             Was the simulation conducted at a specific place ? Click
             <span>here</span> to save latitude and longitude co-ordinates
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <h2 class="mt-7 py-4 text-2xl font text-gray-800">Configure Parameters</h2>
+        <h2 class="mt-7 py-4 text-2xl text-gray-800">Configure Parameters</h2>
         <!-- Will update this once all the changes are made -->
         <div class="flex flex-wrap mt-5">
           <Accordion config-paramtype="rainfall" />
@@ -44,7 +44,7 @@
           <RothCTemplate config-paramtype="soil" />
         </div>
         <div class="mt-4">
-        <Button :btn-size="'auto'" @click="apiRoute_rothc">Run</Button>
+        <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
         </div>
       </div>
     </div>
