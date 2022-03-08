@@ -18,8 +18,6 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
-      '2xl': { max: '1535px' },
-      // => @media (max-width: 1535px) { ... }
 
       laptop: { max: '1279px' },
       // => @media (max-width: 1279px) { ... }
