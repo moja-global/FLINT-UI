@@ -48,18 +48,21 @@
         />
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import LandingPageNavbar from './../components/Navbars/LandingPageNavbar.vue'
 import LandingPageCard from './../components/Cards/LandingPageCard.vue'
+import Footer from './../components/Footer/Footer.vue'
 
 export default {
   name: 'MyTour',
   components: {
     LandingPageNavbar,
-    LandingPageCard
+    LandingPageCard,
+    Footer
   }
 }
 </script>
