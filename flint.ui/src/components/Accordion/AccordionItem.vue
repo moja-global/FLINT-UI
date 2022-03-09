@@ -57,7 +57,6 @@ export default {
   transition: height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
 }
-
 .accordion-enter,
 .accordion-leave-to {
   height: 0 !important;
