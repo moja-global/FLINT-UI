@@ -94,7 +94,7 @@ git submodule update --init --recursive
 3. Now get inside the repository directory and build the `docker-compose.yml` file by following the below command:
 
 ```shell
-docker-compose up
+docker-compose build
 ```
 
 This will build all the docker images inside the `docker-compose.yml` file. It will take some time and after that, you can see all images list in the Docker app.
