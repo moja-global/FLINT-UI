@@ -1,10 +1,11 @@
 <template>
-  <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full">
-    <div class="px-4 md:px-10 mx-auto w-full">
+  <div class="md:pt-32 w-full md:justify-center">
+    <div class="mx-3 w-full md:justify-center">
+      <LandingPageNavbar />
       <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">RothC example simulation configuration</h2>
-          <p>
+        <div>
+          <h2 class="mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
+          <p class="text-earth sm:text-base">
             Was the simulation conducted at a specific place ? Click
             <span>here</span> to save latitude and longitude co-ordinates
           </p>
@@ -14,19 +15,21 @@
           </p>
         </div>
 
-        <div class="px-4 md:px-10 mx-auto w-full h-auto m-8">
+        <div class="mt-6">
           <div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-              <h2 class="text-2xl font-bold mb-2 text-gray-800">Start and End date of simulation</h2>
+            <div class="p-6 mb-3">
+              <h2 class="px-3 text-2xl font-bold mb-2 text-gray-800">Start and End date of simulation</h2>
               <div>
-                <Datepicker size="large" />
+                <Datepicker size="small" />
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-wrap mt-10">
-          <RothCTemplate config-paramtype="rainfall" />
+        <h2 class="mt-7 py-4 text-2xl text-gray-800">Configure Parameters</h2>
+        <!-- Will update this once all the changes are made -->
+        <div class="flex flex-wrap mt-5">
+          <Accordion config-paramtype="rainfall" />
 
           <RothCTemplate config-paramtype="openPanEvap" />
 
@@ -40,23 +43,35 @@
 
           <RothCTemplate config-paramtype="soil" />
         </div>
+        <div class="mt-4">
+        <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
+        </div>
       </div>
     </div>
-
-    <Stepper />
   </div>
 </template>
 
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
-import Stepper from '@/components/Stepper/StepperRothc.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
+import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
+import Accordion from '../../components/Accordion/Accordion.vue'
+import Button from '@/components/Button/Button.vue'
 
 export default {
   components: {
     RothCTemplate,
-    Stepper,
-    Datepicker
+    Datepicker,
+    LandingPageNavbar,
+    Accordion,
+    Button
+  },
+  methods: {
+    apiRoute_rothc() {
+      // sending the new rothc config
+      console.log('ROTHC route invoked with new configs')
+      this.$store.dispatch('send_rothcConfig', { root: true })
+    }
   }
 }
 </script>

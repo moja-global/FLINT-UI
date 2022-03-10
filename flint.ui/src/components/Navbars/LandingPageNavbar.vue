@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap px-16 py-4">
+  <nav class="flex items-center justify-between flex-wrap px-24 py-4">
     <div class="flex items-center flex-shrink-0 text-white">
       <span class="font-semibold text-xl text-earth"
         ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
@@ -47,19 +47,19 @@
       <div class="lg:flex-grow"></div>
       <div>
         <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">
+          <button class="text-earth">
             <a href="https://docs.moja.global/projects/flint-ui/en/latest/"> Documentation </a>
           </button>
         </a>
 
         <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">
+          <button class="text-earth">
             <a href="https://github.com/moja-global/FLINT-UI"> GitHub </a>
           </button>
         </a>
 
         <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="hover:text-earth">
+          <button class="text-earth">
             <a href="mailto:info@moja.global"> Contact Us </a>
           </button>
         </a>
@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 .md-theme-default a {
-  color: black !important;
+  color: #475447 !important;
 }
 .md-theme-default a:hover {
   text-decoration: none;
