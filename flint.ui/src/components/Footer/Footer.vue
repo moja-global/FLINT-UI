@@ -53,46 +53,38 @@
       <a-col :xm="14" :sm="14" :md="9" :lg="9" :xl="9">
         <a-space direction="vertical" size="middle" style="display: flex">
           <a-typography-title style="color: white; font-size: 1.2rem">Site Links</a-typography-title>
-          <a-typography-link href="https://moja.global/about/" target="_blank" style="color: white">
-            About
-          </a-typography-link>
-          <a-typography-link href="https://moja.global/what-we-do/" target="_blank" style="color: white">
-            What We Do
-          </a-typography-link>
-          <a-typography-link href="https://moja.global/flint/" target="_blank" style="color: white">
-            FLINT
-          </a-typography-link>
-          <a-typography-link href="https://moja.global/get-involved/" target="_blank" style="color: white">
-            Get Involved
-          </a-typography-link>
-          <a-typography-link href="https://moja.global/resources/" target="_blank" style="color: white">
-            Resources
-          </a-typography-link>
-          <a-typography-link href="https://moja.global/news/" target="_blank" style="color: white">
-            News
-          </a-typography-link>
+          <a-typography-title>
+            <a href="https://moja.global/about/" target="_blank" style="text-decoration: none; color: white">About</a>
+          </a-typography-title>
+          <a-typography-title>
+            <a href="https://moja.global/what-we-do/" target="_blank" style="text-decoration: none; color: white"
+              >What We Do</a
+            >
+          </a-typography-title>
+          <a-typography-title>
+            <a href="https://moja.global/flint/" target="_blank" style="text-decoration: none; color: white">FLINT</a>
+          </a-typography-title>
+          <a-typography-title>
+            <a href="https://moja.global/get-involved/" target="_blank" style="text-decoration: none; color: white"
+              >Get Involved</a
+            >
+          </a-typography-title>
+          <a-typography-title>
+            <a href="https://moja.global/resources/" target="_blank" style="text-decoration: none; color: white"
+              >Resources</a
+            >
+          </a-typography-title>
+          <a-typography-title>
+            <a href="https://moja.global/news/" target="_blank" style="text-decoration: none; color: white">News</a>
+          </a-typography-title>
         </a-space>
       </a-col>
     </a-row>
-    <a-space
-      direction="horizontal"
-      size="small"
+    <a-typography-title
       style="display: flex; align-items: center; justify-content: center; margin-top: 1rem; color: #7a7a7a"
     >
-      Copyright 2021 |
-      <a-typography-link
-        href="https://staging2.kylec24.sg-host.com/privacy-policy/"
-        target="_blank"
-        style="color: #74dfac"
-        >Cookies </a-typography-link
-      >|
-      <a-typography-link
-        href="https://staging2.kylec24.sg-host.com/privacy-policy/"
-        target="_blank"
-        style="color: #74dfac"
-        >Privacy Policies
-      </a-typography-link>
-    </a-space>
+      Copyright © 2022 moja global.
+    </a-typography-title>
   </Footer>
 </template>
 
