@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pt-32 w-full md:justify-center">
+  <div class="w-full md:justify-center">
     <div class="mx-3 w-full md:justify-center">
       <LandingPageNavbar />
       <div>
