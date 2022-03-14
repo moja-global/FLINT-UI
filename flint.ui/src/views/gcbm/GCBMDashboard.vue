@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class="flex flex-wrap">
-      <div
-        class="relative md:pt-32 pb-32 pt-12 w-full h-auto"
-      >
-       <LandingPageNavbar />
+      <div class="relative md:pt-32 pb-32 pt-12 w-full h-auto">
+        <LandingPageNavbar />
         <div class="px-4 md:px-10 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg">
             <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
@@ -89,7 +87,7 @@ export default {
   components: {
     StepperGCBM,
     StepperStatic,
-    LandingPageNavbar,
+    LandingPageNavbar
   },
 
   data: () => ({
