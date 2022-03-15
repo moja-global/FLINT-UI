@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div class="flex flex-wrap mt-4">
-      <div
-        class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
-      >
+    <div class="flex flex-wrap">
+      <div class="relative md:pt-32 pb-32 pt-12 w-full h-auto">
+        <LandingPageNavbar />
         <div class="px-4 md:px-10 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+            <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
             <p class="text-gray-700">Follow the steps below to simulate GCBM runs.</p>
           </div>
 
@@ -81,12 +80,14 @@
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
-    StepperStatic
+    StepperStatic,
+    LandingPageNavbar
   },
 
   data: () => ({

@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pt-32 w-full md:justify-center">
+  <div class="w-full md:justify-center">
     <div class="mx-3 w-full md:justify-center">
       <LandingPageNavbar />
       <div>
@@ -44,7 +44,7 @@
           <RothCTemplate config-paramtype="soil" />
         </div>
         <div class="mt-4">
-        <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
+          <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
         </div>
       </div>
     </div>
