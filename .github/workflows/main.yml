@@ -36,7 +36,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/flint.ui/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
       - name: Install 🔧
         run: yarn install --frozen-lockfile
         working-directory: flint.ui
@@ -57,17 +56,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
       - uses: actions/checkout@v2
-      
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      
-      - name: Build the Docker image 🔨
+        
+      - name: Build Docker image
         uses: docker/build-push-action@v2
         with:
-          file: "./flint.ui/Dockerfile"
-          push: ${{ github.event_name != 'pull_request' && 'push' }}
+          dockerfile: ./flint.ui/Dockerfile
+          push: ${{ github.event_name != 'pull_request' && 'push'}}
 
       - name: Lint Dockerfile 🐳
         uses: jbergstroem/hadolint-gh-action@v1
