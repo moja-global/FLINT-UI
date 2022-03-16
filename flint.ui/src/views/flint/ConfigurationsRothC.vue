@@ -4,23 +4,23 @@
       <LandingPageNavbar />
       <div>
         <div>
-          <h2 class="mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
-          <p class="text-earth sm:text-base">
+          <h2 class="mt-16 py-4 md:px-24 text-2xl font-normal text-gray">RothC example simulation configuration</h2>
+          <p class="md:px-24 text-earth text-base">
             Was the simulation conducted at a specific place ? Click
             <span>here</span> to save latitude and longitude co-ordinates
           </p>
-          <p class="text-gray-700">
+          <p class="md:px-24 text-earth text-base">
             Input the custom values in the fields below. Default values as placeholder text will be used if none
             provided.
           </p>
         </div>
 
-        <div class="mt-6">
+        <div class="mt-10">
           <div>
-            <div class="p-6 mb-3">
-              <h2 class="px-3 text-2xl font-bold mb-2 text-gray-800">Start and End date of simulation</h2>
+            <div class="py-6 mb-3">
+              <h2 class=" text-xl font-normal md:px-24 text-earth text-base">Start and End date of simulation</h2>
               <div>
-                <Datepicker size="small" />
+                <div class="md:px-24 text-2xl font-normal text-gray"><Datepicker size="small" /></div>
               </div>
             </div>
           </div>
