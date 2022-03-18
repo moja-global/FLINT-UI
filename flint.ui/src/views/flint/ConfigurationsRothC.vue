@@ -58,7 +58,7 @@ import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
 import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
 import Button from '@/components/Button/Button.vue'
-import Footer from './../../components/Footer/Footer.vue'
+import Footer from '@/components/Footer/Footer.vue'
 
 export default {
   components: {
