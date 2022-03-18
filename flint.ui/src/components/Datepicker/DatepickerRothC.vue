@@ -1,14 +1,15 @@
 <template>
   <div>
-    <md-button class="md-primary">Start Date</md-button>
-    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+    <div class="flex w-full">
+    <div class="w-12/12 md:w-10/12"><button class="text-gray text-base">Start Date</button><br/>
+    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" /></div>
 
-    <md-button class="md-primary">End Date</md-button>
-    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
-
-    <h3 class="text-xl font-bold mb-2 text-gray-600 justify-center">
+    <div class="w-12/12 md:w-10/12"><button class="text-gray text-base">End Date</button><br/>
+    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" /></div>
+    </div>
+    <h3 class="mt-14 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is
-      <span class="text-red-600">{{ date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+      <span class="text-persiangreen">{{ date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
     </h3>
   </div>
 </template>
@@ -74,13 +75,14 @@ export default {
 
 <style>
 .datepicker-input {
-  padding: 1em;
+  padding: 0.4em;
   font-family: inherit;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 20px;
   border: 1px solid #828282;
-  border-radius: 12px;
-  width: 60%;
+  border-radius: 8px;
+  margin-right: 8em;
+  margin-top: 0.5em;
 }
 .datepicker-input:hover {
   background-color: rgba(0, 0, 255, 0.13);
@@ -89,8 +91,17 @@ export default {
 .datepicker-input:focus {
   outline: none;
 }
+@media only screen and (max-width: 768px) {
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.flex {
+  display: flex;
+}
 .small {
-  width: 30%;
+  width: 90%;
 }
 .medium {
   width: 60%;
