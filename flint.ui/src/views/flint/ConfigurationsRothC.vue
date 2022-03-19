@@ -2,7 +2,7 @@
   <div class="w-full md:justify-center">
     <div class="mx-3 w-full md:justify-center">
       <LandingPageNavbar />
-      <div>
+      <div class="px-8 pb-6 sm:px-16 md:px-24">
         <div>
           <h2 class="mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
           <p class="text-earth sm:text-base">
