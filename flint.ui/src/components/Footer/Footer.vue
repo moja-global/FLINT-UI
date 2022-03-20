@@ -7,7 +7,7 @@
           size="middle"
           style="display: flex; align-items: center; justify-content: center"
         >
-          <img src="/moja_global_logo.png" alt="moja global logo" height="120" width="160"/> </a-space
+          <img src="/moja_global_logo.png" alt="moja global logo" height="120" width="160" /> </a-space
       ></a-col>
       <a-space direction="vertical" size="middle" style="color: white">
         <a-typography-text style="color: white; font-weight: 800; font-size: 1.2rem">Get In Touch</a-typography-text>
