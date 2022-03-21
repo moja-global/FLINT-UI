@@ -1,8 +1,15 @@
-import BasePopconfirm from '@/components/PopupConfirm.vue'
+import BasePopconfirm from '@/components/PopupConfirm/PopupConfirm.vue'
 
 export default {
   title: 'Popconfirm',
-  component: BasePopconfirm
+  component: BasePopconfirm,
+  argTypes: {
+    cancelText: { control: 'text' },
+    title: { control: 'text' },
+
+    okType: { control: 'text' },
+    okText: { control: 'text' }
+  }
 }
 
 const Template = (args, { argTypes }) => ({
@@ -10,15 +17,17 @@ const Template = (args, { argTypes }) => ({
   components: { BasePopconfirm },
   template: `
   <div>
- <base-popconfirm
-    title="Are you sure delete this task?"
-    ok-text="Yes"
-    cancel-text="No"
-  >
-    <a>Delete</a>
-  </base-popconfirm>
-      </div>
+    <base-popconfirm v-bind="$props" v-on="$props">
+      <a>Delete</a>
+    </base-popconfirm>
+  </div>
   `
 })
 
 export const Variants = Template.bind({})
+Variants.args = {
+  cancelText: 'No',
+  title: 'Are you sure you want to delete this?',
+  okText: 'Yes',
+  okType: 'primary'
+}

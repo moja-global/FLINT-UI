@@ -1,24 +1,25 @@
-import BaseDivider from '@/components/Divider.vue'
+import BaseDivider from '@/components/Divider/Divider.vue'
 
 export default {
   title: 'Divider',
-  component: BaseDivider
+  component: BaseDivider,
+  argTypes: {
+    orientation: { options: ['left', 'right', 'center'], control: { type: 'radio' } },
+    dashed: { control: 'boolean' },
+    type: { options: ['horizontal', 'vertical'], control: { type: 'radio' } }
+  }
 }
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { BaseDivider },
-  template: `
-
-<div>
-    Text
-    <base-divider type="vertical" />
-    <a href="#">Link</a>
-    <base-divider type="vertical" />
-    <a href="#">Link</a>
-  </div>
-
-  `
+  template: `<base-divider v-bind="$props" v-on="$props" />`
 })
 
 export const Variants = Template.bind({})
+
+Variants.args = {
+  orientation: 'center',
+  type: 'horizontal',
+  dashed: false
+}

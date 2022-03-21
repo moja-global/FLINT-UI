@@ -1,11 +1,15 @@
 <template>
   <div>
     <div class="flex w-full">
-    <div class="w-12/12 md:w-10/12"><button class="text-gray text-base">Start Date</button><br/>
-    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" /></div>
+      <div class="w-12/12 md:w-10/12">
+        <button class="text-gray text-base">Start Date</button><br />
+        <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+      </div>
 
-    <div class="w-12/12 md:w-10/12"><button class="text-gray text-base">End Date</button><br/>
-    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" /></div>
+      <div class="w-12/12 md:w-10/12">
+        <button class="text-gray text-base">End Date</button><br />
+        <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+      </div>
     </div>
     <h3 class="mt-14 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is

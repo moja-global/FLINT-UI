@@ -1,6 +1,6 @@
 <template>
   <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
-    <div class="px-4 md:px-10 mx-auto w-full h-auto">
+    <div class="mx-auto w-full h-auto">
       <div>
         <div class="bg-white p-6 rounded-lg shadow-lg flex">
           <h2 class="text-2xl font-bold text-gray-800 flex-1">ROTHC example data visualisation table</h2>
