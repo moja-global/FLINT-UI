@@ -4,6 +4,8 @@
 <h1>FLINT UI</h1>
 <p>
 A FLINT client, written in Vue, to provide an awesome user interface for configuring simulations using the FLINT.Cloud APIs
+  
+  🚧 This is experimental and incomplete. The framework may be a usefule starting point for new users who wish to create their own interface 🚧
 </p>
 <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-1-74e8a3.svg?style=flat-square" /></a>
 <a href="https://github.com/moja-global/FLINT-UI/network/members"><img src="https://img.shields.io/github/forks/moja-global/FLINT-UI?color=74e8a3&style=flat-square" /></a>
