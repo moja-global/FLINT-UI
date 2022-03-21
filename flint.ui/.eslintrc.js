@@ -9,5 +9,5 @@ module.exports = {
     parser: 'babel-eslint'
   },
   plugins: ['vue'],
-  extends: ["eslint:recommended", "plugin:vue/recommended", "@vue/prettier", "plugin:storybook/recommended"]
-};
+  extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier', 'plugin:storybook/recommended']
+}

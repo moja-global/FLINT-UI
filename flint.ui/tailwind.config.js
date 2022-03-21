@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         earth: '#475447',
         persiangreen: '#388591'
-      },
+      }
     }
   },
   variants: {
