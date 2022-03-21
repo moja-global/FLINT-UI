@@ -2,7 +2,7 @@
   <div
     class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-screen"
   >
-    <div class="px-4 md:px-10 mx-auto w-full">
+    <div class="mx-auto w-full">
       <div>
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4 content-center">

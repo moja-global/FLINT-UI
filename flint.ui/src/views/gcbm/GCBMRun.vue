@@ -4,7 +4,7 @@
       <div
         class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
       >
-        <div class="px-4 md:px-10 mx-auto w-full">
+        <div class="mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg">
             <div>
               <h2 class="text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>

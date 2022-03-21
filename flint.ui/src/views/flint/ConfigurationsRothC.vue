@@ -2,7 +2,7 @@
   <div class="w-full md:justify-center">
     <div class="mx-3 w-full md:justify-center">
       <LandingPageNavbar />
-      <div>
+      <div class="px-8 pb-6 sm:px-16 md:px-24">
         <div>
           <h2 class="mt-16 py-4 md:px-24 text-2xl font-normal text-gray">RothC example simulation configuration</h2>
           <p class="md:px-24 text-earth text-base">
@@ -18,7 +18,7 @@
         <div class="mt-10">
           <div>
             <div class="py-6 mb-3">
-              <h2 class=" text-xl font-normal md:px-24 text-earth text-base">Start and End date of simulation</h2>
+              <h2 class="text-xl font-normal md:px-24 text-earth text-base">Start and End date of simulation</h2>
               <div>
                 <div class="md:px-24 text-2xl font-normal text-gray"><Datepicker size="small" /></div>
               </div>
