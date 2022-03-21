@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="relative">
-      <div class="  mx-auto w-full">
+      <div class="mx-auto w-full">
         <router-view />
       </div>
     </div>

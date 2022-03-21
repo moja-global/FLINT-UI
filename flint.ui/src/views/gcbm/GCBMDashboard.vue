@@ -1,26 +1,27 @@
 <template>
   <div>
     <div class="flex flex-wrap">
-        <div class="relative w-full h-auto">
-            <LandingPageNavbar />
-            <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
-                    <p class="text-gray-700">Follow the steps below to simulate GCBM runs.</p>
-                </div>
+      <div class="relative w-full h-auto">
+        <LandingPageNavbar />
+        <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+            <p class="text-gray-700">Follow the steps below to simulate GCBM runs.</p>
+          </div>
 
-                <div class="flex flex-col mt-4">
-                    <StepperStatic />
+          <div class="flex flex-col mt-4">
+            <StepperStatic />
 
-                    <div class="w-full mt-6">
-                        <div class="w-4/12 px-4 mx-auto content-center">
-                            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                                <div class="flex-auto p-4">
-                                    <div class="relative w-full max-w-full flex-grow flex-1">
-                                        <span class="font-semibold text-xl text-blueGray-700"> Create a new Simulation </span>
+            <div class="w-full mt-6">
+              <div class="w-4/12 px-4 mx-auto content-center">
+                <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                  <div class="flex-auto p-4">
+                    <div class="relative w-full max-w-full flex-grow flex-1">
+                      <span class="font-semibold text-xl text-blueGray-700"> Create a new Simulation </span>
 
-                                        <input v-model="simulation_title"
-                                               class="
+                      <input
+                        v-model="simulation_title"
+                        class="
                           w-full
                           mt-4
                           h-10
@@ -32,10 +33,12 @@
                           rounded-lg
                           focus:shadow-outline
                         "
-                                               type="text"
-                                               placeholder="Enter title for simulation" />
+                        type="text"
+                        placeholder="Enter title for simulation"
+                      />
 
-                                        <button class="
+                      <button
+                        class="
                           w-full
                           mt-4
                           block
@@ -51,22 +54,23 @@
                           rounded
                           shadow
                         "
-                                                :disabled="isTitle()"
-                                                :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
-                                                @click="sendToAPI">
-                                            <i class="fas fa-plus" /> Create run
-                                        </button>
-                                    </div>
-                                    <p class="text-sm text-blueGray-400 mt-4">
-                                        <span class="whitespace-nowrap">Creates a new simulation run</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        :disabled="isTitle()"
+                        :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
+                        @click="sendToAPI"
+                      >
+                        <i class="fas fa-plus" /> Create run
+                      </button>
                     </div>
+                    <p class="text-sm text-blueGray-400 mt-4">
+                      <span class="whitespace-nowrap">Creates a new simulation run</span>
+                    </p>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <StepperGCBM />
