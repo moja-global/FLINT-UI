@@ -1,8 +1,17 @@
-import BaseProgress from '@/components/Progress.vue'
+import BaseProgress from '@/components/Progress/Progress.vue'
 
 export default {
   title: 'Progress',
-  component: BaseProgress
+  component: BaseProgress,
+  argTypes: {
+    type: { options: ['line', 'circle', 'dashboard'], control: { type: 'radio' } },
+    percent: { control: 'number' },
+    showInfo: { control: 'boolean' },
+    strokeColor: { control: 'color' },
+    successPercent: { control: 'number' },
+    status: { options: ['normal', 'exception', 'success', 'active'], control: { type: 'radio' } },
+    strokeLinecap: { options: ['round', 'square'], control: { type: 'radio' } }
+  }
 }
 
 const Template = (args, { argTypes }) => ({
@@ -11,13 +20,14 @@ const Template = (args, { argTypes }) => ({
   template: `
   <div>
   <base-progress v-bind='$props' />
-      <base-progress :percent="30" />
-      <base-progress :percent="50" status="active" />
-      <base-progress :percent="70" status="exception" />
-      <base-progress :percent="100" />
-      <base-progress :percent="50" :show-info="false" />
-      </div>
+    </div>
   `
 })
 
 export const Variants = Template.bind({})
+Variants.args = {
+  percent: 50,
+  showInfo: false,
+  strokeColor: 'red',
+  successPercent: 30
+}

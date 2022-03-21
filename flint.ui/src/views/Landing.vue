@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="parent">
     <LandingPageNavbar />
     <div class="flex flex-col flex-wrap lg:flex-row">
       <div class="relative py-32 lg:pt-28 flex content-center justify-center w-full min-h-screen-75 lg:w-5/12">
