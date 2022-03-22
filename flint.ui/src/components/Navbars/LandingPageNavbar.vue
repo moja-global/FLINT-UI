@@ -2,9 +2,9 @@
   <nav class="flex items-center justify-between flex-wrap px-24 py-4">
     <div class="flex items-center flex-shrink-0 text-white">
       <router-link to="/" exact>
-       <span class="font-semibold text-xl text-earth">
-        <img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"/>
-       </span>
+        <span class="font-semibold text-xl text-earth">
+          <img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57" />
+        </span>
       </router-link>
     </div>
     <div class="block lg:hidden">
