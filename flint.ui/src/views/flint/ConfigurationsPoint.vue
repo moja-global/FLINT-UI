@@ -101,6 +101,7 @@
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -109,13 +110,15 @@ import Button from '@/components/Button/Button.vue'
 import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
+import Footer from '@/components/Footer/Footer.vue'
 
 export default {
   components: {
     Button,
     Datepicker,
     LandingPageNavbar,
-    Maptest
+    Maptest,
+    Footer
   },
   data() {
     return {
