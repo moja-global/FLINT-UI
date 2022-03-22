@@ -19,8 +19,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup NodeJS ⚡️
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Get yarn cache directory path 🤯
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache Yarn 🥂
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/flint.ui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install 🔧
-        run: yarn install
+        run: yarn install --frozen-lockfile
         working-directory: flint.ui
 
       - name: Lint 🧐
@@ -35,7 +53,7 @@ jobs:
         run: yarn build-storybook -o ./storybook-build
         working-directory: flint.ui
 
-      - name: Lint Dockerfile
+      - name: Lint Dockerfile 🐳
         uses: jbergstroem/hadolint-gh-action@v1
         with:
           dockerfile: ./flint.ui/Dockerfile

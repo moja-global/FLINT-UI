@@ -1,8 +1,0 @@
-.footer {
-  margin: 0 auto;
-  padding: 0 rem(30) rem(30);
-
-  @media (max-width: $sm-max-width) {
-    padding: 0 rem(16) !important;
-  }
-}

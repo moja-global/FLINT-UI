@@ -21,6 +21,11 @@ import VueApexCharts from 'vue-apexcharts'
 import 'vuelayers/lib/style.css'
 import 'vue-slider-component/theme/default.css'
 
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+
+Vue.use(Antd)
+
 // configure router
 const router = new VueRouter({
   mode: 'history',

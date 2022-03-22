@@ -40,17 +40,17 @@ export default {
 
 <style scoped>
 button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.4rem 1.3rem;
   border: 1px solid #475447;
   border-radius: 5px;
-  color: var(--btnColor);
+  color: var(--color);
   width: var(--width);
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
+  transition: all 0.5s;
 }
 button:hover {
   color: #fff;
   background-color: var(--color);
-  transition: all 0.5s;
 }
 </style>
