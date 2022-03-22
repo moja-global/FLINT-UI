@@ -9,11 +9,5 @@ module.exports = {
     parser: 'babel-eslint'
   },
   plugins: ['vue'],
-  'prettier/prettier': [
-    'error',
-    {
-      endOfLine: 'auto'
-    }
-  ],
   extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier', 'plugin:storybook/recommended']
 }
