@@ -135,15 +135,51 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 <img src="assets/flint-ui-dashboard.jpg">
 </div>
 
-## Developer notes
-
-Go through the Development Notes [here.](https://github.com/moja-global/FLINT-UI/blob/master/docs/DevelopmentGuide/DevelopmentNotes.rst).
-
 ## Contributing
 
-To contribute to FLINT-UI:
+### Commit Convention
 
-Go through our contributing guidelines over [here.](https://github.com/moja-global/About_moja_global/tree/master/Contributing#community-contributions).
+Before you create a Pull Request, please check whether your commits comply with
+the commit conventions used in this repository.
+
+When you create a commit we kindly ask you to follow the convention
+`category(scope or module): message` in your commit message while using one of
+the following categories:
+
+- `feat / feature`: all changes that introduce completely new code or new
+  features
+- `fix`: changes that fix a bug (ideally you will additionally reference an
+  issue if present)
+- `refactor`: any code related change that is not a fix nor a feature
+- `docs`: changing existing or creating new documentation (i.e. README, docs for
+  usage of a lib or cli usage)
+- `build`: all changes regarding the build of the software, changes to
+  dependencies or the addition of new dependencies
+- `test`: all changes regarding tests (adding new tests or changing existing
+  ones)
+- `ci`: all changes regarding the configuration of continuous integration (i.e.
+  github actions, ci system)
+- `chore`: all changes to the repository that do not fit into any of the above
+  categories
+
+If you are interested in the detailed specification you can visit
+https://www.conventionalcommits.org/
+
+The project is configured with [husky](https://typicode.github.io/husky/#/) git-hook which on every successive commits checks for linting errors in the codebase and commit convention.
+
+To ease writing conventional commit messages, this repository contains [commitizen](https://github.com/commitizen/cz-cli) that assists with that. To commit your changes, run `yarn commit` in the root of the repository.
+
+### Branch-name Convention
+
+We follow the convention `[type/scope]`. For example `fix/lint-error` or `docs/component-api`. `type` can be either `docs`, `fix`, `feat`, `build`, or any other conventional commit type. `scope` is just a short id that describes the scope of work.
+
+### Development notes
+
+For the developer environment setup, project structure, best practices etc. you can go through the Development Notes [here.](https://github.com/moja-global/FLINT-UI/blob/master/docs/DevelopmentGuide/DevelopmentNotes.rst).
+
+### Read More
+
+Find more comprehensive details about Moja Global Contributing Guidelines [here.](https://github.com/moja-global/About_moja_global/tree/master/Contributing#community-contributions).
 
 ## How to Get Involved?
 
