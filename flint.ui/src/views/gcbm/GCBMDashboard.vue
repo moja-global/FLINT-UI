@@ -72,8 +72,8 @@
         </div>
       </div>
     </div>
-
     <StepperGCBM />
+    <Footer />
   </div>
 </template>
 
@@ -81,13 +81,15 @@
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
+import Footer from '@/components/Footer/Footer.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
     StepperStatic,
-    LandingPageNavbar
+    LandingPageNavbar,
+    Footer
   },
 
   data: () => ({
