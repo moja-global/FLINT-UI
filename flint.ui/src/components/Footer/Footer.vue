@@ -130,6 +130,9 @@
         align-items: center;
         justify-content: center;
     }
+    .social-icons:hover {
+        transform:scale(1.1)
+    }
 
     .footer-container .icon-clr {
         color: #a6adb4
@@ -139,6 +142,12 @@
         text-decoration: none;
         color: white !important;
     }
+
+        a.links:hover {
+            color: #7a7a7a !important;
+            text-decoration:none !important;
+            cursor:pointer
+        }
 
     .df {
         display: flex;
