@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .datepicker-input {
   padding: 0.4em;
   font-family: inherit;
@@ -85,7 +85,6 @@ export default {
   font-size: 20px;
   border: 1px solid #828282;
   border-radius: 8px;
-  margin-right: 8em;
   margin-top: 0.5em;
 }
 .datepicker-input:hover {
