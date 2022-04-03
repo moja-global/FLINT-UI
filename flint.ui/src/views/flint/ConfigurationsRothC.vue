@@ -20,7 +20,7 @@
             <div class="py-6 mb-3">
               <h2 class="text-xl font-normal md:px-24 text-earth text-base">Start and End date of simulation</h2>
               <div>
-                <div class="md:px-24 text-2xl font-normal text-gray"><Datepicker size="small" /></div>
+                <div class="md:px-24 text-2xl font-normal text-gray"><DatepickerPointAnt /></div>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
 
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
-import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
+import DatepickerPointAnt from '@/components/Datepicker/DatepickerPointAnt.vue'
 import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
 import Button from '@/components/Button/Button.vue'
@@ -63,7 +63,7 @@ import Footer from '@/components/Footer/Footer.vue'
 export default {
   components: {
     RothCTemplate,
-    Datepicker,
+    DatepickerPointAnt,
     LandingPageNavbar,
     Accordion,
     Button,
