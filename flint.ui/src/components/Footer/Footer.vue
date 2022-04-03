@@ -13,7 +13,9 @@
         <a-typography-text style="color: white; font-weight: 800; font-size: 1.2rem">Get In Touch</a-typography-text>
         <a-space direction="horizontal" size="small">
           <i class="fas fa-envelope" />
-          <a-typography-title style="color: white">info@moja.global</a-typography-title>
+          <a href="mailto:info@moja.global"
+            ><a-typography-title style="color: white">info@moja.global</a-typography-title></a
+          >
         </a-space>
         <a-space direction="horizontal" size="small">
           <a-button
