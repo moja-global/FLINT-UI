@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div class="flex flex-wrap mt-4">
-      <div
-        class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
-      >
-        <div class="mx-auto w-full">
+    <div class="flex flex-wrap">
+      <div class="relative w-full h-auto">
+        <LandingPageNavbar/>
+        <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg flex">
-            <h2 class="text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
+            <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
             <a @click="hello">
               <button
                 class="
@@ -50,7 +49,7 @@
                   "
                 >
                   <div class="flex-auto p-4">
-                    <div class="relative w-full max-w-full flex-grow flex-1">
+                    <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full flex-grow flex-1">
                       <span class="font-semibold text-xl text-blueGray-700"> List of ongoing simulations </span>
 
                       <label class="block mt-4">
@@ -83,6 +82,7 @@
 </template>
 
 <script>
+import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import FileUpload from '@/components/FileUpload/FileUpload.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
@@ -91,6 +91,7 @@ import axios from 'axios'
 export default {
   name: 'DashboardPage',
   components: {
+    LandingPageNavbar,
     StepperGCBM,
     FileUpload,
     StepperStatic

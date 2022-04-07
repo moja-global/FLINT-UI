@@ -1,22 +1,20 @@
 <template>
   <div>
-    <div class="flex flex-wrap mt-4">
-      <div
-        class="relative bg-gradient-to-tl from-green-300 via-blue-500 to-purple-600 md:pt-32 pb-32 pt-12 w-full h-auto"
-      >
-        <div class="mx-auto w-full">
-          <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex flex-wrap">
+      <div class="relative w-full h-auto">
+        <LandingPageNavbar/>
+        <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
+          <div class="bg-white p-6 rounded-lg shadow-lg flex">
             <div>
-              <h2 class="text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+            <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
               <p class="text-gray-700">
                 Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once
                 complete.
               </p>
-            </div>
 
             <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
           </div>
-
+</div>
           <div class="flex flex-col mt-4">
             <StepperStatic />
 
@@ -39,10 +37,10 @@
                 >
                   <div class="flex-auto p-4">
                     <div class="relative w-full max-w-full flex-grow flex-1">
-                      <span class="font-semibold text-xl text-blueGray-700"> Run a simulation </span>
+                      <span class="font-semibold text-xl text-gray-800"> Run a simulation </span>
 
                       <label class="block mt-4">
-                        <span class="text-gray-700 font-semibold text-lg">Selected simulation title: </span>
+                        <span class="text-gray-800 font-semibold text-lg">Selected simulation title: </span>
                         <span class="text-red-600 font-semibold text-lg">{{
                           $store.state.gcbm.DropdownSelectedSim
                         }}</span>
@@ -124,6 +122,7 @@
 </template>
 
 <script>
+import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Sliders/Toggle.vue'
@@ -132,6 +131,7 @@ import axios from 'axios'
 export default {
   name: 'DashboardPage',
   components: {
+    LandingPageNavbar,
     StepperGCBM,
     StepperStatic,
     Toggle
