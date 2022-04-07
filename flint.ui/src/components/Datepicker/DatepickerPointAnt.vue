@@ -80,4 +80,8 @@ export default {
   font-size: 16px;
   height: 53px;
 }
+.ant-calendar-picker-input.ant-input:hover {
+  background-color: #fcfcfc;
+  border: 2px solid theme('colors.persiangreen') !important;
+}
 </style>
