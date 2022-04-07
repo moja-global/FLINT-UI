@@ -1,32 +1,45 @@
 <template>
-  <div class="w-full flex-col mt-4 justify-center">
-    <div class="flex lg:flex-row flex-col my-2">
-      <div class="flex flex-col w-full m-2 font-medium text-base">
-        <p class="text-gray">Start Date</p>
-        <a-date-picker
-          v-model="startValue"
-          class="w-full"
-          :disabled-date="disabledStartDate"
-          placeholder="Select Date"
-          @openChange="handleStartOpenChange"
-        />
-      </div>
-      <div class="flex flex-col w-full m-2 font-medium text-base">
-        <p class="text-gray">End Date</p>
-        <a-date-picker
-          v-model="endValue"
-          class="w-full"
-          :disabled-date="disabledEndDate"
-          placeholder="Select Date"
-          :open="endOpen"
-          @openChange="handleEndOpenChange"
-        />
-      </div>
+  <div>
+    <a-row :gutter="8" style="width: 100%">
+      <a-col :sm="24" :md="12">
+        <div class="gutter-box">
+          <a-space direction="vertical" style="display: flex">
+            <a-typography-paragraph style="color: gray">Start Date</a-typography-paragraph>
+            <a-date-picker
+              v-model="startValue"
+              style="width: 100%"
+              :disabled-date="disabledStartDate"
+              placeholder="Select Date"
+              @openChange="handleStartOpenChange"
+            />
+          </a-space>
+        </div>
+      </a-col>
+      <a-col :sm="24" :md="12">
+        <div class="gutter-box">
+          <a-space direction="vertical" style="display: flex">
+            <a-typography-paragraph style="color: gray">End Date</a-typography-paragraph>
+            <a-date-picker
+              v-model="endValue"
+              style="width: 100%"
+              :disabled-date="disabledEndDate"
+              placeholder="Select Date"
+              :open="endOpen"
+              @openChange="handleEndOpenChange"
+            />
+          </a-space>
+        </div>
+      </a-col>
+    </a-row>
+
+    <div class="extra-bold">
+      <a-typography-title :level="3">
+        Simulation length is
+        <span style="color: #388591">{{
+          date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid'
+        }}</span></a-typography-title
+      >
     </div>
-    <h3 class="mt-14 py-4 text-xl font-medium m-2 text-gray-600 justify-center">
-      Simulation length is
-      <span class="text-persiangreen">{{ date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
-    </h3>
   </div>
 </template>
 
@@ -76,12 +89,20 @@ export default {
 </script>
 
 <style>
+.gutter-box {
+  margin-top: 14px;
+}
 .ant-calendar-picker-input.ant-input {
   font-size: 16px;
   height: 53px;
 }
 .ant-calendar-picker-input.ant-input:hover {
-  background-color: #fcfcfc;
-  border: 2px solid theme('colors.persiangreen') !important;
+  background-color: #fefefe;
+  border: 1px solid #388591 !important;
+}
+.extra-bold {
+  font-size: 20px;
+  padding: 24px 0;
+  font-weight: 500;
 }
 </style>
