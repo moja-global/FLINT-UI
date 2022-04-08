@@ -2,7 +2,7 @@
   <div>
     <LandingPageNavbar />
     <div class="flex-row pl-0 flex-wrap mt-6">
-      <div class=" p-6 innerdiv">
+      <div class="p-6 innerdiv">
         <h1 class="mb mt-7 py-4 text-2xl text-earth my-4">Page Not Found</h1>
         <p class="text-earth text-2xl my-2">We could not find what you were looking for.</p>
         <p class="text-xl font-normal text-earth text-base my-2">
@@ -10,11 +10,12 @@
           broken.
         </p>
         <div class="my-4">
-                  <a href="/"><Button :btn-size="'auto'" class="flex mt-6"
-            >Go to Home Page <span class="ml-1" style="margin-top: -2px"> →</span></Button
-          ></a>
+          <a href="/"
+            ><Button :btn-size="'auto'" class="flex mt-6"
+              >Go to Home Page <span class="ml-1" style="margin-top: -2px"> →</span></Button
+            ></a
+          >
         </div>
-
       </div>
     </div>
     <Footer />
@@ -37,16 +38,14 @@ export default {
 </script>
 
 <style scoped>
-
 a:hover {
   text-decoration: none !important;
 }
 
 @media only screen and (min-width: 978px) {
-.innerdiv {
-  width: 50%;
-  margin-left: 26%;
- }
+  .innerdiv {
+    width: 50%;
+    margin-left: 26%;
+  }
 }
-
 </style>

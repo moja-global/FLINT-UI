@@ -121,9 +121,7 @@ const routes = [
     path: '/',
     component: Landing
   },
-  { path: '/:pathMatch(.*)*', 
-    component: Errorpage
-  }
+  { path: '/:pathMatch(.*)*', component: Errorpage }
 ]
 
 export default routes

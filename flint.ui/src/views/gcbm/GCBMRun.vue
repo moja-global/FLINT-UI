@@ -2,19 +2,19 @@
   <div>
     <div class="flex flex-wrap">
       <div class="relative w-full h-auto">
-        <LandingPageNavbar/>
+        <LandingPageNavbar />
         <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg flex">
             <div>
-            <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
+              <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
               <p class="text-gray-700">
                 Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once
                 complete.
               </p>
 
-            <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
+              <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
+            </div>
           </div>
-</div>
           <div class="flex flex-col mt-4">
             <StepperStatic />
 
