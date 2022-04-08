@@ -11,7 +11,7 @@
           @vdropzone-file-added="fileAddedConfig"
         >
           <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br>
+            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
             <span>CONFIG FILES</span>
           </div>
         </vue-dropzone>
@@ -27,7 +27,7 @@
           @vdropzone-file-added="fileAddedDB"
         >
           <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br>
+            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
             <span>DB FILES</span>
           </div>
         </vue-dropzone>
@@ -43,7 +43,7 @@
           @vdropzone-file-added="fileAddedInput"
         >
           <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br>
+            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
             <span>INPUT FILES</span>
           </div>
         </vue-dropzone>

@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap">
       <div class="relative w-full h-auto">
-        <LandingPageNavbar/>
+        <LandingPageNavbar />
         <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
           <div class="bg-white p-6 rounded-lg shadow-lg flex">
             <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
