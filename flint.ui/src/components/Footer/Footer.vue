@@ -77,7 +77,7 @@
         </a-space>
       </a-col>
     </a-row>
-    <a-typography-title class="fc copyright"> Copyright © 2022 moja global. </a-typography-title>
+    <a-typography-title class="fc copyright"> Copyright © {{new Date().getFullYear()}} moja global. </a-typography-title>
   </Footer>
 </template>
 
