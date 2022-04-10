@@ -1,32 +1,10 @@
 <template>
+<div>
   <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
     <div class="mx-auto w-full h-auto">
       <div>
         <div class="bg-white p-6 rounded-lg shadow-lg flex">
           <h2 class="text-2xl font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
-
-          <router-link to="/flint/point_output">
-            <div data-v-step="1">
-              <button
-                class="
-                  inline-block
-                  align-middle
-                  flex-initial
-                  bg-white
-                  hover:bg-black hover:text-white
-                  text-gray-800
-                  font-semibold
-                  py-2
-                  px-4
-                  border border-gray-400
-                  rounded
-                  shadow
-                "
-              >
-                <i class="far fa-image" /> Visualise on Graph
-              </button>
-            </div>
-          </router-link>
         </div>
       </div>
     </div>
@@ -35,14 +13,19 @@
     </div>
     <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
   </div>
+  <PointOutput />
+  </div>
 </template>
 
 <script>
 /* eslint-disable */
 import VGrid from '@revolist/vue-datagrid'
+import PointOutput from './PointOutput.vue'
+
 export default {
   components: {
-    VGrid
+    VGrid,
+    PointOutput
   },
   data() {
     return {
@@ -181,20 +164,5 @@ export default {
 </script>
 
 <style>
-revo-grid {
-  height: 100%;
-}
 
-div .rgHeaderCell, .header-rgRow{
-  background: #000000;
-  color: #fff;
-}
-
-div .header-content {
-  color: #fff;
-}
-
-.rgCell {
-  background-color: #fff;
-}
 </style>
