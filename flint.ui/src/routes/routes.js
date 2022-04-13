@@ -24,6 +24,8 @@ import GCBMRun from '@/views/gcbm/GCBMRun.vue'
 
 import Landing from '@/views/Landing.vue'
 
+import Errorpage from '@/views/Errorpage.vue'
+
 const routes = [
   {
     path: '/flint',
@@ -119,7 +121,7 @@ const routes = [
     path: '/',
     component: Landing
   },
-  { path: '/:pathMatch(.*)*', redirect: '/' }
+  { path: '/:pathMatch(.*)*', component: Errorpage }
 ]
 
 export default routes
