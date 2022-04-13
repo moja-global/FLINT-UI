@@ -1,15 +1,45 @@
 <template>
   <div>
-    <md-button class="md-primary">Start Date</md-button>
-    <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+    <a-row :gutter="8" style="width: 100%">
+      <a-col :sm="24" :md="12">
+        <div class="gutter-box">
+          <a-space direction="vertical" style="display: flex">
+            <a-typography-paragraph style="color: gray">Start Date</a-typography-paragraph>
+            <a-date-picker
+              v-model="startValue"
+              style="width: 100%"
+              :disabled-date="disabledStartDate"
+              placeholder="Select Date"
+              @openChange="handleStartOpenChange"
+            />
+          </a-space>
+        </div>
+      </a-col>
+      <a-col :sm="24" :md="12">
+        <div class="gutter-box">
+          <a-space direction="vertical" style="display: flex">
+            <a-typography-paragraph style="color: gray">End Date</a-typography-paragraph>
+            <a-date-picker
+              v-model="endValue"
+              style="width: 100%"
+              :disabled-date="disabledEndDate"
+              placeholder="Select Date"
+              :open="endOpen"
+              @openChange="handleEndOpenChange"
+            />
+          </a-space>
+        </div>
+      </a-col>
+    </a-row>
 
-    <md-button class="md-primary">End Date</md-button>
-    <input v-modal="selectedendDate" type="date" class="datepicker-input" :class="[size]" />
-
-    <h3 class="text-xl font-bold mb-2 text-gray-600 justify-center">
-      Simulation length is
-      <span class="text-red-600">{{ date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
-    </h3>
+    <div class="extra-bold">
+      <a-typography-title :level="3">
+        Simulation length is
+        <span style="color: #388591">{{
+          date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid'
+        }}</span></a-typography-title
+      >
+    </div>
   </div>
 </template>
 
@@ -17,85 +47,62 @@
 import moment from 'moment'
 
 export default {
-  props: {
-    size: {
-      type: String,
-      default: 'medium',
-      validator(value) {
-        return ['small', 'medium', 'large'].includes(value)
-      }
+  data() {
+    return {
+      startValue: moment('1970-01-01').toString(),
+      endValue: moment('1971-01-01').toString(),
+      endOpen: false
     }
   },
   computed: {
     date_diff() {
-      let start_date = this.$store.state.point.config.LocalDomain.start_date.split('/')
-      console.log(start_date)
-      let end_date = this.$store.state.point.config.LocalDomain.end_date.split('/')
-      console.log(end_date)
-      //moment requires months to be zero indexed, hence subtracting 1
-      let start_year_month = moment([+start_date[0], +start_date[1] - 1])
-      let end_year_month = moment([+end_date[0], +end_date[1] - 1])
-
-      let date_difference = end_year_month.diff(start_year_month, 'years', true)
+      let date_difference = moment(this.endValue).diff(this.startValue, 'years', true)
       return date_difference
-    },
-    selectedstartDate: {
-      get() {
-        return this.$store.state.point.config.LocalDomain.start_date.split('/').join('-')
-      },
-      set(newValue) {
-        this.$store.commit('setNew_point_startDate', newValue.split('-').join('/'))
+    }
+  },
 
-        if (this.date_diff < 0) {
-          this.$toast.error('Start date should be less than end date', {
-            timeout: 5000
-          })
-        }
+  methods: {
+    disabledStartDate(startValue) {
+      const endValue = this.endValue
+      if (!startValue || !endValue) {
+        return false
+      }
+      return startValue.valueOf() > endValue.valueOf()
+    },
+    disabledEndDate(endValue) {
+      const startValue = this.startValue
+      if (!endValue || !startValue) {
+        return false
+      }
+      return startValue.valueOf() >= endValue.valueOf()
+    },
+    handleStartOpenChange(open) {
+      if (!open) {
+        this.endOpen = true
       }
     },
-
-    selectedendDate: {
-      get() {
-        return this.$store.state.point.config.LocalDomain.end_date.split('/').join('-')
-      },
-      set(newValue) {
-        this.$store.commit('setNew_point_endDate', newValue.split('-').join('/'))
-
-        if (this.date_diff < 0) {
-          this.$toast.error('End date should be greater than start date', {
-            timeout: 5000
-          })
-        }
-      }
+    handleEndOpenChange(open) {
+      this.endOpen = open
     }
   }
 }
 </script>
 
 <style>
-.datepicker-input {
-  padding: 1em;
-  font-family: inherit;
-  font-weight: 700;
+.gutter-box {
+  margin-top: 14px;
+}
+.ant-calendar-picker-input.ant-input {
   font-size: 16px;
-  border: 1px solid #828282;
-  border-radius: 12px;
-  width: 60%;
+  height: 53px;
 }
-.datepicker-input:hover {
-  background-color: rgba(0, 0, 255, 0.13);
-  border: 1px solid #a2a2a2;
+.ant-calendar-picker-input.ant-input:hover {
+  background-color: #fefefe;
+  border: 1px solid #388591 !important;
 }
-.datepicker-input:focus {
-  outline: none;
-}
-.small {
-  width: 30%;
-}
-.medium {
-  width: 60%;
-}
-.large {
-  width: 100%;
+.extra-bold {
+  font-size: 20px;
+  padding: 24px 0;
+  font-weight: 500;
 }
 </style>
