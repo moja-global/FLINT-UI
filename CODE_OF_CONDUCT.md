@@ -39,7 +39,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [mail](gemma@ersilia.io). All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [mail](mailto:mentorship@moja.global). All complaints will be reviewed and investigated promptly and fairly.
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
 ## Enforcement Guidelines
@@ -72,4 +72,4 @@ Community leaders will follow these Community Impact Guidelines in determining t
 
 ## Attribution
 
-Moja Global asks members, participants, contributor and mentors to follow the given guideline(https://docs.moja.global/en/latest/contributing/coc.html).
+Moja Global asks members, participants, contributors and mentors to follow the given [guideline](https://docs.moja.global/en/latest/contributing/coc.html).
