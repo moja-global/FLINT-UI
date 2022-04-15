@@ -8,7 +8,7 @@
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
-        <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+        <input v-model="selectedendDate" type="date" class="datepicker-input" :class="[size]" />
       </div>
     </div>
     <h3 class="mt-14 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .datepicker-input {
   padding: 0.4em;
   font-family: inherit;
@@ -85,7 +85,6 @@ export default {
   font-size: 20px;
   border: 1px solid #828282;
   border-radius: 8px;
-  margin-right: 8em;
   margin-top: 0.5em;
 }
 .datepicker-input:hover {

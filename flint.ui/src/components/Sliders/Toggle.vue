@@ -8,7 +8,7 @@
   >
     <div
       id="revert-toggle"
-      class="w-10 h-6 items-center bg-red-600 rounded-full p-1 duration-300 ease-in-out -mx-0"
+      class="w-10 h-6 items-center bg-black rounded-full p-1 duration-300 ease-in-out -mx-0"
       :class="{ 'bg-green-400': toggleActive }"
     >
       <md-tooltip>Toggle to check status and auto-download the simulation</md-tooltip>

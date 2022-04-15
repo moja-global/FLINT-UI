@@ -100,6 +100,8 @@ export default {
 </script>
 <style>
 div.chart-wrapper {
-  padding-top: 150px;
+  padding-top: 60px !important;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 </style>
