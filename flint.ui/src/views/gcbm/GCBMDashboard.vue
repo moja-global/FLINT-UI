@@ -45,7 +45,7 @@
                           align-middle
                           flex-initial
                           bg-white
-                          hover:bg-black hover:text-white
+                          hover:bg-earth hover:text-white
                           text-gray-800
                           font-semibold
                           py-2
