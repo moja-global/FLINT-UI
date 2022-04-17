@@ -4,7 +4,7 @@
     <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
 
     <md-button class="md-primary">End Date</md-button>
-    <input v-modal="selectedendDate" type="date" class="datepicker-input" :class="[size]" />
+    <input v-model="selectedendDate" type="date" class="datepicker-input" :class="[size]" />
 
     <h3 class="text-xl font-bold mb-2 text-gray-600 justify-center">
       Simulation length is
