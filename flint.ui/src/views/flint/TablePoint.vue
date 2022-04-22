@@ -1,19 +1,19 @@
 <template>
-<div>
-  <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
-    <div class="mx-auto w-full h-auto">
-      <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg flex">
-          <h2 class="text-2xl font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
+  <div>
+    <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
+      <div class="mx-auto w-full h-auto">
+        <div>
+          <div class="bg-white p-6 rounded-lg shadow-lg flex">
+            <h2 class="text-2xl font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
+          </div>
         </div>
       </div>
+      <div class="h-2/3 mt-12 px-6">
+        <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
+      </div>
+      <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
     </div>
-    <div class="h-2/3 mt-12 px-6">
-      <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
-    </div>
-    <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
-  </div>
-  <PointOutput />
+    <PointOutput />
   </div>
 </template>
 
