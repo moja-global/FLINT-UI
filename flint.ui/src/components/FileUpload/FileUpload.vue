@@ -74,7 +74,7 @@ export default {
     return {
       formData: new FormData(),
       dropzoneOptionsConfig: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: 'process.env.VUE_APP_REST_API_GCBM/gcbm/upload',
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -86,7 +86,7 @@ export default {
         createImageThumbnails: false
       },
       dropzoneOptionsDB: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: 'process.env.VUE_APP_REST_API_GCBM/gcbm/upload',
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -98,7 +98,7 @@ export default {
         createImageThumbnails: false
       },
       dropzoneOptionsInput: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: 'process.env.VUE_APP_REST_API_GCBM/gcbm/upload',
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -141,7 +141,7 @@ export default {
         console.log([...this.formData])
 
         axios
-          .post('http://localhost:8081/gcbm/upload', this.formData)
+          .post('process.env.VUE_APP_REST_API_GCBM/gcbm/upload', this.formData)
           .then((response) => {
             this.$toast.success(`${response.data.data}`, { timeout: 3000 })
             console.log(response)

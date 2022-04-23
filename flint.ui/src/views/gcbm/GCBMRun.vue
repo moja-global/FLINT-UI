@@ -149,7 +149,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post('http://127.0.0.1:8081/gcbm/dynamic', bodyFormData)
+        .post('process.env.VUE_APP_REST_API_GCBM/gcbm/dynamic', bodyFormData)
         .then((response) => {
           this.$toast.success(`${response.data.status}`, { timeout: 5000 })
           console.log(response)
@@ -167,7 +167,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post('http://127.0.0.1:8081/gcbm/status', bodyFormData)
+        .post('process.env.VUE_APP_REST_API_GCBM/gcbm/status', bodyFormData)
         .then((response) => {
           this.$toast.info(`${response.data.finished}`, { timeout: 5000 })
           this.$store.commit('setSimulationProgressState', response.data.finished)
@@ -187,7 +187,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post('http://127.0.0.1:8081/gcbm/download', bodyFormData, {
+        .post('process.env.VUE_APP_REST_API_GCBM/gcbm/download', bodyFormData, {
           responseType: 'arraybuffer'
         })
         .then((response) => {
