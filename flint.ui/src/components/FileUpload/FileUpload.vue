@@ -141,7 +141,7 @@ export default {
         console.log([...this.formData])
 
         axios
-          .post('http://localhost:8081/gcbm/upload', this.formData)
+          .post('process.env.VUE_APP_ROOT_URL/gcbm/upload', this.formData)
           .then((response) => {
             this.$toast.success(`${response.data.data}`, { timeout: 3000 })
             console.log(response)

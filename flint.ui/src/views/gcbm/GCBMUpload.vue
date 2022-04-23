@@ -122,7 +122,7 @@ export default {
       return this.$store.state.gcbm.DropdownSelectedSim
     },
     getSimulations: function () {
-      axios.get('http://localhost:8081/gcbm/list').then((response) => {
+      axios.get('process.env.VUE_APP_ROOT_URL/gcbm/list').then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
         this.$toast.info(`Ongoing simulations - ${response.data.data}`, {
@@ -134,7 +134,7 @@ export default {
     },
     hello() {
       this.$refs.gcbmFileUpload.triggerSend()
-    },
+     },
     checkforSimtitle() {
       if (this.$store.state.gcbm.DropdownSelectedSim === '') return false
       else {
