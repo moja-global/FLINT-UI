@@ -21,6 +21,7 @@ and hence the tool can be customised for every module.
 
 
 .. toctree::
+   :maxdepth: 2
    :hidden:
 
    installation
