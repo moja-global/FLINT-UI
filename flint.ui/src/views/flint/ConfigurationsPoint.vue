@@ -85,13 +85,6 @@
           </div>
         </div>
 
-        <div class="mt-16 text-xl mb-2 text-earth">
-          Simulation length is
-          <!-- This can be updated later when we have the
-            DatepickerPoint component ready with the new UI. -->
-          <span class="text-blue-500">4.92 years</span>
-        </div>
-
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
           <div data-v-step="6">
