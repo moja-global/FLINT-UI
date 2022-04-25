@@ -31,17 +31,17 @@
         <div class="flex flex-wrap mt-5">
           <Accordion config-paramtype="rainfall" />
 
-          <RothCTemplate config-paramtype="openPanEvap" />
+          <RothCTemplate config-paramtype="openPanEvap" config-paramtext="Open Pan Evaporation" />
 
-          <RothCTemplate config-paramtype="avgAirTemp" />
+          <RothCTemplate config-paramtype="avgAirTemp" config-paramtext="Average Air Temperature"/>
 
-          <RothCTemplate config-paramtype="presCM" />
+          <RothCTemplate config-paramtype="presCM" config-paramtext="Organic carbon inputs" />
 
-          <RothCTemplate config-paramtype="soilCover" />
+          <RothCTemplate config-paramtype="soilCover" config-paramtext="Soil Cover" />
 
-          <RothCTemplate config-paramtype="initSoil" />
+          <RothCTemplate config-paramtype="initSoil" config-paramtext="Initial conditions of the Soil" />
 
-          <RothCTemplate config-paramtype="soil" />
+          <RothCTemplate config-paramtype="soil" config-paramtext="Soil characteristics" />
         </div>
         <div class="mt-4 mb-5">
           <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
