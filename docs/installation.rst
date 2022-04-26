@@ -1,7 +1,11 @@
 .. _installation:
 
+Installation
+============
+
+
 Prerequisites
-=============
+-------------
 
 In order to use and work on this project you need to install Docker for running the Docker image and Yarn to run the Vue app locally.
 
@@ -15,7 +19,7 @@ In order to install Yarn, open a terminal and type:
 
 
 Installation
-============
+------------
 
 To set up this project locally, follow the procedure below:
 

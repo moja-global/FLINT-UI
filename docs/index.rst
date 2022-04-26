@@ -26,3 +26,4 @@ and hence the tool can be customised for every module.
 
    installation
    DevelopmentGuide/index
+   simulation
