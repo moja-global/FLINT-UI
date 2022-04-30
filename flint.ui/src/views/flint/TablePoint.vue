@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div class="relative bg-gradient-to-r from-green-400 to-blue-500 md:pt-32 pt-12 w-full h-full">
-      <div class="mx-auto w-full h-auto">
-        <div>
-          <div class="bg-white p-6 rounded-lg shadow-lg flex">
-            <h2 class="text-2xl font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
-          </div>
+<div>
+  <LandingPageNavbar />
+  <div class="relative w-full h-full">
+    <div class="mx-auto w-full h-auto">
+      <div>
+        <div class="bg-white p-6 rounded-lg flex">
+          <h2 class="text-2xl px-6 font-bold text-gray-800 flex-1">Point example data visualisation table</h2>
         </div>
       </div>
       <div class="h-2/3 mt-12 px-6">
@@ -13,7 +13,12 @@
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
     </div>
-    <PointOutput />
+    <div class="h-2/3 mt-8 px-6">
+      <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
+    </div>
+    <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+  </div>
+  <PointOutput />
   </div>
 </template>
 
@@ -21,11 +26,13 @@
 /* eslint-disable */
 import VGrid from '@revolist/vue-datagrid'
 import PointOutput from './PointOutput.vue'
+import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 
 export default {
   components: {
     VGrid,
-    PointOutput
+    PointOutput,
+    LandingPageNavbar,
   },
   data() {
     return {
