@@ -5,7 +5,7 @@
         <div class="flex flex-wrap">
           <div class="relative w-full max-w-full flex-grow flex-1">
             <p class="text-center w-full font-semibold text-md text-blueGray-700 my-4">
-              Update parameters for {{ configParamtype }}
+              Update parameters for {{configParamtext}} ({{ configParamtype }})
             </p>
             <button
               class="
@@ -40,6 +40,10 @@ export default {
   name: 'CardRothConfig',
   components: {},
   props: {
+    configParamtext: {
+      type: String,
+      default: 'configuration parameter'
+    },
     configParamtype: {
       type: String,
       default: 'Config params for xyz'
