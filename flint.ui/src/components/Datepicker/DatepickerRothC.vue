@@ -3,12 +3,30 @@
     <div class="flex w-full">
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
-        <input v-model="selectedstartDate" type="date" class="datepicker-input" :class="[size]" />
+        <a-date-picker
+          v-model="startDateInput"
+          :size="size"
+          :format="dateFormatList"
+          :value="selectedStartDate"
+          :default-value="selectedStartDate"
+          v-bind="$attrs"
+          @change="onStartChange"
+          v-on="$listeners"
+        />
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
-        <input v-model="selectedendDate" type="date" class="datepicker-input" :class="[size]" />
+        <a-date-picker
+          v-model="endDateInput"
+          :size="size"
+          :format="dateFormatList"
+          :value="selectedEndDate"
+          :default-value="selectedEndDate"
+          v-bind="$attrs"
+          @change="onEndChange"
+          v-on="$listeners"
+        />
       </div>
     </div>
     <h3 class="mt-14 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
@@ -19,37 +37,46 @@
 </template>
 
 <script>
+import { DatePicker } from 'ant-design-vue'
 import moment from 'moment'
 
 export default {
+  components: {
+    'a-date-picker': DatePicker
+  },
   props: {
-    size: {
-      type: String,
-      default: 'medium',
-      validator(value) {
-        return ['small', 'medium', 'large'].includes(value)
-      }
+    value: { type: String, default: moment('2022-01-01').toString() }
+  },
+  setup() {
+    const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
+    return {
+      size: 'large',
+      dateFormatList
     }
+  },
+  data() {
+    return { selectedStartDate: this.value, selectedEndDate: this.value }
   },
   computed: {
     date_diff() {
-      let start_date = this.$store.state.rothc.config.LocalDomain.start_date.split('/')
-      console.log(start_date)
-      let end_date = this.$store.state.rothc.config.LocalDomain.end_date.split('/')
-      console.log(end_date)
-      //moment requires months to be zero indexed, hence subtracting 1
-      let start_year_month = moment([+start_date[0], +start_date[1] - 1])
-      let end_year_month = moment([+end_date[0], +end_date[1] - 1])
+      var start_date_value = new Date(moment(this.selectedStartDate).format('YYYY-MM-DD'))
 
-      let date_difference = end_year_month.diff(start_year_month, 'years', true)
-      return date_difference
+      var end_date_value = new Date(moment(this.selectedEndDate).format('YYYY-MM-DD'))
+
+      console.log(start_date_value, end_date_value)
+
+      // difference in years
+      var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
+      return diff
     },
-    selectedstartDate: {
+    startDateInput: {
       get() {
-        return this.$store.state.rothc.config.LocalDomain.start_date.split('/').join('-')
+        return this.selectedStartDate
       },
-      set(newValue) {
-        this.$store.commit('setNew_rothc_startDate', newValue.split('-').join('/'))
+      set(val) {
+        this.$emit('input', moment(val).toString())
+        this.selectedStartDate = val
+        console.log(this.selectedStartDate)
 
         if (this.date_diff < 0) {
           this.$toast.error('Start date should be less than end date', {
@@ -59,12 +86,14 @@ export default {
       }
     },
 
-    selectedendDate: {
+    endDateInput: {
       get() {
-        return this.$store.state.rothc.config.LocalDomain.end_date.split('/').join('-')
+        return this.selectedEndDate
       },
-      set(newValue) {
-        this.$store.commit('setNew_rothc_endDate', newValue.split('-').join('/'))
+      set(val) {
+        this.$emit('input', moment(val).toString())
+        this.selectedEndDate = val
+        console.log(this.selectedEndDate)
 
         if (this.date_diff < 0) {
           this.$toast.error('End date should be greater than start date', {
@@ -73,43 +102,30 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    onStartChange(val) {
+      this.selectedStartDate = val
+    },
+    onEndChange(val) {
+      this.selectedEndDate = val
+    }
   }
 }
 </script>
 
 <style scoped>
-.datepicker-input {
-  padding: 0.4em;
-  font-family: inherit;
-  font-weight: 300;
-  font-size: 20px;
-  border: 1px solid #828282;
-  border-radius: 8px;
-  margin-top: 0.5em;
+::v-deep .ant-calendar-picker-input.ant-input {
+  border-color: theme('colors.earth');
 }
-.datepicker-input:hover {
-  background-color: rgba(0, 0, 255, 0.13);
-  border: 1px solid #a2a2a2;
+::v-deep .ant-calendar-picker-icon {
+  color: theme('colors.earth');
 }
-.datepicker-input:focus {
-  outline: none;
-}
+
 @media only screen and (max-width: 768px) {
   .flex {
     display: flex;
     flex-direction: column;
   }
-}
-.flex {
-  display: flex;
-}
-.small {
-  width: 90%;
-}
-.medium {
-  width: 60%;
-}
-.large {
-  width: 100%;
 }
 </style>
