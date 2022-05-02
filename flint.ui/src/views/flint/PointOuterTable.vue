@@ -6,7 +6,7 @@
             </div>
             <div class="full-w">
                 <PointOutput v-if="!isTable" />
-                <TablePoint v-else :columns="columns" :rows="rows" />
+                <Table v-else :columns="columns" :rows="rows" />
             </div>
         </div>
 </template>
@@ -15,14 +15,13 @@
 
     /* eslint-disable */
     import PointOutput from './PointOutput.vue'
-    import TablePoint from './TablePoint.vue'
+    import Table from './Table.vue'
 
     export default {
         name: "PointOuterTable",
         components: {
-            VGrid,
             PointOutput,
-            TablePoint
+            Table
         },
         data() {
             return {
