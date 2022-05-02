@@ -1,41 +1,41 @@
 <template>
-<div> 
-  <LandingPageNavbar />
-  <div class="relative w-full h-full">
-    <div class="mx-auto w-full h-auto">
-      <div>
-        <div class="bg-white p-6 rounded-lg shadow-lg flex">
-          <h2 class="text-2xl font-bold text-gray-800 flex-1">ROTHC example data visualisation table</h2>
+  <div>
+    <LandingPageNavbar />
+    <div class="relative w-full h-full">
+      <div class="mx-auto w-full h-auto">
+        <div>
+          <div class="bg-white p-6 rounded-lg shadow-lg flex">
+            <h2 class="text-2xl font-bold text-gray-800 flex-1">ROTHC example data visualisation table</h2>
 
-          <router-link to="/flint/rothc_output">
-            <button
-              class="
-                inline-block
-                align-middle
-                flex-initial
-                bg-white
-                hover:bg-black hover:text-white
-                text-gray-800
-                font-semibold
-                py-2
-                px-4
-                border border-gray-400
-                rounded
-                shadow
-              "
-            >
-              <i class="far fa-image" /> Visualise on Graph
-            </button>
-          </router-link>
+            <router-link to="/flint/rothc_output">
+              <button
+                class="
+                  inline-block
+                  align-middle
+                  flex-initial
+                  bg-white
+                  hover:bg-black hover:text-white
+                  text-gray-800
+                  font-semibold
+                  py-2
+                  px-4
+                  border border-gray-400
+                  rounded
+                  shadow
+                "
+              >
+                <i class="far fa-image" /> Visualise on Graph
+              </button>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="h-2/3 mt-12 px-6">
-      <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
+      <div class="h-2/3 mt-12 px-6">
+        <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 export default {
   components: {
     VGrid,
-    LandingPageNavbar,
+    LandingPageNavbar
   },
   data() {
     return {
