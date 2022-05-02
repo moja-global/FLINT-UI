@@ -100,6 +100,7 @@
         </div>
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+      <PointOuterTable v-if="showTable"/>
     </div>
     <Footer />
   </div>
@@ -111,6 +112,7 @@ import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Footer from '@/components/Footer/Footer.vue'
+    import PointOuterTable from './PointOuterTable.vue'
 
 export default {
   components: {
@@ -118,12 +120,13 @@ export default {
     Datepicker,
     LandingPageNavbar,
     Maptest,
-    Footer
+    Footer,
+    PointOuterTable
   },
   data() {
     return {
       isShow: false,
-
+      showTable: false,
       pool1: {
         min: 0.0,
         max: 400.0,
@@ -220,13 +223,12 @@ export default {
     },
 
     Run() {
-      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+        this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+        this.showTable = false
     },
 
     showPointOutputTable() {
-      // this is a temporary function which can be removed when we have the
-      // PointOutputTable component ready.
-      this.$router.push('/flint/point_output_table')
+        this.showTable = true
     }
   }
 }
