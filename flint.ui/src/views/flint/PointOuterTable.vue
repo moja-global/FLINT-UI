@@ -13,7 +13,7 @@
 
 <script>
 
-    /* eslint-disable */
+   /* eslint-disable no-alert, no-console */
     import PointOutput from './PointOutput.vue'
     import Table from './Table.vue'
 
