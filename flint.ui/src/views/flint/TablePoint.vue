@@ -4,11 +4,11 @@
     </div>
 </template>
 <script>
-    /* eslint-disable */
+    /* eslint-disable no-alert, no-console */
     import Table from 'ant-design-vue'
 
     export default {
-        name: "TablePoint",
+        name: "Table",
         components: {
             Table
         },

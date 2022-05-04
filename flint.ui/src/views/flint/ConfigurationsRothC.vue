@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="mb-10 mx-5  md:justify-center">
+    <div class="mb-10 mx-5 md:justify-center">
       <LandingPageNavbar />
-      <div class="md:px-10 ml-10  md:justify-center">
+      <div class="px-8 pb-6 sm:px-16 md:px-24">
         <div>
           <h2 class="mb mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
           <p class="text-earth sm:text-base">
             Was the simulation conducted at a specific place ? Click
             <span>here</span> to save latitude and longitude co-ordinates
           </p>
-          <p class="md:px-24 text-earth text-base">
+          <p class="text-earth text-base">
             Input the custom values in the fields below. Default values as placeholder text will be used if none
             provided.
           </p>
@@ -18,9 +18,9 @@
         <div class="mt-10">
           <div>
             <div class="py-6 mb-3">
-              <h2 class="text-xl font-normal md:px-24 text-earth text-base">Start and End date of simulation</h2>
+              <h2 class="text-xl font-normal text-earth text-base">Start and End date of simulation</h2>
               <div>
-                <div class="md:px-24 text-2xl font-normal text-gray"><Datepicker size="small" /></div>
+                <div class="text-2xl font-normal text-gray"><Datepicker size="small" /></div>
               </div>
             </div>
           </div>
@@ -31,17 +31,17 @@
         <div class="flex flex-wrap mt-5">
           <Accordion config-paramtype="rainfall" />
 
-          <RothCTemplate config-paramtype="openPanEvap" />
+          <RothCTemplate config-paramtype="openPanEvap" config-paramtext="Open Pan Evaporation" />
 
-          <RothCTemplate config-paramtype="avgAirTemp" />
+          <RothCTemplate config-paramtype="avgAirTemp" config-paramtext="Average Air Temperature"/>
 
-          <RothCTemplate config-paramtype="presCM" />
+          <RothCTemplate config-paramtype="presCM" config-paramtext="Organic carbon inputs" />
 
-          <RothCTemplate config-paramtype="soilCover" />
+          <RothCTemplate config-paramtype="soilCover" config-paramtext="Soil Cover" />
 
-          <RothCTemplate config-paramtype="initSoil" />
+          <RothCTemplate config-paramtype="initSoil" config-paramtext="Initial conditions of the Soil" />
 
-          <RothCTemplate config-paramtype="soil" />
+          <RothCTemplate config-paramtype="soil" config-paramtext="Soil characteristics" />
         </div>
         <div class="mt-4 mb-5">
           <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
