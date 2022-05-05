@@ -33,7 +33,7 @@
 
           <RothCTemplate config-paramtype="openPanEvap" config-paramtext="Open Pan Evaporation" />
 
-          <RothCTemplate config-paramtype="avgAirTemp" config-paramtext="Average Air Temperature"/>
+          <RothCTemplate config-paramtype="avgAirTemp" config-paramtext="Average Air Temperature" />
 
           <RothCTemplate config-paramtype="presCM" config-paramtext="Organic carbon inputs" />
 
