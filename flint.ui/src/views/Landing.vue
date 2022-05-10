@@ -30,7 +30,7 @@
     </div>
 
     <div>
-      <div class="md:flex flex-wrap w-full md:justify-center my-10 pb-20">
+      <div class="border my-10 px-8 py-6 sm:px-16 md:px-24">
         <LandingPageCard
           title="Point"
           description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."

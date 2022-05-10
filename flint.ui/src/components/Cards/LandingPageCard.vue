@@ -1,6 +1,6 @@
 <template>
-  <div class="w-96 mx-auto md:mx-0 flex flex-col justify-between">
-    <div class="px-6 py-4">
+  <div class="card lg:mx-4 flex flex-col justify-between">
+    <div class="py-4">
       <div class="py-2 text-earth text-2xl">
         {{ title }}
       </div>
@@ -8,7 +8,7 @@
         {{ description }}
       </p>
     </div>
-    <div class="px-6 pt-4 pb-2">
+    <div class="pt-4 pb-2">
       <Button :btn-size="'auto'" class="flex" @click.native="onClick"
         >Explore <span class="ml-1" style="margin-top: -2px"> →</span></Button
       >
