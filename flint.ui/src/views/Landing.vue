@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <a-row :gutter="[24, 48]" class="py-14 md:py-20 px-8 sm:px-16 md:px-24">
+    <a-row :gutter="[24, 48]" class="w-full py-14 md:py-20 px-8 sm:px-16 md:px-24">
       <LandingPageCard
         title="Point"
         description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
