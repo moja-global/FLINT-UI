@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="my-10 px-8 py-6 sm:px-16 md:px-24 landing-cards">
+    <a-row :gutter="[16, 8]" class="my-10 px-8 py-6 sm:px-16 md:px-24">
       <LandingPageCard
         title="Point"
         description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
@@ -45,7 +45,7 @@
         description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
         link="/gcbm/dashboard"
       />
-    </div>
+    </a-row>
     <Footer />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card lg:mx-4 flex flex-col justify-between">
+  <a-col :span="24" :md="{ span: 12 }" :xl="{ span: 8 }">
     <div class="py-4">
       <div class="py-2 text-earth text-2xl">
         {{ title }}
@@ -13,7 +13,7 @@
         >Explore <span class="ml-1" style="margin-top: -2px"> →</span></Button
       >
     </div>
-  </div>
+  </a-col>
 </template>
 
 <script>
