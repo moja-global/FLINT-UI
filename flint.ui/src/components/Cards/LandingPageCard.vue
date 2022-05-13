@@ -1,17 +1,13 @@
 <template>
   <a-col :span="24" :md="{ span: 12 }" :xl="{ span: 8 }">
-    <div class="py-4">
-      <div class="py-2 text-earth text-2xl">
+    <div>
+      <h2 class="text-earth text-2xl mb-2">
         {{ title }}
-      </div>
-      <p class="text-earth leading-7 text-base">
+      </h2>
+      <p class="text-earth text-base leading-7">
         {{ description }}
       </p>
-    </div>
-    <div class="pt-4 pb-2">
-      <Button :btn-size="'auto'" class="flex" @click.native="onClick"
-        >Explore <span class="ml-1" style="margin-top: -2px"> →</span></Button
-      >
+      <Button class="mt-4" :btn-size="'auto'" @click.native="onClick">Explore <span> →</span></Button>
     </div>
   </a-col>
 </template>
