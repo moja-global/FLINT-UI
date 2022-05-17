@@ -14,95 +14,80 @@
 
         <StepperStatic />
 
-        <div class="mt-8 pb-6 mx-auto">
-          <div class="w-8/12 px-4 mx-auto content-center justify-center">
-            <div
-              class="
-                relative
-                flex flex-col
-                min-w-0
-                break-words
-                bg-white
-                rounded
-                mb-6
-                xl:mb-0
-                shadow-lg
-                items-center
-                justify-center
-              "
-            >
-              <div class="flex-auto p-4">
-                <div class="relative w-full max-w-full flex-grow flex-1">
-                  <span class="font-semibold text-xl text-gray-800"> Run a simulation </span>
+        <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 400px">
+          <div class="p-4 bg-white rounded shadow-lg">
+            <div class="relative w-full max-w-full flex-grow flex-1">
+              <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
 
-                  <label class="block mt-4">
-                    <span class="text-gray-800 font-semibold text-lg">Selected simulation title: </span>
-                    <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
-                  </label>
+              <label class="mt-4">
+                <p class="text-gray-600 text-lg">Selected simulation title:</p>
+                <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
+              </label>
 
-                  <div class="p-5">
-                    <div class="flex m-2">
-                      <button
-                        class="
-                          align-middle
-                          flex-initial
-                          bg-white
-                          hover:bg-earth hover:text-white
-                          text-gray-800
-                          font-semibold
-                          py-2
-                          px-4
-                          border border-gray-400
-                          rounded
-                          shadow
-                        "
-                        @click="runSim"
-                      >
-                        <i class="far fa-play-circle"></i> Run simulation
-                      </button>
+              <a-row :gutter="[16, 15]">
+                <a-col :span="24" :sm="8" class="buttons">
+                  <button
+                    class="
+                      align-middle
+                      flex-initial
+                      bg-white
+                      hover:bg-earth hover:text-white
+                      text-gray-800
+                      font-semibold
+                      py-2
+                      px-4
+                      border border-gray-400
+                      rounded
+                      shadow
+                    "
+                    @click="runSim"
+                  >
+                    <i class="far fa-play-circle"></i> Run simulation
+                  </button>
+                </a-col>
 
-                      <button
-                        class="
-                          mx-4
-                          align-middle
-                          flex-initial
-                          bg-white
-                          hover:bg-earth hover:text-white
-                          text-gray-800
-                          font-semibold
-                          py-2
-                          px-4
-                          border border-gray-400
-                          rounded
-                          shadow
-                        "
-                        @click="checkStatus"
-                      >
-                        <i class="fas fa-question"></i> Check status
-                      </button>
+                <a-col :span="24" :sm="8" class="buttons">
+                  <button
+                    class="
+                      align-middle
+                      flex-initial
+                      bg-white
+                      hover:bg-earth hover:text-white
+                      text-gray-800
+                      font-semibold
+                      py-2
+                      px-4
+                      border border-gray-400
+                      rounded
+                      shadow
+                    "
+                    @click="checkStatus"
+                  >
+                    <i class="fas fa-question"></i> Check status
+                  </button>
+                </a-col>
 
-                      <button
-                        class="
-                          align-middle
-                          flex-initial
-                          bg-white
-                          hover:bg-earth hover:text-white
-                          text-gray-800
-                          font-semibold
-                          py-2
-                          px-4
-                          border border-gray-400
-                          rounded
-                          shadow
-                        "
-                        @click="downloadSim"
-                      >
-                        <i class="fas fa-download"></i> Download simulation
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <a-col :span="24" :sm="8" class="buttons">
+                  <button
+                    class="
+                      align-middle
+                      flex-initial
+                      bg-white
+                      hover:bg-earth hover:text-white
+                      text-gray-800
+                      font-semibold
+                      py-2
+                      px-4
+                      border border-gray-400
+                      rounded
+                      shadow
+                    "
+                    @click="downloadSim"
+                  >
+                    <i class="fas fa-download"></i> Download simulation
+                  </button>
+                </a-col>
+              </a-row>
             </div>
           </div>
         </div>
@@ -204,3 +189,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.buttons > button {
+  height: 80px;
+}
+@media screen and (max-width: 576px) {
+  .buttons > button {
+    height: initial;
+    width: 100%;
+  }
+}
+</style>
