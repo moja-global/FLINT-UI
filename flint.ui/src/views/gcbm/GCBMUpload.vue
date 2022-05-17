@@ -1,77 +1,75 @@
 <template>
   <div>
-    <div class="flex flex-wrap">
-      <div class="relative w-full h-auto">
-        <LandingPageNavbar />
-        <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full">
-          <div class="bg-white p-6 rounded-lg shadow-lg flex">
-            <h2 class="mt-4 text-2xl font-bold text-gray-800 flex-1">GCBM simulation workflow</h2>
-            <a @click="hello">
-              <button
+    <LandingPageNavbar />
+    <div class="px-8 pb-6 sm:px-16 md:px-24">
+      <div class="mt-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-wrap justify-between">
+          <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+
+          <button
+            class="
+              inline-block
+              align-middle
+              flex-initial
+              bg-white
+              hover:bg-earth hover:text-white
+              text-gray-800
+              font-semibold
+              py-2
+              px-4
+              border border-gray-400
+              rounded
+              shadow
+            "
+            @click="hello"
+          >
+            <i class="far fa-file" /> Submit uploaded files
+          </button>
+        </div>
+
+        <div class="flex flex-col mt-4">
+          <StepperStatic />
+
+          <div class="w-full my-5">
+            <div class="w-6/12 px-4 mx-auto content-center">
+              <div
                 class="
-                  inline-block
-                  align-middle
-                  flex-initial
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
                   bg-white
-                  hover:bg-earth hover:text-white
-                  text-gray-800
-                  font-semibold
-                  py-2
-                  px-4
-                  border border-gray-400
                   rounded
-                  shadow
+                  mb-6
+                  xl:mb-0
+                  shadow-lg
+                  items-center
+                  justify-center
                 "
               >
-                <i class="far fa-file" /> Submit uploaded files
-              </button>
-            </a>
-          </div>
+                <div class="flex-auto p-4">
+                  <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full flex-grow flex-1">
+                    <span class="font-semibold text-xl text-blueGray-700"> List of ongoing simulations </span>
 
-          <div class="flex flex-col mt-4">
-            <StepperStatic />
-
-            <div class="w-full my-5">
-              <div class="w-6/12 px-4 mx-auto content-center">
-                <div
-                  class="
-                    relative
-                    flex flex-col
-                    min-w-0
-                    break-words
-                    bg-white
-                    rounded
-                    mb-6
-                    xl:mb-0
-                    shadow-lg
-                    items-center
-                    justify-center
-                  "
-                >
-                  <div class="flex-auto p-4">
-                    <div class="px-8 pb-6 sm:px-16 md:px-24 mx-auto w-full flex-grow flex-1">
-                      <span class="font-semibold text-xl text-blueGray-700"> List of ongoing simulations </span>
-
-                      <label class="block mt-4">
-                        <span class="text-gray-700">Select a simulation: </span>
-                        <select v-model="sim_title" class="form-control" @change="onChangeSimulation($event)">
-                          <option></option>
-                          <option v-for="(sim, key) in simulation_list" :key="key" :value="sim">
-                            {{ sim }}
-                          </option>
-                        </select>
-                      </label>
-                    </div>
-                    <p class="text-sm text-blueGray-400 mt-4">
-                      <span> Select a simulation from the dropdown to proceed</span>
-                    </p>
+                    <label class="block mt-4">
+                      <span class="text-gray-700">Select a simulation: </span>
+                      <select v-model="sim_title" class="form-control" @change="onChangeSimulation($event)">
+                        <option></option>
+                        <option v-for="(sim, key) in simulation_list" :key="key" :value="sim">
+                          {{ sim }}
+                        </option>
+                      </select>
+                    </label>
                   </div>
+                  <p class="text-sm text-blueGray-400 mt-4">
+                    <span> Select a simulation from the dropdown to proceed</span>
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="w-full px-4 content-center">
-              <FileUpload ref="gcbmFileUpload" />
-            </div>
+          </div>
+          <div class="w-full px-4 content-center">
+            <FileUpload ref="gcbmFileUpload" />
           </div>
         </div>
       </div>
