@@ -68,6 +68,7 @@
     </div>
 
     <StepperGCBM />
+    <Footer />
   </div>
 </template>
 
@@ -76,6 +77,7 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import FileUpload from '@/components/FileUpload/FileUpload.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+import Footer from '@/components/Footer/Footer.vue'
 import axios from 'axios'
 
 export default {
@@ -84,7 +86,8 @@ export default {
     LandingPageNavbar,
     StepperGCBM,
     FileUpload,
-    StepperStatic
+    StepperStatic,
+    Footer
   },
 
   data: () => ({
