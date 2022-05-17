@@ -1,94 +1,91 @@
 <template>
   <div>
     <LandingPageNavbar />
-    <div class="px-8 pb-6 sm:px-16 md:px-24">
-      <div class="mt-8">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
-          <p class="text-gray-700">
-            Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once
-            complete.
-          </p>
-          <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
-        </div>
+    <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+        <p class="text-gray-700">
+          Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once complete.
+        </p>
+        <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
+      </div>
 
-        <StepperStatic />
+      <StepperStatic />
 
-        <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 400px">
-          <div class="p-4 bg-white rounded shadow-lg">
-            <div class="relative w-full max-w-full flex-grow flex-1">
-              <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
+      <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 400px">
+        <div class="p-4 bg-white rounded shadow-lg">
+          <div class="relative w-full max-w-full flex-grow flex-1">
+            <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
 
-              <label class="mt-4">
-                <p class="text-gray-600 text-lg">Selected simulation title:</p>
-                <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
-              </label>
+            <label class="mt-4">
+              <p class="text-gray-600 text-lg">Selected simulation title:</p>
+              <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
+            </label>
 
-              <a-row :gutter="[16, 15]">
-                <a-col :span="24" :sm="8" class="buttons">
-                  <button
-                    class="
-                      align-middle
-                      flex-initial
-                      bg-white
-                      hover:bg-earth hover:text-white
-                      text-gray-800
-                      font-semibold
-                      py-2
-                      px-4
-                      border border-gray-400
-                      rounded
-                      shadow
-                    "
-                    @click="runSim"
-                  >
-                    <i class="far fa-play-circle"></i> Run simulation
-                  </button>
-                </a-col>
+            <a-row :gutter="[16, 15]">
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    align-middle
+                    flex-initial
+                    bg-white
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="runSim"
+                >
+                  <i class="far fa-play-circle"></i> Run simulation
+                </button>
+              </a-col>
 
-                <a-col :span="24" :sm="8" class="buttons">
-                  <button
-                    class="
-                      align-middle
-                      flex-initial
-                      bg-white
-                      hover:bg-earth hover:text-white
-                      text-gray-800
-                      font-semibold
-                      py-2
-                      px-4
-                      border border-gray-400
-                      rounded
-                      shadow
-                    "
-                    @click="checkStatus"
-                  >
-                    <i class="fas fa-question"></i> Check status
-                  </button>
-                </a-col>
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    align-middle
+                    flex-initial
+                    bg-white
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="checkStatus"
+                >
+                  <i class="fas fa-question"></i> Check status
+                </button>
+              </a-col>
 
-                <a-col :span="24" :sm="8" class="buttons">
-                  <button
-                    class="
-                      align-middle
-                      flex-initial
-                      bg-white
-                      hover:bg-earth hover:text-white
-                      text-gray-800
-                      font-semibold
-                      py-2
-                      px-4
-                      border border-gray-400
-                      rounded
-                      shadow
-                    "
-                    @click="downloadSim"
-                  >
-                    <i class="fas fa-download"></i> Download simulation
-                  </button>
-                </a-col>
-              </a-row>
-            </div>
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    align-middle
+                    flex-initial
+                    bg-white
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="downloadSim"
+                >
+                  <i class="fas fa-download"></i> Download simulation
+                </button>
+              </a-col>
+            </a-row>
           </div>
         </div>
       </div>
