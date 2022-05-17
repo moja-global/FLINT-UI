@@ -12,7 +12,7 @@
 
       <StepperStatic />
 
-      <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 400px">
+      <div class="mt-8 pb-6 mx-auto sim-card">
         <div class="p-4 bg-white rounded shadow-lg">
           <div>
             <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
@@ -179,10 +179,17 @@ export default {
 </script>
 
 <style scoped>
+.sim-card {
+  width: 100%;
+  max-width: 400px;
+}
 .buttons > button {
   height: 80px;
 }
 @media screen and (max-width: 576px) {
+  .sim-card {
+    max-width: 300px;
+  }
   .buttons > button {
     height: initial;
     width: 100%;
