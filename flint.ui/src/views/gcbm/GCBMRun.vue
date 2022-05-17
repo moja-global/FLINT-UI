@@ -14,7 +14,7 @@
 
       <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 400px">
         <div class="p-4 bg-white rounded shadow-lg">
-          <div class="relative w-full max-w-full flex-grow flex-1">
+          <div>
             <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
 
             <label class="mt-4">
@@ -22,13 +22,10 @@
               <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
             </label>
 
-            <a-row :gutter="[16, 15]">
+            <a-row :gutter="[16, 16]">
               <a-col :span="24" :sm="8" class="buttons">
                 <button
                   class="
-                    align-middle
-                    flex-initial
-                    bg-white
                     hover:bg-earth hover:text-white
                     text-gray-800
                     font-semibold
@@ -47,9 +44,6 @@
               <a-col :span="24" :sm="8" class="buttons">
                 <button
                   class="
-                    align-middle
-                    flex-initial
-                    bg-white
                     hover:bg-earth hover:text-white
                     text-gray-800
                     font-semibold
@@ -68,9 +62,6 @@
               <a-col :span="24" :sm="8" class="buttons">
                 <button
                   class="
-                    align-middle
-                    flex-initial
-                    bg-white
                     hover:bg-earth hover:text-white
                     text-gray-800
                     font-semibold

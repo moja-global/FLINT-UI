@@ -30,7 +30,7 @@
 
       <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 300px">
         <div class="p-4 bg-white rounded shadow-lg">
-          <div class="relative w-full max-w-full flex-grow flex-1">
+          <div>
             <h2 class="font-semibold text-xl text-blueGray-700">List of ongoing simulations</h2>
 
             <label class="mt-4">
@@ -64,9 +64,7 @@
         </div>
       </div>
 
-      <div class="w-full px-4 content-center">
-        <FileUpload ref="gcbmFileUpload" />
-      </div>
+      <FileUpload ref="gcbmFileUpload" />
     </div>
 
     <StepperGCBM />
