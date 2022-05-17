@@ -110,6 +110,7 @@
     </div>
 
     <StepperGCBM />
+    <Footer />
   </div>
 </template>
 
@@ -118,6 +119,7 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Sliders/Toggle.vue'
+import Footer from '@/components/Footer/Footer.vue'
 import axios from 'axios'
 
 export default {
@@ -126,7 +128,8 @@ export default {
     LandingPageNavbar,
     StepperGCBM,
     StepperStatic,
-    Toggle
+    Toggle,
+    Footer
   },
 
   data: () => ({
