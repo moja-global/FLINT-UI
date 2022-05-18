@@ -1,5 +1,5 @@
 <template>
-  <a-col :span="24" :md="{ span: 12 }" :xl="{ span: 8 }">
+  <a-col :span="24" :md="{ span: 12 }" :lg="{ span: 8 }">
     <div>
       <h2 class="text-earth text-2xl mb-2">
         {{ title }}
