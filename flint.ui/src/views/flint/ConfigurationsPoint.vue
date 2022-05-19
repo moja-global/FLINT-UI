@@ -2,97 +2,92 @@
   <div>
     <LandingPageNavbar />
     <div class="px-8 pb-6 sm:px-16 md:px-24">
-      <div class="mt-14">
-        <h2 class="text-xl sm:text-2xl md:text-2xl text-earth mb-3">Point example simulation configuration</h2>
-        <p class="text-earth sm:text-base">
-          Was the simulation conducted at a specific place?
-          <a>
-            <span class="underline cursor-pointer text-earth" @click="isShow = !isShow">
-              {{ isShow ? 'Close' : 'Click here' }}</span
-            >
-          </a>
-          <span v-if="!isShow"> to save latitude and longitude co-ordinates on a map.</span>
-        </p>
+        <div class="mt-14">
+            <h2 class="text-xl sm:text-2xl md:text-2xl text-earth mb-3">Point example simulation configuration</h2>
+            <p class="text-earth sm:text-base">
+                Was the simulation conducted at a specific place?
+                <a>
+                    <span class="underline cursor-pointer text-earth" @click="isShow = !isShow">
+                        {{ isShow ? 'Close' : 'Click here' }}
+                    </span>
+                </a>
+                <span v-if="!isShow"> to save latitude and longitude co-ordinates on a map.</span>
+            </p>
 
-        <div v-if="isShow">
-          <Maptest />
-        </div>
-
-        <div class="mt-16">
-          <div data-v-step="1">
-            <div class="">
-              <h2 class="text-xl mb-2 text-earth">Start and end date of simulation</h2>
-              <div>
-                <Datepicker size="large" />
-              </div>
+            <div v-if="isShow">
+                <Maptest />
             </div>
-          </div>
-        </div>
 
-        <div class="flex justify-evenly gap-14 flex-wrap w-full mt-16 z-0">
-          <div class="flex-grow">
-            <div class="">
-              <div data-v-step="2">
-                <div class="text-earth flex gap-4 justify-between mb-6">
-                  <span>Pool 1: {{ pool1.value }}</span>
-                  <span>{{ pool1.max }}</span>
+            <div class="mt-16">
+                <div data-v-step="1">
+                    <div class="">
+                        <h2 class="text-xl mb-2 text-earth">Start and end date of simulation</h2>
+                        <div>
+                            <Datepicker size="large" />
+                        </div>
+                    </div>
                 </div>
-                <vue-slider
-                  v-model="pool1.value"
-                  v-bind="pool1"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
-                />
-              </div>
             </div>
-          </div>
 
-          <div class="flex-grow">
-            <div class="">
-              <div data-v-step="3">
-                <div class="text-earth flex gap-4 justify-between mb-6">
-                  <span>Pool 2: {{ pool2.value }}</span>
-                  <span>{{ pool2.max }}</span>
+            <div class="flex justify-evenly gap-14 flex-wrap w-full mt-16 z-0">
+                <div class="flex-grow">
+                    <div class="">
+                        <div data-v-step="2">
+                            <div class="text-earth flex gap-4 justify-between mb-6">
+                                <span>Pool 1: {{ pool1.value }}</span>
+                                <span>{{ pool1.max }}</span>
+                            </div>
+                            <vue-slider v-model="pool1.value"
+                                        v-bind="pool1"
+                                        :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                                        :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                                        :process-style="{ 'background-color': '#475447', height: '2px !important' }" />
+                        </div>
+                    </div>
                 </div>
-                <vue-slider
-                  v-model="pool2.value"
-                  v-bind="pool2"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div class="flex-grow">
-            <div class="">
-              <div data-v-step="4">
-                <div class="text-earth flex gap-4 justify-between mb-6">
-                  <span>Pool 3: {{ pool3.value }}</span>
-                  <span>{{ pool3.max }}</span>
+                <div class="flex-grow">
+                    <div class="">
+                        <div data-v-step="3">
+                            <div class="text-earth flex gap-4 justify-between mb-6">
+                                <span>Pool 2: {{ pool2.value }}</span>
+                                <span>{{ pool2.max }}</span>
+                            </div>
+                            <vue-slider v-model="pool2.value"
+                                        v-bind="pool2"
+                                        :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                                        :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                                        :process-style="{ 'background-color': '#475447', height: '2px !important' }" />
+                        </div>
+                    </div>
                 </div>
-                <vue-slider
-                  v-model="pool3.value"
-                  v-bind="pool3"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
-          <div data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showPointOutputTable()">Point Output Table</Button>
-          </div>
+                <div class="flex-grow">
+                    <div class="">
+                        <div data-v-step="4">
+                            <div class="text-earth flex gap-4 justify-between mb-6">
+                                <span>Pool 3: {{ pool3.value }}</span>
+                                <span>{{ pool3.max }}</span>
+                            </div>
+                            <vue-slider v-model="pool3.value"
+                                        v-bind="pool3"
+                                        :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
+                                        :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
+                                        :process-style="{ 'background-color': '#475447', height: '2px !important' }" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-16 flex gap-8 items-center">
+                <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
+                <div data-v-step="6">
+                    <Button :btn-size="'auto'" @click.native="showPointOutputTable()">Point Output Table</Button>
+                </div>
+            </div>
         </div>
-      </div>
-      <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+        <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+        <PointOuterTable v-if="showTable" />
     </div>
     <Footer />
   </div>
@@ -100,10 +95,11 @@
 
 <script>
 import Button from '@/components/Button/Button.vue'
-import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
+import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'     
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import PointOuterTable from './PointOuterTable.vue'
 
 export default {
   components: {
@@ -111,11 +107,13 @@ export default {
     Datepicker,
     LandingPageNavbar,
     Maptest,
-    Footer
+    Footer,
+    PointOuterTable
   },
   data() {
     return {
       isShow: false,
+      showTable: false,
 
       pool1: {
         min: 0.0,
@@ -213,13 +211,12 @@ export default {
     },
 
     Run() {
-      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+        this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+        this.showTable = false
     },
 
     showPointOutputTable() {
-      // this is a temporary function which can be removed when we have the
-      // PointOutputTable component ready.
-      this.$router.push('/flint/point_output_table')
+        this.showTable = true
     }
   }
 }
