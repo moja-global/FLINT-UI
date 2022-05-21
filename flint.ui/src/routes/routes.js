@@ -14,7 +14,7 @@ import RothCInitSoil from '@/views/flint/configurations/rothc/RothCInitSoil.vue'
 import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
 import PointOutput from '@/views/flint/PointOutput.vue'
-import TablePoint from '@/views/flint/TablePoint.vue'
+import PointOuterTable from '@/views/flint/PointOuterTable.vue'
 import TableRothC from '@/views/flint/TableRothC.vue'
 import RothCOutput from '@/views/flint/RothCOutput.vue'
 
@@ -78,7 +78,7 @@ const routes = [
       },
       {
         path: '/flint/point_output_table',
-        component: TablePoint
+          component: PointOuterTable
       },
       {
         path: '/flint/point_output',
