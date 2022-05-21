@@ -78,7 +78,7 @@ const routes = [
       },
       {
         path: '/flint/point_output_table',
-          component: PointOuterTable
+        component: PointOuterTable
       },
       {
         path: '/flint/point_output',

@@ -1,5 +1,5 @@
 <template>
-  <a-col :span="24" :md="{ span: 12 }" :lg="{ span: 8 }">
+  <a-col :span="24" :md="{ span: 12 }" :xl="{ span: 8 }" class="card">
     <div>
       <h2 class="text-earth text-2xl mb-2">
         {{ title }}
@@ -34,3 +34,21 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media screen and (min-width: 1400px) {
+  .card {
+    max-width: 350px;
+  }
+  .card:first-child {
+    margin-right: auto;
+  }
+  .card:last-child {
+    margin-left: auto;
+  }
+  .card:nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
