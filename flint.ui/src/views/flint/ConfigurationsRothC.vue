@@ -43,8 +43,11 @@
 
           <RothCTemplate config-paramtype="soil" config-paramtext="Soil characteristics" />
         </div>
-        <div class="mt-4 mb-5">
-          <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
+        <div class="my-16 flex gap-8 items-center">
+          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
+          <div data-v-step="6">
+            <Button :btn-size="'auto'" @click.native="showRothCOutputTable()">RothC Output Table</Button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +62,7 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
 import Button from '@/components/Button/Button.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import RothCOuterTable from './RothCOuterTable.vue'
 
 export default {
   components: {
@@ -67,13 +71,23 @@ export default {
     LandingPageNavbar,
     Accordion,
     Button,
-    Footer
+    Footer,
+    RothCOuterTable
   },
   methods: {
     apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
       this.$store.dispatch('send_rothcConfig', { root: true })
+    },
+
+    Run() {
+      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+      this.showTable = false
+    },
+
+    showRothCOuterTable() {
+      this.showTable = true
     }
   }
 }
