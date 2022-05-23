@@ -15,8 +15,8 @@ import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
 import PointOutput from '@/views/flint/PointOutput.vue'
 import PointOuterTable from '@/views/flint/PointOuterTable.vue'
-import TableRothC from '@/views/flint/TableRothC.vue'
 import RothCOuterTable from '@/views/flint/RothCOuterTable.vue'
+import RothCOutput from '@/views/flint/RothCOutput.vue'
 
 import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'

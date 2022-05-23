@@ -62,7 +62,6 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
 import Button from '@/components/Button/Button.vue'
 import Footer from '@/components/Footer/Footer.vue'
-import RothCOuterTable from './RothCOuterTable.vue'
 
 export default {
   components: {
@@ -72,7 +71,6 @@ export default {
     Accordion,
     Button,
     Footer,
-    RothCOuterTable
   },
   methods: {
     apiRoute_rothc() {
