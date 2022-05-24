@@ -92,7 +92,7 @@ export default {
 
 <style scoped>
 .footer-container {
-  padding-top: 2rem;
+  padding-top: 3.5rem;
   padding-bottom: 2rem;
   background-color: #2f382a;
 }
