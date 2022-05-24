@@ -131,4 +131,13 @@
     margin: 20px;
   }
 }
+@media screen and (max-width: 350px) {
+  .card-content > div {
+    margin: 10px;
+    padding: 10px;
+  }
+  .card-content > i {
+    margin: 10px;
+  }
+}
 </style>
