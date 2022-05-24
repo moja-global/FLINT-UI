@@ -134,12 +134,15 @@ export default {
   color: #a6adb4;
 }
 
-a.links {
+.md-theme-default a:not(.md-button) {
+  color: transparent;
+}
+ol > li > a.links {
   text-decoration: none;
   color: white !important;
 }
 
-a.links:hover {
+ol > li > a.links:hover {
   color: #7a7a7a !important;
   text-decoration: none !important;
   cursor: pointer;
