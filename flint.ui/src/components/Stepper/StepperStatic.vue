@@ -1,13 +1,13 @@
 <template>
   <div class="mt-14 flex items-center justify-center">
-    <a-row class="p-4 w-full" :gutter="[24, 24]">
+    <a-row class="p-4 w-full" :gutter="[24, 32]">
       <a-col :xs="{ span: 24 }" :md="{ span: 12 }" :xl="{ span: 6 }">
-        <a-row class="cards" :gutter="[6, 6]">
+        <a-row class="cards flex justify-between" :gutter="[6, 6]">
           <a-col
             :xs="{ span: 24 }"
             :md="{ span: 20 }"
             :xl="{ span: 20 }"
-            class="bg-gray-300 border border-gray-200 card-content"
+            class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
             <i class="fas fa-plus fa-lg" />
             <div class="bg-gray-200 rounded-r-lg body-step">
@@ -22,12 +22,12 @@
       </a-col>
 
       <a-col :xs="{ span: 24 }" :md="{ span: 12 }" :xl="{ span: 6 }">
-        <a-row class="cards" :gutter="[6, 6]">
+        <a-row class="cards flex justify-between" :gutter="[6, 6]">
           <a-col
             :xs="{ span: 24 }"
             :md="{ span: 20 }"
             :xl="{ span: 20 }"
-            class="bg-gray-300 border border-gray-200 card-content"
+            class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
             <i class="fas fa-file fa-lg" />
             <div class="bg-gray-200 rounded-r-lg body-step">
@@ -42,12 +42,12 @@
       </a-col>
 
       <a-col :xs="{ span: 24 }" :md="{ span: 12 }" :xl="{ span: 6 }">
-        <a-row class="cards" :gutter="[6, 6]">
+        <a-row class="cards flex justify-between" :gutter="[6, 6]">
           <a-col
             :xs="{ span: 24 }"
             :md="{ span: 20 }"
             :xl="{ span: 20 }"
-            class="bg-gray-300 border border-gray-200 card-content"
+            class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
             <i class="fas fa-cogs fa-lg" />
             <div class="bg-gray-200 rounded-r-lg body-step">
@@ -62,12 +62,12 @@
       </a-col>
 
       <a-col :xs="{ span: 24 }" :md="{ span: 12 }" :xl="{ span: 6 }">
-        <a-row class="cards" :gutter="[6, 6]">
+        <a-row class="cards flex justify-between" :gutter="[6, 6]">
           <a-col
             :xs="{ span: 24 }"
             :md="{ span: 20 }"
             :xl="{ span: 20 }"
-            class="bg-gray-300 border border-gray-200 card-content"
+            class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
             <i class="fas fa-check fa-lg" />
             <div class="bg-gray-200 rounded-r-lg body-step">
@@ -75,6 +75,7 @@
               <p class="text-xs text-gray-600">Run the simulation with new configs</p>
             </div>
           </a-col>
+          <a-col class="next-icons" :xs="{ span: 24 }" :md="{ span: 4 }" :xl="{ span: 4 }"> </a-col>
         </a-row>
       </a-col>
     </a-row>
@@ -116,6 +117,27 @@
     transform: rotate(90deg);
     margin-left: 0px;
     margin-top: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .card-content {
+    max-width: 300px;
+  }
+  .card-content > div {
+    margin: 20px;
+    padding: 10px 20px;
+  }
+  .card-content > i {
+    margin: 20px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .card-content > div {
+    margin: 10px;
+    padding: 10px;
+  }
+  .card-content > i {
+    margin: 10px;
   }
 }
 </style>
