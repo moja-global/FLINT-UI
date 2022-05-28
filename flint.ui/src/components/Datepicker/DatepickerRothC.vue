@@ -31,7 +31,7 @@
     </div>
     <h3 class="mt-14 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is
-      <span class="text-persiangreen">{{ date_diff > 0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+      <span class="text-persiangreen">{{ date_diff > -0.01 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
     </h3>
   </div>
 </template>

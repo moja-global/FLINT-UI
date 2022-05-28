@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap px-24 py-4">
+  <nav class="flex items-center justify-between flex-wrap py-4 px-8 pb-6 sm:px-16 md:px-24">
     <div class="flex items-center flex-shrink-0 text-white">
       <router-link to="/" exact>
         <span class="font-semibold text-xl text-earth">

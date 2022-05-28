@@ -14,8 +14,8 @@ import RothCInitSoil from '@/views/flint/configurations/rothc/RothCInitSoil.vue'
 import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
 import PointOutput from '@/views/flint/PointOutput.vue'
-import TablePoint from '@/views/flint/TablePoint.vue'
-import TableRothC from '@/views/flint/TableRothC.vue'
+import PointOuterTable from '@/views/flint/PointOuterTable.vue'
+import RothCOuterTable from '@/views/flint/RothCOuterTable.vue'
 import RothCOutput from '@/views/flint/RothCOutput.vue'
 
 import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
@@ -78,7 +78,7 @@ const routes = [
       },
       {
         path: '/flint/point_output_table',
-        component: TablePoint
+        component: PointOuterTable
       },
       {
         path: '/flint/point_output',
@@ -86,7 +86,7 @@ const routes = [
       },
       {
         path: '/flint/rothc_output_table',
-        component: TableRothC
+        component: RothCOuterTable
       },
       {
         path: '/flint/rothc_output',
