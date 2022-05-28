@@ -7,7 +7,7 @@
 /* eslint-disable  no-alert, no-console */
 export default {
   name: 'Table',
-  props: ['rows', 'columns'],
+  props: { rows: { type: Array, default: () => [] }, columns: { type: Array, default: () => [] } },
   data() {
     return {
       c: this.columns,

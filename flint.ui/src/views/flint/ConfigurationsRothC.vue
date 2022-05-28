@@ -46,6 +46,9 @@
         <div class="mt-4 mb-5">
           <Button :btn-size="'auto'" @click.native="apiRoute_rothc">Run</Button>
         </div>
+        <div class="mt-4 mb-5">
+          <Button :btn-size="'auto'" @click.native="openRothCOutput">RothC Output</Button>
+        </div>
       </div>
     </div>
     <Footer />
@@ -69,11 +72,19 @@ export default {
     Button,
     Footer
   },
+  data: function () {
+    return {
+      showOutput: false
+    }
+  },
   methods: {
     apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
       this.$store.dispatch('send_rothcConfig', { root: true })
+    },
+    openRothCOutput() {
+      this.$router.push('/flint/rothc_output_table')
     }
   }
 }

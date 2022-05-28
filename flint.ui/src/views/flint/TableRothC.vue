@@ -4,35 +4,17 @@
     <div class="relative w-full h-full">
       <div class="mx-auto w-full h-auto">
         <div>
-          <div class="bg-white p-6 rounded-lg shadow-lg flex">
-            <h2 class="text-2xl font-bold text-gray-800 flex-1">ROTHC example data visualisation table</h2>
-
+          <div class="p-6 pb-0 flex">
+            <h2 class="text-2xl text-gray-800 flex-1">RothC example data visualisation table</h2>
             <router-link to="/flint/rothc_output">
-              <button
-                class="
-                  inline-block
-                  align-middle
-                  flex-initial
-                  bg-white
-                  hover:bg-black hover:text-white
-                  text-gray-800
-                  font-semibold
-                  py-2
-                  px-4
-                  border border-gray-400
-                  rounded
-                  shadow
-                "
-              >
-                <i class="far fa-image" /> Visualise on Graph
-              </button>
+              <Button :btn-size="'auto'"> <i class="far fa-image" /> Visualise on Graph </Button>
             </router-link>
           </div>
         </div>
       </div>
 
       <div class="h-2/3 mt-12 px-6">
-        <v-grid style="height: 100%" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
+        <v-grid style="height: 500px" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
       </div>
     </div>
   </div>
@@ -41,10 +23,12 @@
 <script>
 import VGrid from '@revolist/vue-datagrid'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
+import Button from '@/components/Button/Button.vue'
 
 export default {
   components: {
     VGrid,
+    Button,
     LandingPageNavbar
   },
   data() {

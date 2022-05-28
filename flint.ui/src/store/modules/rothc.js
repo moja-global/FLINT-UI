@@ -490,7 +490,6 @@ export default {
           this._vm.$toast.success(`Configuration loaded for RothC.`, {
             timeout: 2000
           })
-          console.log(response)
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
@@ -505,7 +504,6 @@ export default {
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      console.log(this.state.rothc.rothc_results)
       var dataset = this.state.rothc.rothc_results
       var DPM = [],
         RPM = [],
@@ -519,7 +517,6 @@ export default {
         initialValues = [],
         plantCM = [],
         atmosphere = []
-
       let lines = (dataset || '').split('\n')
       lines.splice(0, 4)
       lines.splice(-4)
