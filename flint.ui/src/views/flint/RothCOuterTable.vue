@@ -78,10 +78,6 @@ export default {
       rows: this.generateDataRows()
     }
   },
-  updated() {
-    // this.$store.dispatch('parse_RothC_results')
-    console.log('RothCOuterTable mounted')
-  },
   methods: {
     RothC_step() {
       console.log('this.$store.state.rothc.RothC_step')
