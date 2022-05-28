@@ -46,7 +46,7 @@
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showRothCOuterTable">RothC Output Table</Button>
+            <Button :btn-size="'auto'" @click.native="showRothCOuterTable">Show Output</Button>
           </div>
         </div>
         <RothCOuterTable v-if="showTable" />
