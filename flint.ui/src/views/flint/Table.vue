@@ -1,13 +1,13 @@
 <template>
   <div class="w-full h-full">
-    <a-table :data-source="r" :columns="c" />
+    <a-table :scroll="{ x: 1200 }" :data-source="r" :columns="c" />
   </div>
 </template>
 <script>
 /* eslint-disable  no-alert, no-console */
 export default {
   name: 'Table',
-  props: ['rows', 'columns'],
+  props: { rows: { type: Array, default: () => [] }, columns: { type: Array, default: () => [] } },
   data() {
     return {
       c: this.columns,
