@@ -97,6 +97,7 @@ import axios from 'axios'
 import { useStore } from 'vuex'
 import { notification } from 'ant-design-vue'
 export default {
+<<<<<<< HEAD
   setup() {
     const store = useStore()
 
@@ -111,6 +112,50 @@ export default {
       maxSize: 5e6,
       multiple: true,
       maxFiles: 100
+=======
+  components: {
+    vueDropzone: vue2Dropzone
+  },
+  data: function () {
+    return {
+      formData: new FormData(),
+      dropzoneOptionsConfig: {
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
+        autoQueue: true,
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        thumbnailWidth: 15,
+        maxFilesize: 1024,
+        uploadMultiple: true,
+        parallelUploads: 100,
+        maxFiles: 100,
+        createImageThumbnails: false
+      },
+      dropzoneOptionsDB: {
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
+        autoQueue: true,
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        thumbnailWidth: 15,
+        maxFilesize: 1024,
+        uploadMultiple: true,
+        parallelUploads: 100,
+        maxFiles: 100,
+        createImageThumbnails: false
+      },
+      dropzoneOptionsInput: {
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
+        autoQueue: true,
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        thumbnailWidth: 15,
+        maxFilesize: 1024,
+        uploadMultiple: true,
+        parallelUploads: 100,
+        maxFiles: 100,
+        createImageThumbnails: false
+      }
+>>>>>>> a1b243f (fix merger conflicts)
     }
 
     function onConfigDrop(acceptFiles) {
