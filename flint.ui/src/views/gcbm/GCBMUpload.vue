@@ -115,7 +115,7 @@ export default {
       return this.$store.state.gcbm.DropdownSelectedSim
     },
     getSimulations: function () {
-      axios.get('http://localhost:8081/gcbm/list').then((response) => {
+      axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
         this.$toast.info(`Ongoing simulations - ${response.data.data}`, {

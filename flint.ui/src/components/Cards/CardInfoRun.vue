@@ -107,7 +107,7 @@ export default {
     apiRoute_spec() {
       console.log('SPECIFICATION route invoked')
       axios
-        .get('http://127.0.0.1:8080/spec')
+        .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/spec`)
         .then((response) => {
           this.$toast.success(`Specification route has been invoked.`, {
             timeout: 2000
@@ -122,7 +122,7 @@ export default {
     apiRoute_help() {
       console.log('HELP route invoked')
       axios
-        .get('http://127.0.0.1:8080/help/all')
+        .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/help/all`)
         .then((response) => {
           this.$toast.success(`Help route has been invoked.`, {
             timeout: 2000
@@ -137,7 +137,7 @@ export default {
     apiRoute_version() {
       console.log('VERSION route invoked')
       axios
-        .get('http://127.0.0.1:8080/version')
+        .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/version`)
         .then((response) => {
           this.$toast.success(`Version route has been invoked.`, {
             timeout: 2000
@@ -152,7 +152,7 @@ export default {
     apiRoute_point() {
       console.log('POINT route invoked')
       axios
-        .post('http://127.0.0.1:8080/point')
+        .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`)
         .then((response) => {
           this.$toast.success(`Point route has been invoked. You can see the output in Point Output Table.`, {
             timeout: 2000
@@ -167,7 +167,7 @@ export default {
     apiRoute_rothc() {
       console.log('ROTHC route invoked')
       axios
-        .post('http://127.0.0.1:8080/rothc')
+        .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`)
         .then((response) => {
           this.$toast.success(`RothC route has been invoked. You can see the output in RothC Output Table.`, {
             timeout: 2000

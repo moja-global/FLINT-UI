@@ -229,7 +229,7 @@ export default {
       let final_config_string = parsed_config_string.replaceAll('#$"', ' ')
 
       axios
-        .post('http://127.0.0.1:8080/point', final_config_string)
+        .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
           this._vm.$toast.success(`Configuration loaded for Point.`, {
             timeout: 2000
@@ -319,7 +319,7 @@ export default {
       console.log(this.state.point.point_stepDate)
       console.log('this.point_stepLenInYears')
       console.log(this.state.point.point_stepLenInYears)
-      //window.open('http://127.0.0.1:8000/flint/point_output_table',"_self")
+      //window.open('process.env.VUE_APP_REST_API_FLINT_EXAMPLE/flint/point_output_table',"_self")
 
     }
   }
