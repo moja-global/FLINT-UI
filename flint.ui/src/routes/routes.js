@@ -5,13 +5,6 @@ import Dashboard from '@/views/flint/Dashboard.vue'
 import Configurations from '@/views/flint/Configurations.vue'
 import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
 import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
-import RothCRainfall from '@/views/flint/configurations/rothc/RothCRainfall.vue'
-import RothCOpenPanEvap from '@/views/flint/configurations/rothc/RothCOpenPanEvap.vue'
-import RothCAvgAirTemp from '@/views/flint/configurations/rothc/RothCAvgAirTemp.vue'
-import RothCPresCM from '@/views/flint/configurations/rothc/RothCPresCM.vue'
-import RothCSoilCover from '@/views/flint/configurations/rothc/RothCSoilCover.vue'
-import RothCInitSoil from '@/views/flint/configurations/rothc/RothCInitSoil.vue'
-import RothCSoil from '@/views/flint/configurations/rothc/RothCSoil.vue'
 
 import PointOutput from '@/views/flint/PointOutput.vue'
 import PointOuterTable from '@/views/flint/PointOuterTable.vue'
@@ -47,34 +40,6 @@ const routes = [
       {
         path: '/flint/configurations/rothc',
         component: ConfigurationsRothC
-      },
-      {
-        path: '/flint/configurations/rothc/rainfall',
-        component: RothCRainfall
-      },
-      {
-        path: '/flint/configurations/rothc/openPanEvap',
-        component: RothCOpenPanEvap
-      },
-      {
-        path: '/flint/configurations/rothc/avgAirTemp',
-        component: RothCAvgAirTemp
-      },
-      {
-        path: '/flint/configurations/rothc/presCM',
-        component: RothCPresCM
-      },
-      {
-        path: '/flint/configurations/rothc/soilCover',
-        component: RothCSoilCover
-      },
-      {
-        path: '/flint/configurations/rothc/initSoil',
-        component: RothCInitSoil
-      },
-      {
-        path: '/flint/configurations/rothc/soil',
-        component: RothCSoil
       },
       {
         path: '/flint/point_output_table',
