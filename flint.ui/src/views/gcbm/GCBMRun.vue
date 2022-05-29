@@ -117,7 +117,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post(`${process.env.VUE_APP_REST_API_GCBM/gcbm/dynamic}`, bodyFormData)
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
         .then((response) => {
           this.$toast.success(`${response.data.status}`, { timeout: 5000 })
           console.log(response)
