@@ -143,7 +143,6 @@ export default {
 
     changeActiveKey(key) {
       this.accordionActiveKey = key
-      console.log(key)
     }
   }
 }
