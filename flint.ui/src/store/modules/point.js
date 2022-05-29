@@ -229,7 +229,7 @@ export default {
       let final_config_string = parsed_config_string.replaceAll('#$"', ' ')
 
       axios
-        .post('process.env.VUE_APP_REST_API_FLINT_EXAMPLE/point', final_config_string)
+        .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
           this._vm.$toast.success(`Configuration loaded for Point.`, {
             timeout: 2000
