@@ -18,7 +18,7 @@
         <div class="mt-10">
           <div>
             <div class="py-6 mb-3">
-              <h2 class="text-xl font-normal text-earth text-base">Start and End date of simulation</h2>
+              <h2 class="text-xl font-normal text-earth">Start and End date of simulation</h2>
               <div>
                 <div class="text-2xl font-normal text-gray"><Datepicker size="small" /></div>
               </div>
@@ -44,11 +44,12 @@
           <RothCTemplate config-paramtype="soil" config-paramtext="Soil characteristics" />
         </div>
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
-          <div data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showRothCOutputTable()">RothC Output Table</Button>
+          <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
+          <div v-show="clickedRun" data-v-step="6">
+            <Button :btn-size="'auto'" @click.native="showRothCOuterTable">Show Output</Button>
           </div>
         </div>
+        <RothCOuterTable v-if="showTable" />
       </div>
     </div>
     <Footer />
@@ -62,29 +63,34 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Accordion from '../../components/Accordion/Accordion.vue'
 import Button from '@/components/Button/Button.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import RothCOuterTable from './RothCOuterTable.vue'
 
 export default {
   components: {
     RothCTemplate,
     Datepicker,
     LandingPageNavbar,
+    RothCOuterTable,
     Accordion,
     Button,
-    Footer,
+    Footer
+  },
+  data: function () {
+    return {
+      showTable: false,
+      clickedRun: false
+    }
   },
   methods: {
     apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
       this.$store.dispatch('send_rothcConfig', { root: true })
-    },
-
-    Run() {
-      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
-      this.showTable = false
+      this.clickedRun = true
     },
 
     showRothCOuterTable() {
+      this.$store.dispatch('parse_RothC_results')
       this.showTable = true
     }
   }

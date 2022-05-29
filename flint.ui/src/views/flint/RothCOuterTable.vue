@@ -5,18 +5,17 @@
       <div :class="{ active: !isTable }" @click="isTable = false">Graph</div>
     </div>
     <div class="full-w">
-      <RothCOutput v-if="!isTable" />
-      <Table v-else :columns="columns" :rows="rows" />
+      <Table v-if="isTable" :columns="columns" :rows="rows" />
+      <RothCOutput v-else />
     </div>
   </div>
 </template>
 
 <script>
-/* eslint-disable no-alert, no-console */
 import RothCOutput from './RothCOutput.vue'
 import Table from './Table.vue'
 export default {
-  name: 'RothCOuterTable',
+  title: 'RothCOuterTable',
   components: {
     RothCOutput,
     Table
@@ -26,61 +25,58 @@ export default {
       isTable: true,
       columns: [
         {
-          prop: 'RothC_step',
-          name: 'step',
-          size: 50
+          dataIndex: 'RothC_step',
+          key: 'RothC_step',
+          title: 'step'
         },
         {
-          prop: 'RothC_stepDate',
-          name: 'stepDate',
-          size: 150
+          dataIndex: 'RothC_stepDate',
+          key: 'RothC_stepDate',
+          title: 'stepDate'
         },
         {
-          prop: 'plantCM',
-          name: 'plantCM',
-          size: 150
+          dataIndex: 'plantCM',
+          key: 'plantCM',
+          title: 'plantCM'
         },
         {
-          prop: 'DPM',
-          name: 'SoilDPM',
-          size: 150
+          dataIndex: 'DPM',
+          key: 'DPM',
+          title: 'SoilDPM'
         },
         {
-          prop: 'RPM',
-          name: 'SoilRPM',
-          size: 150
+          dataIndex: 'RPM',
+          key: 'RPM',
+          title: 'SoilRPM'
         },
         {
-          prop: 'BIOF',
-          name: 'SoilBioF',
-          size: 150
+          dataIndex: 'BIOF',
+          key: 'BIOF',
+          title: 'SoilBioF'
         },
         {
-          prop: 'BIOS',
-          name: 'SoilBioS',
-          size: 150
+          dataIndex: 'BIOS',
+          key: 'BIOS',
+          title: 'SoilBioS'
         },
         {
-          prop: 'HUM',
-          name: 'SoilHUM',
-          size: 150
+          dataIndex: 'HUM',
+          key: 'HUM',
+          title: 'SoilHUM'
         },
         {
-          prop: 'IOM',
-          name: 'SoilIOM',
-          size: 150
+          dataIndex: 'IOM',
+          key: 'IOM',
+          title: 'SoilIOM'
         },
         {
-          prop: 'atmosphere',
-          name: 'atmosphere',
-          size: 150
+          dataIndex: 'atmosphere',
+          key: 'atmosphere',
+          title: 'atmosphere'
         }
       ],
       rows: this.generateDataRows()
     }
-  },
-  beforeCreate() {
-    this.$store.dispatch('parse_RothC_results')
   },
   methods: {
     RothC_step() {
