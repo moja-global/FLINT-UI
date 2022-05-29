@@ -7,6 +7,7 @@
     "preinstall": "cd .. && yarn install",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "bash scripts/production.sh && vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "build-storybook": "build-storybook -s public",
