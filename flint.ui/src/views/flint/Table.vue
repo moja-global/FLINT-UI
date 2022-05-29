@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <a-table :data-source="r" :columns="c" />
+    <a-table :scroll="{ x: 1200 }" :data-source="r" :columns="c" />
   </div>
 </template>
 <script>

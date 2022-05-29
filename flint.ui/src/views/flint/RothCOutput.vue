@@ -1,12 +1,5 @@
 <template>
   <div>
-    <LandingPageNavbar />
-    <div class="flex justify-between p-6 pb-0">
-      <h2 class="text-2xl text-gray-800 flex-1">RothC example data visualisation graph</h2>
-      <router-link to="/flint/rothc_output_table">
-        <Button :btn-size="'auto'"> Visualise on Table </Button>
-      </router-link>
-    </div>
     <div class="chart-wrapper">
       <div id="charts">
         <div id="chart1">
@@ -21,15 +14,8 @@
 </template>
 
 <script>
-import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
-import Button from '@/components/Button/Button.vue'
-
 export default {
   name: 'BrushCharts',
-  components: {
-    LandingPageNavbar,
-    Button
-  },
   data: function () {
     return {
       series: [
@@ -118,10 +104,6 @@ export default {
         }
       }
     }
-  },
-
-  beforeMount() {
-    this.$store.dispatch('parse_RothC_results')
   }
 }
 </script>

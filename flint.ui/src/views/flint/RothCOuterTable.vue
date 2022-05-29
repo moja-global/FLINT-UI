@@ -1,95 +1,82 @@
 <template>
-  <div>
-    <LandingPageNavbar />
-    <div class="relative w-full h-full">
-      <div class="mx-auto w-full h-auto">
-        <div>
-          <div class="p-6 pb-0 flex">
-            <h2 class="text-2xl text-gray-800 flex-1">RothC example data visualisation table</h2>
-            <router-link to="/flint/rothc_output">
-              <Button :btn-size="'auto'"> <i class="far fa-image" /> Visualise on Graph </Button>
-            </router-link>
-          </div>
-        </div>
-      </div>
-
-      <div class="h-2/3 mt-12 px-6">
-        <v-grid style="height: 500px" theme="default" :source="rows" :columns="columns" :readonly="true"></v-grid>
-      </div>
+  <div class="outer-table">
+    <div class="top-row">
+      <div :class="{ active: isTable }" @click="isTable = true">Table</div>
+      <div :class="{ active: !isTable }" @click="isTable = false">Graph</div>
+    </div>
+    <div class="full-w">
+      <Table v-if="isTable" :columns="columns" :rows="rows" />
+      <RothCOutput v-else />
     </div>
   </div>
 </template>
 
 <script>
-import VGrid from '@revolist/vue-datagrid'
-import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
-import Button from '@/components/Button/Button.vue'
-
+import RothCOutput from './RothCOutput.vue'
+import Table from './Table.vue'
 export default {
+  title: 'RothCOuterTable',
   components: {
-    VGrid,
-    Button,
-    LandingPageNavbar
+    RothCOutput,
+    Table
   },
   data() {
     return {
+      isTable: true,
       columns: [
         {
-          prop: 'RothC_step',
-          name: 'step',
-          size: 50
+          dataIndex: 'RothC_step',
+          key: 'RothC_step',
+          title: 'step'
         },
         {
-          prop: 'RothC_stepDate',
-          name: 'stepDate',
-          size: 150
+          dataIndex: 'RothC_stepDate',
+          key: 'RothC_stepDate',
+          title: 'stepDate'
         },
         {
-          prop: 'plantCM',
-          name: 'plantCM',
-          size: 150
+          dataIndex: 'plantCM',
+          key: 'plantCM',
+          title: 'plantCM'
         },
         {
-          prop: 'DPM',
-          name: 'SoilDPM',
-          size: 150
+          dataIndex: 'DPM',
+          key: 'DPM',
+          title: 'SoilDPM'
         },
         {
-          prop: 'RPM',
-          name: 'SoilRPM',
-          size: 150
+          dataIndex: 'RPM',
+          key: 'RPM',
+          title: 'SoilRPM'
         },
         {
-          prop: 'BIOF',
-          name: 'SoilBioF',
-          size: 150
+          dataIndex: 'BIOF',
+          key: 'BIOF',
+          title: 'SoilBioF'
         },
         {
-          prop: 'BIOS',
-          name: 'SoilBioS',
-          size: 150
+          dataIndex: 'BIOS',
+          key: 'BIOS',
+          title: 'SoilBioS'
         },
         {
-          prop: 'HUM',
-          name: 'SoilHUM',
-          size: 150
+          dataIndex: 'HUM',
+          key: 'HUM',
+          title: 'SoilHUM'
         },
         {
-          prop: 'IOM',
-          name: 'SoilIOM',
-          size: 150
+          dataIndex: 'IOM',
+          key: 'IOM',
+          title: 'SoilIOM'
         },
         {
-          prop: 'atmosphere',
-          name: 'atmosphere',
-          size: 150
+          dataIndex: 'atmosphere',
+          key: 'atmosphere',
+          title: 'atmosphere'
         }
       ],
       rows: this.generateDataRows()
     }
-  },
-  beforeCreate() {
-    this.$store.dispatch('parse_RothC_results')
   },
   methods: {
     RothC_step() {
@@ -170,7 +157,6 @@ export default {
       console.log(plantCM)
       console.log('atmosphere from generateDataRows')
       console.log(atmosphere)
-
       for (let j = 0; j < RothC_step.length; j++) {
         let row = j
         if (!result[row]) {
@@ -197,7 +183,23 @@ export default {
 </script>
 
 <style>
-revo-grid {
-  height: 50%;
+.outer-table {
+  border: 1px solid #475447;
+  border-radius: 5px;
+}
+.top-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid #eeeef0;
+}
+.top-row div {
+  width: 50%;
+  text-align: center;
+  padding: 16px;
+  cursor: pointer;
+}
+.top-row .active {
+  color: white;
+  background-color: #475447;
 }
 </style>
