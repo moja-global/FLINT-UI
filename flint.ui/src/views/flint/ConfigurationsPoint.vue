@@ -8,8 +8,8 @@
           Was the simulation conducted at a specific place?
           <a>
             <span class="underline cursor-pointer text-earth" @click="isShow = !isShow">
-              {{ isShow ? 'Close' : 'Click here' }}</span
-            >
+              {{ isShow ? 'Close' : 'Click here' }}
+            </span>
           </a>
           <span v-if="!isShow"> to save latitude and longitude co-ordinates on a map.</span>
         </p>
@@ -85,13 +85,6 @@
           </div>
         </div>
 
-        <div class="mt-16 text-xl mb-2 text-earth">
-          Simulation length is
-          <!-- This can be updated later when we have the
-            DatepickerPoint component ready with the new UI. -->
-          <span class="text-blue-500">4.92 years</span>
-        </div>
-
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
           <div data-v-step="6">
@@ -100,6 +93,7 @@
         </div>
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+      <PointOuterTable v-if="showTable" />
     </div>
     <Footer />
   </div>
@@ -111,6 +105,7 @@ import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import PointOuterTable from './PointOuterTable.vue'
 
 export default {
   components: {
@@ -118,11 +113,13 @@ export default {
     Datepicker,
     LandingPageNavbar,
     Maptest,
-    Footer
+    Footer,
+    PointOuterTable
   },
   data() {
     return {
       isShow: false,
+      showTable: false,
 
       pool1: {
         min: 0.0,
@@ -221,12 +218,11 @@ export default {
 
     Run() {
       this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+      this.showTable = false
     },
 
     showPointOutputTable() {
-      // this is a temporary function which can be removed when we have the
-      // PointOutputTable component ready.
-      this.$router.push('/flint/point_output_table')
+      this.showTable = true
     }
   }
 }

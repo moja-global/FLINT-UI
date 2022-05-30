@@ -485,12 +485,11 @@ export default {
 
       console.log(final_RothC_config_string)
       axios
-        .post('http://127.0.0.1:8080/rothc', final_RothC_config_string)
+        .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`, final_RothC_config_string)
         .then((response) => {
           this._vm.$toast.success(`Configuration loaded for RothC.`, {
             timeout: 2000
           })
-          console.log(response)
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
@@ -505,7 +504,6 @@ export default {
       const dataForge = require('data-forge')
 
       console.log('running from state')
-      console.log(this.state.rothc.rothc_results)
       var dataset = this.state.rothc.rothc_results
       var DPM = [],
         RPM = [],
@@ -519,7 +517,6 @@ export default {
         initialValues = [],
         plantCM = [],
         atmosphere = []
-
       let lines = (dataset || '').split('\n')
       lines.splice(0, 4)
       lines.splice(-4)

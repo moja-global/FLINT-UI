@@ -1,12 +1,13 @@
 <template>
-  <div class="chart-wrapper">
-    <span>RothC module</span>
-    <div id="charts">
-      <div id="chart1">
-        <apexchart type="line" height="300" :options="chartOptionsArea" :series="series" />
-      </div>
-      <div id="chart2">
-        <apexchart type="area" height="150" :options="chartOptionsBrush" :series="series" />
+  <div>
+    <div class="chart-wrapper">
+      <div id="charts">
+        <div id="chart1">
+          <apexchart type="line" height="300" :options="chartOptionsArea" :series="series" />
+        </div>
+        <div id="chart2">
+          <apexchart type="area" height="150" :options="chartOptionsBrush" :series="series" />
+        </div>
       </div>
     </div>
   </div>
@@ -103,15 +104,6 @@ export default {
         }
       }
     }
-  },
-
-  beforeMount() {
-    this.$store.dispatch('parse_RothC_results')
   }
 }
 </script>
-<style>
-div.chart-wrapper {
-  padding-top: 150px;
-}
-</style>
