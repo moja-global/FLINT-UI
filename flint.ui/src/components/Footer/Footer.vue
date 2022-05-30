@@ -9,7 +9,7 @@
         <h2 class="title">Get In Touch</h2>
         <div class="email">
           <i class="fas fa-envelope" />
-          <span>info@moja.global</span>
+          <a href="mailto:info@moja.global"> info@moja.global</a>
         </div>
 
         <div class="socials">
@@ -108,9 +108,21 @@ export default {
   font-weight: 800;
   font-size: 1.2rem;
 }
-.email {
-  color: white;
-  margin-bottom: 7px;
+.email i {
+  color: #ddd;
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+.email a:link {
+  color: #ddd !important;
+}
+
+.email:hover i,
+.email:hover a:link {
+  color: #7a7a7a !important;
+  text-decoration: none !important;
+  cursor: pointer;
 }
 
 .socials {
@@ -131,7 +143,7 @@ export default {
 }
 
 .social-icons .icon {
-  color: #a6adb4;
+  color: #2f382a;
 }
 
 .md-theme-default a:not(.md-button) {
@@ -139,7 +151,7 @@ export default {
 }
 ol > li > a.links {
   text-decoration: none;
-  color: white !important;
+  color: #ddd !important;
 }
 
 ol > li > a.links:hover {
@@ -150,7 +162,7 @@ ol > li > a.links:hover {
 
 .copyright {
   margin-top: 2rem;
-  color: #7a7a7a;
+  color: white;
   text-align: center;
 }
 </style>
