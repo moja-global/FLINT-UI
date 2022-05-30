@@ -1,54 +1,52 @@
 <template>
-  <div>
-    <div class="flex flex-wrap my-5">
-      <div class="w-4/12 px-4 content-center">
-        <vue-dropzone
-          id="dropzoneConfig"
-          ref="myVueDropzoneConfig"
-          :options="dropzoneOptionsConfig"
-          :use-custom-slot="true"
-          @vdropzone-removed-file="fileRemoved"
-          @vdropzone-file-added="fileAddedConfig"
-        >
-          <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
-            <span>CONFIG FILES</span>
-          </div>
-        </vue-dropzone>
-      </div>
+  <a-row :gutter="[24, 24]" class="pt-4 pb-6">
+    <a-col :md="8" :span="24">
+      <vue-dropzone
+        id="dropzoneConfig"
+        ref="myVueDropzoneConfig"
+        :options="dropzoneOptionsConfig"
+        :use-custom-slot="true"
+        @vdropzone-removed-file="fileRemoved"
+        @vdropzone-file-added="fileAddedConfig"
+      >
+        <div class="dropzone-custom-content">
+          <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
+          <span>CONFIG FILES</span>
+        </div>
+      </vue-dropzone>
+    </a-col>
 
-      <div class="w-4/12 px-4 content-center">
-        <vue-dropzone
-          id="dropzoneDB"
-          ref="myVueDropzoneDB"
-          :options="dropzoneOptionsDB"
-          :use-custom-slot="true"
-          @vdropzone-removed-file="fileRemoved"
-          @vdropzone-file-added="fileAddedDB"
-        >
-          <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
-            <span>DB FILES</span>
-          </div>
-        </vue-dropzone>
-      </div>
+    <a-col :md="8" :span="24">
+      <vue-dropzone
+        id="dropzoneDB"
+        ref="myVueDropzoneDB"
+        :options="dropzoneOptionsDB"
+        :use-custom-slot="true"
+        @vdropzone-removed-file="fileRemoved"
+        @vdropzone-file-added="fileAddedDB"
+      >
+        <div class="dropzone-custom-content">
+          <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
+          <span>DB FILES</span>
+        </div>
+      </vue-dropzone>
+    </a-col>
 
-      <div class="w-4/12 px-4 content-center">
-        <vue-dropzone
-          id="dropzoneInput"
-          ref="myVueDropzoneInput"
-          :options="dropzoneOptionsInput"
-          :use-custom-slot="true"
-          @vdropzone-removed-file="fileRemoved"
-          @vdropzone-file-added="fileAddedInput"
-        >
-          <div class="dropzone-custom-content">
-            <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
-            <span>INPUT FILES</span>
-          </div>
-        </vue-dropzone>
-      </div>
-    </div>
+    <a-col :md="8" :span="24">
+      <vue-dropzone
+        id="dropzoneInput"
+        ref="myVueDropzoneInput"
+        :options="dropzoneOptionsInput"
+        :use-custom-slot="true"
+        @vdropzone-removed-file="fileRemoved"
+        @vdropzone-file-added="fileAddedInput"
+      >
+        <div class="dropzone-custom-content">
+          <span class="font-semibold text-xl text-blueGray-700">Drag and drop to upload</span><br />
+          <span>INPUT FILES</span>
+        </div>
+      </vue-dropzone>
+    </a-col>
 
     <!--  <button @click="listFiles">
       List uploaded files in console by clicking here
@@ -59,7 +57,7 @@
     </button> -->
 
     <!-- <button @click="triggerSend">Click here to submit files</button> -->
-  </div>
+  </a-row>
 </template>
 
 <script>
@@ -74,7 +72,7 @@ export default {
     return {
       formData: new FormData(),
       dropzoneOptionsConfig: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -86,7 +84,7 @@ export default {
         createImageThumbnails: false
       },
       dropzoneOptionsDB: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -98,7 +96,7 @@ export default {
         createImageThumbnails: false
       },
       dropzoneOptionsInput: {
-        url: 'http://127.0.0.1/gcbm/upload',
+        url: `${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`,
         autoQueue: true,
         autoProcessQueue: false,
         addRemoveLinks: true,
@@ -141,7 +139,7 @@ export default {
         console.log([...this.formData])
 
         axios
-          .post('http://localhost:8081/gcbm/upload', this.formData)
+          .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`, this.formData)
           .then((response) => {
             this.$toast.success(`${response.data.data}`, { timeout: 3000 })
             console.log(response)
