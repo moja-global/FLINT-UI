@@ -1,1 +1,2 @@
+furo==2022.4.7
 sphinx_rtd_theme
