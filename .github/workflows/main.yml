@@ -45,10 +45,6 @@ jobs:
         run: yarn lint
         working-directory: flint.ui
 
-      - name: Build 🏗️
-        run: yarn build
-        working-directory: flint.ui
-
       - name: Storybook Build 🎨
         run: yarn build-storybook -o ./storybook-build
         working-directory: flint.ui
