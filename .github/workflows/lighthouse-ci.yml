@@ -1,0 +1,24 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * MON"
+
+jobs:
+  lighthouse-ci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - run: sleep 60
+      - name: Lighthouse Audit
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://flint-ui.vercel.app/
+          uploadArtifacts: true
+          temporaryPublicStorage: true

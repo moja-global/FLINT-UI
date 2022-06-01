@@ -1,73 +1,52 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap py-4 px-8 pb-6 sm:px-16 md:px-24">
-    <div class="flex items-center flex-shrink-0 text-white">
-      <router-link to="/" exact>
-        <span class="font-semibold text-xl text-earth">
-          <img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57" />
-        </span>
-      </router-link>
-    </div>
-    <div class="block lg:hidden">
-      <button
-        class="
-          flex
-          items-center
-          px-3
-          py-2
-          border
-          rounded
-          text-teal-200
-          border-teal-400
-          hover:text-white hover:border-white
-        "
-        @click="toggleNavbar()"
-      >
-        <svg v-if="!showMenu" class="h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-        <svg
-          v-if="showMenu"
-          class="h-6 w-6"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 50 50"
-          overflow="visible"
-          stroke="black"
-          stroke-width="10"
-          stroke-linecap="round"
-        >
-          <title>Close Button</title>
-          <line x2="50" y2="50" />
-          <line x1="50" y2="50" />
-        </svg>
-      </button>
-    </div>
-    <div
-      :class="{ hidden: !showMenu, flex: showMenu }"
-      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
-    >
-      <div class="lg:flex-grow"></div>
-      <div>
-        <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="text-earth">
-            <a href="https://docs.moja.global/projects/flint-ui/en/latest/"> Documentation </a>
-          </button>
-        </a>
-
-        <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="text-earth">
-            <a href="https://github.com/moja-global/FLINT-UI"> GitHub </a>
-          </button>
-        </a>
-
-        <a class="block mt-4 text-lg px-0 lg:px-8 lg:inline-block lg:mt-0">
-          <button class="text-earth">
-            <a href="mailto:info@moja.global"> Contact Us </a>
-          </button>
-        </a>
-      </div>
-    </div>
-  </nav>
+  <div>
+    <a-layout>
+      <a-row class="navbar" type="flex" align="middle">
+        <a-col :flex="5" class="logo"
+          ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
+        /></a-col>
+        <a-col :flex="3" align="middle">
+          <a-row :gutter="40" justify="center" type="flex">
+            <a-col>
+              <a href="https://docs.moja.global/projects/flint-ui/en/latest/" target="_blank" rel="noreferrer noopener"
+                >Documentation
+              </a>
+            </a-col>
+            <a-col>
+              <a href="https://github.com/moja-global/FLINT-UI" target="_blank" rel="noreferrer noopener">Github </a>
+            </a-col>
+            <a-col> <a href="mailto:info@moja.global" target="_blank" rel="noreferrer noopener">Contact Us </a> </a-col>
+          </a-row>
+        </a-col>
+      </a-row>
+      <a-row class="navbar navbar-mobile">
+        <a-col>
+          <a-row type="flex" justify="space-between">
+            <a-col class="logo"
+              ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
+            /></a-col>
+            <a-col>
+              <a-icon v-if="!showMenu" type="menu" @click="toggleNavbar()" />
+              <a-icon v-if="showMenu" type="close" @click="toggleNavbar()" />
+            </a-col>
+          </a-row>
+        </a-col>
+        <a-col v-if="showMenu">
+          <a-row class="menu-mobile">
+            <a-col>
+              <a href="https://docs.moja.global/projects/flint-ui/en/latest/" target="_blank" rel="noreferrer noopener"
+                >Documentation
+              </a>
+            </a-col>
+            <a-col>
+              <a href="https://github.com/moja-global/FLINT-UI" target="_blank" rel="noreferrer noopener">Github </a>
+            </a-col>
+            <a-col> <a href="mailto:info@moja.global" target="_blank" rel="noreferrer noopener">Contact Us </a> </a-col>
+          </a-row>
+        </a-col>
+      </a-row>
+    </a-layout>
+  </div>
 </template>
 
 <script>
@@ -87,10 +66,45 @@ export default {
 </script>
 
 <style scoped>
-.md-theme-default a {
-  color: #475447 !important;
+.navbar {
+  padding: 1.2rem 1.4rem;
+  background: white;
+  font-size: 1.1rem;
+  color: #475447;
 }
-.md-theme-default a:hover {
-  text-decoration: none;
+
+.navbar a:hover {
+  border-bottom: solid 2px #475447;
+}
+
+.logo {
+  margin-left: 4rem;
+}
+
+.navbar-mobile {
+  display: none;
+}
+
+.anticon {
+  margin: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-mobile {
+  margin: 1rem 4rem;
+}
+
+.menu-mobile .ant-col {
+  margin: 1rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+  .navbar-mobile {
+    display: block;
+  }
 }
 </style>

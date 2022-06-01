@@ -40,20 +40,12 @@
           </a-collapse-panel>
         </a-collapse>
 
-          <RothCTemplate config-paramtype="avgAirTemp" config-paramtext="Average Air Temperature" />
-
-          <RothCTemplate config-paramtype="presCM" config-paramtext="Organic carbon inputs" />
-
-          <RothCTemplate config-paramtype="soilCover" config-paramtext="Soil Cover" />
-
-          <RothCTemplate config-paramtype="initSoil" config-paramtext="Initial conditions of the Soil" />
-
-          <RothCTemplate config-paramtype="soil" config-paramtext="Soil characteristics" />
-        </div>
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showRothCOuterTable">Show Output</Button>
+            <Button :btn-size="'auto'" @click.native="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
+              {{ showTable ? 'Hide' : 'Show' }} Output
+            </Button>
           </div>
         </div>
         <RothCOuterTable v-if="showTable" />
@@ -70,6 +62,13 @@ import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Button from '@/components/Button/Button.vue'
 import Footer from '@/components/Footer/Footer.vue'
 import RothCOuterTable from './RothCOuterTable.vue'
+import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
+import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
+import RothCSoilVue from '@/components/ConfigurationsRothC/RothCSoil.vue'
+import RothCInitSoilVue from '@/components/ConfigurationsRothC/RothCInitSoil.vue'
+import RothCPresCMVue from '@/components/ConfigurationsRothC/RothCPresCM.vue'
+import RothCOpenPanEvapVue from '@/components/ConfigurationsRothC/RothCOpenPanEvap.vue'
+import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue'
 
 export default {
   components: {
@@ -77,14 +76,52 @@ export default {
     Datepicker,
     LandingPageNavbar,
     RothCOuterTable,
-    Accordion,
     Button,
     Footer
   },
   data: function () {
     return {
       showTable: false,
-      clickedRun: false
+      clickedRun: false,
+      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
+      accordionActiveKey: '1',
+      configurations: {
+        rainfall: {
+          component: RothCRainfallVue,
+          type: 'rainfall',
+          text: 'Rainfall'
+        },
+        openPanEvap: {
+          component: RothCOpenPanEvapVue,
+          type: 'openPanEvap',
+          text: 'Open Pan Evaporation'
+        },
+        avgAirTemp: {
+          component: RothCAvgAirTempVue,
+          type: 'avgAirTemp',
+          text: 'Average Air Temperature'
+        },
+        presCM: {
+          component: RothCPresCMVue,
+          type: 'presCM',
+          text: 'Organic carbon inputs'
+        },
+        soilCover: {
+          component: RothCSoilCoverVue,
+          type: 'soilCover',
+          text: 'Soil Cover'
+        },
+        initSoil: {
+          component: RothCInitSoilVue,
+          type: 'initSoil',
+          text: 'Initial conditions of the Soil'
+        },
+        soil: {
+          component: RothCSoilVue,
+          type: 'soil',
+          text: 'Soil characteristics'
+        }
+      }
     }
   },
   methods: {
@@ -98,6 +135,14 @@ export default {
     showRothCOuterTable() {
       this.$store.dispatch('parse_RothC_results')
       this.showTable = true
+    },
+
+    hideRothCOuterTable() {
+      this.showTable = false
+    },
+
+    changeActiveKey(key) {
+      this.accordionActiveKey = key
     }
   }
 }
