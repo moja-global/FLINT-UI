@@ -58,7 +58,7 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 - [Cypress](https://www.cypress.io/)
 - [Apexcharts](https://apexcharts.com/)
 - [Moment.js](https://momentjs.com/)
-- [Google Maps](https://developers.google.com/maps)
+- [OpenLayers](https://openlayers.org/)
 
 ## Getting started
 
