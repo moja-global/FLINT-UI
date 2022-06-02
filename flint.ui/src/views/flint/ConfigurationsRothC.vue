@@ -41,9 +41,9 @@
         </a-collapse>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
+          <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
+            <Button :btn-size="'auto'" @click="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
               {{ showTable ? 'Hide' : 'Show' }} Output
             </Button>
           </div>

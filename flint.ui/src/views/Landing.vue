@@ -50,7 +50,7 @@ import LandingPageCard from './../components/Cards/LandingPageCard.vue'
 import Footer from './../components/Footer/Footer.vue'
 
 export default {
-  name: 'MyTour',
+  name: 'Landing',
   components: {
     LandingPageNavbar,
     LandingPageCard,

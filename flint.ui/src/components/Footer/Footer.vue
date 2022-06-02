@@ -1,5 +1,5 @@
 <template>
-  <Footer class="footer-container py-4 px-8 pb-6 sm:px-16 md:px-24">
+  <div class="footer-container py-4 px-8 pb-6 sm:px-16 md:px-24">
     <a-row :gutter="[48, 48]">
       <a-col :xs="24" :md="9">
         <a href="/"> <img src="/moja_global_logo.png" alt="moja global logo" class="logo" /></a>
@@ -81,12 +81,12 @@
     </a-row>
 
     <p class="copyright">Copyright © {{ new Date().getFullYear() }} moja global.</p>
-  </Footer>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'FooterComponent'
+  name: 'Footer'
 }
 </script>
 

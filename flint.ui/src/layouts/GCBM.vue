@@ -2,7 +2,7 @@
   <div>
     <div class="relative">
       <div>
-        <router-view />
+        <router-view></router-view>
       </div>
     </div>
   </div>

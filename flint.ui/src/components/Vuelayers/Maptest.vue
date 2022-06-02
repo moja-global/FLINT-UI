@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="absolute left-0">
       <vl-map data-projection="EPSG:4326" style="height: 300px; width: 600px">
-        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" />
+        <vl-view v-model:zoom="zoom" v-model:center="center" v-model:rotation="rotation" />
 
         <vl-layer-tile>
           <vl-source-osm />
