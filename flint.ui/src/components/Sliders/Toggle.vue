@@ -2,8 +2,10 @@
   <div
     class="w-min mt-3"
     @click="
-      toggleActive = !toggleActive
-      checkforAutoProgress()
+      () => {
+        toggleActive = !toggleActive
+        checkforAutoProgress()
+      }
     "
   >
     <div

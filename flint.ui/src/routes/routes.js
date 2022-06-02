@@ -6,11 +6,6 @@ import Configurations from '@/views/flint/Configurations.vue'
 import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
 import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
 
-import PointOutput from '@/views/flint/PointOutput.vue'
-import PointOuterTable from '@/views/flint/PointOuterTable.vue'
-import RothCOuterTable from '@/views/flint/RothCOuterTable.vue'
-import RothCOutput from '@/views/flint/RothCOutput.vue'
-
 import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
@@ -40,22 +35,6 @@ const routes = [
       {
         path: '/flint/configurations/rothc',
         component: ConfigurationsRothC
-      },
-      {
-        path: '/flint/point_output_table',
-        component: PointOuterTable
-      },
-      {
-        path: '/flint/point_output',
-        component: PointOutput
-      },
-      {
-        path: '/flint/rothc_output_table',
-        component: RothCOuterTable
-      },
-      {
-        path: '/flint/rothc_output',
-        component: RothCOutput
       }
     ]
   },
@@ -86,7 +65,7 @@ const routes = [
     path: '/',
     component: Landing
   },
-  { path: '/:pathMatch(.*)*', component: Errorpage }
+  { path: '/:pathMatch(.*)*', name: 'not-found', component: Errorpage }
 ]
 
 export default routes

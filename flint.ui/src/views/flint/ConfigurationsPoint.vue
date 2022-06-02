@@ -86,9 +86,9 @@
         </div>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
+          <div data-v-step="5"><Button @click="Run()">Run</Button></div>
           <div data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showPointOutputTable()">Point Output Table</Button>
+            <Button :btn-size="'auto'" @click="showPointOutputTable()">Point Output Table</Button>
           </div>
         </div>
       </div>

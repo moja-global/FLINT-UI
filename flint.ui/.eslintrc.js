@@ -4,10 +4,10 @@ module.exports = {
   env: {
     node: true
   },
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
+  parser: '@babel/eslint-parser',
+  // parserOptions: {
+  //   parser: 'babel-eslint'
+  // },
   plugins: ['vue'],
-  extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier', 'plugin:storybook/recommended']
+  extends: ['plugin:vue/vue3-recommended', '@vue/prettier', 'plugin:storybook/recommended']
 }
