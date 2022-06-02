@@ -34,7 +34,8 @@
     "fs": "0.0.1-security",
     "moment": "^2.29.1",
     "ol": "^6.6.1",
-    "vue": "2.6.14",
+    "vue": "^3.1.0",
+    "@vue/compat": "^3.1.0",
     "vue-apexcharts": "^1.6.2",
     "vue-chartjs": "^3.5.1",
     "vue-clickaway": "2.2.2",
@@ -82,7 +83,7 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "vue-eslint-parser": "^7.10.0",
     "vue-loader": "^15.9.8",
-    "vue-template-compiler": "2.6.14"
+    "@vue/compiler-sfc": "^3.1.0"
   },
   "browserslist": [
     "> 1%",
