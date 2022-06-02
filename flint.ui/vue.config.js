@@ -15,7 +15,8 @@ module.exports = {
           ...options,
           compilerOptions: {
             compatConfig: {
-              MODE: 2
+              MODE: 2,
+              COMPONENT_ASYNC: false
             }
           }
         }

@@ -1,7 +1,7 @@
 import { createApp, configureCompat } from 'vue'
 // import 'es6-promise/auto'
 import { createRouter, createWebHistory } from 'vue-router'
-import App from './App'
+import App from './App.vue'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
 
@@ -18,17 +18,16 @@ import routes from './routes/routes'
 // import 'vue-slider-component/theme/default.css'
 // import VueTour from 'vue-tour'
 
-// import Antd from 'ant-design-vue'
+import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 
 // require('vue-tour/dist/vue-tour.css')
 
 // Vue.use(Antd)
-
-// configure router
+// // configure router
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes: routes
 })
 
 // Vue.use(VueRouter)
@@ -44,14 +43,15 @@ const router = createRouter({
 
 const app = createApp(App)
 // app.use(Toast)
-// app.use(Antd)
+app.use(Antd)
 app.use(store)
 app.use(router)
 
 configureCompat({
   // default everything to Vue 2 behavior
-  MODE: 2
+  COMPONENT_ASYNC: false
 })
+// router.isReady().then(() => app.mount('#app'))
 
 app.mount('#app')
 // new Vue({

@@ -21,19 +21,19 @@ const routes = [
     component: FLINT,
     children: [
       {
-        path: '/flint/dashboard',
+        path: '/dashboard',
         component: Dashboard
       },
       {
-        path: '/flint/configurations',
+        path: '/configurations',
         component: Configurations
       },
       {
-        path: '/flint/configurations/point',
+        path: '/configurations/point',
         component: ConfigurationsPoint
       },
       {
-        path: '/flint/configurations/rothc',
+        path: '/configurations/rothc',
         component: ConfigurationsRothC
       }
     ]
@@ -44,15 +44,15 @@ const routes = [
     component: GCBM,
     children: [
       {
-        path: '/gcbm/dashboard',
+        path: '/dashboard',
         component: GCBMDashboard
       },
       {
-        path: '/gcbm/upload',
+        path: '/upload',
         component: GCBMUpload
       },
       {
-        path: '/gcbm/run',
+        path: '/run',
         component: GCBMRun
       }
     ]

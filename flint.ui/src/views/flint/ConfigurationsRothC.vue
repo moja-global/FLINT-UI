@@ -35,8 +35,8 @@
             :header="`${item.text} (${item.type})`"
             :show-arrow="false"
           >
-            <a-icon slot="extra" type="right" :rotate="accordionActiveKey == index ? 90 : 0" />
-            <div :is="item.component" />
+            <template #extra><right-outlined :rotate="accordionActiveKey == index ? 90 : 0" /> </template>
+            <component :is="item.component" />
           </a-collapse-panel>
         </a-collapse>
 
