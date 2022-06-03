@@ -91,7 +91,7 @@
 import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import Toggle from '@/components/Sliders/Toggle.vue'
+import Toggle from '@/components/Slider/Toggle.vue'
 import FooterComponent from '@/components/Footer/Footer.vue'
 import axios from 'axios'
 

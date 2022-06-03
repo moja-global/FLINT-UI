@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-slider v-model="inputVal" :value="sliderValue" v-bind="$attrs" @change="onChange" v-on="$listeners" />
+    <a-slider v-model:value="inputVal" v-bind="$attrs" />
   </div>
 </template>
 
@@ -10,6 +10,7 @@ export default {
   components: {
     'a-slider': Slider
   },
+  emits: ['changeVal'],
   props: {
     value: { type: Number, default: 100 }
   },
@@ -22,14 +23,9 @@ export default {
         return this.sliderValue
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit('changeVal', val)
         this.sliderValue = val
       }
-    }
-  },
-  methods: {
-    onChange(val) {
-      this.sliderValue = val
     }
   }
 }
