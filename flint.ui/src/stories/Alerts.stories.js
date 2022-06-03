@@ -1,4 +1,4 @@
-import BaseAlert from '@/components/Alerts/Alert.vue'
+import BaseAlert from '../components/Alerts/Alert.vue'
 
 export default {
   title: 'Alert',

@@ -1,4 +1,4 @@
-import BaseProgress from '@/components/Progress/Progress.vue'
+import BaseProgress from '../components/Progress/Progress.vue'
 
 export default {
   title: 'Progress',

@@ -1,4 +1,4 @@
-import BasePopconfirm from '@/components/PopupConfirm/PopupConfirm.vue'
+import BasePopconfirm from '../components/PopupConfirm/PopupConfirm.vue'
 
 export default {
   title: 'Popconfirm',

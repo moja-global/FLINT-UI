@@ -19,7 +19,7 @@ export default {
     'a-date-picker': DatePicker
   },
   props: {
-    // value: { type: String, default: dayjs('2022-01-31').toString() }
+    value: { type: String, default: dayjs('2022-01-31') }
   },
   data() {
     return { selectedDate: this.value }
