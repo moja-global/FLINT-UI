@@ -140,6 +140,7 @@ export default {
 }
 .social-icons:hover {
   transform: scale(1.1);
+  background-color: white;
 }
 
 .social-icons .icon {
