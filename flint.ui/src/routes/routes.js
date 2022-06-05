@@ -44,17 +44,17 @@ const routes = [
     component: GCBM,
     children: [
       {
-		name: 'gcbmdashboard',
+        name: 'gcbmdashboard',
         path: '/gcbm/dashboard',
         component: GCBMDashboard
       },
       {
-		name: 'gcbmupload',
+        name: 'gcbmupload',
         path: '/gcbm/upload',
         component: GCBMUpload
       },
       {
-		name: 'gcbmrun',
+        name: 'gcbmrun',
         path: '/gcbm/run',
         component: GCBMRun
       }
