@@ -10,35 +10,48 @@
 
 <script>
 export default {
+  props: {
+    initial: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
-      current: 0
+      current: this.initial
     }
   },
 
   mounted() {
-    this.current = this.$route.params.current
+    this.current = this.$route.params.current || this.initial
   },
 
   methods: {
     onChange(current) {
       this.current = current
 
-      if (current == 0) {
-        this.$router.push({
-          name: 'gcbmdashboard',
-          params: { current }
-        })
-      } else if (current == 1) {
-        this.$router.push({
-          name: 'gcbmupload',
-          params: { current }
-        })
-      } else if (current == 2) {
-        this.$router.push({
-          name: 'gcbmrun',
-          params: { current }
-        })
+      switch (current) {
+        case 0:
+          // New Simulation
+          this.$router.push({
+            name: 'gcbmdashboard',
+            params: { current }
+          })
+          break
+        case 1:
+          // Upload Dataset
+          this.$router.push({
+            name: 'gcbmupload',
+            params: { current }
+          })
+          break
+        case 2:
+          // Run | Status | Download
+          this.$router.push({
+            name: 'gcbmrun',
+            params: { current }
+          })
+          break
       }
     }
   }

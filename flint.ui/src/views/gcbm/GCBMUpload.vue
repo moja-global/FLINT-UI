@@ -67,7 +67,7 @@
       <FileUpload ref="gcbmFileUpload" />
     </div>
 
-    <StepperGCBM />
+    <StepperGCBM :initial="1" />
     <FooterComponent />
   </div>
 </template>

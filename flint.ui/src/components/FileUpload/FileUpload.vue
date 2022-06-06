@@ -1,12 +1,11 @@
 <template>
   <a-row :gutter="[24, 24]" class="pt-4 pb-6">
     <a-col :md="12" :lg="8" :span="24">
-      <div v-if="files.config.length" class="text-2xl text-center mb-2">Config Files</div>
+      <div class="text-2xl text-center mb-2">Config Files</div>
       <div
         v-if="!files.config.length"
         id="dropzoneConfig"
-        class="dropzone-gcbm"
-        :style="{ border: resultConfig.isDragActive.value ? '2px dashed #0087ff' : '2px dashed #bdbdbd' }"
+        :class="`dropzone-gcbm ${resultConfig.isDragActive.value && 'drag-active'}`"
         ref="dropzoneConfig"
         v-bind="resultConfig.getRootProps()"
       >
@@ -22,18 +21,17 @@
             {{ file.name }}
           </span>
           <br />
-          <span>{{ parseFloat((file.size / 1000).toFixed(2)) + ' KB' }}</span>
+          <span>{{ bytesToKB(file.size) }}</span>
         </div>
       </div>
     </a-col>
 
     <a-col :md="12" :lg="8" :span="24">
-      <div v-if="files.db.length" class="text-2xl text-center mb-2">Database</div>
+      <div class="text-2xl text-center mb-2">Database</div>
       <div
         v-if="!files.db.length"
         id="dropzoneDB"
-        class="dropzone-gcbm"
-        :style="{ border: resultDB.isDragActive.value ? '2px dashed #0087ff' : '2px dashed #bdbdbd' }"
+        :class="`dropzone-gcbm ${resultDB.isDragActive.value && 'drag-active'}`"
         ref="dropzoneDB"
         v-bind="resultDB.getRootProps()"
       >
@@ -49,18 +47,17 @@
             {{ file.name }}
           </span>
           <br />
-          <span>{{ parseFloat((file.size / 1000).toFixed(2)) + ' KB' }}</span>
+          <span>{{ bytesToKB(file.size) }}</span>
         </div>
       </div>
     </a-col>
 
     <a-col :md="12" :lg="8" :span="24">
-      <div v-if="files.input.length" class="text-2xl text-center mb-2">Input Files</div>
+      <div class="text-2xl text-center mb-2">Input Files</div>
       <div
         v-if="!files.input.length"
         id="dropzoneInput"
-        class="dropzone-gcbm"
-        :style="{ border: resultInput.isDragActive.value ? '2px dashed #0087ff' : '2px dashed #bdbdbd' }"
+        :class="`dropzone-gcbm ${resultInput.isDragActive.value && 'drag-active'}`"
         ref="dropzoneInput"
         v-bind="resultInput.getRootProps()"
       >
@@ -76,7 +73,7 @@
             {{ file.name }}
           </span>
           <br />
-          <span>{{ parseFloat((file.size / 1000).toFixed(2)) + ' KB' }}</span>
+          <span>{{ bytesToKB(file.size) }}</span>
         </div>
       </div>
     </a-col>
@@ -144,12 +141,17 @@ export default {
 
     const resultInput = useDropzone({ onDrop: onInputDrop, ...dropzoneConfig })
 
+    function bytesToKB(bytes) {
+      return parseFloat((bytes / 1000).toFixed(2)) + ' KB'
+    }
+
     return {
+      files,
       formData,
       resultConfig,
       resultDB,
       resultInput,
-      files
+      bytesToKB
     }
   },
   methods: {
@@ -221,10 +223,9 @@ export default {
   color: #777;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
-  min-height: 150px;
+  min-height: 190px;
   background: #fff;
   padding: 20px 20px;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,6 +241,11 @@ export default {
   max-height: 200px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.drag-active {
+  border: 2px dashed #0087ff;
+  background-color: #f5f5f5;
 }
 
 .file-container {

@@ -44,10 +44,10 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .ant-calendar-picker-input.ant-input {
+:deep(.ant-calendar-picker-input.ant-input) {
   border-color: theme('colors.earth');
 }
-::v-deep .ant-calendar-picker-icon {
+:deep(.ant-calendar-picker-icon) {
   color: theme('colors.earth');
 }
 </style>

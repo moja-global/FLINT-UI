@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <StepperGCBM />
+    <StepperGCBM :initial="2" />
     <FooterComponent />
   </div>
 </template>

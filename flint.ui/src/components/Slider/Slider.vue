@@ -32,24 +32,24 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .ant-slider {
+:deep(.ant-slider) {
   width: auto;
   margin: 0;
   padding: 7px 0;
 }
-::v-deep .ant-slider:hover .ant-slider-track,
-::v-deep .ant-slider:hover .ant-slider-rail {
+:deep(.ant-slider:hover .ant-slider-track),
+:deep(.ant-slider:hover .ant-slider-rail) {
   background-color: theme('colors.earth');
 }
-::v-deep .ant-slider-track {
+:deep(.ant-slider-track) {
   height: 2px;
   background-color: theme('colors.earth');
 }
-::v-deep .ant-slider-rail {
+:deep(.ant-slider-rail) {
   height: 2px;
   background-color: theme('colors.earth');
 }
-::v-deep .ant-slider-handle {
+:deep(.ant-slider-handle) {
   background-color: theme('colors.earth');
   border: none;
   width: 14px;
