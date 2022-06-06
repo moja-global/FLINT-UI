@@ -1,6 +1,5 @@
 <template>
   <div class="parent">
-    <LandingPageNavbar />
     <div class="flex flex-row flex-wrap">
       <div class="relative flex content-center justify-center w-full min-h-screen-75 lg:w-5/12">
         <div
@@ -40,21 +39,16 @@
         link="/gcbm/dashboard"
       />
     </a-row>
-    <Footer />
   </div>
 </template>
 
 <script>
-import LandingPageNavbar from './../components/Navbars/LandingPageNavbar.vue'
 import LandingPageCard from './../components/Cards/LandingPageCard.vue'
-import Footer from './../components/Footer/Footer.vue'
 
 export default {
   name: 'Landing',
   components: {
-    LandingPageNavbar,
-    LandingPageCard,
-    Footer
+    LandingPageCard
   }
 }
 </script>
