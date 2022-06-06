@@ -1,19 +1,22 @@
 <template>
   <div class="relative">
     <div class="absolute left-0">
-      <vl-map data-projection="EPSG:4326" style="height: 300px; width: 600px">
-        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" />
+      <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height: 300px; width: 600px">
+        <ol-view :zoom="zoom" :center="center" :rotation="rotation" :projection="'EPSG:4326'" />
 
-        <vl-layer-tile>
-          <vl-source-osm />
-        </vl-layer-tile>
-
-        <vl-feature>
-          <vl-geom-point
-            :coordinates="[$store.state.vuelayers.coordinates[0], $store.state.vuelayers.coordinates[1]]"
-          />
-        </vl-feature>
-      </vl-map>
+        <ol-tile-layer>
+          <ol-source-osm />
+        </ol-tile-layer>
+        <ol-vector-layer>
+          <ol-source-vector>
+            <ol-feature>
+              <ol-geom-point
+                :coordinates="[$store.state.vuelayers.coordinates[0], $store.state.vuelayers.coordinates[1]]"
+              />
+            </ol-feature>
+          </ol-source-vector>
+        </ol-vector-layer>
+      </ol-map>
     </div>
     <div class="absolute right-0">
       <div class="px-4 content-center rounded-md mb-5">

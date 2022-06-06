@@ -82,10 +82,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'StepperStatic'
+}
+</script>
+
 <style scoped>
 .cards {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .card-content {
   display: flex;
@@ -94,6 +102,7 @@
 }
 .card-content > i {
   margin: 10px;
+  color: rgba(0, 0, 0, 0.65);
 }
 .card-content > div {
   margin: 10px;
@@ -106,6 +115,7 @@
 }
 .next-icons {
   margin-left: 10px;
+  color: rgba(0, 0, 0, 0.65);
 }
 @media screen and (max-width: 768px) {
   .cards {

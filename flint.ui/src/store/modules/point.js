@@ -1,6 +1,5 @@
-/* eslint-disable */
-import Vue from 'vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 
 export default {
   state: {
@@ -162,32 +161,32 @@ export default {
     update_pool_1(state, pool_1) {
       console.log('updated pool 1 in state')
       console.log(this.state.point.pool_1)
-      Vue.set(state, 'pool_1', pool_1)
+      state['pool_1'] = pool_1
     },
     update_pool_2(state, pool_2) {
       console.log('updated pool 2 in state')
       console.log(this.state.point.pool_2)
-      Vue.set(state, 'pool_2', pool_2)
+      state['pool_2'] = pool_2
     },
     update_pool_3(state, pool_3) {
       console.log('updated pool 3 in state')
       console.log(this.state.point.pool_3)
-      Vue.set(state, 'pool_3', pool_3)
+      state['pool_3'] = pool_3
     },
     update_point_stepLenInYears(state, point_stepLenInYears) {
       console.log('updated point_stepLenInYears in state')
       console.log(this.state.point.point_stepLenInYears)
-      Vue.set(state, 'point_stepLenInYears', point_stepLenInYears)
+      state['point_stepLenInYears'] = point_stepLenInYears
     },
     update_point_stepDate(state, point_stepDate) {
       console.log('updated point_stepDate in state')
       console.log(this.state.point.point_stepDate)
-      Vue.set(state, 'point_stepDate', point_stepDate)
+      state['point_stepDate'] = point_stepDate
     },
     update_point_step(state, point_step) {
       console.log('updated point_step in state')
       console.log(this.state.point.point_step)
-      Vue.set(state, 'point_step', point_step)
+      state['point_step'] = point_step
     },
 
     //Point Sim config
@@ -210,6 +209,7 @@ export default {
       console.log('point_results sent to state')
       //console.log(state.results)
     },
+    // eslint-disable-next-line no-unused-vars
     updateFlag(state, flag) {
       state.flag = 1
       console.log('flag')
@@ -227,11 +227,11 @@ export default {
       let config_string = JSON.stringify(this.state.point.config)
       let parsed_config_string = config_string.replaceAll('"#$', ' ')
       let final_config_string = parsed_config_string.replaceAll('#$"', ' ')
-
+      const toast = useToast()
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
-          this._vm.$toast.success(`Configuration loaded for Point.`, {
+          toast.success(`Configuration loaded for Point.`, {
             timeout: 2000
           })
           console.log(response)
@@ -239,10 +239,10 @@ export default {
           console.log(this.state.point.point_results)
         })
         .catch((error) => {
-          this._vm.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-        commit('updateFlag', 1)
+      commit('updateFlag', 1)
     },
     parse_point_results({ commit }) {
       console.log(this.state.point.point_results)
@@ -269,28 +269,13 @@ export default {
       console.log('array1')
       console.log(df_as_array.length)
 
-      for (
-        let simulation_step = 0;
-        simulation_step < df_as_array.length;
-        simulation_step++
-      ) {
-        pool_1[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['Pool 1']
-        )
-        pool_2[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['Pool 2']
-        )
-        pool_3[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['Pool 3']
-        )
-        point_step[simulation_step] = parseInt(
-          df_as_array[simulation_step]['step']
-        )
-        point_stepDate[simulation_step] =
-          df_as_array[simulation_step]['stepDate'].toString()
-        point_stepLenInYears[simulation_step] = parseFloat(
-          df_as_array[simulation_step]['stepLenInYears']
-        )
+      for (let simulation_step = 0; simulation_step < df_as_array.length; simulation_step++) {
+        pool_1[simulation_step] = parseFloat(df_as_array[simulation_step]['Pool 1'])
+        pool_2[simulation_step] = parseFloat(df_as_array[simulation_step]['Pool 2'])
+        pool_3[simulation_step] = parseFloat(df_as_array[simulation_step]['Pool 3'])
+        point_step[simulation_step] = parseInt(df_as_array[simulation_step]['step'])
+        point_stepDate[simulation_step] = df_as_array[simulation_step]['stepDate'].toString()
+        point_stepLenInYears[simulation_step] = parseFloat(df_as_array[simulation_step]['stepLenInYears'])
       }
 
       console.log(point_step)
@@ -320,7 +305,6 @@ export default {
       console.log('this.point_stepLenInYears')
       console.log(this.state.point.point_stepLenInYears)
       //window.open('process.env.VUE_APP_REST_API_FLINT_EXAMPLE/flint/point_output_table',"_self")
-
     }
   }
 }

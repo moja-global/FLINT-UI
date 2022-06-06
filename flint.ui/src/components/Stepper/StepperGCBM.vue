@@ -1,30 +1,72 @@
 <template>
-  <div class="bottom-0 z-50">
-    <md-steppers md-sync-route md-dynamic-height md-alternative class="large-screen">
-      <md-step id="first" to="/gcbm/dashboard" md-label="New Simulation" />
-
-      <md-step id="second" to="/gcbm/upload" md-label="Upload dataset" />
-
-      <md-step id="third" to="/gcbm/run" md-label="Run | Status | Download" />
-    </md-steppers>
-
-    <md-steppers md-sync-route md-dynamic-height md-vertical class="small-screen">
-      <md-step id="first" to="/gcbm/dashboard" md-label="New Simulation" />
-
-      <md-step id="second" to="/gcbm/upload" md-label="Upload dataset" />
-
-      <md-step id="third" to="/gcbm/run" md-label="Run | Check Status | Download" />
-    </md-steppers>
+  <div class="stepper-container">
+    <a-steps :current="current" @change="onChange">
+      <a-step title="New simulation" />
+      <a-step title="Upload dataset" />
+      <a-step title="Run | Status | Download" />
+    </a-steps>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {}
+  props: {
+    initial: {
+      type: Number,
+      default: 0
+    }
+  },
+  data() {
+    return {
+      current: this.initial
+    }
+  },
+
+  mounted() {
+    this.current = this.$route.params.current || this.initial
+  },
+
+  methods: {
+    onChange(current) {
+      this.current = current
+
+      switch (current) {
+        case 0:
+          // New Simulation
+          this.$router.push({
+            name: 'gcbmdashboard',
+            params: { current }
+          })
+          break
+        case 1:
+          // Upload Dataset
+          this.$router.push({
+            name: 'gcbmupload',
+            params: { current }
+          })
+          break
+        case 2:
+          // Run | Status | Download
+          this.$router.push({
+            name: 'gcbmrun',
+            params: { current }
+          })
+          break
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
+.stepper-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 40px;
+}
+
 .small-screen {
   display: block;
 }

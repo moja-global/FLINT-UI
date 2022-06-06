@@ -6,21 +6,20 @@
       :default-value="selectedDate"
       v-bind="$attrs"
       @change="onChange"
-      v-on="$listeners"
     />
   </div>
 </template>
 
 <script>
 import { DatePicker } from 'ant-design-vue'
-import moment from 'moment'
-
+import dayjs from 'dayjs'
+console.log(dayjs)
 export default {
   components: {
     'a-date-picker': DatePicker
   },
   props: {
-    value: { type: String, default: moment('2022-01-31').toString() }
+    value: { type: String, default: dayjs('2022-01-31') }
   },
   data() {
     return { selectedDate: this.value }
@@ -31,7 +30,7 @@ export default {
         return this.selectedDate
       },
       set(val) {
-        this.$emit('input', moment(val).toString())
+        // this.$emit('input', dayjs(val).toString())
         this.selectedDate = val
       }
     }
@@ -45,10 +44,10 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .ant-calendar-picker-input.ant-input {
+:deep(.ant-calendar-picker-input.ant-input) {
   border-color: theme('colors.earth');
 }
-::v-deep .ant-calendar-picker-icon {
+:deep(.ant-calendar-picker-icon) {
   color: theme('colors.earth');
 }
 </style>
