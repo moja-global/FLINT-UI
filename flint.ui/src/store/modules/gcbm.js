@@ -1,5 +1,5 @@
-//import Vue from 'vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 
 export default {
   state: {
@@ -663,20 +663,25 @@ export default {
       console.log(this.state.gcbm.config.title)
       bodyFormData.append('title', this.state.gcbm.config.title)
       console.log([...bodyFormData])
+
+      const toast = useToast()
+
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
         .then((response) => {
-          this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
+          toast.success(`${response.data.data}`, { timeout: 5000 })
           console.log(response)
         })
         .catch((error) => {
-          this._vm.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     },
     check_gcbm_run_status() {
+      const toast = useToast()
+
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
-        this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
+        toast.success(`${response.data.data}`, { timeout: 5000 })
         console.log(response.data)
       })
     }

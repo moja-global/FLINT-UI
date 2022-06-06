@@ -1,5 +1,5 @@
-import Vue from 'vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 
 export default {
   state: {
@@ -257,65 +257,65 @@ export default {
     update_DPM(state, DPM) {
       console.log('updated DPM in state')
       console.log(this.state.rothc.DPM)
-      Vue.set(state, 'DPM', DPM)
+      state['DPM'] = DPM
     },
     update_RPM(state, RPM) {
       console.log('updated RPM in state')
       console.log(this.state.rothc.RPM)
-      Vue.set(state, 'RPM', RPM)
+      state['RPM'] = RPM
     },
     update_BIOF(state, BIOF) {
       console.log('updated BIOF in state')
       console.log(this.state.rothc.BIOF)
-      Vue.set(state, 'BIOF', BIOF)
+      state['BIOF'] = BIOF
     },
     update_BIOS(state, BIOS) {
       console.log('updated BIOS in state')
       console.log(this.state.rothc.BIOS)
-      Vue.set(state, 'BIOS', BIOS)
+      state['BIOS'] = BIOS
     },
     update_HUM(state, HUM) {
       console.log('updated HUM in state')
       console.log(this.state.rothc.HUM)
-      Vue.set(state, 'HUM', HUM)
+      state['HUM'] = HUM
     },
     update_IOM(state, IOM) {
       console.log('updated IOM in state')
       console.log(this.state.rothc.IOM)
-      Vue.set(state, 'IOM', IOM)
+      state['IOM'] = IOM
     },
     update_RothC_step(state, RothC_step) {
       console.log('updated RothC_step in state')
       console.log(this.state.rothc.RothC_step)
-      Vue.set(state, 'RothC_step', RothC_step)
+      state['RothC_step'] = RothC_step
     },
 
     update_RothC_stepDate(state, RothC_stepDate) {
       console.log('updated RothC_stepDate in state')
       console.log(this.state.rothc.RothC_stepDate)
-      Vue.set(state, 'RothC_stepDate', RothC_stepDate)
+      state['RothC_stepDate'] = RothC_stepDate
     },
 
     update_RothC_stepLenInYears(state, RothC_stepLenInYears) {
       console.log('updated RothC_stepLenInYears in state')
       console.log(this.state.rothc.RothC_stepLenInYears)
-      Vue.set(state, 'RothC_stepLenInYears', RothC_stepLenInYears)
+      state['RothC_stepLenInYears'] = RothC_stepLenInYears
     },
 
     update_initialValues(state, initialValues) {
       console.log('updated initialValues in state')
       console.log(this.state.rothc.initialValues)
-      Vue.set(state, 'initialValues', initialValues)
+      state['initialValues'] = initialValues
     },
     update_plantCM(state, plantCM) {
       console.log('updated plantCM in state')
       console.log(this.state.rothc.plantCM)
-      Vue.set(state, 'plantCM', plantCM)
+      state['plantCM'] = plantCM
     },
     update_atmosphere(state, atmosphere) {
       console.log('updated atmosphere in state')
       console.log(this.state.rothc.atmosphere)
-      Vue.set(state, 'atmosphere', atmosphere)
+      state['atmosphere'] = atmosphere
     },
 
     setNewConfig_dpmaCMInit(state, newValue) {
@@ -484,17 +484,20 @@ export default {
       let final_RothC_config_string = preprocessed_RothC_string.replaceAll('$#"', '')
 
       console.log(final_RothC_config_string)
+
+      const toast = useToast()
+
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`, final_RothC_config_string)
         .then((response) => {
-          this._vm.$toast.success(`Configuration loaded for RothC.`, {
+          toast.success(`Configuration loaded for RothC.`, {
             timeout: 2000
           })
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
         .catch((error) => {
-          this._vm.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     },

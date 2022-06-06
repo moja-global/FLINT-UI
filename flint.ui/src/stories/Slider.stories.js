@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import Slider from '@/components/Sliders/Slider.vue'
+import Slider from '../components/Slider/Slider.vue'
 
 export default {
   title: 'Slider',

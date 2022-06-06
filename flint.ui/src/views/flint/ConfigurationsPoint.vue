@@ -37,12 +37,12 @@
                   <span>Pool 1: {{ pool1.value }}</span>
                   <span>{{ pool1.max }}</span>
                 </div>
-                <vue-slider
-                  v-model="pool1.value"
-                  v-bind="pool1"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                <Slider
+                  :value="pool1.value"
+                  :max="pool1.max"
+                  :min="pool1.min"
+                  :step="pool1.step"
+                  @changeVal="(val) => (pool1.value = val)"
                 />
               </div>
             </div>
@@ -55,12 +55,12 @@
                   <span>Pool 2: {{ pool2.value }}</span>
                   <span>{{ pool2.max }}</span>
                 </div>
-                <vue-slider
-                  v-model="pool2.value"
-                  v-bind="pool2"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                <Slider
+                  :value="pool2.value"
+                  :max="pool2.max"
+                  :min="pool2.min"
+                  :step="pool2.step"
+                  @changeVal="(val) => (pool2.value = val)"
                 />
               </div>
             </div>
@@ -73,12 +73,12 @@
                   <span>Pool 3: {{ pool3.value }}</span>
                   <span>{{ pool3.max }}</span>
                 </div>
-                <vue-slider
-                  v-model="pool3.value"
-                  v-bind="pool3"
-                  :dot-style="{ 'background-color': '#475447', width: '14px', height: '14px' }"
-                  :rail-style="{ 'background-color': '#475447', height: '2px !important' }"
-                  :process-style="{ 'background-color': '#475447', height: '2px !important' }"
+                <Slider
+                  :value="pool3.value"
+                  :max="pool3.max"
+                  :min="pool3.min"
+                  :step="pool3.step"
+                  @changeVal="(val) => (pool3.value = val)"
                 />
               </div>
             </div>
@@ -86,9 +86,9 @@
         </div>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="Run()">Run</Button></div>
+          <div data-v-step="5"><Button @click="Run()">Run</Button></div>
           <div data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showPointOutputTable()">Point Output Table</Button>
+            <Button :btn-size="'auto'" @click="showPointOutputTable()">Point Output Table</Button>
           </div>
         </div>
       </div>
@@ -104,6 +104,7 @@ import Button from '@/components/Button/Button.vue'
 import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
+import Slider from '@/components/Slider/Slider.vue'
 import Footer from '@/components/Footer/Footer.vue'
 import PointOuterTable from './PointOuterTable.vue'
 
@@ -114,6 +115,7 @@ export default {
     LandingPageNavbar,
     Maptest,
     Footer,
+    Slider,
     PointOuterTable
   },
   data() {
@@ -197,9 +199,6 @@ export default {
   mounted: function () {
     this.$tours['MyTour'].start()
   },
-  created() {
-    this.$root.$refs = this
-  },
   methods: {
     finalPoolValues() {
       if (
@@ -217,7 +216,7 @@ export default {
     },
 
     Run() {
-      this.$root.$refs.finalPoolValues() //This does whatever the stepper does.
+      this.finalPoolValues() //This does whatever the stepper does.
       this.showTable = false
     },
 

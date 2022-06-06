@@ -2,16 +2,17 @@
   <div
     class="w-min mt-3"
     @click="
-      toggleActive = !toggleActive
-      checkforAutoProgress()
+      () => {
+        toggleActive = !toggleActive
+        checkforAutoProgress()
+      }
     "
   >
     <div
       id="revert-toggle"
-      class="w-10 h-6 items-center bg-black rounded-full p-1 duration-300 ease-in-out -mx-0"
+      class="w-10 h-6 items-center bg-earth rounded-full p-1 duration-300 ease-in-out -mx-0"
       :class="{ 'bg-green-400': toggleActive }"
     >
-      <md-tooltip>Toggle to check status and auto-download the simulation</md-tooltip>
       <div
         class="bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out"
         :class="{ 'translate-x-4': toggleActive }"

@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import Datepicker from '@/components/Datepicker/Datepicker.vue'
+import Datepicker from '../components/Datepicker/Datepicker.vue'
 
 export default {
   title: 'Datepicker',

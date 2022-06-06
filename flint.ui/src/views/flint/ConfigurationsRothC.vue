@@ -20,7 +20,7 @@
             <div class="py-6 mb-3">
               <h2 class="text-xl font-normal text-earth">Start and End date of simulation</h2>
               <div>
-                <div class="text-2xl font-normal text-gray"><Datepicker size="small" /></div>
+                <div class="text-2xl font-normal text-gray"><Datepicker size="large" /></div>
               </div>
             </div>
           </div>
@@ -35,15 +35,17 @@
             :header="`${item.text} (${item.type})`"
             :show-arrow="false"
           >
-            <a-icon slot="extra" type="right" :rotate="accordionActiveKey == index ? 90 : 0" />
-            <div :is="item.component" />
+            <template #extra>
+              <i class="far fa-angle-right" :rotate="accordionActiveKey == index ? 90 : 0" />
+            </template>
+            <component :is="item.component" />
           </a-collapse-panel>
         </a-collapse>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
+          <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
+            <Button :btn-size="'auto'" @click="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
               {{ showTable ? 'Hide' : 'Show' }} Output
             </Button>
           </div>
@@ -70,11 +72,15 @@ import RothCPresCMVue from '@/components/ConfigurationsRothC/RothCPresCM.vue'
 import RothCOpenPanEvapVue from '@/components/ConfigurationsRothC/RothCOpenPanEvap.vue'
 import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue'
 
+import { markRaw } from 'vue'
+import { RightOutlined } from '@ant-design/icons-vue'
+
 export default {
   components: {
     RothCTemplate,
     Datepicker,
     LandingPageNavbar,
+    RightOutlined,
     RothCOuterTable,
     Button,
     Footer
@@ -87,37 +93,37 @@ export default {
       accordionActiveKey: '1',
       configurations: {
         rainfall: {
-          component: RothCRainfallVue,
+          component: markRaw(RothCRainfallVue),
           type: 'rainfall',
           text: 'Rainfall'
         },
         openPanEvap: {
-          component: RothCOpenPanEvapVue,
+          component: markRaw(RothCOpenPanEvapVue),
           type: 'openPanEvap',
           text: 'Open Pan Evaporation'
         },
         avgAirTemp: {
-          component: RothCAvgAirTempVue,
+          component: markRaw(RothCAvgAirTempVue),
           type: 'avgAirTemp',
           text: 'Average Air Temperature'
         },
         presCM: {
-          component: RothCPresCMVue,
+          component: markRaw(RothCPresCMVue),
           type: 'presCM',
           text: 'Organic carbon inputs'
         },
         soilCover: {
-          component: RothCSoilCoverVue,
+          component: markRaw(RothCSoilCoverVue),
           type: 'soilCover',
           text: 'Soil Cover'
         },
         initSoil: {
-          component: RothCInitSoilVue,
+          component: markRaw(RothCInitSoilVue),
           type: 'initSoil',
           text: 'Initial conditions of the Soil'
         },
         soil: {
-          component: RothCSoilVue,
+          component: markRaw(RothCSoilVue),
           type: 'soil',
           text: 'Soil characteristics'
         }

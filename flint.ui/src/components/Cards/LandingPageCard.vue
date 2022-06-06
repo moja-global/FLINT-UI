@@ -7,7 +7,7 @@
       <p class="text-earth text-base leading-7">
         {{ description }}
       </p>
-      <Button class="mt-4" :btn-size="'auto'" @click.native="onClick">Explore <span> →</span></Button>
+      <Button class="mt-4" :btn-size="'auto'" @click="onClick">Explore <span> →</span></Button>
     </div>
   </a-col>
 </template>

@@ -26,7 +26,7 @@
     <a-row :gutter="[24, 48]" class="w-full py-14 md:py-20 px-8 sm:px-16 md:px-24 landing-cards">
       <LandingPageCard
         title="Point"
-        description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
+        description="Point is a basic model in the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
         link="/flint/configurations/point"
       />
       <LandingPageCard
@@ -50,7 +50,7 @@ import LandingPageCard from './../components/Cards/LandingPageCard.vue'
 import Footer from './../components/Footer/Footer.vue'
 
 export default {
-  name: 'MyTour',
+  name: 'Landing',
   components: {
     LandingPageNavbar,
     LandingPageCard,
