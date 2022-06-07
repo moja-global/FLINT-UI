@@ -1,6 +1,6 @@
 <template>
   <div class="stepper-container">
-    <a-steps :current="current" @change="onChange">
+    <a-steps v-model:current="current" @change="onChange">
       <a-step title="New simulation" />
       <a-step title="Upload dataset" />
       <a-step title="Run | Status | Download" />
@@ -22,14 +22,8 @@ export default {
     }
   },
 
-  mounted() {
-    this.current = this.$route.params.current || this.initial
-  },
-
   methods: {
     onChange(current) {
-      this.current = current
-
       switch (current) {
         case 0:
           // New Simulation

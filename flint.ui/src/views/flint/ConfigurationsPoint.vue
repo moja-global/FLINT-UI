@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LandingPageNavbar />
     <div class="px-8 pb-6 sm:px-16 md:px-24">
       <div class="mt-14">
         <h2 class="text-xl sm:text-2xl md:text-2xl text-earth mb-3">Point example simulation configuration</h2>
@@ -95,26 +94,21 @@
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
       <PointOuterTable v-if="showTable" />
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import Button from '@/components/Button/Button.vue'
 import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
-import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
-import Footer from '@/components/Footer/Footer.vue'
 import PointOuterTable from './PointOuterTable.vue'
 
 export default {
   components: {
     Button,
     Datepicker,
-    LandingPageNavbar,
     Maptest,
-    Footer,
     Slider,
     PointOuterTable
   },
