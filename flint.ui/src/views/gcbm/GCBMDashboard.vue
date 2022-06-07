@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LandingPageNavbar />
     <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
       <div class="bg-white p-6 rounded-lg shadow-lg">
         <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
@@ -62,23 +61,18 @@
       </div>
     </div>
     <StepperGCBM :initial="0" />
-    <FooterComponent />
   </div>
 </template>
 
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
-import FooterComponent from '@/components/Footer/Footer.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
-    StepperStatic,
-    LandingPageNavbar,
-    FooterComponent
+    StepperStatic
   },
 
   data: () => ({
