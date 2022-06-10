@@ -22,33 +22,34 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  data() {
-    return {
-      toggleActive: false,
-      isDownloaded: false
-    }
-  },
-  methods: {
-    checkforAutoProgress() {
-      this.isDownloaded = false
-      console.log('Current state of the switch: ', this.toggleActive)
-      if (this.toggleActive == true) {
+   
+  setup(context) {
+    const toggleActive = ref(false);
+    const isDownloaded = ref(false);
+
+    function checkforAutoProgress() {
+       isDownloaded.value = false
+      console.log('Current state of the switch: ', toggleActive.value)
+      if ( toggleActive.value == true) {
         console.log('toggled = true')
         this.interval = setInterval(() => {
-          this.$emit('checkstatus')
-
+          context.emit('checkstatus')
+          
           if (this.$store.state.gcbm.SimulationProgress == 'Output is ready to download at gcbm/download') {
             console.log('download now')
-            this.$emit('downloadsim')
-            this.isDownloaded = true
+           context.emit('downloadsim')
+            isDownloaded.value = true
             document.getElementById('revert-toggle').click()
           }
-        }, 30000)
+    }, 30000)
       } else {
         clearInterval(this.interval)
-      }
+      } 
     }
-  }
+    return { toggleActive, isDownloaded, checkforAutoProgress }
+  
+}
 }
 </script>
