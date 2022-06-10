@@ -1,11 +1,12 @@
 <template>
   <div>
-    <a-slider v-model:value="inputVal" v-bind="$attrs" />
+    <a-slider v-model="inputVal" v-bind="$attrs" />
   </div>
 </template>
 
 <script>
 import { Slider } from 'ant-design-vue'
+import { computed, ref } from 'vue'
 export default {
   components: {
     'a-slider': Slider
@@ -14,19 +15,12 @@ export default {
   props: {
     value: { type: Number, default: 100 }
   },
-  data() {
-    return { sliderValue: this.value }
-  },
-  computed: {
-    inputVal: {
-      get() {
-        return this.sliderValue
-      },
-      set(val) {
-        this.$emit('changeVal', val)
-        this.sliderValue = val
-      }
-    }
+  setup(props) {
+    const sliderValue = ref(props.value)
+    const inputVal = computed(() => {
+      return sliderValue
+    })
+    return { inputVal }
   }
 }
 </script>
