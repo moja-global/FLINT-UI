@@ -49,44 +49,55 @@
 </template>
 
 <script>
-export default {
-  data() {
+import { useStore } from 'vuex'
+import { ref, computed } from 'vue'
+export default { 
+  setup() {
+
+    const store = useStore()
+
+    const zoom = ref(15)
+    const center = ref([ store.state.vuelayers.coordinates[0], store.state.vuelayers.coordinates[1]])
+    const rotation = ref(0)
+    
+    const returnlat = computed(() => {
+        return store.state.vuelayers.coordinates[0]
+    })
+
+    const returnlon = computed(() => {
+        return store.state.vuelayers.coordinates[1]
+    })
+    
+    const getlatitude  = computed( {
+      get: () => {
+        return parseFloat(store.state.vuelayers.coordinates[0])
+      },
+      set: (newValue) => { 
+        let tempval = newValue
+        store.commit('setnewlat', tempval)
+        console.log('newval', store.state.vuelayers.coordinates[0])
+      }
+ });
+
+ const getlongitude  = computed( {
+      get() {
+        return store.state.vuelayers.coordinates[1]
+      },
+      set(newValue) {
+        let tempval = newValue
+        store.commit('setnewlong', tempval)
+      }
+ });
+
     return {
-      zoom: 15,
-      center: [this.$store.state.vuelayers.coordinates[0], this.$store.state.vuelayers.coordinates[1]],
-      rotation: 0
+      zoom,
+      center,
+      rotation,
+      returnlat,
+      returnlon,
+      getlatitude,
+      getlongitude
     }
-  },
-
-  computed: {
-    returnlat() {
-      return this.$store.state.vuelayers.coordinates[0]
-    },
-    returnlon() {
-      return this.$store.state.vuelayers.coordinates[1]
-    },
-    getlatitude: {
-      get() {
-        return parseFloat(this.$store.state.vuelayers.coordinates[0])
-      },
-      set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setnewlat', tempval)
-        console.log('newval', this.$store.state.vuelayers.coordinates[0])
-      }
-    },
-
-    getlongitude: {
-      get() {
-        return this.$store.state.vuelayers.coordinates[1]
-      },
-      set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setnewlong', tempval)
-      }
-    }
-  },
-
-  methods: {}
+  }, 
 }
 </script>
