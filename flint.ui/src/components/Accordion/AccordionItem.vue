@@ -16,38 +16,49 @@
 </template>
 
 <script>
-export default {
-  inject: ['Accordion'],
+import { ref, computed, inject } from 'vue'
+export default { 
   props: {},
-  data() {
-    return {
-      index: null
-    }
-  },
-  computed: {
-    visible() {
-      return this.index == this.Accordion.active
-    }
-  },
-  created() {
-    this.index = this.Accordion.count++
-  },
-  methods: {
-    open() {
-      if (this.visible) {
-        this.Accordion.active = null
+
+  setup() {
+    const index = ref(null)
+    const Accordion = inject['Accordion']
+
+    const visible = computed(() => {
+      return index.value == Accordion.active.value
+    })
+    
+    function created() {
+      index.value = Accordion.count.value++
+    } 
+
+    function open() {
+      if (visible.value) {
+        Accordion.active.value = null
       } else {
-        this.Accordion.active = this.index
+        Accordion.active.value = index.value
       }
-    },
-    start(el) {
+    }
+
+    function start(el) {
       el.style.height = el.scrollHeight + 'px'
-    },
-    end(el) {
+    }
+
+    function end(el) {
       el.style.height = ''
     }
-  }
-}
+
+    return {
+      index,
+      visible,
+      created,
+      open,
+      start,
+      end
+    }
+  } 
+  } 
+
 </script>
 
 <style scoped>
