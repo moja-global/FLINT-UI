@@ -16,7 +16,7 @@ export default {
   props: {
     value: { type: Number, default: 100 }
   }, 
-  setup(props, context) {
+  setup(props, { emit } ) {
     const sliderValue = ref(props.value) 
     
 
@@ -25,7 +25,7 @@ export default {
         return sliderValue.value
       },
       set: (val) => { 
-        context.emit('changeVal', val)
+        emit('changeVal', val)
         sliderValue.value = val 
       }
  });
