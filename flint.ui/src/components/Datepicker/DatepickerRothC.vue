@@ -37,14 +37,15 @@
 <script>
 import dayjs from 'dayjs'
 import { ref, computed } from 'vue'
+import { useToast } from 'vue-toastification'
 
 export default {
   props: {
     value: { type: dayjs.Dayjs, default: dayjs('2022-01-01') }
   },
-  setup(props, context) {
+  setup(props, { emit } ) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-    
+    const toast = useToast() 
     const selectedStartDate = ref(props.value)
     const selectedEndDate = ref(props.value)
 
@@ -65,12 +66,12 @@ export default {
         return selectedStartDate.value
       },
       set: (val) => { 
-        context.emit('input', dayjs(val).toString())
-        this.selectedStartDate = val
+        emit('input', dayjs(val).toString())
+        selectedStartDate.value = val
         console.log(selectedStartDate.value)
 
-        if (this.date_diff < 0) {
-          this.$toast.error('Start date should be less than end date', {
+        if (date_diff.value < 0) {
+          toast.error('Start date should be less than end date', {
             timeout: 5000
           })
         }
@@ -82,12 +83,12 @@ export default {
         return selectedEndDate.value
       },
       set: (val) => { 
-        context.emit('input', dayjs(val).toString())
+        emit('input', dayjs(val).toString())
         selectedEndDate.value = val
         console.log(selectedEndDate.value)
 
-        if (this.date_diff < 0) {
-          this.$toast.error('End date should be greater than start date', {
+        if (date_diff.value < 0) {
+          toast.error('End date should be greater than start date', {
             timeout: 5000
           })
         }
