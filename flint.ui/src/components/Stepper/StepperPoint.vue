@@ -10,10 +10,13 @@
 
 <script>
 export default {
-  methods: {
-    finalPool() {
+  setup() {
+  function finalPool() {
       this.$root.$refs.finalPoolValues()
     }
-  }
+  return {
+    finalPool
+  }  
+  } 
 }
 </script>
