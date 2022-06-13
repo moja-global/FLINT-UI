@@ -39,6 +39,10 @@
   </div>
 </template>
 <script>
+import { useRouter } from 'vue-router'
+
+import { useStore } from 'vuex'
+
 export default {
   name: 'CardInfoConfig',
   props: {
@@ -67,19 +71,21 @@ export default {
       default: 'spec'
     }
   },
-
-  methods: {
-    configSim({ cardMethodName }) {
+  setup() {
+    const store = useStore()
+    const router = useRouter()
+    function configSim({ cardMethodName }) {
       let config_model = { cardMethodName }.cardMethodName
       if (config_model == 'point') {
         console.log('POINT CONFIG REQ')
-        this.$router.push('/flint/configurations/point')
+        router.push('/flint/configurations/point')
       } else if (config_model == 'rothc') {
         console.log('ROTHC CONFIG REQ')
-        this.$router.push('/flint/configurations/rothc')
+        router.push('/flint/configurations/rothc')
       }
-    },
-    startApiCalls({ cardMethodName }) {
+    }
+
+    function startApiCalls({ cardMethodName }) {
       let api_route = { cardMethodName }.cardMethodName
 
       if (api_route == 'point') {
@@ -87,15 +93,23 @@ export default {
       } else if (api_route == 'rothc') {
         this.apiRoute_rothc()
       } else this.apiRoute_nonexistent()
-    },
-
-    apiRoute_rothc() {
-      console.log('ROTHC route invoked with new configs')
-      this.$store.dispatch('send_rothcConfig')
-    },
-    apiRoute_nonexistent() {
-      console.log('No such route exists!')
     }
-  }
+    
+    function apiRoute_rothc() {
+      console.log('ROTHC route invoked with new configs')
+      store.dispatch('send_rothcConfig')
+    } 
+
+    function apiRoute_nonexistent() {
+      console.log('No such route exists!')
+    } 
+
+    return {
+      configSim,
+      startApiCalls,
+      apiRoute_rothc,
+      apiRoute_nonexistent
+    }
+  } 
 }
 </script>
