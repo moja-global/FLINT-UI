@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import App from './App.vue'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
 
 import { store } from './store'

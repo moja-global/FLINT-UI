@@ -53,7 +53,6 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 
 - [Vue.js](https://vuejs.org/)
 - [Ant Design Vue ](https://antdv.com/)
-- [Fontawesome](https://fontawesome.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Cypress](https://www.cypress.io/)
 - [Apexcharts](https://apexcharts.com/)
