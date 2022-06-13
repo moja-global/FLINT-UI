@@ -14,6 +14,8 @@
 
 <script>
 import Button from '../Button/Button.vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   components: {
@@ -24,14 +26,20 @@ export default {
     description: { type: String, required: true },
     link: { type: String, required: true }
   },
-  data: function () {
-    return {}
-  },
-  methods: {
-    onClick: function () {
-      this.$router.push(this.link)
+  // data: function () {
+  //   return {}
+  // },
+  setup (props) {
+    const link = ref(props.link)
+    const router = useRouter()
+    
+ function onClick () {
+      router.push(link.value)
     }
-  }
+    return { 
+      onClick
+    }
+  } 
 }
 </script>
 

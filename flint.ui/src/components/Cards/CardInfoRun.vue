@@ -47,7 +47,9 @@
 </template>
 <script>
 import axios from 'axios'
+import { ref } from 'vue'
 import ConfirmRun from '@/components/Prompts/ConfirmRun'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'CardInfoRun',
@@ -76,20 +78,20 @@ export default {
       default: 'spec'
     }
   },
-  data() {
-    return {
-      isConfirmRunModalVisible: false
+  setup() {
+    const isConfirmRunModalVisible = ref(false)
+    const toast = useToast() 
+    
+    function showConfirmRunModal() {
+      isConfirmRunModalVisible.value = true
     }
-  },
-  methods: {
-    showConfirmRunModal() {
-      this.isConfirmRunModalVisible = true
-    },
-    closeConfirmRunModal() {
-      this.isConfirmRunModalVisible = false
-    },
-    startApiCalls({ cardMethodName }) {
-      this.isConfirmRunModalVisible = false
+
+    function closeConfirmRunModal() {
+      isConfirmRunModalVisible.value = false
+    }
+
+    function startApiCalls({ cardMethodName }) {
+      isConfirmRunModalVisible.value = false
       let api_route = { cardMethodName }.cardMethodName
       if (api_route == 'spec') {
         this.apiRoute_spec()
@@ -102,87 +104,105 @@ export default {
       } else if (api_route == 'rothc') {
         this.apiRoute_rothc()
       } else this.apiRoute_nonexistent()
-    },
-    // button linking to api end-points
-    apiRoute_spec() {
+    }
+
+    function apiRoute_spec() {
       console.log('SPECIFICATION route invoked')
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/spec`)
         .then((response) => {
-          this.$toast.success(`Specification route has been invoked.`, {
+          toast.success(`Specification route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-    },
-    apiRoute_help() {
+    }
+
+    function apiRoute_help() {
       console.log('HELP route invoked')
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/help/all`)
         .then((response) => {
-          this.$toast.success(`Help route has been invoked.`, {
+          toast.success(`Help route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-    },
-    apiRoute_version() {
+    }
+
+    function apiRoute_version() {
       console.log('VERSION route invoked')
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/version`)
         .then((response) => {
-          this.$toast.success(`Version route has been invoked.`, {
+          toast.success(`Version route has been invoked.`, {
             timeout: 2000
           })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-    },
-    apiRoute_point() {
+    }
+
+    function apiRoute_point() {
       console.log('POINT route invoked')
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`)
         .then((response) => {
-          this.$toast.success(`Point route has been invoked. You can see the output in Point Output Table.`, {
+          toast.success(`Point route has been invoked. You can see the output in Point Output Table.`, {
             timeout: 2000
           })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-    },
-    apiRoute_rothc() {
+    }
+
+    function apiRoute_rothc() {
       console.log('ROTHC route invoked')
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`)
         .then((response) => {
-          this.$toast.success(`RothC route has been invoked. You can see the output in RothC Output Table.`, {
+          toast.success(`RothC route has been invoked. You can see the output in RothC Output Table.`, {
             timeout: 2000
           })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
-    },
-    apiRoute_nonexistent() {
-      this.$toast.warning('No such route exists!', { timeout: 2000 })
+    }
+
+    function apiRoute_nonexistent() {
+      toast.warning('No such route exists!', { timeout: 2000 })
       console.log('No such route exists!')
     }
-  }
+
+    return {
+      isConfirmRunModalVisible,
+      showConfirmRunModal,
+      closeConfirmRunModal,
+      startApiCalls,
+      apiRoute_spec,
+      apiRoute_version,
+      apiRoute_help,
+      apiRoute_point,
+      apiRoute_rothc,
+      apiRoute_nonexistent
+    }
+  } 
 }
 </script>
