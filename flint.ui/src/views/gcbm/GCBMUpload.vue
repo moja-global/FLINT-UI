@@ -6,9 +6,8 @@
 
         <button
           class="
-            inline-block
-            align-middle
-            flex-initial
+            inline-flex
+            items-center
             bg-white
             hover:bg-earth hover:text-white
             text-gray-800
@@ -21,7 +20,7 @@
           "
           @click="hello"
         >
-          <i class="far fa-file" /> Submit uploaded files
+          <FileOutlined :style="{marginRight: '4px'}"/> Submit uploaded files
         </button>
       </div>
 
@@ -76,13 +75,15 @@ import FileUpload from '@/components/FileUpload/FileUpload.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import { FileOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
     FileUpload,
-    StepperStatic
+    StepperStatic,
+    FileOutlined
   },
 
   data: () => ({

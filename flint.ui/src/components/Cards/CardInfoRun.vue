@@ -28,7 +28,7 @@
             "
             @click="showConfirmRunModal()"
           >
-            <i class="far fa-play-circle" /> {{ cardFunctionRun }}
+            <PlayCircleOutlined /> {{ cardFunctionRun }}
           </button>
 
           <confirm-run
@@ -50,11 +50,13 @@ import axios from 'axios'
 import { ref } from 'vue'
 import ConfirmRun from '@/components/Prompts/ConfirmRun'
 import { useToast } from 'vue-toastification'
+import { PlayCircleOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'CardInfoRun',
   components: {
-    ConfirmRun
+    ConfirmRun,
+    PlayCircleOutlined
   },
   props: {
     cardSubtitle: {
