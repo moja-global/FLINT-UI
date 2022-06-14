@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { computed } from 'vue'; 
+
 export default {
   name: 'Button',
 
@@ -22,19 +24,15 @@ export default {
       default: '#475447'
     }
   },
-  computed: {
-    btnStyles() {
+    setup(props) {
+    const btnStyles = computed(() => {
       return {
-        '--color': this.btnColor,
-        '--width': this.btnSize
-      }
-    }
-  },
-  methods: {
-    onClick() {
-      this.$emit('onClick')
-    }
-  }
+        '--color': props.btnColor,
+        '--width': props.btnSize
+      } 
+    }) 
+    return { btnStyles };
+  }, 
 }
 </script>
 
