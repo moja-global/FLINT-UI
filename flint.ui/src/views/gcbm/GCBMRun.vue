@@ -38,7 +38,8 @@
                   "
                   @click="runSim"
                 >
-                  <i class="far fa-play-circle"></i> Run simulation
+                  <PlayCircleOutlined /> 
+                  <p>Run simulation </p>
                 </button>
               </a-col>
 
@@ -56,7 +57,8 @@
                   "
                   @click="checkStatus"
                 >
-                  <i class="fas fa-question"></i> Check status
+                  <QuestionCircleOutlined :style="{fontSize: '16px'}" /> 
+                  <p>Check status</p>
                 </button>
               </a-col>
 
@@ -74,7 +76,8 @@
                   "
                   @click="downloadSim"
                 >
-                  <i class="fas fa-download"></i> Download simulation
+                  <DownloadOutlined /> 
+                  <p>Download simulation </p>
                 </button>
               </a-col>
             </a-row>
@@ -93,13 +96,17 @@ import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Slider/Toggle.vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined  } from '@ant-design/icons-vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     Toggle,
     StepperGCBM,
-    StepperStatic
+    StepperStatic,
+    PlayCircleOutlined,
+    QuestionCircleOutlined,
+    DownloadOutlined
   },
 
   data: () => ({
