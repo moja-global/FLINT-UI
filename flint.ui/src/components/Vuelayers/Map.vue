@@ -14,22 +14,30 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      zoom: 15,
-      center: [-89.347015, 43.65107],
-      rotation: 0
-    }
-  },
+import { ref } from 'vue'
 
-  methods: {
-    getdata1(data1 = this.center[0]) {
+export default { 
+
+  script() {
+    const zoom = ref(15)
+    const center = ref([-89.347015, 43.65107])
+    const rotation = ref(0) 
+    
+    function getdata1(data1 = center.value[0]) { 
       return data1
-    },
-    getdata2(data2 = this.center[1]) {
+    } 
+
+    function getdata2(data2 = center.value[1]) { 
       return data2
     }
-  }
+
+    return {
+      zoom,
+      center,
+      rotation,
+      getdata1,
+      getdata2
+    }
+  } 
 }
 </script>
