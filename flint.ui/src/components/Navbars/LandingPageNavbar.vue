@@ -2,9 +2,11 @@
   <div>
     <a-layout>
       <a-row class="navbar" type="flex" align="middle">
-        <a-col :flex="5" class="logo"
-          ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
-        /></a-col>
+        <a-col :flex="5" class="logo">
+          <a href="/">
+            <img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57" />
+          </a>
+        </a-col>
         <a-col :flex="3" align="middle">
           <a-row :gutter="40" justify="center" type="flex">
             <a-col>
@@ -26,13 +28,13 @@
               ><img src="/moja_global_logo.png" alt="moja global logo" height="40" width="57"
             /></a-col>
             <a-col>
-              <a-icon v-if="!showMenu" type="menu" @click="toggleNavbar()" />
-              <a-icon v-if="showMenu" type="close" @click="toggleNavbar()" />
+              <MenuOutlined v-if="!showMenu" type="menu" @click="toggleNavbar()" />
+              <CloseOutlined v-if="showMenu" type="close" @click="toggleNavbar()" />
             </a-col>
           </a-row>
         </a-col>
         <a-col v-if="showMenu">
-          <a-row class="menu-mobile">
+          <a-row type="flex" justify="space-between" class="menu-mobile">
             <a-col>
               <a href="https://docs.moja.global/projects/flint-ui/en/latest/" target="_blank" rel="noreferrer noopener"
                 >Documentation
@@ -50,8 +52,13 @@
 </template>
 
 <script>
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons-vue'
 export default {
   name: 'LandingPageNavbar',
+  components: {
+    MenuOutlined,
+    CloseOutlined
+  },
   data() {
     return {
       showMenu: false
@@ -75,6 +82,10 @@ export default {
 
 .navbar a:hover {
   border-bottom: solid 2px #475447;
+}
+
+.navbar a {
+  color: #475447;
 }
 
 .logo {

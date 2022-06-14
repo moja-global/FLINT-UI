@@ -11,7 +11,6 @@
           :default-value="selectedStartDate"
           v-bind="$attrs"
           @change="onStartChange"
-          v-on="$listeners"
         />
       </div>
 
@@ -25,7 +24,6 @@
           :default-value="selectedEndDate"
           v-bind="$attrs"
           @change="onEndChange"
-          v-on="$listeners"
         />
       </div>
     </div>
@@ -37,15 +35,11 @@
 </template>
 
 <script>
-import { DatePicker } from 'ant-design-vue'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export default {
-  components: {
-    'a-date-picker': DatePicker
-  },
   props: {
-    value: { type: String, default: moment('2022-01-01').toString() }
+    value: { type: dayjs.Dayjs, default: dayjs('2022-01-01') }
   },
   setup() {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
@@ -59,9 +53,9 @@ export default {
   },
   computed: {
     date_diff() {
-      var start_date_value = new Date(moment(this.selectedStartDate).format('YYYY-MM-DD'))
+      var start_date_value = new Date(dayjs(this.selectedStartDate).format('YYYY-MM-DD'))
 
-      var end_date_value = new Date(moment(this.selectedEndDate).format('YYYY-MM-DD'))
+      var end_date_value = new Date(dayjs(this.selectedEndDate).format('YYYY-MM-DD'))
 
       console.log(start_date_value, end_date_value)
 
@@ -74,7 +68,7 @@ export default {
         return this.selectedStartDate
       },
       set(val) {
-        this.$emit('input', moment(val).toString())
+        this.$emit('input', dayjs(val).toString())
         this.selectedStartDate = val
         console.log(this.selectedStartDate)
 
@@ -91,7 +85,7 @@ export default {
         return this.selectedEndDate
       },
       set(val) {
-        this.$emit('input', moment(val).toString())
+        this.$emit('input', dayjs(val).toString())
         this.selectedEndDate = val
         console.log(this.selectedEndDate)
 
@@ -115,10 +109,10 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .ant-calendar-picker-input.ant-input {
+:deep(.ant-calendar-picker-input.ant-input) {
   border-color: theme('colors.earth');
 }
-::v-deep .ant-calendar-picker-icon {
+:deep(.ant-calendar-picker-icon) {
   color: theme('colors.earth');
 }
 

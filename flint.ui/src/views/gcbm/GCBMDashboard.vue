@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LandingPageNavbar />
     <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
       <div class="bg-white p-6 rounded-lg shadow-lg">
         <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
@@ -36,9 +35,8 @@
               class="
                 w-full
                 mt-4
-                block
-                align-middle
-                flex-initial
+                inline-flex
+                items-center
                 bg-white
                 hover:bg-earth hover:text-white
                 text-gray-800
@@ -53,7 +51,7 @@
               :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
               @click="sendToAPI"
             >
-              <i class="fas fa-plus" /> Create run
+              <PlusOutlined :style="{marginRight: '16px'}" /> Create run
             </button>
           </div>
 
@@ -61,24 +59,21 @@
         </div>
       </div>
     </div>
-    <StepperGCBM />
-    <Footer />
+    <StepperGCBM :initial="0" />
   </div>
 </template>
 
 <script>
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import LandingPageNavbar from '@/components/Navbars/LandingPageNavbar.vue'
-import Footer from '@/components/Footer/Footer.vue'
+import { PlusOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'DashboardPage',
   components: {
     StepperGCBM,
     StepperStatic,
-    LandingPageNavbar,
-    Footer
+    PlusOutlined
   },
 
   data: () => ({

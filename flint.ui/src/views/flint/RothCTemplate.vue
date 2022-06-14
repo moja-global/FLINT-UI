@@ -26,7 +26,7 @@
               "
               @click="ConfigData"
             >
-              <i class="far fa-edit" /> {{ configDataexample }}
+              <FormOutlined /> {{ configDataexample }}
             </button>
           </div>
         </div>
@@ -36,9 +36,12 @@
 </template>
 
 <script>
+import { FormOutlined } from '@ant-design/icons-vue'
+
+
 export default {
   name: 'CardRothConfig',
-  components: {},
+  components: {FormOutlined},
   props: {
     configParamtext: {
       type: String,

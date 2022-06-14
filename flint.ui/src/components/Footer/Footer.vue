@@ -1,5 +1,5 @@
 <template>
-  <Footer class="footer-container py-4 px-8 pb-6 sm:px-16 md:px-24">
+  <div class="footer-container py-4 px-8 pb-6 sm:px-16 md:px-24">
     <a-row :gutter="[48, 48]">
       <a-col :xs="24" :md="9">
         <a href="/"> <img src="/moja_global_logo.png" alt="moja global logo" class="logo" /></a>
@@ -8,13 +8,13 @@
       <a-col :xs="24" :md="5">
         <h2 class="title">Get In Touch</h2>
         <div class="email">
-          <i class="fas fa-envelope" />
-          <a href="mailto:info@moja.global"> info@moja.global</a>
+          <MailFilled :style="{color: '#ffffff', fontSize: '17px'}"/>
+          <a class="ml-1" href="mailto:info@moja.global"> info@moja.global</a>
         </div>
 
-        <div class="socials">
+        <div class="mt-5 socials">
           <a-button type="text" shape="circle" href="https://twitter.com/mojaglobal" class="social-icons">
-            <i class="fab fa-twitter fa-2x icon"></i>
+            <TwitterCircleFilled :style="{fontSize: '28px'}" />
           </a-button>
 
           <a-button
@@ -23,7 +23,7 @@
             href="https://www.linkedin.com/company/moja-global/"
             class="social-icons"
           >
-            <i class="fab fa-linkedin fa-2x icon"></i>
+            <LinkedinFilled :style="{fontSize: '28px'}" />
           </a-button>
         </div>
       </a-col>
@@ -81,12 +81,15 @@
     </a-row>
 
     <p class="copyright">Copyright © {{ new Date().getFullYear() }} moja global.</p>
-  </Footer>
+  </div>
 </template>
 
 <script>
+import { TwitterCircleFilled, LinkedinFilled, MailFilled } from '@ant-design/icons-vue'
+
 export default {
-  name: 'FooterComponent'
+  name: 'FooterComponent',
+  components: {TwitterCircleFilled, LinkedinFilled, MailFilled}
 }
 </script>
 
@@ -140,6 +143,7 @@ export default {
 }
 .social-icons:hover {
   transform: scale(1.1);
+  background-color: white;
 }
 
 .social-icons .icon {

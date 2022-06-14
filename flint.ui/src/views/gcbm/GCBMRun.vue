@@ -1,11 +1,12 @@
 <template>
   <div>
-    <LandingPageNavbar />
     <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
       <div class="bg-white p-6 rounded-lg shadow-lg">
         <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
         <p class="text-gray-700">
-          Follow the steps below to simulate GCBM runs. Click the toggle to auto download the simulation once complete.
+          Follow the steps below to simulate GCBM runs.
+          <br />
+          Click the toggle to auto download the simulation once complete.
         </p>
         <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
       </div>
@@ -37,7 +38,8 @@
                   "
                   @click="runSim"
                 >
-                  <i class="far fa-play-circle"></i> Run simulation
+                  <PlayCircleOutlined /> 
+                  <p>Run simulation </p>
                 </button>
               </a-col>
 
@@ -55,7 +57,8 @@
                   "
                   @click="checkStatus"
                 >
-                  <i class="fas fa-question"></i> Check status
+                  <QuestionCircleOutlined :style="{fontSize: '16px'}" /> 
+                  <p>Check status</p>
                 </button>
               </a-col>
 
@@ -73,7 +76,8 @@
                   "
                   @click="downloadSim"
                 >
-                  <i class="fas fa-download"></i> Download simulation
+                  <DownloadOutlined /> 
+                  <p>Download simulation </p>
                 </button>
               </a-col>
             </a-row>
@@ -82,27 +86,27 @@
       </div>
     </div>
 
-    <StepperGCBM />
-    <Footer />
+    <StepperGCBM :initial="2" />
   </div>
 </template>
 
 <script>
-import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import Toggle from '@/components/Sliders/Toggle.vue'
-import Footer from '@/components/Footer/Footer.vue'
+import Toggle from '@/components/Slider/Toggle.vue'
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
+import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined  } from '@ant-design/icons-vue'
 
 export default {
   name: 'DashboardPage',
   components: {
-    LandingPageNavbar,
+    Toggle,
     StepperGCBM,
     StepperStatic,
-    Toggle,
-    Footer
+    PlayCircleOutlined,
+    QuestionCircleOutlined,
+    DownloadOutlined
   },
 
   data: () => ({
@@ -115,15 +119,16 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
+      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
         .then((response) => {
-          this.$toast.success(`${response.data.status}`, { timeout: 5000 })
+          toast.success(`${response.data.status}`, { timeout: 5000 })
           console.log(response)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     },
@@ -133,17 +138,18 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
+      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, bodyFormData)
         .then((response) => {
-          this.$toast.info(`${response.data.finished}`, { timeout: 5000 })
+          toast.info(`${response.data.finished}`, { timeout: 5000 })
           this.$store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
           console.log(this.$store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     },
@@ -153,6 +159,7 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
+      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, bodyFormData, {
@@ -170,7 +177,7 @@ export default {
           link.click()
         })
         .catch((error) => {
-          this.$toast.error(`${error}`, { timeout: 2000 })
+          toast.error(`${error}`, { timeout: 2000 })
           console.log(error)
         })
     }

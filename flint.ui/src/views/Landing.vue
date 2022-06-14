@@ -1,6 +1,5 @@
 <template>
   <div class="parent">
-    <LandingPageNavbar />
     <div class="flex flex-row flex-wrap">
       <div class="relative flex content-center justify-center w-full min-h-screen-75 lg:w-5/12">
         <div
@@ -26,7 +25,7 @@
     <a-row :gutter="[24, 48]" class="w-full py-14 md:py-20 px-8 sm:px-16 md:px-24 landing-cards">
       <LandingPageCard
         title="Point"
-        description="Point is a basic model int the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
+        description="Point is a basic model in the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
         link="/flint/configurations/point"
       />
       <LandingPageCard
@@ -40,21 +39,16 @@
         link="/gcbm/dashboard"
       />
     </a-row>
-    <Footer />
   </div>
 </template>
 
 <script>
-import LandingPageNavbar from './../components/Navbars/LandingPageNavbar.vue'
 import LandingPageCard from './../components/Cards/LandingPageCard.vue'
-import Footer from './../components/Footer/Footer.vue'
 
 export default {
-  name: 'MyTour',
+  name: 'Landing',
   components: {
-    LandingPageNavbar,
-    LandingPageCard,
-    Footer
+    LandingPageCard
   }
 }
 </script>
