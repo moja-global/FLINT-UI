@@ -56,7 +56,7 @@ export default {
 
     const newconfig_avgAirTemp_data_month_avg = computed({
       get() {
-        return formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg)
+        return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg)
       },
       set(newValue) {
         store.commit('setNewConfig_avgAirTemp_data_month_avg', '$#[ ' + newValue + ' ]$#')
@@ -65,7 +65,7 @@ export default {
 
     const newconfig_avgAirTemp_data_lastyearcopy = computed({
       get() {
-        return formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy)
+        return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy)
       },
       set(newValue) {
         store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
