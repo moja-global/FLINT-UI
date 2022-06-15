@@ -36,37 +36,50 @@
 </template>
 
 <script>
-import formatData from '@/mixins/formatData'
+
+import useformatData from '../../Composition_API/useformatData'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  mixins: [formatData],
-  computed: {
-    newconfig_openPanEvap_data_orig: {
-      get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[9].openPanEvap.transform.data_orig)
-      },
-      set(newValue) {
-        this.$store.commit('setNewConfig_openPanEvap_data_orig', '$#[ ' + newValue + ' ]$#')
-      }
-    },
+  setup() {
+  const { formatArray } = useformatData();
+  const store = useStore();
 
-    newconfig_openPanEvap_data_month_avg: {
+   const newconfig_openPanEvap_data_orig = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[9].openPanEvap.transform.data_month_avg)
+        return formatArray(store.state.rothc.config.Variables[9].openPanEvap.transform.data_orig)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_openPanEvap_data_month_avg', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_openPanEvap_data_orig', '$#[ ' + newValue + ' ]$#')
       }
-    },
+    })
 
-    newconfig_openPanEvap_data_lastyearcopy: {
+   const newconfig_openPanEvap_data_month_avg = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[9].openPanEvap.transform.data_lastyearcopy)
+        return formatArray(store.state.rothc.config.Variables[9].openPanEvap.transform.data_month_avg)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_openPanEvap_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_openPanEvap_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
+    })
+    
+    const newconfig_openPanEvap_data_lastyearcopy = computed({
+      get() {
+        return formatArray(store.state.rothc.config.Variables[9].openPanEvap.transform.data_lastyearcopy)
+      },
+      set(newValue) {
+        store.commit('setNewConfig_openPanEvap_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+      }
+    }) 
+    
+    return {
+      formatArray,
+      newconfig_openPanEvap_data_orig,
+      newconfig_openPanEvap_data_month_avg,
+      newconfig_openPanEvap_data_lastyearcopy
     }
-  }
+} 
 }
+
 </script>
