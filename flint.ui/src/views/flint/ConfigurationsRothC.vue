@@ -35,7 +35,7 @@
             :show-arrow="false"
           >
             <template #extra>
-			        <RightOutlined :rotate="accordionActiveKey == index ? 90 : 0"/>
+              <RightOutlined :rotate="accordionActiveKey == index ? 90 : 0" />
             </template>
             <component :is="item.component" />
           </a-collapse-panel>

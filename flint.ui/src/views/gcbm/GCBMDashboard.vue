@@ -51,7 +51,7 @@
               :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
               @click="sendToAPI"
             >
-              <PlusOutlined :style="{marginRight: '16px'}" /> Create run
+              <PlusOutlined :style="{ marginRight: '16px' }" /> Create run
             </button>
           </div>
 

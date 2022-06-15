@@ -8,30 +8,29 @@
 import { Slider } from 'ant-design-vue'
 import { ref, computed } from 'vue'
 
-export default { 
+export default {
   components: {
     'a-slider': Slider
   },
   emits: ['changeVal'],
   props: {
     value: { type: Number, default: 100 }
-  }, 
-  setup(props, { emit } ) {
-    const sliderValue = ref(props.value) 
-    
+  },
+  setup(props, { emit }) {
+    const sliderValue = ref(props.value)
 
-    const inputVal = computed( {
+    const inputVal = computed({
       get: () => {
         return sliderValue.value
       },
-      set: (val) => { 
+      set: (val) => {
         emit('changeVal', val)
-        sliderValue.value = val 
+        sliderValue.value = val
       }
- });
+    })
 
- return { inputVal, sliderValue }
-  }, 
+    return { inputVal, sliderValue }
+  }
 }
 </script>
 

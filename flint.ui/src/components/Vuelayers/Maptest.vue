@@ -51,35 +51,34 @@
 <script>
 import { useStore } from 'vuex'
 import { ref, computed } from 'vue'
-export default { 
+export default {
   setup() {
-
     const store = useStore()
 
     const zoom = ref(15)
-    const center = ref([ store.state.vuelayers.coordinates[0], store.state.vuelayers.coordinates[1]])
+    const center = ref([store.state.vuelayers.coordinates[0], store.state.vuelayers.coordinates[1]])
     const rotation = ref(0)
-    
+
     const returnlat = computed(() => {
-        return store.state.vuelayers.coordinates[0]
+      return store.state.vuelayers.coordinates[0]
     })
 
     const returnlon = computed(() => {
-        return store.state.vuelayers.coordinates[1]
+      return store.state.vuelayers.coordinates[1]
     })
-    
-    const getlatitude  = computed( {
+
+    const getlatitude = computed({
       get: () => {
         return parseFloat(store.state.vuelayers.coordinates[0])
       },
-      set: (newValue) => { 
+      set: (newValue) => {
         let tempval = newValue
         store.commit('setnewlat', tempval)
         console.log('newval', store.state.vuelayers.coordinates[0])
       }
- });
+    })
 
- const getlongitude  = computed( {
+    const getlongitude = computed({
       get() {
         return store.state.vuelayers.coordinates[1]
       },
@@ -87,7 +86,7 @@ export default {
         let tempval = newValue
         store.commit('setnewlong', tempval)
       }
- });
+    })
 
     return {
       zoom,
@@ -98,6 +97,6 @@ export default {
       getlatitude,
       getlongitude
     }
-  }, 
+  }
 }
 </script>

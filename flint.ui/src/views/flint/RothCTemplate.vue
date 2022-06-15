@@ -38,10 +38,9 @@
 <script>
 import { FormOutlined } from '@ant-design/icons-vue'
 
-
 export default {
   name: 'CardRothConfig',
-  components: {FormOutlined},
+  components: { FormOutlined },
   props: {
     configParamtext: {
       type: String,
