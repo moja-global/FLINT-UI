@@ -36,17 +36,16 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
-  const { formatArray } = useformatData();
-  const store = useStore();
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-   const newconfig_presCM_data_orig = computed({
+    const newconfig_presCM_data_orig = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[11].presCM.transform.data_orig)
       },
@@ -55,7 +54,7 @@ export default {
       }
     })
 
-   const newconfig_presCM_data_month_avg = computed({
+    const newconfig_presCM_data_month_avg = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[11].presCM.transform.data_month_avg)
       },
@@ -63,7 +62,7 @@ export default {
         store.commit('setNewConfig_presCM_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
     })
-    
+
     const newconfig_presCM_data_lastyearcopy = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[11].presCM.transform.data_lastyearcopy)
@@ -71,15 +70,14 @@ export default {
       set(newValue) {
         store.commit('setNewConfig_presCM_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
       }
-    }) 
-    
+    })
+
     return {
       formatArray,
       newconfig_presCM_data_orig,
       newconfig_presCM_data_month_avg,
       newconfig_presCM_data_lastyearcopy
     }
-} 
-} 
-
+  }
+}
 </script>

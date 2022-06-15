@@ -47,17 +47,16 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
-  const { formatArray } = useformatData();
-  const store = useStore();
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-   const newconfig_soilcover_data_orig = computed({
+    const newconfig_soilcover_data_orig = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_orig)
       },
@@ -66,7 +65,7 @@ export default {
       }
     })
 
-   const newconfig_soilcover_data_firstmonthcopy = computed({
+    const newconfig_soilcover_data_firstmonthcopy = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_firstmonthcopy)
       },
@@ -74,7 +73,7 @@ export default {
         store.commit('setNewConfig_soilCover_data_firstmonthcopy', '$#[ ' + newValue + ' ]$#')
       }
     })
-    
+
     const newconfig_soilcover_data_month_avg = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_month_avg)
@@ -82,8 +81,8 @@ export default {
       set(newValue) {
         store.commit('setNewConfig_soilCover_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
-    }) 
-    
+    })
+
     const newconfig_soilcover_data_lastyearcopy = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_lastyearcopy)
@@ -100,7 +99,6 @@ export default {
       newconfig_soilcover_data_month_avg,
       newconfig_soilcover_data_lastyearcopy
     }
-} 
+  }
 }
-
 </script>

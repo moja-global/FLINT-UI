@@ -36,17 +36,16 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
-  const { formatArray } = useformatData();
-  const store = useStore();
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-   const newconfig_rainfall_data_orig = computed({
+    const newconfig_rainfall_data_orig = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[8].rainfall.transform.data_orig)
       },
@@ -55,15 +54,15 @@ export default {
       }
     })
 
-   const newconfig_rainfall_data_month_avg = computed({
-       get() {
+    const newconfig_rainfall_data_month_avg = computed({
+      get() {
         return formatArray(store.state.rothc.config.Variables[8].rainfall.transform.data_month_avg)
       },
       set(newValue) {
         store.commit('setNewConfig_rainfall_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
     })
-    
+
     const newconfig_rainfall_data_lastyearcopy = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[8].rainfall.transform.data_lastyearcopy)
@@ -71,15 +70,14 @@ export default {
       set(newValue) {
         store.commit('setNewConfig_rainfall_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
       }
-    }) 
-    
+    })
+
     return {
       formatArray,
       newconfig_rainfall_data_orig,
       newconfig_rainfall_data_month_avg,
       newconfig_rainfall_data_lastyearcopy
     }
-} 
+  }
 }
-
 </script>

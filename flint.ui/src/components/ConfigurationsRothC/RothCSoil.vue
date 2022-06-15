@@ -211,17 +211,16 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
-  const { formatDecimal } = useformatData();
-  const store = useStore();
+    const { formatDecimal } = useformatData()
+    const store = useStore()
 
-   const newconfig_bToCMaxTSMDRatio = computed({
+    const newconfig_bToCMaxTSMDRatio = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio)
       },
@@ -230,7 +229,7 @@ export default {
       }
     })
 
-   const newconfig_dToRRatioInPres = computed({
+    const newconfig_dToRRatioInPres = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.dToRRatioInPres)
       },
@@ -238,7 +237,7 @@ export default {
         store.commit('setNewConfig_dToRRatioInPres', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_encpFracHums = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.encpFracHums)
@@ -247,7 +246,7 @@ export default {
         store.commit('setNewConfig_encpFracHums', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_evapoOpenRatio = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.evapoOpenRatio)
@@ -257,7 +256,7 @@ export default {
       }
     })
 
-   const newconfig_fracHumsToBios = computed({
+    const newconfig_fracHumsToBios = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.fracHumsToBios)
       },
@@ -265,7 +264,7 @@ export default {
         store.commit('setNewConfig_fracHumsToBios', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_fracManuCMToBiof = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToBiof)
@@ -283,7 +282,7 @@ export default {
         store.commit('setNewConfig_fracManuCMToBios', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_fracManuCMToDpma = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToDpma)
@@ -292,17 +291,17 @@ export default {
         store.commit('setNewConfig_fracManuCMToDpma', '$#' + newValue + '$#')
       }
     })
-    
-   const newconfig_fracManuCMToRpma = computed({
+
+    const newconfig_fracManuCMToRpma = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToRpma)
       },
       set(newValue) {
         store.commit('setNewConfig_fracManuCMToRpma', '$#' + newValue + '$#')
       }
-   })
+    })
 
-   const newconfig_fracPbioToBiof = computed({
+    const newconfig_fracPbioToBiof = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.fracPbioToBiof)
       },
@@ -310,8 +309,8 @@ export default {
         store.commit('setNewConfig_fracPbioToBiof', '$#' + newValue + '$#')
       }
     })
-    
-   const newconfig_sampleDepth = computed({
+
+    const newconfig_sampleDepth = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.sampleDepth)
       },
@@ -320,7 +319,7 @@ export default {
       }
     })
 
-   const newconfig_sdcmRateMultBiof = computed({
+    const newconfig_sdcmRateMultBiof = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof)
       },
@@ -329,7 +328,7 @@ export default {
       }
     })
 
-   const newconfig_sdcmRateMultBios = computed({
+    const newconfig_sdcmRateMultBios = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultBios)
       },
@@ -354,7 +353,7 @@ export default {
         store.commit('setNewConfig_sdcmRateMultHums', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_sdcmRateMultRpm = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm)
@@ -363,7 +362,7 @@ export default {
         store.commit('setNewConfig_sdcmRateMultRpm', '$#' + newValue + '$#')
       }
     })
-    
+
     return {
       formatDecimal,
       newconfig_bToCMaxTSMDRatio,
@@ -383,7 +382,6 @@ export default {
       newconfig_sdcmRateMultHums,
       newconfig_sdcmRateMultRpm
     }
+  }
 }
-}
-
 </script>

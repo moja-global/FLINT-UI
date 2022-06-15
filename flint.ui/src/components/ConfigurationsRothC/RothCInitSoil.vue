@@ -80,17 +80,15 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
-
   setup() {
-  const { formatDecimal } = useformatData();
-  const store = useStore(); 
-  const newconfig_dpmaCMInit = computed({
+    const { formatDecimal } = useformatData()
+    const store = useStore()
+    const newconfig_dpmaCMInit = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[13].initSoil.dpmaCMInit)
       },
@@ -99,7 +97,7 @@ export default {
       }
     })
 
-   const newconfig_rpmaCMInit = computed({
+    const newconfig_rpmaCMInit = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[13].initSoil.rpmaCMInit)
       },
@@ -107,7 +105,7 @@ export default {
         store.commit('setNewConfig_rpmaCMInit', '$#' + newValue + '$#')
       }
     })
-    
+
     const newconfig_biofCMInit = computed({
       get() {
         return formatDecimal(store.state.rothc.config.Variables[13].initSoil.biofCMInit)
@@ -162,7 +160,6 @@ export default {
       newconfig_inrtCMInit,
       newconfig_TSMDInit
     }
-  } 
+  }
 }
-
 </script>

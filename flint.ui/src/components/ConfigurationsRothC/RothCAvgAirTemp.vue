@@ -36,17 +36,16 @@
 </template>
 
 <script>
-
 import useformatData from '../../Composition_API/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
-  const { formatArray } = useformatData();
-  const store = useStore();
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-   const newconfig_avgAirTemp_data_orig = computed({
+    const newconfig_avgAirTemp_data_orig = computed({
       get() {
         return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig)
       },
@@ -55,7 +54,7 @@ export default {
       }
     })
 
-   const newconfig_avgAirTemp_data_month_avg = computed({
+    const newconfig_avgAirTemp_data_month_avg = computed({
       get() {
         return formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg)
       },
@@ -63,23 +62,22 @@ export default {
         store.commit('setNewConfig_avgAirTemp_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
     })
-    
+
     const newconfig_avgAirTemp_data_lastyearcopy = computed({
       get() {
         return formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy)
       },
       set(newValue) {
-       store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
       }
-    }) 
-    
+    })
+
     return {
       formatArray,
       newconfig_avgAirTemp_data_month_avg,
       newconfig_avgAirTemp_data_lastyearcopy,
       newconfig_avgAirTemp_data_orig
     }
+  }
 }
-}
- 
 </script>
