@@ -9,15 +9,14 @@
             :xl="{ span: 20 }"
             class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
-            <PlusOutlined :style="{fontSize: '24px',marginLeft: '5px'}"/>
+            <PlusOutlined :style="{ fontSize: '24px', marginLeft: '5px' }" />
             <div class="bg-gray-200 rounded-r-lg body-step">
               <h2 class="font-bold text-sm">Create a new simulation</h2>
               <p class="text-xs text-gray-600">Click the new button below</p>
             </div>
           </a-col>
           <a-col class="next-icons" :xs="{ span: 24 }" :md="{ span: 4 }" :xl="{ span: 4 }">
-            <ArrowRightOutlined :style="{fontSize: '24px'}" />
-
+            <ArrowRightOutlined :style="{ fontSize: '24px' }" />
           </a-col>
         </a-row>
       </a-col>
@@ -30,14 +29,14 @@
             :xl="{ span: 20 }"
             class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
-            <FileFilled :style="{fontSize: '24px', marginLeft: '5px'}"/>
+            <FileFilled :style="{ fontSize: '24px', marginLeft: '5px' }" />
             <div class="bg-gray-200 rounded-r-lg body-step">
               <h2 class="font-bold text-sm">Upload file</h2>
               <p class="text-xs text-gray-600">Dataset file for GCBM</p>
             </div>
           </a-col>
           <a-col class="next-icons" :xs="{ span: 24 }" :md="{ span: 4 }" :xl="{ span: 4 }">
-            <ArrowRightOutlined :style="{fontSize: '24px'}" />
+            <ArrowRightOutlined :style="{ fontSize: '24px' }" />
           </a-col>
         </a-row>
       </a-col>
@@ -50,14 +49,14 @@
             :xl="{ span: 20 }"
             class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
-            <SettingFilled :style="{fontSize: '24px', marginLeft: '5px'}"/>
+            <SettingFilled :style="{ fontSize: '24px', marginLeft: '5px' }" />
             <div class="bg-gray-200 rounded-r-lg body-step">
               <h2 class="font-bold text-sm">Configure</h2>
               <p class="text-xs text-gray-600">Change configuration parameters</p>
             </div>
           </a-col>
           <a-col class="next-icons" :xs="{ span: 24 }" :md="{ span: 4 }" :xl="{ span: 4 }">
-            <ArrowRightOutlined :style="{fontSize: '24px'}" />
+            <ArrowRightOutlined :style="{ fontSize: '24px' }" />
           </a-col>
         </a-row>
       </a-col>
@@ -70,7 +69,7 @@
             :xl="{ span: 20 }"
             class="bg-gray-300 border border-gray-200 card-content rounded-lg"
           >
-            <CheckOutlined :style="{fontSize: '24px', marginLeft: '5px'}" />
+            <CheckOutlined :style="{ fontSize: '24px', marginLeft: '5px' }" />
             <div class="bg-gray-200 rounded-r-lg body-step">
               <h2 class="font-bold text-sm">Run</h2>
               <p class="text-xs text-gray-600">Run the simulation with new configs</p>
@@ -84,8 +83,7 @@
 </template>
 
 <script>
-import { PlusOutlined, FileFilled, SettingFilled, CheckOutlined, ArrowRightOutlined  } from '@ant-design/icons-vue'
-
+import { PlusOutlined, FileFilled, SettingFilled, CheckOutlined, ArrowRightOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'StepperStatic',

@@ -29,17 +29,17 @@ export default {
   // data: function () {
   //   return {}
   // },
-  setup (props) {
+  setup(props) {
     const link = ref(props.link)
     const router = useRouter()
-    
- function onClick () {
+
+    function onClick() {
       router.push(link.value)
     }
-    return { 
+    return {
       onClick
     }
-  } 
+  }
 }
 </script>
 
