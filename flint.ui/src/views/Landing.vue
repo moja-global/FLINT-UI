@@ -22,22 +22,21 @@
       </div>
     </div>
 
-    <a-row :gutter="[24, 48]" class="w-full py-14 md:py-20 px-8 sm:px-16 md:px-24 landing-cards">
-      <LandingPageCard
-        title="Point"
-        description="Point is a basic model in the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
-        link="/flint/configurations/point"
-      />
-      <LandingPageCard
-        title="RothC"
-        description="RothC is a model for the turnover of organic carbon in non-waterlogged topsoil that allows for the effects of soil type, temperature, soil moisture and plant cover on the turnover process."
-        link="/flint/configurations/rothc"
-      />
-      <LandingPageCard
-        title="GCBM"
-        description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
-        link="/gcbm/dashboard"
-      />
+    <a-row :gutter="[24, 48]" class="w-full py-14 md:py-20 px-8 sm:px-16 md:px-24 landing-cards" type="flex" justify="space-between">
+        
+            <LandingPageCard title="Point"
+                             description="Point is a basic model in the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
+                             link="/flint/configurations/point"
+                             docLink="https://docs.moja.global/en/master/FLINT/index.html" />
+            <LandingPageCard title="RothC"
+                             description="RothC is a model for the turnover of organic carbon in non-waterlogged topsoil that allows for the effects of soil type, temperature, soil moisture and plant cover on the turnover process."
+                             link="/flint/configurations/rothc"
+                             docLink="https://docs.moja.global/en/master/FLINT/index.html" />
+            <LandingPageCard title="GCBM"
+                             description="The Generic Carbon Budget Model (GCBM) which uses the Carbon Budget Model science modules from the Canadian Forest Service on top of the FLINT platform, was used to generate forest sector based climate change mitigation analyses for British Columbia, Canada."
+                             link="/gcbm/dashboard"
+                             docLink="https://docs.moja.global/en/master/GCBM/index.html" />
+      
     </a-row>
   </div>
 </template>
@@ -58,6 +57,7 @@ export default {
   .landing-cards {
     display: flex;
     justify-content: space-between;
+    flex:1;
   }
 }
 </style>
