@@ -38,8 +38,8 @@
                   "
                   @click="runSim"
                 >
-                  <PlayCircleOutlined /> 
-                  <p>Run simulation </p>
+                  <PlayCircleOutlined />
+                  <p>Run simulation</p>
                 </button>
               </a-col>
 
@@ -57,7 +57,7 @@
                   "
                   @click="checkStatus"
                 >
-                  <QuestionCircleOutlined :style="{fontSize: '16px'}" /> 
+                  <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
                   <p>Check status</p>
                 </button>
               </a-col>
@@ -76,8 +76,8 @@
                   "
                   @click="downloadSim"
                 >
-                  <DownloadOutlined /> 
-                  <p>Download simulation </p>
+                  <DownloadOutlined />
+                  <p>Download simulation</p>
                 </button>
               </a-col>
             </a-row>
@@ -96,7 +96,7 @@ import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Slider/Toggle.vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
-import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined  } from '@ant-design/icons-vue'
+import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'DashboardPage',

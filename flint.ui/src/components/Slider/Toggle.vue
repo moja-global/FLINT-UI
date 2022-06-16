@@ -25,34 +25,32 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 export default {
-   
-  setup( props, { emit } ) {
-    const toggleActive = ref(false);
-    const isDownloaded = ref(false);
+  setup(props, { emit }) {
+    const toggleActive = ref(false)
+    const isDownloaded = ref(false)
     const interval = ref(0)
     const store = useStore()
 
     function checkforAutoProgress() {
-       isDownloaded.value = false
+      isDownloaded.value = false
       console.log('Current state of the switch: ', toggleActive.value)
-      if ( toggleActive.value == true) {
+      if (toggleActive.value == true) {
         console.log('toggled = true')
         interval.value = setInterval(() => {
           emit('checkstatus')
-          
+
           if (store.state.gcbm.SimulationProgress == 'Output is ready to download at gcbm/download') {
             console.log('download now')
-           emit('downloadsim')
+            emit('downloadsim')
             isDownloaded.value = true
             document.getElementById('revert-toggle').click()
           }
-    }, 30000)
+        }, 30000)
       } else {
         clearInterval(interval.value)
-      } 
+      }
     }
     return { toggleActive, isDownloaded, checkforAutoProgress }
-  
-}
+  }
 }
 </script>

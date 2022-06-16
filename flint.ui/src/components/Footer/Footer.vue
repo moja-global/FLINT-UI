@@ -8,13 +8,13 @@
       <a-col :xs="24" :md="5">
         <h2 class="title">Get In Touch</h2>
         <div class="email">
-          <MailFilled :style="{color: '#ffffff', fontSize: '17px'}"/>
+          <MailFilled :style="{ color: '#ffffff', fontSize: '17px' }" />
           <a class="ml-1" href="mailto:info@moja.global"> info@moja.global</a>
         </div>
 
         <div class="mt-5 socials">
           <a-button type="text" shape="circle" href="https://twitter.com/mojaglobal" class="social-icons">
-            <TwitterCircleFilled :style="{fontSize: '28px'}" />
+            <TwitterCircleFilled :style="{ fontSize: '28px' }" />
           </a-button>
 
           <a-button
@@ -23,7 +23,7 @@
             href="https://www.linkedin.com/company/moja-global/"
             class="social-icons"
           >
-            <LinkedinFilled :style="{fontSize: '28px'}" />
+            <LinkedinFilled :style="{ fontSize: '28px' }" />
           </a-button>
         </div>
       </a-col>
@@ -89,7 +89,7 @@ import { TwitterCircleFilled, LinkedinFilled, MailFilled } from '@ant-design/ico
 
 export default {
   name: 'FooterComponent',
-  components: {TwitterCircleFilled, LinkedinFilled, MailFilled}
+  components: { TwitterCircleFilled, LinkedinFilled, MailFilled }
 }
 </script>
 
