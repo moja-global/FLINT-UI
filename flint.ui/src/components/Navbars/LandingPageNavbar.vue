@@ -61,15 +61,15 @@ export default {
     MenuOutlined,
     CloseOutlined
   },
-  setup () {
+  setup() {
     const showMenu = ref(false)
-    
+
     function toggleNavbar() {
       showMenu.value = !showMenu.value
-    } 
-    
+    }
+
     return { showMenu, toggleNavbar }
-  } 
+  }
 }
 </script>
 

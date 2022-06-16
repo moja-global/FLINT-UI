@@ -82,8 +82,8 @@ export default {
   },
   setup() {
     const isConfirmRunModalVisible = ref(false)
-    const toast = useToast() 
-    
+    const toast = useToast()
+
     function showConfirmRunModal() {
       isConfirmRunModalVisible.value = true
     }
@@ -205,6 +205,6 @@ export default {
       apiRoute_rothc,
       apiRoute_nonexistent
     }
-  } 
+  }
 }
 </script>

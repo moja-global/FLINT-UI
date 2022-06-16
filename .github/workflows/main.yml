@@ -42,7 +42,7 @@ jobs:
         working-directory: flint.ui
 
       - name: Lint 🧐
-        run: yarn lint
+        run: yarn lint --no-fix --max-warnings 0
         working-directory: flint.ui
 
       - name: Storybook Build 🎨
