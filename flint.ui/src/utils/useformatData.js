@@ -1,4 +1,4 @@
- export default function () { 
+export default function () {
   function formatDecimal(inputString) {
     return inputString.substr(2).slice(0, -2)
   }
@@ -10,5 +10,4 @@
     formatDecimal,
     formatArray
   }
-
 }
