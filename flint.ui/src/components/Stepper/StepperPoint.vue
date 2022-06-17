@@ -11,12 +11,12 @@
 <script>
 export default {
   setup() {
-  function finalPool() {
+    function finalPool() {
       this.$root.$refs.finalPoolValues()
     }
-  return {
-    finalPool
-  }  
-  } 
+    return {
+      finalPool
+    }
+  }
 }
 </script>

@@ -126,7 +126,8 @@ export default {
       required: true
     }
   },
-  setup( props, { emit } ) {
+  emits: ['close', 'startApicalls'],
+  setup(props, { emit }) {
     function close() {
       emit('close')
     }
@@ -138,6 +139,6 @@ export default {
       close,
       startApicalls
     }
-  } 
+  }
 }
 </script>
