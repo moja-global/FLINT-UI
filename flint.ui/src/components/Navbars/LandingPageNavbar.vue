@@ -53,21 +53,22 @@
 
 <script>
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons-vue'
+import { ref } from 'vue'
+
 export default {
   name: 'LandingPageNavbar',
   components: {
     MenuOutlined,
     CloseOutlined
   },
-  data() {
-    return {
-      showMenu: false
+  setup() {
+    const showMenu = ref(false)
+
+    function toggleNavbar() {
+      showMenu.value = !showMenu.value
     }
-  },
-  methods: {
-    toggleNavbar: function () {
-      this.showMenu = !this.showMenu
-    }
+
+    return { showMenu, toggleNavbar }
   }
 }
 </script>
