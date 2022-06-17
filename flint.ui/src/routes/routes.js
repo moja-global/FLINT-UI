@@ -6,7 +6,9 @@ import Configurations from '@/views/flint/Configurations.vue'
 import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
 import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
 
-import GCBMDashboard from '@/views/gcbm/GCBMDashboard.vue'
+import GCBMLanding from '@/components/GCBM/GCBMLanding.vue'
+import LocalDomain from '@/components/GCBM/LocalDomain.vue'
+
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
 
@@ -40,18 +42,20 @@ const routes = [
   },
   {
     path: '/gcbm',
-    redirect: '/flint/gcbm/dashboard',
+    redirect: '/gcbm/configurations',
     component: GCBM,
     children: [
       {
-        name: 'gcbmdashboard',
-        path: '/gcbm/dashboard',
-        component: GCBMDashboard
-      },
-      {
         name: 'gcbmconfigurations',
         path: '/gcbm/configurations',
-        component: GCBMDashboard
+        component: GCBMLanding,
+        children: [
+          {
+            name: 'gcbmLocalDomain',
+            path: '/gcbm/configurations/local-domain',
+            component: LocalDomain
+          }
+        ]
       },
       {
         name: 'gcbmupload',

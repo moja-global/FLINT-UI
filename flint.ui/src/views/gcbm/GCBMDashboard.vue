@@ -2,7 +2,7 @@
   <a-layout>
     <a-layout-sider width="260" style="background: #fff" class="pb-16">
       <div class="px-5">
-        <a-typography-title style="margin-bottom: 8px">
+        <a-typography-title style="margin-bottom: 0px">
           <span class="font-normal mb-2 text-earth">GCBM</span>
         </a-typography-title>
         <a-typography-text class="text-lg block">
@@ -19,12 +19,7 @@
         </a-typography-text>
       </div>
       <a-divider />
-      <a-menu
-        v-model:selectedKeys="selectedKeys2"
-        v-model:openKeys="openKeys"
-        mode="inline"
-        :style="{ borderRight: 0 }"
-      >
+      <a-menu mode="inline" :style="{ borderRight: 0 }">
         <a-sub-menu key="sub1">
           <template #title>
             <span> Local Domain </span>
@@ -52,12 +47,13 @@
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
-    <a-layout style="padding: 0 24px 24px"><LocalDomain /> </a-layout>
+    <a-layout class="bg-gray-50" style="padding: 0 24px 24px"><LocalDomain /> </a-layout>
   </a-layout>
 </template>
 
 <script>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { SettingOutlined } from '@ant-design/icons-vue'
 import LocalDomain from '../../components/GCBM/LocalDomain.vue'
 
@@ -72,46 +68,12 @@ export default {
     const multiple = ref(null)
     const simulation_title = ref('')
 
-    function checkforSimtitle() {
-      if (this.simulation_title === '') return false
-      else {
-        console.log(this.simulation_title)
-        return true
-      }
-    }
-
-    function isTitle() {
-      if (this.checkforSimtitle()) {
-        return false
-      } else {
-        return true
-      }
-    }
-
-    function sendToAPI() {
-      console.log(this.simulation_title, ' goto /gcbm/new')
-      var simulation_title = this.simulation_title
-      console.log('simulation_title')
-      console.log(simulation_title)
-
-      this.$store.dispatch('title_setter', simulation_title)
-      console.log('from set new title')
-      console.log(this.$store.state.gcbm.config.title)
-      //function to send the title to API
-      this.$store.dispatch('send_new_gcbm_job_title')
-    }
-
-    function check_status() {
-      this.$store.dispatch('check_gcbm_run_status')
-    }
+    const path = useRoute().path
+    console.log(path)
 
     return {
       multiple,
-      simulation_title,
-      checkforSimtitle,
-      isTitle,
-      sendToAPI,
-      check_status
+      simulation_title
     }
   }
 }

@@ -66,8 +66,6 @@ export default {
 
       var end_date_value = new Date(dayjs(this.selectedEndDate).format('YYYY-MM-DD'))
 
-      console.log(start_date_value, end_date_value)
-
       // difference in years
       var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
       return diff
