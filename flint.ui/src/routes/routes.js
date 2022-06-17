@@ -49,6 +49,11 @@ const routes = [
         component: GCBMDashboard
       },
       {
+        name: 'gcbmconfigurations',
+        path: '/gcbm/configurations',
+        component: GCBMDashboard
+      },
+      {
         name: 'gcbmupload',
         path: '/gcbm/upload',
         component: GCBMUpload
