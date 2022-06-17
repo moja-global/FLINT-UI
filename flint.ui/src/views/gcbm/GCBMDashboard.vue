@@ -75,6 +75,15 @@ export default {
       multiple,
       simulation_title
     }
+
+    return {
+      multiple,
+      simulation_title,
+      checkforSimtitle,
+      isTitle,
+      sendToAPI,
+      check_status
+    }
   }
 }
 </script>
