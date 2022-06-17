@@ -70,19 +70,18 @@ export default {
 
     const path = useRoute().path
     console.log(path)
+<<<<<<< HEAD
 
     return {
       multiple,
       simulation_title
     }
+=======
+>>>>>>> fix: vue-router and router view for new components/configurations, add a landing component
 
     return {
       multiple,
-      simulation_title,
-      checkforSimtitle,
-      isTitle,
-      sendToAPI,
-      check_status
+      simulation_title
     }
   }
 }
