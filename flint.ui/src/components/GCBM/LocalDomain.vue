@@ -4,7 +4,7 @@
     <DatepickerGCBM class="mt-4" />
     <div class="flex">
       <span class="text-xl mr-2">Number of Threads:</span>
-      <a-input-number v-model:value="num_of_threads" min="1" max="10" step="1" style="width: 100px" class="mt-2" />
+      <a-input-number v-model:value="num_of_threads" min="1" max="10" step="1" style="width: 100px" />
     </div>
     <span class="text-earth">
       Configure the number of threads the module is using. Match the number of cores on your computer.
