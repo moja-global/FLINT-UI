@@ -1,78 +1,65 @@
 <template>
   <div class="pt-4 px-8">
-    <router-link :to="{ name: 'gcbmconfigurations', params: { showBackToHome: false } }">
-      <a-typography-link class="flex items-center">
-        <arrow-left-outlined class="mr-2" />
-        Back to Home Page
-      </a-typography-link>
-    </router-link>
+    <a-typography-title>
+      <span class="font-normal text-earth"> Generic Carbon Budgeting Model </span>
+    </a-typography-title>
+    <a-typography-text class="w-1"> The GCBM Simulation Run consists of 4 main steps: </a-typography-text>
+    <StepperStatic />
+    <div class="mt-4 w-12/12 md:w-3/4">
+      <div class="text-xl mr-2">Create a new Simulation</div>
+      <a-typography-text>
+        Enter a title for your simulation. Title should be unique for each separate run.
+      </a-typography-text>
+      <a-input-search
+        class="mt-2"
+        size="large"
+        v-model:value="simulation_title"
+        placeholder="Enter simulation title"
+        enter-button="Create Run"
+        @search="sendToAPI"
+      />
+    </div>
   </div>
-
-  <!-- This router view is for rendering the configuration routes like /gcbm/local-domain, 
-       /gcbm/modules, etc. -->
-  <router-view></router-view>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { ArrowLeftOutlined } from '@ant-design/icons-vue'
-import { useRoute } from 'vue-router'
-import StepperGCBM from '../Stepper/StepperGCBM.vue'
+import StepperStatic from '../Stepper/StepperStatic.vue'
+import { notification } from 'ant-design-vue'
+import { useStore } from 'vuex'
 
 export default {
   name: 'GCBMLanding',
-  components: { ArrowLeftOutlined, StepperGCBM },
+  components: { StepperStatic },
   setup() {
     const simulation_title = ref('')
 
-    const route = useRoute()
-    const path = trimSlashes(route.path)
-    console.log(route.params)
-    const showBackToHome = path === 'gcbm/configurations' || route.params.showBackToHome
-
-    function checkforSimtitle() {
-      if (simulation_title.value === '') return false
-      else {
-        console.log(simulation_title.value)
-        return true
-      }
-    }
-
-    function isTitle() {
-      if (this.checkforSimtitle()) {
-        return false
-      } else {
-        return true
-      }
-    }
+    const store = useStore()
 
     function sendToAPI() {
-      console.log(simulation_title.value, ' goto /gcbm/new')
-      console.log('simulation_title')
-      console.log(simulation_title.value)
-
-      this.$store.dispatch('title_setter', simulation_title.value)
+      if (!simulation_title.value.trim()) {
+        notification.error({
+          message: 'Error',
+          description: 'Please enter a simulation title.',
+          duration: 2
+        })
+        return
+      }
+      store.dispatch('title_setter', simulation_title.value)
       console.log('from set new title')
-      console.log(this.$store.state.gcbm.config.title)
+      console.log(store.state.gcbm.config.title)
       //function to send the title to API
-      this.$store.dispatch('send_new_gcbm_job_title')
+      store.dispatch('send_new_gcbm_job_title')
     }
 
     function check_status() {
-      this.$store.dispatch('check_gcbm_run_status')
-    }
-
-    function trimSlashes(str) {
-      return str.replace(/^\/+|\/+$/g, '')
+      store.dispatch('check_gcbm_run_status')
     }
 
     return {
-      path,
-      showBackToHome,
-      isTitle,
+      simulation_title,
       sendToAPI,
-      check_status,
-      checkforSimtitle
+      check_status
     }
   }
 }
