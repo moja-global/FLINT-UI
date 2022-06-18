@@ -10,7 +10,7 @@
         <a-col :flex="3" align="middle">
           <a-row :gutter="40" justify="center" type="flex">
             <a-col>
-              <a href="https://docs.moja.global/projects/flint-ui/en/latest/" target="_blank" rel="noreferrer noopener"
+              <a href="https://docs.moja.global/en/master/" target="_blank" rel="noreferrer noopener"
                 >Documentation
               </a>
             </a-col>
