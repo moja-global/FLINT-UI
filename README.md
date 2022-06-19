@@ -56,7 +56,7 @@ This project provides an intuitive way for new to explore some preconfigured FLI
 - [TailwindCSS](https://tailwindcss.com/)
 - [Cypress](https://www.cypress.io/)
 - [Apexcharts](https://apexcharts.com/)
-- [Moment.js](https://momentjs.com/)
+- [day.js](https://day.js.org/)
 - [OpenLayers](https://openlayers.org/)
 
 ## Getting started
@@ -132,7 +132,7 @@ To shut down, the whole `docker-compose.yml` file and all services inside it the
 4. To view the UI please navigate to [127.0.0.1:8000](http://127.0.0.1:8000/). UI will look something like this:
 
 <div align="center">
-<img src="assets/flint-ui-dashboard.jpg">
+<img src="assets/flint-ui-dashboard.png">
 </div>
 
 ## Contributing
