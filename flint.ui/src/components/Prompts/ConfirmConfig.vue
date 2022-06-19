@@ -126,13 +126,18 @@ export default {
       required: true
     }
   },
-  methods: {
-    close() {
-      this.$emit('close')
-    },
-    startApicalls() {
-      this.$emit('close')
-      this.$emit('startApicalls')
+  emits: ['close', 'startApicalls'],
+  setup(props, { emit }) {
+    function close() {
+      emit('close')
+    }
+    function startApicalls() {
+      emit('close')
+      emit('startApicalls')
+    }
+    return {
+      close,
+      startApicalls
     }
   }
 }

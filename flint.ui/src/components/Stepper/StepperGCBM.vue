@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 export default {
   props: {
     initial: {
@@ -16,37 +18,37 @@ export default {
       default: 0
     }
   },
-  data() {
-    return {
-      current: this.initial
-    }
-  },
-
-  methods: {
-    onChange(current) {
+  setup(props) {
+    const current = ref(props.initial)
+    const router = useRouter()
+    function onChange(current) {
       switch (current) {
         case 0:
           // New Simulation
-          this.$router.push({
+          router.push({
             name: 'gcbmdashboard',
             params: { current }
           })
           break
         case 1:
           // Upload Dataset
-          this.$router.push({
+          router.push({
             name: 'gcbmupload',
             params: { current }
           })
           break
         case 2:
           // Run | Status | Download
-          this.$router.push({
+          router.push({
             name: 'gcbmrun',
             params: { current }
           })
           break
       }
+    }
+    return {
+      current,
+      onChange
     }
   }
 }

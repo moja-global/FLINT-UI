@@ -21,12 +21,17 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 export default {
-  methods: {
-    apiRoute_rothc() {
+  setup() {
+    const store = useStore()
+    function apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
-      this.$store.dispatch('send_rothcConfig', { root: true })
+      store.dispatch('send_rothcConfig', { root: true })
+    }
+    return {
+      apiRoute_rothc
     }
   }
 }
