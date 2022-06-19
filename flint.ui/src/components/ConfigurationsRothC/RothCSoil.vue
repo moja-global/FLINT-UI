@@ -211,153 +211,176 @@
 </template>
 
 <script>
-import formatData from '@/mixins/formatData'
+import useformatData from '../../utils/useformatData'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  mixins: [formatData],
-  computed: {
-    newconfig_bToCMaxTSMDRatio: {
-      get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio)
-      },
-      set(newValue) {
-        this.$store.commit('setNewConfig_bToCMaxTSMDRatio', '$#' + newValue + '$#')
-      }
-    },
+  setup() {
+    const { formatDecimal } = useformatData()
+    const store = useStore()
 
-    newconfig_dToRRatioInPres: {
+    const newconfig_bToCMaxTSMDRatio = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.dToRRatioInPres)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.bToCMaxTSMDRatio)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_dToRRatioInPres', '$#' + newValue + '$#')
+        store.commit('setNewConfig_bToCMaxTSMDRatio', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_encpFracHums: {
+    const newconfig_dToRRatioInPres = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.encpFracHums)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.dToRRatioInPres)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_encpFracHums', '$#' + newValue + '$#')
+        store.commit('setNewConfig_dToRRatioInPres', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_evapoOpenRatio: {
+    const newconfig_encpFracHums = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.evapoOpenRatio)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.encpFracHums)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_evapoOpenRatio', '$#' + newValue + '$#')
+        store.commit('setNewConfig_encpFracHums', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracHumsToBios: {
+    const newconfig_evapoOpenRatio = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracHumsToBios)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.evapoOpenRatio)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracHumsToBios', '$#' + newValue + '$#')
+        store.commit('setNewConfig_evapoOpenRatio', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracManuCMToBiof: {
+    const newconfig_fracHumsToBios = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBiof)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracHumsToBios)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracManuCMToBiof', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracHumsToBios', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracManuCMToBios: {
+    const newconfig_fracManuCMToBiof = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToBios)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToBiof)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracManuCMToBios', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracManuCMToBiof', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracManuCMToDpma: {
+    const newconfig_fracManuCMToBios = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToDpma)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToBios)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracManuCMToDpma', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracManuCMToBios', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracManuCMToRpma: {
+    const newconfig_fracManuCMToDpma = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracManuCMToRpma)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToDpma)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracManuCMToRpma', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracManuCMToDpma', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_fracPbioToBiof: {
+    const newconfig_fracManuCMToRpma = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.fracPbioToBiof)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracManuCMToRpma)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_fracPbioToBiof', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracManuCMToRpma', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_sampleDepth: {
+    const newconfig_fracPbioToBiof = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sampleDepth)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.fracPbioToBiof)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sampleDepth', '$#' + newValue + '$#')
+        store.commit('setNewConfig_fracPbioToBiof', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_sdcmRateMultBiof: {
+    const newconfig_sampleDepth = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sampleDepth)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sdcmRateMultBiof', '$#' + newValue + '$#')
+        store.commit('setNewConfig_sampleDepth', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_sdcmRateMultBios: {
+    const newconfig_sdcmRateMultBiof = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultBios)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultBiof)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sdcmRateMultBios', '$#' + newValue + '$#')
+        store.commit('setNewConfig_sdcmRateMultBiof', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_sdcmRateMultDpm: {
+    const newconfig_sdcmRateMultBios = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultBios)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sdcmRateMultDpm', '$#' + newValue + '$#')
+        store.commit('setNewConfig_sdcmRateMultBios', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_sdcmRateMultHums: {
+    const newconfig_sdcmRateMultDpm = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultHums)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultDpm)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sdcmRateMultHums', '$#' + newValue + '$#')
+        store.commit('setNewConfig_sdcmRateMultDpm', '$#' + newValue + '$#')
       }
-    },
+    })
+    const newconfig_sdcmRateMultHums = computed({
+      get() {
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultHums)
+      },
+      set(newValue) {
+        store.commit('setNewConfig_sdcmRateMultHums', '$#' + newValue + '$#')
+      }
+    })
 
-    newconfig_sdcmRateMultRpm: {
+    const newconfig_sdcmRateMultRpm = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm)
+        return formatDecimal(store.state.rothc.config.Variables[14].soil.sdcmRateMultRpm)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_sdcmRateMultRpm', '$#' + newValue + '$#')
+        store.commit('setNewConfig_sdcmRateMultRpm', '$#' + newValue + '$#')
       }
+    })
+
+    return {
+      formatDecimal,
+      newconfig_bToCMaxTSMDRatio,
+      newconfig_dToRRatioInPres,
+      newconfig_encpFracHums,
+      newconfig_evapoOpenRatio,
+      newconfig_fracHumsToBios,
+      newconfig_fracManuCMToBiof,
+      newconfig_fracManuCMToBios,
+      newconfig_fracManuCMToDpma,
+      newconfig_fracManuCMToRpma,
+      newconfig_fracPbioToBiof,
+      newconfig_sdcmRateMultDpm,
+      newconfig_sdcmRateMultBiof,
+      newconfig_sampleDepth,
+      newconfig_sdcmRateMultBios,
+      newconfig_sdcmRateMultHums,
+      newconfig_sdcmRateMultRpm
     }
   }
 }
