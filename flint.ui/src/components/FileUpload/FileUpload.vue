@@ -194,7 +194,7 @@ export default {
       add_title_to_formdata,
       triggerSend
     }
-  }, 
+  }
 }
 </script>
 

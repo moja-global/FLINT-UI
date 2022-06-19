@@ -22,14 +22,14 @@ export default {
   props: {
     value: { type: String, default: dayjs('2022-01-31') }
   },
-  setup (props) {
+  setup(props) {
     const selectedDate = ref(props.value)
 
     const inputVal = computed({
       get: () => {
         return selectedDate.value
       },
-      set: (val) => { 
+      set: (val) => {
         // this.$emit('input', dayjs(val).toString())
         selectedDate.value = val
       }
@@ -44,7 +44,7 @@ export default {
       inputVal,
       onChange
     }
-  } 
+  }
 }
 </script>
 

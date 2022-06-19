@@ -43,13 +43,13 @@ export default {
   props: {
     value: { type: dayjs.Dayjs, default: dayjs('2022-01-01') }
   },
-  setup(props, { emit } ) {
+  setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-    const toast = useToast() 
+    const toast = useToast()
     const selectedStartDate = ref(props.value)
     const selectedEndDate = ref(props.value)
 
-        const date_diff = computed(() => {
+    const date_diff = computed(() => {
       var start_date_value = new Date(dayjs(selectedStartDate.value).format('YYYY-MM-DD'))
 
       var end_date_value = new Date(dayjs(selectedEndDate.value).format('YYYY-MM-DD'))
@@ -65,7 +65,7 @@ export default {
       get: () => {
         return selectedStartDate.value
       },
-      set: (val) => { 
+      set: (val) => {
         emit('input', dayjs(val).toString())
         selectedStartDate.value = val
         console.log(selectedStartDate.value)
@@ -77,12 +77,12 @@ export default {
         }
       }
     })
-    
+
     const endDateInput = computed({
       get: () => {
         return selectedEndDate.value
       },
-      set: (val) => { 
+      set: (val) => {
         emit('input', dayjs(val).toString())
         selectedEndDate.value = val
         console.log(selectedEndDate.value)
@@ -97,12 +97,12 @@ export default {
 
     function onStartChange(val) {
       selectedStartDate.value = val
-    } 
-    
+    }
+
     function onEndChange(val) {
       selectedEndDate.value = val
     }
-    
+
     return {
       size: 'large',
       dateFormatList,
@@ -114,7 +114,7 @@ export default {
       onStartChange,
       onEndChange
     }
-  } 
+  }
 }
 </script>
 

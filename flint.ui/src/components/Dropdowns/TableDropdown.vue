@@ -38,7 +38,7 @@ import { ref } from 'vue'
 export default {
   setup() {
     const dropdownPopoverShow = ref(false)
-    function toggleDropdown (event) {
+    function toggleDropdown(event) {
       event.preventDefault()
 
       if (dropdownPopoverShow.value) {
@@ -52,9 +52,9 @@ export default {
     }
 
     return {
-      dropdownPopoverShow, 
+      dropdownPopoverShow,
       toggleDropdown
     }
-  } 
+  }
 }
 </script>
