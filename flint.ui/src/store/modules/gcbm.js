@@ -1,10 +1,7 @@
 import { notification } from 'ant-design-vue'
 import axios from 'axios'
-<<<<<<< HEAD
 
 import initialState from '@/utils/gcbmInitialStoreState.js'
-=======
->>>>>>> refactor: Migrate from Toasts to Notifications (#316)
 
 export default {
   state: {
