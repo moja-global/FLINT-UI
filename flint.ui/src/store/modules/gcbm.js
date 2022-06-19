@@ -658,7 +658,8 @@ export default {
       console.log('from title_setter')
       console.log(this.state.gcbm.config.title)
     },
-    send_new_gcbm_job_title() {
+    // eslint-disable-next-line no-unused-vars
+    send_new_gcbm_job_title(_, { onCreateRunSuccess, onCreateRunError }) {
       var bodyFormData = new FormData()
       console.log(this.state.gcbm.config.title)
       bodyFormData.append('title', this.state.gcbm.config.title)
@@ -670,10 +671,12 @@ export default {
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
         .then((response) => {
           toast.success(`${response.data.data}`, { timeout: 5000 })
+          onCreateRunSuccess(response)
           console.log(response)
         })
         .catch((error) => {
           toast.error(`${error}`, { timeout: 2000 })
+          onCreateRunError(error)
           console.log(error)
         })
     },

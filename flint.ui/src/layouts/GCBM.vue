@@ -22,34 +22,30 @@
       </div>
       <a-divider />
       <div class="flex flex-col gap-2">
-        <a-collapse :bordered="false">
+        <a-collapse :bordered="false" v-model:activeKey="collapseActiveKeys">
           <a-collapse-panel
             key="acc1"
             header="Configure Parameters"
             class="text-lg bg-white"
             style="border-bottom-width: 0"
           >
-            <a-menu mode="inline" :style="{ borderRight: 0 }" class="font-normal">
-              <a-sub-menu key="sub1" @titleClick="onLocalDomainClick">
-                <template #title>
-                  <span> Local Domain </span>
-                </template>
-                <a-menu-item key="1">Start and End date</a-menu-item>
-                <a-menu-item key="2">Number of Threads</a-menu-item>
-              </a-sub-menu>
-              <a-menu-item key="sub2">
+            <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :style="{ borderRight: 0 }" class="font-normal">
+              <a-menu-item key="local-domain" @click="onLocalDomainClick">
+                <span> Local Domain </span>
+              </a-menu-item>
+              <a-menu-item key="modules">
                 <span>Modules</span>
               </a-menu-item>
-              <a-menu-item key="sub3">
+              <a-menu-item key="variables">
                 <span>Variables</span>
               </a-menu-item>
-              <a-menu-item key="sub4">
+              <a-menu-item key="pools">
                 <span>Pools</span>
               </a-menu-item>
-              <a-menu-item key="sub5">
+              <a-menu-item key="spinup-parameters">
                 <span>Spinup Parameters</span>
               </a-menu-item>
-              <a-menu-item key="sub6">
+              <a-menu-item key="libraries">
                 <span>Libraries</span>
               </a-menu-item>
             </a-menu>
@@ -72,7 +68,7 @@
         <GCBMLanding />
       </div>
 
-      <!-- This router view is for rendering the /gcbm/configurations, and /gcbm/run routes -->
+      <!-- This router view is for rendering the /gcbm/configurations, /gcbm/upload, and /gcbm/run routes -->
       <router-view v-else></router-view>
     </a-layout>
   </a-layout>
@@ -94,11 +90,25 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
+    const selectedKeys = ref(['sub1'])
+    const collapseActiveKeys = ref([])
     let showBackToHome = ref(false)
 
     watchEffect(() => {
       const path = trimSlashes(route.path)
       showBackToHome.value = path !== 'gcbm/configurations' || route.params.showBackToHome === 'true'
+
+      if (path === 'gcbm/configurations') {
+        // Don't select any meny item for this path and close the collapse
+        selectedKeys.value = []
+        collapseActiveKeys.value = []
+      } else if (path.startsWith('gcbm/configurations')) {
+        // For sub-paths, select the appropriate menu item
+        const subPath = path.split('/').pop()
+
+        selectedKeys.value = [subPath]
+        collapseActiveKeys.value = ['acc1']
+      }
     })
 
     function onLocalDomainClick() {
@@ -110,7 +120,7 @@ export default {
       return str.replace(/^\/+|\/+$/g, '')
     }
 
-    return { onLocalDomainClick, showBackToHome }
+    return { showBackToHome, selectedKeys, collapseActiveKeys, onLocalDomainClick }
   }
 }
 </script>
