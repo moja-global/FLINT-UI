@@ -211,7 +211,7 @@
 </template>
 
 <script>
-import useformatData from '../../Composition_API/useformatData'
+import useformatData from '../../utils/useformatData'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
