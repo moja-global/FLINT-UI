@@ -16,18 +16,17 @@
 <script>
 import { ref } from 'vue'
 
-export default { 
-
+export default {
   script() {
     const zoom = ref(15)
     const center = ref([-89.347015, 43.65107])
-    const rotation = ref(0) 
-    
-    function getdata1(data1 = center.value[0]) { 
-      return data1
-    } 
+    const rotation = ref(0)
 
-    function getdata2(data2 = center.value[1]) { 
+    function getdata1(data1 = center.value[0]) {
+      return data1
+    }
+
+    function getdata2(data2 = center.value[1]) {
       return data2
     }
 
@@ -38,6 +37,6 @@ export default {
       getdata1,
       getdata2
     }
-  } 
+  }
 }
 </script>

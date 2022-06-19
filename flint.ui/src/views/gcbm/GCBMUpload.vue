@@ -20,7 +20,7 @@
           "
           @click="hello"
         >
-          <FileOutlined :style="{marginRight: '4px'}"/> Submit uploaded files
+          <FileOutlined :style="{ marginRight: '4px' }" /> Submit uploaded files
         </button>
       </div>
 

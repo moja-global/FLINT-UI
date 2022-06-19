@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'; 
+import { computed } from 'vue'
 
 export default {
   name: 'Button',
@@ -24,15 +24,15 @@ export default {
       default: '#475447'
     }
   },
-    setup(props) {
+  setup(props) {
     const btnStyles = computed(() => {
       return {
         '--color': props.btnColor,
         '--width': props.btnSize
-      } 
-    }) 
-    return { btnStyles };
-  }, 
+      }
+    })
+    return { btnStyles }
+  }
 }
 </script>
 

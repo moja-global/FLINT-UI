@@ -94,15 +94,15 @@ export default {
         this.apiRoute_rothc()
       } else this.apiRoute_nonexistent()
     }
-    
+
     function apiRoute_rothc() {
       console.log('ROTHC route invoked with new configs')
       store.dispatch('send_rothcConfig')
-    } 
+    }
 
     function apiRoute_nonexistent() {
       console.log('No such route exists!')
-    } 
+    }
 
     return {
       configSim,
@@ -110,6 +110,6 @@ export default {
       apiRoute_rothc,
       apiRoute_nonexistent
     }
-  } 
+  }
 }
 </script>
