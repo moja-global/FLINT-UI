@@ -95,8 +95,8 @@ import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Slider/Toggle.vue'
 import axios from 'axios'
-import { useToast } from 'vue-toastification'
 import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
+import { notification } from 'ant-design-vue'
 
 export default {
   name: 'DashboardPage',
@@ -119,16 +119,21 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
-      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
         .then((response) => {
-          toast.success(`${response.data.status}`, { timeout: 5000 })
+          notification.success({
+            message: response.data.status,
+            duration: 5
+          })
           console.log(response)
         })
         .catch((error) => {
-          toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
     },
@@ -138,18 +143,23 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
-      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, bodyFormData)
         .then((response) => {
-          toast.info(`${response.data.finished}`, { timeout: 5000 })
+          notification.info({
+            message: `${response.data.finished}`,
+            duration: 5
+          })
           this.$store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
           console.log(this.$store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
-          toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
     },
@@ -159,7 +169,6 @@ export default {
       bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
       console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
-      const toast = useToast()
 
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, bodyFormData, {
@@ -177,7 +186,10 @@ export default {
           link.click()
         })
         .catch((error) => {
-          toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
     }

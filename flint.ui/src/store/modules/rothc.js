@@ -1,5 +1,5 @@
+import { notification } from 'ant-design-vue'
 import axios from 'axios'
-import { useToast } from 'vue-toastification'
 
 export default {
   state: {
@@ -485,19 +485,22 @@ export default {
 
       console.log(final_RothC_config_string)
 
-      const toast = useToast()
-
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`, final_RothC_config_string)
         .then((response) => {
-          toast.success(`Configuration loaded for RothC.`, {
-            timeout: 2000
+          notification.success({
+            message: `Configuration loaded for RothC.`,
+            duration: 5
           })
+
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
         .catch((error) => {
-          toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
     },

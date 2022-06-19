@@ -74,8 +74,8 @@ import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import FileUpload from '@/components/FileUpload/FileUpload.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import axios from 'axios'
-import { useToast } from 'vue-toastification'
 import { FileOutlined } from '@ant-design/icons-vue'
+import { notification } from 'ant-design-vue'
 
 export default {
   name: 'DashboardPage',
@@ -111,13 +111,12 @@ export default {
       return this.$store.state.gcbm.DropdownSelectedSim
     },
     getSimulations: function () {
-      const toast = useToast()
-
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
-        toast.info(`Ongoing simulations - ${response.data.data}`, {
-          timeout: 5000
+        notification.info({
+          message: `Ongoing simulations - ${response.data.data}`,
+          duration: 5
         })
         console.log(response.data.data)
         console.log(this.simulation_list)
