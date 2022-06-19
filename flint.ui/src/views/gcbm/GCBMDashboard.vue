@@ -1,115 +1,79 @@
 <template>
-  <div>
-    <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
-      <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
-        <p class="text-gray-700">Follow the steps below to simulate GCBM runs.</p>
+  <a-layout>
+    <a-layout-sider width="260" style="background: #fff" class="pb-16">
+      <div class="px-5">
+        <a-typography-title style="margin-bottom: 0px">
+          <span class="font-normal mb-2 text-earth">GCBM</span>
+        </a-typography-title>
+        <a-typography-text class="text-lg block">
+          <span class="flex items-center mb-2">
+            <setting-outlined class="mr-2" />
+            <span>Simulation Editor</span>
+          </span>
+        </a-typography-text>
+        <a-typography-text>
+          <span>
+            <span>Already have a configuration ready? </span>
+            <a href="#">Import</a>
+          </span>
+        </a-typography-text>
       </div>
-
-      <StepperStatic />
-
-      <div class="mt-8 pb-6 mx-auto" style="width: 100%; max-width: 300px">
-        <div class="p-4 bg-white rounded shadow-lg">
-          <div class="relative w-full max-w-full flex-grow flex-1">
-            <h2 class="font-semibold text-xl text-blueGray-700">Create a new Simulation</h2>
-
-            <input
-              v-model="simulation_title"
-              class="
-                w-full
-                mt-4
-                h-10
-                px-3
-                mb-2
-                text-base text-gray-700
-                placeholder-gray-600
-                border
-                rounded-lg
-                focus:shadow-outline
-              "
-              type="text"
-              placeholder="Enter title for simulation"
-            />
-
-            <button
-              class="
-                w-full
-                mt-4
-                inline-flex
-                items-center
-                bg-white
-                hover:bg-earth hover:text-white
-                text-gray-800
-                font-semibold
-                py-2
-                px-4
-                border border-gray-400
-                rounded
-                shadow
-              "
-              :disabled="isTitle()"
-              :class="{ 'opacity-25 cursor-not-allowed': isTitle() }"
-              @click="sendToAPI"
-            >
-              <PlusOutlined :style="{ marginRight: '16px' }" /> Create run
-            </button>
-          </div>
-
-          <p class="text-sm text-blueGray-400 mt-4">Creates a new simulation run</p>
-        </div>
-      </div>
-    </div>
-    <StepperGCBM :initial="0" />
-  </div>
+      <a-divider />
+      <a-menu mode="inline" :style="{ borderRight: 0 }">
+        <a-sub-menu key="sub1">
+          <template #title>
+            <span> Local Domain </span>
+          </template>
+          <a-menu-item key="1">Start and End date</a-menu-item>
+          <a-menu-item key="2">Number of Threads</a-menu-item>
+        </a-sub-menu>
+        <a-menu-item key="sub2">
+          <span>Modules</span>
+        </a-menu-item>
+        <a-menu-item key="sub3">
+          <span>Variables</span>
+        </a-menu-item>
+        <a-menu-item key="sub4">
+          <span>Pools</span>
+        </a-menu-item>
+        <a-menu-item key="sub5">
+          <span>Spinup Parameters</span>
+        </a-menu-item>
+        <a-menu-item key="sub6">
+          <span>Upload Files</span>
+        </a-menu-item>
+        <a-menu-item key="sub7">
+          <span>Libraries</span>
+        </a-menu-item>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout class="bg-gray-50" style="padding: 0 24px 24px"><LocalDomain /> </a-layout>
+  </a-layout>
 </template>
 
 <script>
-import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
-import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import { PlusOutlined } from '@ant-design/icons-vue'
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { SettingOutlined } from '@ant-design/icons-vue'
+import LocalDomain from '../../components/GCBM/LocalDomain.vue'
 
 export default {
   name: 'DashboardPage',
   components: {
-    StepperGCBM,
-    StepperStatic,
-    PlusOutlined
+    SettingOutlined,
+    LocalDomain
   },
 
-  data: () => ({
-    multiple: null,
-    simulation_title: ''
-  }),
+  setup() {
+    const multiple = ref(null)
+    const simulation_title = ref('')
 
-  methods: {
-    checkforSimtitle() {
-      if (this.simulation_title === '') return false
-      else {
-        console.log(this.simulation_title)
-        return true
-      }
-    },
-    isTitle() {
-      if (this.checkforSimtitle()) {
-        return false
-      } else {
-        return true
-      }
-    },
-    sendToAPI() {
-      console.log(this.simulation_title, ' goto /gcbm/new')
-      var simulation_title = this.simulation_title
-      console.log('simulation_title')
-      console.log(simulation_title)
+    const path = useRoute().path
+    console.log(path)
 
-      this.$store.dispatch('title_setter', simulation_title)
-      console.log('from set new title')
-      console.log(this.$store.state.gcbm.config.title)
-      //function to send the title to API
-      this.$store.dispatch('send_new_gcbm_job_title')
-    },
-    check_status() {
-      this.$store.dispatch('check_gcbm_run_status')
+    return {
+      multiple,
+      simulation_title
     }
   }
 }

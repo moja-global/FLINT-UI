@@ -658,7 +658,8 @@ export default {
       console.log('from title_setter')
       console.log(this.state.gcbm.config.title)
     },
-    send_new_gcbm_job_title() {
+    // eslint-disable-next-line no-unused-vars
+    send_new_gcbm_job_title(_, { onCreateRunSuccess, onCreateRunError }) {
       var bodyFormData = new FormData()
       console.log(this.state.gcbm.config.title)
       bodyFormData.append('title', this.state.gcbm.config.title)
@@ -671,6 +672,7 @@ export default {
             message: `${response.data.data}`,
             duration: 5
           })
+          onCreateRunSuccess(response)
           console.log(response)
         })
         .catch((error) => {
@@ -678,6 +680,7 @@ export default {
             message: `${error}`,
             duration: 5
           })
+          onCreateRunError(error)
           console.log(error)
         })
     },
