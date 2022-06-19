@@ -6,6 +6,8 @@
 
 <script>
 import { Slider } from 'ant-design-vue'
+import { ref, computed } from 'vue'
+
 export default {
   components: {
     'a-slider': Slider
@@ -14,19 +16,20 @@ export default {
   props: {
     value: { type: Number, default: 100 }
   },
-  data() {
-    return { sliderValue: this.value }
-  },
-  computed: {
-    inputVal: {
-      get() {
-        return this.sliderValue
+  setup(props, { emit }) {
+    const sliderValue = ref(props.value)
+
+    const inputVal = computed({
+      get: () => {
+        return sliderValue.value
       },
-      set(val) {
-        this.$emit('changeVal', val)
-        this.sliderValue = val
+      set: (val) => {
+        emit('changeVal', val)
+        sliderValue.value = val
       }
-    }
+    })
+
+    return { inputVal, sliderValue }
   }
 }
 </script>
