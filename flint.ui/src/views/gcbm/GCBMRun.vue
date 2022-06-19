@@ -95,7 +95,7 @@ import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import Toggle from '@/components/Slider/Toggle.vue'
 import axios from 'axios'
-import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined  } from '@ant-design/icons-vue'
+import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 import { notification } from 'ant-design-vue'
 
 export default {
@@ -123,16 +123,16 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: response.data.status,
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -147,18 +147,18 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, bodyFormData)
         .then((response) => {
-          notification['info']({
+          notification.info({
             message: `${response.data.finished}`,
-            duration: 2
+            duration: 5
           })
           this.$store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
           console.log(this.$store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -186,9 +186,9 @@ export default {
           link.click()
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })

@@ -230,18 +230,18 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
-          notification['success']({
-            message: "Configuration loaded for Point.",
-            duration: 2
+          notification.success({
+            message: 'Configuration loaded for Point.',
+            duration: 5
           })
           console.log(response)
           commit('save_point_results', response.data)
           console.log(this.state.point.point_results)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })

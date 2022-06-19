@@ -45,7 +45,6 @@ export default {
   },
   setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-    const toast = useToast()
     const selectedStartDate = ref(props.value)
     const selectedEndDate = ref(props.value)
 
@@ -71,9 +70,9 @@ export default {
         console.log(selectedStartDate.value)
 
         if (date_diff.value < 0) {
-          notification['error']({
+          notification.error({
             message: 'Start date should be lesser than end date',
-            duration : 4
+            duration: 5
           })
         }
       }
@@ -89,9 +88,9 @@ export default {
         console.log(selectedEndDate.value)
 
         if (date_diff.value < 0) {
-          notification['error']({
+          notification.error({
             message: 'End date should be greater than start date',
-            duration : 4
+            duration: 5
           })
         }
       }

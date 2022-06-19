@@ -664,29 +664,28 @@ export default {
       bodyFormData.append('title', this.state.gcbm.config.title)
       console.log([...bodyFormData])
 
-
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: `${response.data.data}`,
-            duration: 4
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
     },
     check_gcbm_run_status() {
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
-        notification['success']({
+        notification.success({
           message: `${response.data.data}`,
-          duration: 4
+          duration: 5
         })
         console.log(response.data)
       })

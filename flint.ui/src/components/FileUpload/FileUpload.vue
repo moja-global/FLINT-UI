@@ -163,9 +163,9 @@ export default {
       console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
 
       if (store.state.gcbm.DropdownSelectedSim == '') {
-        notification['error']({
+        notification.error({
           message: 'Title cannot be empty, Select a valid simulation title from the dropdown',
-          duration : 4
+          duration: 5
         })
       } else {
         this.add_title_to_formdata()
@@ -174,17 +174,17 @@ export default {
         axios
           .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`, this.formData)
           .then((response) => {
-            notification['success']({
+            notification.success({
               message: `${response.data.data}`,
-              duration : 2
+              duration: 5
             })
             console.log(response)
             console.log(response.data)
           })
           .catch((error) => {
-            notification['error']({
+            notification.error({
               message: `${error}`,
-              duration : 4
+              duration: 5
             })
             console.log(error)
           })

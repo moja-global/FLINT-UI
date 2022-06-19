@@ -82,7 +82,6 @@ export default {
   },
   setup() {
     const isConfirmRunModalVisible = ref(false)
-    
     function showConfirmRunModal() {
       isConfirmRunModalVisible.value = true
     }
@@ -112,16 +111,16 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/spec`)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: 'Specification route has been invoked',
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -132,16 +131,16 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/help/all`)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: 'Help route has been invoked',
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -152,16 +151,16 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/version`)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: 'Version route has been invoked',
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -172,16 +171,16 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: 'Point route has been invoked',
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
@@ -192,25 +191,25 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: 'RothC route has been invoked. You can see the output in RothC Output Table.',
-            duration: 2
+            duration: 5
           })
           console.log(response)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
     }
 
     function apiRoute_nonexistent() {
-      notification['warning']({
+      notification.warning({
         message: 'No such route exists!',
-        duration: 4
+        duration: 5
       })
       console.log('No such route exists!')
     }

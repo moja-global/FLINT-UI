@@ -114,9 +114,9 @@ export default {
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
-        notification['info']({
+        notification.info({
           message: `Ongoing simulations - ${response.data.data}`,
-          duration: 4
+          duration: 5
         })
         console.log(response.data.data)
         console.log(this.simulation_list)

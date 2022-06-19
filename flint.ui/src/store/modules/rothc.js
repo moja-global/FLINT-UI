@@ -485,22 +485,21 @@ export default {
 
       console.log(final_RothC_config_string)
 
-
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`, final_RothC_config_string)
         .then((response) => {
-          notification['success']({
+          notification.success({
             message: `Configuration loaded for RothC.`,
-            duration: 2
+            duration: 5
           })
 
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
         .catch((error) => {
-          notification['error']({
+          notification.error({
             message: `${error}`,
-            duration: 4
+            duration: 5
           })
           console.log(error)
         })
