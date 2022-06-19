@@ -96,8 +96,12 @@ import { useDropzone } from 'vue3-dropzone'
 
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import { useStore } from 'vuex'
+
 export default {
   setup() {
+    const store = useStore()
+
     const formData = new FormData()
     const files = ref({
       config: [],
@@ -145,32 +149,14 @@ export default {
       return parseFloat((bytes / 1000).toFixed(2)) + ' KB'
     }
 
-    return {
-      files,
-      formData,
-      resultConfig,
-      resultDB,
-      resultInput,
-      bytesToKB
-    }
-  },
-  methods: {
-    // listFiles: function () {
-    //   console.log('list of config files')
-    //   console.log(this.restConfig.acceptedFiles)
-    //   console.log('list of db files')
-    //   console.log(this.restDB.acceptedFiles)
-    //   console.log('list of input files')
-    //   console.log(this.restInput.acceptedFiles)
-    // },
-    add_title_to_formdata: function () {
+    function add_title_to_formdata() {
       //if (this.formData.entries().next().done === true) {
-      this.formData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
+      this.formData.append('title', store.state.gcbm.DropdownSelectedSim)
       // }
       console.log([...this.formData])
-    },
+    }
 
-    triggerSend: function () {
+    function triggerSend() {
       console.log('list of config files')
       console.log(this.$refs.dropzoneConfig.getAcceptedFiles())
       console.log('list of db files')
@@ -179,7 +165,7 @@ export default {
       console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
       const toast = useToast()
 
-      if (this.$store.state.gcbm.DropdownSelectedSim == '') {
+      if (store.state.gcbm.DropdownSelectedSim == '') {
         toast.error('Title cannot be empty, Select a valid simulation title from the dropdown', { timeout: 5000 })
       } else {
         this.add_title_to_formdata()
@@ -197,9 +183,17 @@ export default {
             console.log(error)
           })
       }
-    },
-
-    fileRemoved: function () {}
+    }
+    return {
+      files,
+      formData,
+      resultConfig,
+      resultDB,
+      resultInput,
+      bytesToKB,
+      add_title_to_formdata,
+      triggerSend
+    }
   }
 }
 </script>

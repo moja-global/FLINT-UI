@@ -36,73 +36,83 @@
 
 <script>
 import dayjs from 'dayjs'
+import { ref, computed } from 'vue'
+import { useToast } from 'vue-toastification'
 
 export default {
   props: {
     value: { type: dayjs.Dayjs, default: dayjs('2022-01-01') }
   },
-  setup() {
+  setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-    return {
-      size: 'large',
-      dateFormatList
-    }
-  },
-  data() {
-    return { selectedStartDate: this.value, selectedEndDate: this.value }
-  },
-  computed: {
-    date_diff() {
-      var start_date_value = new Date(dayjs(this.selectedStartDate).format('YYYY-MM-DD'))
+    const toast = useToast()
+    const selectedStartDate = ref(props.value)
+    const selectedEndDate = ref(props.value)
 
-      var end_date_value = new Date(dayjs(this.selectedEndDate).format('YYYY-MM-DD'))
+    const date_diff = computed(() => {
+      var start_date_value = new Date(dayjs(selectedStartDate.value).format('YYYY-MM-DD'))
+
+      var end_date_value = new Date(dayjs(selectedEndDate.value).format('YYYY-MM-DD'))
 
       console.log(start_date_value, end_date_value)
 
       // difference in years
       var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
       return diff
-    },
-    startDateInput: {
-      get() {
-        return this.selectedStartDate
-      },
-      set(val) {
-        this.$emit('input', dayjs(val).toString())
-        this.selectedStartDate = val
-        console.log(this.selectedStartDate)
+    })
 
-        if (this.date_diff < 0) {
-          this.$toast.error('Start date should be less than end date', {
+    const startDateInput = computed({
+      get: () => {
+        return selectedStartDate.value
+      },
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedStartDate.value = val
+        console.log(selectedStartDate.value)
+
+        if (date_diff.value < 0) {
+          toast.error('Start date should be less than end date', {
             timeout: 5000
           })
         }
       }
-    },
+    })
 
-    endDateInput: {
-      get() {
-        return this.selectedEndDate
+    const endDateInput = computed({
+      get: () => {
+        return selectedEndDate.value
       },
-      set(val) {
-        this.$emit('input', dayjs(val).toString())
-        this.selectedEndDate = val
-        console.log(this.selectedEndDate)
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedEndDate.value = val
+        console.log(selectedEndDate.value)
 
-        if (this.date_diff < 0) {
-          this.$toast.error('End date should be greater than start date', {
+        if (date_diff.value < 0) {
+          toast.error('End date should be greater than start date', {
             timeout: 5000
           })
         }
       }
+    })
+
+    function onStartChange(val) {
+      selectedStartDate.value = val
     }
-  },
-  methods: {
-    onStartChange(val) {
-      this.selectedStartDate = val
-    },
-    onEndChange(val) {
-      this.selectedEndDate = val
+
+    function onEndChange(val) {
+      selectedEndDate.value = val
+    }
+
+    return {
+      size: 'large',
+      dateFormatList,
+      selectedStartDate,
+      selectedEndDate,
+      date_diff,
+      startDateInput,
+      endDateInput,
+      onStartChange,
+      onEndChange
     }
   }
 }
