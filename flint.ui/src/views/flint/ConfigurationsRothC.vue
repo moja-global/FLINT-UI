@@ -147,7 +147,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .rothcAccordion .anticon svg {
   transition: transform 0.3s ease;
 }
