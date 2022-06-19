@@ -37,7 +37,7 @@
 <script>
 import dayjs from 'dayjs'
 import { ref, computed } from 'vue'
-import { useToast } from 'vue-toastification'
+import { notification } from 'ant-design-vue'
 
 export default {
   props: {
@@ -45,7 +45,6 @@ export default {
   },
   setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-    const toast = useToast()
     const selectedStartDate = ref(props.value)
     const selectedEndDate = ref(props.value)
 
@@ -71,8 +70,9 @@ export default {
         console.log(selectedStartDate.value)
 
         if (date_diff.value < 0) {
-          toast.error('Start date should be less than end date', {
-            timeout: 5000
+          notification.error({
+            message: 'Start date should be lesser than end date',
+            duration: 5
           })
         }
       }
@@ -88,8 +88,9 @@ export default {
         console.log(selectedEndDate.value)
 
         if (date_diff.value < 0) {
-          toast.error('End date should be greater than start date', {
-            timeout: 5000
+          notification.error({
+            message: 'End date should be greater than start date.',
+            duration: 5
           })
         }
       }

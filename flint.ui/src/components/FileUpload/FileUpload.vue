@@ -93,11 +93,9 @@
 <script>
 import { ref } from 'vue'
 import { useDropzone } from 'vue3-dropzone'
-
 import axios from 'axios'
-import { useToast } from 'vue-toastification'
 import { useStore } from 'vuex'
-
+import { notification } from 'ant-design-vue'
 export default {
   setup() {
     const store = useStore()
@@ -163,10 +161,12 @@ export default {
       console.log(this.$refs.myVueDropzoneDB.getAcceptedFiles())
       console.log('list of input files')
       console.log(this.$refs.myVueDropzoneInput.getAcceptedFiles())
-      const toast = useToast()
 
       if (store.state.gcbm.DropdownSelectedSim == '') {
-        toast.error('Title cannot be empty, Select a valid simulation title from the dropdown', { timeout: 5000 })
+        notification.error({
+          message: 'Title cannot be empty, Select a valid simulation title from the dropdown',
+          duration: 5
+        })
       } else {
         this.add_title_to_formdata()
         console.log([...this.formData])
@@ -174,12 +174,18 @@ export default {
         axios
           .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload`, this.formData)
           .then((response) => {
-            toast.success(`${response.data.data}`, { timeout: 3000 })
+            notification.success({
+              message: `${response.data.data}`,
+              duration: 5
+            })
             console.log(response)
             console.log(response.data)
           })
           .catch((error) => {
-            toast.error(`${error}`, { timeout: 2000 })
+            notification.error({
+              message: `${error}`,
+              duration: 5
+            })
             console.log(error)
           })
       }
