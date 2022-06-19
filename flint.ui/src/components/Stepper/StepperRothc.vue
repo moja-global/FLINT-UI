@@ -33,6 +33,6 @@ export default {
     return {
       apiRoute_rothc
     }
-  } 
+  }
 }
 </script>
