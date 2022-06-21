@@ -649,6 +649,9 @@ export default {
 
     setSimulationProgressState(state, newValue) {
       this.state.gcbm.SimulationProgress = newValue
+    },
+    setGCBMModulesState(state, { newState }) {
+      state.config.modules_cbm.Modules = newState
     }
   },
 

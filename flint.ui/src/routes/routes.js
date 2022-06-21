@@ -8,7 +8,7 @@ import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
 
 import GCBMConfigurations from '@/components/GCBM/GCBMConfigurations.vue'
 import LocalDomain from '@/components/GCBM/LocalDomain.vue'
-import GCBMModules from '@/components/GCBM/Modules/ModulesContainer.vue'
+import GCBMModules from '@/components/GCBM/Modules.vue'
 
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
