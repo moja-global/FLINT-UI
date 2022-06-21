@@ -80,72 +80,85 @@
 </template>
 
 <script>
-import formatData from '@/mixins/formatData'
+import useformatData from '../../utils/useformatData'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  mixins: [formatData],
-  computed: {
-    newconfig_dpmaCMInit: {
+  setup() {
+    const { formatDecimal } = useformatData()
+    const store = useStore()
+    const newconfig_dpmaCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.dpmaCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.dpmaCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_dpmaCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_dpmaCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_rpmaCMInit: {
+    const newconfig_rpmaCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.rpmaCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.rpmaCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_rpmaCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_rpmaCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_biofCMInit: {
+    const newconfig_biofCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.biofCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.biofCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_biofCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_biofCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_biosCMInit: {
+    const newconfig_biosCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.biosCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.biosCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_biosCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_biosCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_humsCMInit: {
+    const newconfig_humsCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.humsCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.humsCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_humsCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_humsCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_inrtCMInit: {
+    const newconfig_inrtCMInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.inrtCMInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.inrtCMInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_inrtCMInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_inrtCMInit', '$#' + newValue + '$#')
       }
-    },
+    })
 
-    newconfig_TSMDInit: {
+    const newconfig_TSMDInit = computed({
       get() {
-        return this.formatDecimal(this.$store.state.rothc.config.Variables[13].initSoil.TSMDInit)
+        return formatDecimal(store.state.rothc.config.Variables[13].initSoil.TSMDInit)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_TSMDInit', '$#' + newValue + '$#')
+        store.commit('setNewConfig_TSMDInit', '$#' + newValue + '$#')
       }
+    })
+
+    return {
+      newconfig_dpmaCMInit,
+      newconfig_rpmaCMInit,
+      newconfig_biofCMInit,
+      newconfig_biosCMInit,
+      newconfig_humsCMInit,
+      newconfig_inrtCMInit,
+      newconfig_TSMDInit
     }
   }
 }

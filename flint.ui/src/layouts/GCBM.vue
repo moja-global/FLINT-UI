@@ -30,10 +30,10 @@
             style="border-bottom-width: 0"
           >
             <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :style="{ borderRight: 0 }" class="font-normal">
-              <a-menu-item key="local-domain" @click="() => onConfigParamClick('local-domain')">
+              <a-menu-item key="local-domain" @click="() => onMenuItemClick('gcbmLocalDomain')">
                 <span> Local Domain </span>
               </a-menu-item>
-              <a-menu-item key="modules" @click="() => onConfigParamClick('modules')">
+              <a-menu-item key="modules" @click="() => onMenuItemClick('gcbmModules')">
                 <span>Modules</span>
               </a-menu-item>
               <a-menu-item key="variables">
@@ -111,15 +111,16 @@ export default {
       }
     })
 
-    function onConfigParamClick(config) {
-      router.push({ path: '/gcbm/configurations/' + config })
+    function onMenuItemClick(name) {
+      showBackToHome.value = true
+      router.push({ name })
     }
 
     function trimSlashes(str) {
       return str.replace(/^\/+|\/+$/g, '')
     }
 
-    return { showBackToHome, selectedKeys, collapseActiveKeys, onConfigParamClick }
+    return { showBackToHome, selectedKeys, collapseActiveKeys, onMenuItemClick }
   }
 }
 </script>

@@ -34,25 +34,26 @@
 </template>
 <script>
 import { createPopper } from '@popperjs/core'
-
+import { ref } from 'vue'
 export default {
-  data() {
-    return {
-      dropdownPopoverShow: false
-    }
-  },
-  methods: {
-    toggleDropdown: function (event) {
+  setup() {
+    const dropdownPopoverShow = ref(false)
+    function toggleDropdown(event) {
       event.preventDefault()
 
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false
+      if (dropdownPopoverShow.value) {
+        dropdownPopoverShow.value = false
       } else {
-        this.dropdownPopoverShow = true
+        dropdownPopoverShow.value = true
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
           placement: 'bottom-start'
         })
       }
+    }
+
+    return {
+      dropdownPopoverShow,
+      toggleDropdown
     }
   }
 }
