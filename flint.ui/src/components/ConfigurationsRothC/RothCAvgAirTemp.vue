@@ -36,36 +36,47 @@
 </template>
 
 <script>
-import formatData from '@/mixins/formatData'
+import useformatData from '../../utils/useformatData'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  mixins: [formatData],
-  computed: {
-    newconfig_avgAirTemp_data_orig: {
-      get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig)
-      },
-      set(newValue) {
-        this.$store.commit('setNewConfig_avgAirTemp_data_orig', '$#[ ' + newValue + ' ]$#')
-      }
-    },
+  setup() {
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-    newconfig_avgAirTemp_data_month_avg: {
+    const newconfig_avgAirTemp_data_orig = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg)
+        return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_orig)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_avgAirTemp_data_month_avg', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_avgAirTemp_data_orig', '$#[ ' + newValue + ' ]$#')
       }
-    },
+    })
 
-    newconfig_avgAirTemp_data_lastyearcopy: {
+    const newconfig_avgAirTemp_data_month_avg = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy)
+        return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_month_avg)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_avgAirTemp_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
+    })
+
+    const newconfig_avgAirTemp_data_lastyearcopy = computed({
+      get() {
+        return formatArray(store.state.rothc.config.Variables[10].avgAirTemp.transform.data_lastyearcopy)
+      },
+      set(newValue) {
+        store.commit('setNewConfig_avgAirTemp_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+      }
+    })
+
+    return {
+      formatArray,
+      newconfig_avgAirTemp_data_month_avg,
+      newconfig_avgAirTemp_data_lastyearcopy,
+      newconfig_avgAirTemp_data_orig
     }
   }
 }

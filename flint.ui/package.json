@@ -37,7 +37,6 @@
     "vue-clickaway": "2.2.2",
     "vue-github-buttons": "3.1.0",
     "vue-router": "^4.0.15",
-    "vue-toastification": "^2.0.0-rc.5",
     "vue3-apexcharts": "^1.4.1",
     "vue3-dropzone": "^0.0.7",
     "vue3-openlayers": "^0.1.67",

@@ -1,5 +1,5 @@
+import { notification } from 'ant-design-vue'
 import axios from 'axios'
-import { useToast } from 'vue-toastification'
 
 export default {
   state: {
@@ -227,19 +227,22 @@ export default {
       let config_string = JSON.stringify(this.state.point.config)
       let parsed_config_string = config_string.replaceAll('"#$', ' ')
       let final_config_string = parsed_config_string.replaceAll('#$"', ' ')
-      const toast = useToast()
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
-          toast.success(`Configuration loaded for Point.`, {
-            timeout: 2000
+          notification.success({
+            message: 'Configuration loaded for Point.',
+            duration: 5
           })
           console.log(response)
           commit('save_point_results', response.data)
           console.log(this.state.point.point_results)
         })
         .catch((error) => {
-          toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
       commit('updateFlag', 1)
