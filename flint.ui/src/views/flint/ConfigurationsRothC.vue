@@ -27,16 +27,12 @@
 
         <h2 class="mt-7 py-4 text-2xl font-normal text-earth">Configure Parameters</h2>
 
-        <a-collapse accordion :bordered="false" class="rothcAccordion" @change="changeActiveKey">
+        <a-collapse accordion :bordered="false" class="rothcAccordion" expand-icon-position="right">
           <a-collapse-panel
             v-for="(item, index) in configurations"
             :key="index"
             :header="`${item.text} (${item.type})`"
-            :show-arrow="false"
           >
-            <template #extra>
-              <RightOutlined :rotate="accordionActiveKey == index ? 90 : 0" />
-            </template>
             <component :is="item.component" />
           </a-collapse-panel>
         </a-collapse>
@@ -68,8 +64,10 @@ import RothCPresCMVue from '@/components/ConfigurationsRothC/RothCPresCM.vue'
 import RothCOpenPanEvapVue from '@/components/ConfigurationsRothC/RothCOpenPanEvap.vue'
 import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue'
 
+import { ref } from 'vue'
 import { markRaw } from 'vue'
 import { RightOutlined } from '@ant-design/icons-vue'
+import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -79,78 +77,79 @@ export default {
     RothCOuterTable,
     Button
   },
-  data: function () {
-    return {
-      showTable: false,
-      clickedRun: false,
-      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
-      accordionActiveKey: '1',
-      configurations: {
-        rainfall: {
-          component: markRaw(RothCRainfallVue),
-          type: 'rainfall',
-          text: 'Rainfall'
-        },
-        openPanEvap: {
-          component: markRaw(RothCOpenPanEvapVue),
-          type: 'openPanEvap',
-          text: 'Open Pan Evaporation'
-        },
-        avgAirTemp: {
-          component: markRaw(RothCAvgAirTempVue),
-          type: 'avgAirTemp',
-          text: 'Average Air Temperature'
-        },
-        presCM: {
-          component: markRaw(RothCPresCMVue),
-          type: 'presCM',
-          text: 'Organic carbon inputs'
-        },
-        soilCover: {
-          component: markRaw(RothCSoilCoverVue),
-          type: 'soilCover',
-          text: 'Soil Cover'
-        },
-        initSoil: {
-          component: markRaw(RothCInitSoilVue),
-          type: 'initSoil',
-          text: 'Initial conditions of the Soil'
-        },
-        soil: {
-          component: markRaw(RothCSoilVue),
-          type: 'soil',
-          text: 'Soil characteristics'
-        }
+
+  setup() {
+    const showTable = ref(false)
+    const clickedRun = ref(false)
+
+    const store = useStore()
+
+    const configurations = ref({
+      rainfall: {
+        component: markRaw(RothCRainfallVue),
+        type: 'rainfall',
+        text: 'Rainfall'
+      },
+      openPanEvap: {
+        component: markRaw(RothCOpenPanEvapVue),
+        type: 'openPanEvap',
+        text: 'Open Pan Evaporation'
+      },
+      avgAirTemp: {
+        component: markRaw(RothCAvgAirTempVue),
+        type: 'avgAirTemp',
+        text: 'Average Air Temperature'
+      },
+      presCM: {
+        component: markRaw(RothCPresCMVue),
+        type: 'presCM',
+        text: 'Organic carbon inputs'
+      },
+      soilCover: {
+        component: markRaw(RothCSoilCoverVue),
+        type: 'soilCover',
+        text: 'Soil Cover'
+      },
+      initSoil: {
+        component: markRaw(RothCInitSoilVue),
+        type: 'initSoil',
+        text: 'Initial conditions of the Soil'
+      },
+      soil: {
+        component: markRaw(RothCSoilVue),
+        type: 'soil',
+        text: 'Soil characteristics'
       }
-    }
-  },
-  methods: {
-    apiRoute_rothc() {
+    })
+
+    function apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
-      this.$store.dispatch('send_rothcConfig', { root: true })
-      this.clickedRun = true
-    },
+      store.dispatch('send_rothcConfig', { root: true })
+      clickedRun.value = true
+    }
 
-    showRothCOuterTable() {
-      this.$store.dispatch('parse_RothC_results')
-      this.showTable = true
-    },
+    function showRothCOuterTable() {
+      store.dispatch('parse_RothC_results')
+      showTable.value = true
+    }
 
-    hideRothCOuterTable() {
-      this.showTable = false
-    },
+    function hideRothCOuterTable() {
+      showTable.value = false
+    }
 
-    changeActiveKey(key) {
-      this.accordionActiveKey = key
+    return {
+      showTable,
+      clickedRun,
+      configurations,
+      apiRoute_rothc,
+      showRothCOuterTable,
+      hideRothCOuterTable
     }
   }
 }
 </script>
 <style>
-.rothcAccordion .anticon svg {
-  transition: transform 0.3s ease;
-}
 .rothcAccordion .ant-collapse-header {
   font-size: 18px;
   color: theme('colors.earth') !important;
