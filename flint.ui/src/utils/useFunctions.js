@@ -3,6 +3,10 @@ export default function () {
     return titleCase.replace(/([A-Z])/g, ' $1').trim()
   }
 
+  function convertSnakeCasetoStringWithSpaces(snakeCase) {
+    return snakeCase.replace(/([a-z0-9])([A-Z])/g, '$1 $2').trim()
+  }
+
   function convertGCBMModuleKeyToName(module) {
     let convertedModule = module
 
@@ -17,6 +21,7 @@ export default function () {
 
   return {
     convertTitleCaseToStringWithSpaces,
+    convertSnakeCasetoStringWithSpaces,
     convertGCBMModuleKeyToName
   }
 }

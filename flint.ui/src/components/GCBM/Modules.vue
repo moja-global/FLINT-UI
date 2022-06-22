@@ -32,12 +32,18 @@
             </a-button>
           </a-popconfirm>
         </template>
-        description of the module "{{ gcbmKey }}"
-        <div class="mt-4">
-          <a-button>
-            <template #icon><SettingOutlined style="vertical-align: 0.125em" /> </template>
-            <span>Configure</span>
-          </a-button>
+        <a-typography-text>
+          <pre>{{ gcbmModuleDescriptions[gcbmKey] || `Description of the '${gcbmModule.name}' module.` }}</pre>
+        </a-typography-text>
+        <div v-if="gcbmKey === 'CBMDecayModule'" class="mt-4">
+          <div class="flex flex-row items-center">
+            <a-typography-text class="mr-2"> Enable Decay Removals: </a-typography-text>
+            <a-switch
+              size="small"
+              :checked="gcbmModule.settings.extra_decay_removals"
+              @change="onDecayModuleRemovalsChange"
+            />
+          </div>
         </div>
       </a-collapse-panel>
     </a-collapse>
@@ -48,13 +54,10 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import useFunctions from '@/utils/useFunctions'
-import { SettingOutlined } from '@ant-design/icons-vue'
+import gcbmModuleDescriptions from '@/utils/gcbmModuleDescriptions.json'
 
 export default {
   name: 'LocalDomain',
-  components: {
-    SettingOutlined
-  },
   setup() {
     const num_of_threads = ref(10)
     const activeKey = ref([])
@@ -103,18 +106,27 @@ export default {
     }
 
     function changeModulesState(newState) {
+      // change value in store
       store.commit('setGCBMModulesState', { newState })
-      console.log(store.state.gcbm.config.modules_cbm.Modules)
+      console.log('changed Modules state in store:', store.state.gcbm.config.modules_cbm.Modules)
+    }
+
+    function onDecayModuleRemovalsChange(bool) {
+      const moduleState = store.state.gcbm.config.modules_cbm.Modules
+      moduleState['CBMDecayModule'].settings.extra_decay_removals = bool
+      changeModulesState(moduleState)
     }
 
     return {
       activeKey,
       num_of_threads,
       modulesWithNames,
+      gcbmModuleDescriptions,
       popConfirmCancel,
       onVisibleChange,
       onEnableDisableClick,
-      onPopConfirmConfirm
+      onPopConfirmConfirm,
+      onDecayModuleRemovalsChange
     }
   }
 }
