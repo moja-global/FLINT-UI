@@ -14,6 +14,8 @@
 <script>
 import RothCOutput from './RothCOutput.vue'
 import Table from './Table.vue'
+import dayjs from 'dayjs'
+
 export default {
   title: 'RothCOuterTable',
   components: {
@@ -163,7 +165,7 @@ export default {
           result[row] = {}
         }
         result[row]['RothC_step'] = RothC_step[row]
-        var defaultDateFormat = new Date(RothC_stepDate[row])
+        var defaultDateFormat = new Date(dayjs(RothC_stepDate[row], 'YYYY-MM-DD:HH:mm:ss.SSSSSS'))
         result[row]['RothC_stepDate'] = defaultDateFormat.toISOString().substring(0, 10)
         result[row]['DPM'] = DPM[row].toPrecision(5)
         result[row]['RPM'] = RPM[row].toPrecision(5)
