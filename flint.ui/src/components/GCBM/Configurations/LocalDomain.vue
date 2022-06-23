@@ -16,7 +16,7 @@
 
 <script>
 import { ref } from 'vue'
-import DatepickerGCBM from '../Datepicker/DatepickerGCBM.vue'
+import DatepickerGCBM from '@/components/Datepicker/DatepickerGCBM.vue'
 export default {
   name: 'LocalDomain',
   components: { DatepickerGCBM },

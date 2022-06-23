@@ -36,7 +36,7 @@
               <a-menu-item key="modules" @click="() => onMenuItemClick('gcbmModules')">
                 <span>Modules</span>
               </a-menu-item>
-              <a-menu-item key="variables">
+              <a-menu-item key="variables" @click="() => onMenuItemClick('gcbmVariables')">
                 <span>Variables</span>
               </a-menu-item>
               <a-menu-item key="pools">
