@@ -7,8 +7,10 @@ import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
 import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
 
 import GCBMConfigurations from '@/components/GCBM/GCBMConfigurations.vue'
-import LocalDomain from '@/components/GCBM/LocalDomain.vue'
-import GCBMModules from '@/components/GCBM/Modules.vue'
+
+import LocalDomain from '@/components/GCBM/Configurations/LocalDomain.vue'
+import Modules from '@/components/GCBM/Configurations/Modules.vue'
+import Variables from '@/components/GCBM/Configurations/Variables.vue'
 
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
@@ -59,7 +61,12 @@ const routes = [
           {
             name: 'gcbmModules',
             path: '/gcbm/configurations/modules',
-            component: GCBMModules
+            component: Modules
+          },
+          {
+            name: 'gcbmVariables',
+            path: '/gcbm/configurations/variables',
+            component: Variables
           }
         ]
       },
