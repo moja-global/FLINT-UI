@@ -13,7 +13,8 @@
 <script>
 import { DatePicker } from 'ant-design-vue'
 import dayjs from 'dayjs'
-console.log(dayjs)
+import { ref, computed } from 'vue'
+
 export default {
   components: {
     'a-date-picker': DatePicker
@@ -21,23 +22,27 @@ export default {
   props: {
     value: { type: String, default: dayjs('2022-01-31') }
   },
-  data() {
-    return { selectedDate: this.value }
-  },
-  computed: {
-    inputVal: {
-      get() {
-        return this.selectedDate
+  setup(props) {
+    const selectedDate = ref(props.value)
+
+    const inputVal = computed({
+      get: () => {
+        return selectedDate.value
       },
-      set(val) {
+      set: (val) => {
         // this.$emit('input', dayjs(val).toString())
-        this.selectedDate = val
+        selectedDate.value = val
       }
+    })
+
+    function onChange(val) {
+      selectedDate.value = val
     }
-  },
-  methods: {
-    onChange(val) {
-      this.selectedDate = val
+
+    return {
+      selectedDate,
+      inputVal,
+      onChange
     }
   }
 }
