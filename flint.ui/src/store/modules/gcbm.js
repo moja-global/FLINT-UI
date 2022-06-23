@@ -652,6 +652,11 @@ export default {
     },
     setGCBMModulesState(state, { newState }) {
       state.config.modules_cbm.Modules = newState
+      console.log('changed Modules state in GCBM store:', state.config.modules_cbm.Modules)
+    },
+    setGCBMMVariablesState(state, { newState }) {
+      state.config.variables.Variables = newState
+      console.log('changed Variables state in GCBM store', state.config.variables.Variables)
     }
   },
 
