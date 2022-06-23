@@ -1,4 +1,5 @@
 import { notification } from 'ant-design-vue'
+import { notification } from 'ant-design-vue'
 import axios from 'axios'
 
 export default {
@@ -649,6 +650,9 @@ export default {
 
     setSimulationProgressState(state, newValue) {
       this.state.gcbm.SimulationProgress = newValue
+    },
+    setGCBMModulesState(state, { newState }) {
+      state.config.modules_cbm.Modules = newState
     }
   },
 
@@ -672,7 +676,7 @@ export default {
             message: `${response.data.data}`,
             duration: 5
           })
-          onCreateRunSuccess(response)
+          onCreateRunSuccess(response.data.data)
           console.log(response)
         })
         .catch((error) => {
