@@ -39,7 +39,7 @@
               <a-menu-item key="variables" @click="() => onMenuItemClick('gcbmVariables')">
                 <span>Variables</span>
               </a-menu-item>
-              <a-menu-item key="pools">
+              <a-menu-item key="pools" @click="() => onMenuItemClick('gcbmPools')">
                 <span>Pools</span>
               </a-menu-item>
               <a-menu-item key="spinup-parameters">
@@ -78,6 +78,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { SettingOutlined, RightCircleOutlined, UploadOutlined } from '@ant-design/icons-vue'
 import { ref, watchEffect } from 'vue'
 import GCBMLanding from '@/components/GCBM/GCBMLanding.vue'
+import useFunctions from '@/utils/useFunctions'
 
 export default {
   name: 'GCBMLayout',
@@ -93,6 +94,8 @@ export default {
     const selectedKeys = ref(['sub1'])
     const collapseActiveKeys = ref([])
     let showBackToHome = ref(false)
+
+    const { trimSlashes } = useFunctions()
 
     watchEffect(() => {
       const path = trimSlashes(route.path)
@@ -114,10 +117,6 @@ export default {
     function onMenuItemClick(name) {
       showBackToHome.value = true
       router.push({ name })
-    }
-
-    function trimSlashes(str) {
-      return str.replace(/^\/+|\/+$/g, '')
     }
 
     return { showBackToHome, selectedKeys, collapseActiveKeys, onMenuItemClick }

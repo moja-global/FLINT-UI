@@ -11,6 +11,7 @@ import GCBMConfigurations from '@/components/GCBM/GCBMConfigurations.vue'
 import LocalDomain from '@/components/GCBM/Configurations/LocalDomain.vue'
 import Modules from '@/components/GCBM/Configurations/Modules.vue'
 import Variables from '@/components/GCBM/Configurations/Variables.vue'
+import Pools from '@/components/GCBM/Configurations/Pools.vue'
 
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
@@ -67,6 +68,11 @@ const routes = [
             name: 'gcbmVariables',
             path: '/gcbm/configurations/variables',
             component: Variables
+          },
+          {
+            name: 'gcbmPools',
+            path: '/gcbm/configurations/pools',
+            component: Pools
           }
         ]
       },
