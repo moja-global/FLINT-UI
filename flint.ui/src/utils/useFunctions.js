@@ -19,9 +19,14 @@ export default function () {
     return convertedModule
   }
 
+  function trimSlashes(str) {
+    return str.replace(/^\/+|\/+$/g, '')
+  }
+
   return {
+    trimSlashes,
+    convertGCBMModuleKeyToName,
     convertTitleCaseToStringWithSpaces,
-    convertSnakeCasetoStringWithSpaces,
-    convertGCBMModuleKeyToName
+    convertSnakeCasetoStringWithSpaces
   }
 }

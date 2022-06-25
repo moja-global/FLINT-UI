@@ -74,26 +74,6 @@
           </div>
         </a-collapse-panel>
       </a-collapse>
-
-      <!-- <a-typography-title :level="3">
-        <span class="font-normal text-earth">
-          <span> Variables </span>
-        </span>
-      </a-typography-title>
-
-      <a-divider />
-      <a-typography-title :level="3">
-        <span class="font-normal text-earth">
-          <span> Ranges & Rates </span>
-        </span>
-      </a-typography-title>
-
-      <a-divider />
-      <a-typography-title :level="3">
-        <span class="font-normal text-earth">
-          <span> Boundaries & Land Class</span>
-        </span>
-      </a-typography-title> -->
     </a-form>
   </div>
 </template>
