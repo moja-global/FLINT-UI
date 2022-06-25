@@ -657,6 +657,10 @@ export default {
     setGCBMMVariablesState(state, { newState }) {
       state.config.variables.Variables = newState
       console.log('changed Variables state in GCBM store', state.config.variables.Variables)
+    },
+    setGCBMMPoolsState(state, { newState }) {
+      state.config.pools_cbm.Pools = newState
+      console.log('changed Pools state in GCBM store', state.config.pools_cbm.Pools)
     }
   },
 
