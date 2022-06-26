@@ -6,7 +6,7 @@
         <a-input-search
           v-model:value="searchValue"
           placeholder="Search for a pool"
-          style="width: 250px; margin-left: 28rem; margin-top: 2px"
+          style="width: 250px; margin-left: 55rem; margin-top: 2px"
           class="mb-6"
         /> </span
     ></a-typography-title>
@@ -19,14 +19,14 @@
       <a-col v-for="(pool, poolKey) in filteredPools" :key="poolKey" :span="16" :lg="{ span: 12 }" :xl="{ span: 8 }">
         <div class="span items-center">
           <a-typography-title :level="5" style="margin: 0">
-            <span class="font-normal mr-4"><b>{{ poolKey }}:</b></span>
+            <span class="mr-4">{{ poolKey }}:</span>
           </a-typography-title>
         </div>
         <div>
             <!-- <code> {{ pool.description }} </code> -->
         </div>
         <a-input-number
-          v-model="pool.value"
+          v-model:value="pool.value"
           type="number"
           min="0"
           max="100"
