@@ -3,9 +3,7 @@ name: CI
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [master]
-
-  workflow_dispatch:
+    branches: [master, 'feat/gcbm-simulation-simulator']
 
 concurrency:
   group: ${{ github.ref }}
@@ -22,7 +20,7 @@ jobs:
       - name: Setup NodeJS ⚡️
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Get yarn cache directory path 🤯
         id: yarn-cache-dir-path
