@@ -1,15 +1,19 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title
-      ><span class="font-normal text-earth">
-        Configure Pools
-        <a-input-search
-          v-model:value="searchValue"
-          placeholder="Search for a pool"
-          style="width: 250px; margin-left: 55rem; margin-top: 2px"
-          class="mb-6"
-        /> </span
-    ></a-typography-title>
+    <a-typography-title>
+      <div style="display: flex; flex-direction: columns; flex-wrap: wrap">
+        <span class="font-normal text-earth"> Configure Pools </span>
+        <div style="position: relative; margin-left: auto">
+          <a-input-search
+            v-model:value="searchValue"
+            placeholder="Search for a pool"
+            style="width: 250px; margin-top: 2px"
+            class="mb-6"
+          />
+        </div>
+      </div>
+    </a-typography-title>
+
     <a-typography-text>
       <span class="text-earth mb-2 block" style="margin-bottom: 20px">
         Configure the starting points for each pool.
@@ -23,7 +27,7 @@
           </a-typography-title>
         </div>
         <div>
-            <!-- <code> {{ pool.description }} </code> -->
+          <!-- <code> {{ pool.description }} </code> -->
         </div>
         <a-input-number
           v-model:value="pool.value"
