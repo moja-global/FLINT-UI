@@ -1,27 +1,43 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title><span class="font-normal text-earth"> Configure Pools </span></a-typography-title>
+    <a-typography-title>
+      <div style="display: flex; flex-direction: columns; flex-wrap: wrap">
+        <span class="font-normal text-earth"> Configure Pools </span>
+        <div style="position: relative; margin-left: auto">
+          <a-input-search
+            v-model:value="searchValue"
+            placeholder="Search for a pool"
+            style="width: 250px; margin-top: 2px"
+            class="mb-6"
+          />
+        </div>
+      </div>
+    </a-typography-title>
+
     <a-typography-text>
-      <span class="text-earth mb-2 block"> Configure the starting points for each pool. </span>
+      <span class="text-earth mb-2 block" style="margin-bottom: 20px">
+        Configure the starting points for each pool.
+      </span>
     </a-typography-text>
-    <a-input-search v-model:value="searchValue" placeholder="Search for a pool" style="width: 250px" class="mb-6" />
     <a-row :gutter="[16, 16]">
       <a-col v-for="(pool, poolKey) in filteredPools" :key="poolKey" :span="16" :lg="{ span: 12 }" :xl="{ span: 8 }">
-        <div class="flex items-center">
+        <div class="span items-center">
           <a-typography-title :level="5" style="margin: 0">
-            <span class="font-normal mr-4"> {{ poolKey }}: </span>
+            <span class="mr-4">{{ poolKey }}:</span>
           </a-typography-title>
-          <a-input-number
-            v-model:value="pool.value"
-            min="0"
-            max="100"
-            step="1"
-            @change="(val) => onPoolChange(poolKey, val)"
-          />
         </div>
         <div>
           <!-- <code> {{ pool.description }} </code> -->
         </div>
+        <a-input-number
+          v-model:value="pool.value"
+          type="number"
+          min="0"
+          max="100"
+          step="1"
+          @change="(val) => onPoolChange(poolKey, val)"
+          style="margin-top: 5px"
+        />
       </a-col>
     </a-row>
   </div>
