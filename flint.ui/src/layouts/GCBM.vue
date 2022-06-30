@@ -3,7 +3,7 @@
     <a-layout-sider width="260" style="background: #fff; min-height: 500px" class="pb-16">
       <div class="px-5">
         <a-typography-title style="margin-bottom: 0px">
-          <router-link :to="{ name: 'gcbmconfigurations', params: { showBackToHome: false } }">
+          <router-link to="/gcbm">
             <span class="font-normal mb-2 text-earth">GCBM</span>
           </router-link>
         </a-typography-title>
@@ -107,13 +107,11 @@ export default {
     const route = useRoute()
     const selectedKeys = ref([])
     const openKeys = ref([])
-    let showBackToHome = ref(false)
 
     const { trimSlashes } = useFunctions()
 
     watchEffect(() => {
       const path = trimSlashes(route.path)
-      showBackToHome.value = path !== 'gcbm/configurations' || route.params.showBackToHome === 'true'
 
       if (path === 'gcbm/create') {
         selectedKeys.value = ['gcbmCreate']
@@ -137,11 +135,10 @@ export default {
     })
 
     function onMenuItemClick(name) {
-      showBackToHome.value = true
       router.push({ name })
     }
 
-    return { showBackToHome, selectedKeys, openKeys, onMenuItemClick }
+    return { selectedKeys, openKeys, onMenuItemClick }
   }
 }
 </script>
