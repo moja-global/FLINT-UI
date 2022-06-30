@@ -1,6 +1,6 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title><span class="font-normal text-earth"> Local Domain </span></a-typography-title>
+    <a-typography-title :level="2"><span class="font-normal text-earth"> Local Domain </span></a-typography-title>
     <DatepickerGCBM class="mt-4" />
     <div class="flex">
       <span class="text-xl mr-2">Number of Threads:</span>

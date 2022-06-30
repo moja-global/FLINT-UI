@@ -1,14 +1,13 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title>
+    <a-typography-title :level="2">
       <div style="display: flex; flex-direction: columns; flex-wrap: wrap">
-        <span class="font-normal text-earth"> Configure Pools </span>
+        <span class="font-normal text-earth"> Pools </span>
         <div style="position: relative; margin-left: auto">
           <a-input-search
             v-model:value="searchValue"
             placeholder="Search for a pool"
             style="width: 250px; margin-top: 2px"
-            class="mb-6"
           />
         </div>
       </div>

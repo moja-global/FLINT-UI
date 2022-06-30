@@ -1,6 +1,6 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title><span class="font-normal text-earth"> Modules </span></a-typography-title>
+    <a-typography-title :level="2"><span class="font-normal text-earth"> Modules </span></a-typography-title>
     <a-typography-text>
       <span class="text-earth mb-6 block">
         Choose the modules that you want to include in the run. You can expand the module to know about it, and to

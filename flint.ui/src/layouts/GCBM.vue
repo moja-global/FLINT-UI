@@ -21,78 +21,92 @@
         </a-typography-text>
       </div>
       <a-divider />
-      <div class="flex flex-col gap-2">
-        <a-collapse :bordered="false" v-model:activeKey="collapseActiveKeys">
-          <a-collapse-panel
-            key="acc1"
-            header="Configure Parameters"
-            class="text-lg bg-white"
-            style="border-bottom-width: 0"
-          >
-            <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :style="{ borderRight: 0 }" class="font-normal">
-              <a-menu-item key="local-domain" @click="() => onMenuItemClick('gcbmLocalDomain')">
-                <span> Local Domain </span>
-              </a-menu-item>
-              <a-menu-item key="modules" @click="() => onMenuItemClick('gcbmModules')">
-                <span>Modules</span>
-              </a-menu-item>
-              <a-menu-item key="variables" @click="() => onMenuItemClick('gcbmVariables')">
-                <span>Variables</span>
-              </a-menu-item>
-              <a-menu-item key="pools" @click="() => onMenuItemClick('gcbmPools')">
-                <span>Pools</span>
-              </a-menu-item>
-              <a-menu-item key="spinup-parameters">
-                <span>Spinup Parameters</span>
-              </a-menu-item>
-              <a-menu-item key="libraries">
-                <span>Libraries</span>
-              </a-menu-item>
-            </a-menu>
-          </a-collapse-panel>
-        </a-collapse>
-        <div class="flex items-center pl-10 text-lg">
-          Upload Files
-          <UploadOutlined class="mx-2" />
-        </div>
-        <div>
-          <span class="flex items-center ant-menu-title-content pl-10 text-lg">
+      <a-menu v-model:selectedKeys="selectedKeys" v-model:openKeys="openKeys" class="font-normal" mode="inline">
+        <!-- CREATE -->
+        <a-menu-item key="gcbmCreate" @click="() => onMenuItemClick('gcbmCreate')">
+          <span class="flex items-center text-lg">
+            Create Simulation
+            <PlusOutlined class="mx-2" />
+          </span>
+        </a-menu-item>
+
+        <!-- UPLOAD SUB MENU -->
+        <a-sub-menu key="gcbmUpload" class="font-normal">
+          <template #title>
+            <span class="flex items-center text-lg">Upload Files <UploadOutlined class="mx-2" /></span>
+          </template>
+          <a-menu-item key="classifiers" @click="() => onMenuItemClick('gcbmUploadClassifiers')">
+            <span> Classifiers <span class="text-red-700">*</span> </span>
+          </a-menu-item>
+          <a-menu-item key="disturbances" @click="() => onMenuItemClick('gcbmUploadDisturbances')">
+            <span> Disturbances </span>
+          </a-menu-item>
+          <a-menu-item key="inputDb" @click="() => onMenuItemClick('gcbmUploadInputDB')">
+            <span> Input Database </span>
+          </a-menu-item>
+          <a-menu-item key="miscellaneous" @click="() => onMenuItemClick('gcbmUploadMiscellaneous')">
+            <span> Miscellaneous </span>
+          </a-menu-item>
+        </a-sub-menu>
+
+        <!-- CONFIGURE PARAMETERS SUB MENU -->
+        <a-sub-menu key="gcbmConfigParams" class="font-normal">
+          <template #title>
+            <span class="flex items-center text-lg">Configure Parameters</span>
+          </template>
+          <a-menu-item key="local-domain" @click="() => onMenuItemClick('gcbmLocalDomain')">
+            <span> Local Domain </span>
+          </a-menu-item>
+          <a-menu-item key="modules" @click="() => onMenuItemClick('gcbmModules')">
+            <span>Modules</span>
+          </a-menu-item>
+          <a-menu-item key="variables" @click="() => onMenuItemClick('gcbmVariables')">
+            <span>Variables</span>
+          </a-menu-item>
+          <a-menu-item key="pools" @click="() => onMenuItemClick('gcbmPools')">
+            <span>Pools</span>
+          </a-menu-item>
+          <a-menu-item key="spinup-parameters">
+            <span>Spinup Parameters</span>
+          </a-menu-item>
+          <a-menu-item key="libraries">
+            <span>Libraries</span>
+          </a-menu-item>
+        </a-sub-menu>
+
+        <!-- RUN -->
+        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')">
+          <span class="flex items-center text-lg">
             Run Simulation
             <RightCircleOutlined class="mx-2" />
           </span>
-        </div>
-      </div>
+        </a-menu-item>
+      </a-menu>
     </a-layout-sider>
-    <a-layout class="bg-gray-50" style="padding: 0 24px 24px">
-      <div v-if="!showBackToHome">
-        <GCBMLanding />
-      </div>
 
-      <!-- This router view is for rendering the /gcbm/configurations, /gcbm/upload, and /gcbm/run routes -->
-      <router-view v-else></router-view>
-    </a-layout>
+    <!-- This router view is for rendering the /gcbm/create, /gcbm/configurations/*, /gcbm/upload, and /gcbm/run routes -->
+    <router-view></router-view>
   </a-layout>
 </template>
 <script>
 import { useRoute, useRouter } from 'vue-router'
-import { SettingOutlined, RightCircleOutlined, UploadOutlined } from '@ant-design/icons-vue'
+import { SettingOutlined, RightCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import { ref, watchEffect } from 'vue'
-import GCBMLanding from '@/components/GCBM/GCBMLanding.vue'
 import useFunctions from '@/utils/useFunctions'
 
 export default {
   name: 'GCBMLayout',
   components: {
-    GCBMLanding,
     UploadOutlined,
     SettingOutlined,
+    PlusOutlined,
     RightCircleOutlined
   },
   setup() {
     const router = useRouter()
     const route = useRoute()
-    const selectedKeys = ref(['sub1'])
-    const collapseActiveKeys = ref([])
+    const selectedKeys = ref([])
+    const openKeys = ref([])
     let showBackToHome = ref(false)
 
     const { trimSlashes } = useFunctions()
@@ -101,16 +115,24 @@ export default {
       const path = trimSlashes(route.path)
       showBackToHome.value = path !== 'gcbm/configurations' || route.params.showBackToHome === 'true'
 
-      if (path === 'gcbm/configurations') {
-        // Don't select any meny item for this path and close the collapse
-        selectedKeys.value = []
-        collapseActiveKeys.value = []
+      if (path === 'gcbm/create') {
+        selectedKeys.value = ['gcbmCreate']
+        openKeys.value = []
+      } else if (path === 'gcbm/run') {
+        selectedKeys.value = ['gcbmRun']
+        openKeys.value = []
       } else if (path.startsWith('gcbm/configurations')) {
         // For sub-paths, select the appropriate menu item
         const subPath = path.split('/').pop()
 
         selectedKeys.value = [subPath]
-        collapseActiveKeys.value = ['acc1']
+        openKeys.value = ['gcbmConfigParams']
+      } else if (path.startsWith('gcbm/upload')) {
+        // For sub-paths, select the appropriate menu item
+        const subPath = path.split('/').pop()
+
+        selectedKeys.value = [subPath]
+        openKeys.value = ['gcbmUpload']
       }
     })
 
@@ -119,7 +141,7 @@ export default {
       router.push({ name })
     }
 
-    return { showBackToHome, selectedKeys, collapseActiveKeys, onMenuItemClick }
+    return { showBackToHome, selectedKeys, openKeys, onMenuItemClick }
   }
 }
 </script>

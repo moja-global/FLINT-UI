@@ -1,6 +1,8 @@
 <template>
   <div class="py-4 px-8 text-earth">
-    <a-typography-title><span class="font-normal text-earth"> Configure Variables </span></a-typography-title>
+    <a-typography-title :level="2">
+      <span class="font-normal text-earth"> Variables </span>
+    </a-typography-title>
     <a-typography-text>
       <span class="text-earth mb-6 block"> Configure the variables for the simulation </span>
     </a-typography-text>
