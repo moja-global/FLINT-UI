@@ -121,7 +121,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/run`, bodyFormData)
         .then((response) => {
           notification.success({
             message: response.data.status,
