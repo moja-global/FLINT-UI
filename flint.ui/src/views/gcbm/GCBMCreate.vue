@@ -40,7 +40,7 @@
 
 <script>
 import { ref } from 'vue'
-import StepperStatic from '../Stepper/StepperStatic.vue'
+import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import { notification } from 'ant-design-vue'
 import { useStore } from 'vuex'
 

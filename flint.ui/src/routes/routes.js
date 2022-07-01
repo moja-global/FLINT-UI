@@ -6,15 +6,19 @@ import Configurations from '@/views/flint/Configurations.vue'
 import ConfigurationsPoint from '@/views/flint/ConfigurationsPoint.vue'
 import ConfigurationsRothC from '@/views/flint/ConfigurationsRothC.vue'
 
-import GCBMConfigurations from '@/components/GCBM/GCBMConfigurations.vue'
-
-import LocalDomain from '@/components/GCBM/Configurations/LocalDomain.vue'
-import Modules from '@/components/GCBM/Configurations/Modules.vue'
-import Variables from '@/components/GCBM/Configurations/Variables.vue'
-import Pools from '@/components/GCBM/Configurations/Pools.vue'
-
+import GCBMCreate from '@/views/gcbm/GCBMCreate.vue'
 import GCBMUpload from '@/views/gcbm/GCBMUpload.vue'
+import GCBMConfigurations from '@/views/gcbm/GCBMConfigurations.vue'
 import GCBMRun from '@/views/gcbm/GCBMRun.vue'
+
+// GCBM Upload Components
+import Classifiers from '@/components/gcbm/Uploads/Classifiers.vue'
+
+// GCBM Configuration Components
+import LocalDomain from '@/components/gcbm/Configurations/LocalDomain.vue'
+import Modules from '@/components/gcbm/Configurations/Modules.vue'
+import Variables from '@/components/gcbm/Configurations/Variables.vue'
+import Pools from '@/components/gcbm/Configurations/Pools.vue'
 
 import Landing from '@/views/Landing.vue'
 
@@ -46,12 +50,30 @@ const routes = [
   },
   {
     path: '/gcbm',
-    redirect: '/gcbm/configurations',
+    redirect: '/gcbm/create',
     component: GCBM,
     children: [
       {
+        name: 'gcbmCreate',
+        path: '/gcbm/create',
+        component: GCBMCreate
+      },
+      {
+        name: 'gcbmUpload',
+        path: '/gcbm/upload',
+        component: GCBMUpload,
+        children: [
+          {
+            name: 'gcbmUploadClassifiers',
+            path: '/gcbm/upload/classifiers',
+            component: Classifiers
+          }
+        ]
+      },
+      {
         name: 'gcbmconfigurations',
         path: '/gcbm/configurations',
+        redirect: '/gcbm/configurations/local-domain',
         component: GCBMConfigurations,
         children: [
           {
@@ -77,12 +99,7 @@ const routes = [
         ]
       },
       {
-        name: 'gcbmupload',
-        path: '/gcbm/upload',
-        component: GCBMUpload
-      },
-      {
-        name: 'gcbmrun',
+        name: 'gcbmRun',
         path: '/gcbm/run',
         component: GCBMRun
       }
