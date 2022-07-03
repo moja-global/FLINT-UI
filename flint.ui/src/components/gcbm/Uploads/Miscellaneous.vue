@@ -6,7 +6,7 @@
     <a-typography-text>
       <span class="text-earth mb-6 block"> Upload your miscellaneous files. </span>
     </a-typography-text>
-    <UploadAndEditFiles />
+    <UploadAndEditFiles fileType="miscellaneous" />
   </div>
 </template>
 

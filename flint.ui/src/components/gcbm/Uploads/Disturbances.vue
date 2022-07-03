@@ -6,7 +6,7 @@
     <a-typography-text>
       <span class="text-earth mb-6 block"> Upload your disturbances files. </span>
     </a-typography-text>
-    <UploadAndEditFiles />
+    <UploadAndEditFiles fileType="disturbances" />
   </div>
 </template>
 
