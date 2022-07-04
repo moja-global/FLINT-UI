@@ -64,6 +64,7 @@ const routes = [
       {
         name: 'gcbmUpload',
         path: '/gcbm/upload',
+        redirect: '/gcbm/upload/classifiers',
         component: GCBMUpload,
         children: [
           {

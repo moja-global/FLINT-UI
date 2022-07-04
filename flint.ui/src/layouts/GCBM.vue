@@ -31,7 +31,7 @@
         </a-menu-item>
 
         <!-- UPLOAD SUB MENU -->
-        <a-sub-menu key="gcbmUpload" class="font-normal">
+        <a-sub-menu key="gcbmUpload" class="font-normal" :disabled="!title">
           <template #title>
             <span class="flex items-center text-lg">Upload Files <UploadOutlined class="mx-2" /></span>
           </template>
@@ -50,7 +50,7 @@
         </a-sub-menu>
 
         <!-- CONFIGURE PARAMETERS SUB MENU -->
-        <a-sub-menu key="gcbmConfigParams" class="font-normal">
+        <a-sub-menu key="gcbmConfigParams" class="font-normal" :disabled="!title">
           <template #title>
             <span class="flex items-center text-lg">Configure Parameters</span>
           </template>
@@ -75,7 +75,7 @@
         </a-sub-menu>
 
         <!-- RUN -->
-        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')">
+        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')" :disabled="!title">
           <span class="flex items-center text-lg">
             Run Simulation
             <RightCircleOutlined class="mx-2" />
@@ -85,7 +85,18 @@
     </a-layout-sider>
 
     <a-affix v-show="!!title" :offset-right="10" :style="{ position: 'absolute', right: '10px', top: '100px' }">
-      <a-alert message="Active Simulation:" :description="title" type="info" show-icon />
+      <a-alert message="Active Simulation:" type="info" show-icon>
+        <template #description>
+          <div>
+            <a-typography-text>
+              <span class="font-normal">{{ title }}</span>
+            </a-typography-text>
+          </div>
+          <div class="flex justify-end items-end flex-col">
+            <a-button @click="onSimulationCancelClick" size="small">Cancel</a-button>
+          </div>
+        </template>
+      </a-alert>
     </a-affix>
 
     <!-- This router view is for rendering the /gcbm/create, /gcbm/configurations/*, /gcbm/upload, and /gcbm/run routes -->
@@ -98,6 +109,7 @@ import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import { SettingOutlined, RightCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import useFunctions from '@/utils/useFunctions'
+import { Modal } from 'ant-design-vue'
 
 export default {
   name: 'GCBMLayout',
@@ -148,7 +160,20 @@ export default {
       router.push({ name })
     }
 
-    return { title, selectedKeys, openKeys, onMenuItemClick }
+    function onSimulationCancelClick() {
+      Modal.confirm({
+        title: 'Are you sure you want to cancel the simulation?',
+        content: 'This will cancel the simulation and all configurations and data will be lost.',
+        okText: 'Yes',
+        cancelText: 'No',
+        onOk: () => {
+          router.push({ name: 'gcbmCreate' })
+          store.dispatch('reset_state')
+        }
+      })
+    }
+
+    return { title, selectedKeys, openKeys, onMenuItemClick, onSimulationCancelClick }
   }
 }
 </script>
