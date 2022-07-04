@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { ref, toRefs } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { Vue3JsonEditor } from 'vue3-json-editor'
 
 export default {
@@ -52,10 +52,15 @@ export default {
     Vue3JsonEditor
   },
   setup(props, { emit }) {
-    const { fileConfig } = toRefs(props)
+    const json = ref(props.fileConfig)
+
+    watchEffect(() => {
+      json.value = props.fileConfig
+    })
 
     function onJsonChange(value) {
       console.log('value:', value)
+      json.value = value
     }
 
     const handleModalOk = () => {
@@ -63,7 +68,7 @@ export default {
       emit('hide-modal')
     }
 
-    return { json: fileConfig, activeKey: ref('1'), handleModalOk, onJsonChange }
+    return { json, activeKey: ref('1'), handleModalOk, onJsonChange }
   }
 }
 </script>
