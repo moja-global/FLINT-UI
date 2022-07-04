@@ -64,11 +64,9 @@ export default {
         })
         return
       }
-      store.dispatch('title_setter', simulation_title.value)
-      console.log('from set new title')
       console.log(store.state.gcbm.config.title)
       //function to send the title to API
-      store.dispatch('send_new_gcbm_job_title', { onCreateRunSuccess, onCreateRunError })
+      store.dispatch('send_new_gcbm_job_title', { title: simulation_title.value, onCreateRunSuccess, onCreateRunError })
     }
 
     function onCreateRunSuccess(msg) {

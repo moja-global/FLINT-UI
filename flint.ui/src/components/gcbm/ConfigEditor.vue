@@ -9,7 +9,15 @@
     okText="Save"
   >
     <a-tabs v-model:activeKey="activeKey">
-      <a-tab-pane key="1" tab="GUI Editor">GUI Editor for configs.</a-tab-pane>
+      <a-tab-pane key="1" tab="GUI Editor">
+        <Vue3JsonEditor
+          v-model="json"
+          mode="tree"
+          :show-btns="false"
+          :expandedOnStart="true"
+          @json-change="onJsonChange"
+        />
+      </a-tab-pane>
       <a-tab-pane key="2" tab="JSON Editor">
         <Vue3JsonEditor
           v-model="json"

@@ -665,7 +665,6 @@ export default {
       state.config.title = title
       console.log(state.config.title)
     },
-
     setSimulationProgressState(state, newValue) {
       this.state.gcbm.SimulationProgress = newValue
     },
@@ -684,13 +683,7 @@ export default {
   },
 
   actions: {
-    title_setter({ commit }, payload) {
-      commit('save_new_gcbm_job_title', payload)
-      console.log('from title_setter')
-      console.log(this.state.gcbm.config.title)
-    },
-    // eslint-disable-next-line no-unused-vars
-    send_new_gcbm_job_title(_, { onCreateRunSuccess, onCreateRunError }) {
+    send_new_gcbm_job_title({ commit }, { title, onCreateRunSuccess, onCreateRunError }) {
       var bodyFormData = new FormData()
       console.log(this.state.gcbm.config.title)
       bodyFormData.append('title', this.state.gcbm.config.title)
@@ -703,6 +696,7 @@ export default {
             message: `${response.data.data}`,
             duration: 5
           })
+          commit('save_new_gcbm_job_title', title)
           onCreateRunSuccess(response.data.data)
           console.log(response)
         })

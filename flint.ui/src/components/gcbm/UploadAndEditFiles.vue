@@ -57,7 +57,12 @@
     </div>
     <div class="flex justify-between">
       <a-typography-text type="secondary"> {{ bytesToKB(file.size) }}</a-typography-text>
-      <a-button :disabled="!uploadingVars.uploaded" type="primary" @click="() => onPreviewConfigClick(file)">
+      <a-button
+        :loading="previewFileLoadingUid === file.uid"
+        :disabled="!uploadingVars.uploaded"
+        type="primary"
+        @click="() => onPreviewConfigClick(file)"
+      >
         Preview Config
       </a-button>
     </div>
@@ -100,6 +105,7 @@ export default {
       uploaded: false
     })
     const configModalVisible = ref(false)
+    const previewFileLoadingUid = ref(null)
 
     // caching file configs, so that we won't need to
     // fetch them again when we open the config editor
@@ -160,8 +166,9 @@ export default {
     const onPreviewConfigClick = (file) => {
       const simulationTitle = store.state.gcbm.config.title
       const fileConfig = store.state.gcbm.fileConfigs[props.fileType][file.name]
-      configModalVisible.value = true
+
       selectedFile.value.name = file.name
+      previewFileLoadingUid.value = file.uid
 
       if (fileConfig) {
         fileConfigs.value[file.name] = fileConfig
@@ -178,6 +185,8 @@ export default {
           .then((res) => {
             fileConfigs.value[file.name] = res
             selectedFile.value.config = res
+            configModalVisible.value = true
+            previewFileLoadingUid.value = null
           })
           .catch((err) => {
             console.log(err)
@@ -197,6 +206,7 @@ export default {
       uploadingVars,
       fileHoveredUid,
       configModalVisible,
+      previewFileLoadingUid,
       handleRemove,
       beforeUpload,
       handleUpload,

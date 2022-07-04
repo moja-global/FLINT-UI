@@ -84,14 +84,19 @@
       </a-menu>
     </a-layout-sider>
 
+    <a-affix v-show="!!title" :offset-right="10" :style="{ position: 'absolute', right: '10px', top: '100px' }">
+      <a-alert message="Active Simulation:" :description="title" type="info" show-icon />
+    </a-affix>
+
     <!-- This router view is for rendering the /gcbm/create, /gcbm/configurations/*, /gcbm/upload, and /gcbm/run routes -->
     <router-view></router-view>
   </a-layout>
 </template>
 <script>
+import { ref, watchEffect } from 'vue'
+import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import { SettingOutlined, RightCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons-vue'
-import { ref, watchEffect } from 'vue'
 import useFunctions from '@/utils/useFunctions'
 
 export default {
@@ -110,7 +115,12 @@ export default {
 
     const { trimSlashes } = useFunctions()
 
+    const store = useStore()
+    const title = ref('')
+
     watchEffect(() => {
+      title.value = store.state.gcbm.config.title
+
       const path = trimSlashes(route.path)
 
       if (path === 'gcbm/create') {
@@ -138,7 +148,7 @@ export default {
       router.push({ name })
     }
 
-    return { selectedKeys, openKeys, onMenuItemClick }
+    return { title, selectedKeys, openKeys, onMenuItemClick }
   }
 }
 </script>
