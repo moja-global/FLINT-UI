@@ -38,6 +38,10 @@ export default {
     setGCBMMPoolsState(state, { newState }) {
       state.config.pools_cbm.Pools = newState
       console.log('changed Pools state in GCBM store', state.config.pools_cbm.Pools)
+    },
+    setGCBMUploadFilesState(state, { fileType, fileList }) {
+      state.filesUploaded[fileType] = fileList
+      console.log(`changed UploadFiles(${fileType}) state in GCBM store`, state.filesUploaded[fileType])
     }
   },
 

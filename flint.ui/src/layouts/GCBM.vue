@@ -50,7 +50,7 @@
         </a-sub-menu>
 
         <!-- CONFIGURE PARAMETERS SUB MENU -->
-        <a-sub-menu key="gcbmConfigParams" class="font-normal" :disabled="!title">
+        <a-sub-menu key="gcbmConfigParams" class="font-normal" :disabled="!classifiersUploaded">
           <template #title>
             <span class="flex items-center text-lg">Configure Parameters</span>
           </template>
@@ -75,7 +75,7 @@
         </a-sub-menu>
 
         <!-- RUN -->
-        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')" :disabled="!title">
+        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')" :disabled="!classifiersUploaded">
           <span class="flex items-center text-lg">
             Run Simulation
             <RightCircleOutlined class="mx-2" />
@@ -120,6 +120,7 @@ export default {
     RightCircleOutlined
   },
   setup() {
+    // TODO: Fetch all simulation data (configs, classifiers, disturbances, etc.) from the server.
     const router = useRouter()
     const route = useRoute()
     const selectedKeys = ref([])
@@ -129,9 +130,15 @@ export default {
 
     const store = useStore()
     const title = ref('')
+    const classifiersUploaded = ref(false)
 
     watchEffect(() => {
       title.value = store.state.gcbm.config.title
+      console.log(
+        store.state.gcbm.filesUploaded.classifiers.length,
+        store.state.gcbm.filesUploaded.classifiers.length > 0
+      )
+      classifiersUploaded.value = store.state.gcbm.filesUploaded.classifiers.length > 0
 
       const path = trimSlashes(route.path)
 
@@ -167,13 +174,14 @@ export default {
         okText: 'Yes',
         cancelText: 'No',
         onOk: () => {
+          // TODO: Call a backend endpoint to delete simulation and all associated data.
           router.push({ name: 'gcbmCreate' })
           store.dispatch('reset_state')
         }
       })
     }
 
-    return { title, selectedKeys, openKeys, onMenuItemClick, onSimulationCancelClick }
+    return { title, selectedKeys, openKeys, classifiersUploaded, onMenuItemClick, onSimulationCancelClick }
   }
 }
 </script>

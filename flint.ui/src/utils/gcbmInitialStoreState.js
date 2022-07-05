@@ -1,5 +1,26 @@
 function getInitialState() {
   const state = {
+    DropdownSelectedSim: '',
+    SimulationProgress: '',
+    filesUploaded: {
+      // these will contain the files uploaded by the user,
+      // with the file name as the key and the file data as the value
+      // (converted to a JS object)
+      classifiers: [],
+      disturbances: [],
+      inputDB: [],
+      miscellaneous: []
+    },
+    fileConfigs: {
+      // these will contain the file configs received from the backend
+      // with the file name as the key and the file config as the value
+      // (converted to a JS object)
+      classifiers: {},
+      disturbances: {},
+      inputDB: {},
+      miscellaneous: {},
+      study_area: {}
+    },
     config: {
       title: '',
       pools_cbm: {
@@ -629,27 +650,6 @@ function getInitialState() {
           }
         }
       }
-    },
-    DropdownSelectedSim: '',
-    SimulationProgress: '',
-    filesUploaded: {
-      // these will contain the files uploaded by the user,
-      // with the file name as the key and the file data as the value
-      // (converted to a JS object)
-      classifiers: {},
-      disturbances: {},
-      inputDB: {},
-      miscellaneous: {}
-    },
-    fileConfigs: {
-      // these will contain the file configs received from the backend
-      // with the file name as the key and the file config as the value
-      // (converted to a JS object)
-      classifiers: {},
-      disturbances: {},
-      inputDB: {},
-      miscellaneous: {},
-      study_area: {}
     }
   }
 

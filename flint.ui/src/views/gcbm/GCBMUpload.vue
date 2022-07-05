@@ -10,9 +10,19 @@
 <script>
 // This component is a parent for all the upload components like Classifiers, Disturbances, etc.
 
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
 export default {
   name: 'GCBMUpload',
   setup() {
+    const store = useStore()
+    const router = useRouter()
+
+    if (!store.state.gcbm.config.title) {
+      router.push('/gcbm/create')
+    }
+
     return {}
   }
 }

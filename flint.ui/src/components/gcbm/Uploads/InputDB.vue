@@ -6,7 +6,7 @@
     <a-typography-text>
       <span class="text-earth mb-6 block"> Upload your Input Database. </span>
     </a-typography-text>
-    <UploadAndEditFiles fileType="inputDB" />
+    <UploadAndEditFiles fileType="inputDB" acceptedFileExtension="db" />
   </div>
 </template>
 

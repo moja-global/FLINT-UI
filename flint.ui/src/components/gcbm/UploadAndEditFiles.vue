@@ -1,7 +1,7 @@
 <template>
   <a-upload-dragger
+    v-if="!uploadingVars.uploaded"
     :showUploadList="false"
-    v-model:fileList="fileList"
     name="file"
     :multiple="true"
     :before-upload="beforeUpload"
@@ -15,7 +15,7 @@
     <p class="ant-upload-hint">Support for a single or bulk upload.</p>
   </a-upload-dragger>
 
-  <div class="flex justify-center">
+  <div v-if="!uploadingVars.uploaded" class="flex justify-center">
     <a-button
       type="primary"
       :disabled="fileList.length === 0"
@@ -26,6 +26,16 @@
       {{ uploadingVars.uploading ? 'Uploading' : 'Start Upload' }}
     </a-button>
   </div>
+
+  <a-alert v-else message="Done Uploading!" showIcon type="success">
+    <template #description>
+      Your files have been uploaded. You can click on "Preview Config" button of any file to view or change it's
+      generated configurations if needed.
+      <div>
+        <a-typography-link @click="onUploadAgainClick"> Start another upload? </a-typography-link>
+      </div>
+    </template>
+  </a-alert>
 
   <div
     v-for="file in fileList"
@@ -41,13 +51,14 @@
       <a-typography-title :level="5" :style="[file.status === 'error' ? { color: 'red', margin: 0 } : { margin: 0 }]">
         {{ file.name }}
       </a-typography-title>
-      <a-tooltip title="Remove File">
+      <!-- TODO: When clicked after uploading, should send a request to the backend to delete the file. -->
+      <a-tooltip v-if="!uploadingVars.uploaded" title="Remove File">
         <a-button
           v-show="fileHoveredUid === file.uid"
           type="text"
           class="right-0 top-0"
           style="position: absolute"
-          @click="handleRemove"
+          @click="() => handleRemove(file)"
         >
           <template #icon>
             <DeleteOutlined />
@@ -80,7 +91,7 @@
 import { ref } from 'vue'
 import { UploadOutlined, DeleteOutlined } from '@ant-design/icons-vue'
 import useFunctions from '@/utils/useFunctions'
-import { message } from 'ant-design-vue'
+import { message, Modal } from 'ant-design-vue'
 import { useStore } from 'vuex'
 
 import ConfigEditor from '@/components/gcbm/ConfigEditor.vue'
@@ -90,6 +101,10 @@ export default {
   props: {
     fileType: {
       type: String
+    },
+    acceptedFileExtension: {
+      type: String,
+      default: 'tiff'
     }
   },
   components: {
@@ -118,16 +133,27 @@ export default {
 
     const store = useStore()
 
+    fileList.value = [...store.state.gcbm.filesUploaded[props.fileType]]
+    uploadingVars.value.uploaded = fileList.value.length > 0
+
     const { bytesToKB } = useFunctions()
 
     const handleRemove = (file) => {
-      const index = fileList.value.indexOf(file)
-      const newFileList = fileList.value.slice()
-      newFileList.splice(index, 1)
+      const newFileList = fileList.value.filter((f) => f.uid !== file.uid)
       fileList.value = newFileList
     }
 
     const beforeUpload = (file) => {
+      const isValid = file.name.endsWith(props.acceptedFileExtension)
+
+      if (!isValid) {
+        message.error({
+          content: `${file.name} is not a valid file type. You can only upload ${props.acceptedFileExtension} files.`,
+          duration: 5
+        })
+        return false
+      }
+
       fileList.value = [...fileList.value, file]
       return false
     }
@@ -147,11 +173,19 @@ export default {
         .then(() => {
           uploadingVars.value.uploading = false
           uploadingVars.value.uploaded = true
+          const modifiedFileList = fileList.value.map((file) => ({
+            name: file.name,
+            uid: file.uid,
+            status: 'success',
+            size: file.size
+          }))
+          store.commit('setGCBMUploadFilesState', { fileType: props.fileType, fileList: modifiedFileList })
           message.success('Upload Successful!')
         })
-        .catch(() => {
+        .catch((err) => {
           uploadingVars.value.uploading = false
           message.error('upload failed.')
+          console.error(err)
         })
     }
 
@@ -174,6 +208,7 @@ export default {
         fileConfigs.value[file.name] = fileConfig
         selectedFile.value.config = fileConfig
       } else {
+        // TODO: Add appropriate backend endpoint when ready.
         fetch('https://run.mocky.io/v3/76a21629-87df-477f-bd78-633e0e48dc1c', {
           method: 'POST',
           body: {
@@ -187,6 +222,7 @@ export default {
             selectedFile.value.config = res
             configModalVisible.value = true
             previewFileLoadingUid.value = null
+            // TODO: Save this config in the store.
           })
           .catch((err) => {
             console.log(err)
@@ -197,6 +233,21 @@ export default {
 
     const handleModalOk = () => {
       configModalVisible.value = false
+    }
+
+    const onUploadAgainClick = () => {
+      Modal.confirm({
+        title: 'Are you sure you want to upload files again?',
+        content: 'This will erase all your previously uploaded files in this section.',
+        type: 'warning',
+        onOk: () => {
+          // TODO: Call backend endpoint to delete previously uploaded files.
+          uploadingVars.value.uploaded = false
+          uploadingVars.value.uploading = false
+          fileList.value = []
+          store.commit('setGCBMUploadFilesState', { fileType: props.fileType, fileList: [] })
+        }
+      })
     }
 
     return {
@@ -213,6 +264,7 @@ export default {
       handleModalOk,
       onFileMouseOut,
       onFileMouseOver,
+      onUploadAgainClick,
       onPreviewConfigClick
     }
   }
