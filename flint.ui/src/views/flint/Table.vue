@@ -5,13 +5,16 @@
 </template>
 <script>
 /* eslint-disable  no-alert, no-console */
+import { ref } from 'vue'
 export default {
   name: 'Table',
   props: { rows: { type: Array, default: () => [] }, columns: { type: Array, default: () => [] } },
-  data() {
+  setup(props) {
+    const c = ref(props.columns)
+    const r = ref(props.rows)
     return {
-      c: this.columns,
-      r: this.rows
+      c,
+      r
     }
   }
 }
