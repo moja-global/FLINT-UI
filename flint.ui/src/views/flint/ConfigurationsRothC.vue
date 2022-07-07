@@ -40,12 +40,12 @@
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
+            <Button :btn-size="'auto'" @click="showTable ? hideRothCOuterContainer() : showRothCOuterContainer()">
               {{ showTable ? 'Hide' : 'Show' }} Output
             </Button>
           </div>
         </div>
-        <RothCOuterTable v-if="showTable" />
+        <RothCOuterContainer v-if="showTable" />
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
 import Button from '@/components/Button/Button.vue'
-import RothCOuterTable from './RothCOuterTable.vue'
+import RothCOuterContainer from './RothCOutputContainer.vue'
 import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
 import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
 import RothCSoilVue from '@/components/ConfigurationsRothC/RothCSoil.vue'
@@ -74,7 +74,7 @@ export default {
     RothCTemplate,
     Datepicker,
     RightOutlined,
-    RothCOuterTable,
+    RothCOuterContainer,
     Button
   },
 
@@ -129,12 +129,12 @@ export default {
       clickedRun.value = true
     }
 
-    function showRothCOuterTable() {
+    function showRothCOuterContainer() {
       store.dispatch('parse_RothC_results')
       showTable.value = true
     }
 
-    function hideRothCOuterTable() {
+    function hideRothCOuterContainer() {
       showTable.value = false
     }
 
@@ -143,8 +143,8 @@ export default {
       clickedRun,
       configurations,
       apiRoute_rothc,
-      showRothCOuterTable,
-      hideRothCOuterTable
+      showRothCOuterContainer,
+      hideRothCOuterContainer
     }
   }
 }

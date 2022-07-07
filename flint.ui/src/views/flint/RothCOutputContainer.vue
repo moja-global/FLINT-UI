@@ -18,7 +18,7 @@ import Table from './Table.vue'
 import dayjs from 'dayjs'
 
 export default{
-  title: 'RothCOuterTable',
+  title: 'RothCOuterContainer',
   components: {
     RothCOutput,
     Table
