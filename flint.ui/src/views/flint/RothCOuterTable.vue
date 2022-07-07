@@ -11,22 +11,22 @@
   </div>
 </template>
 
-<script>
+<script >
+import { reactive } from 'vue'
 import RothCOutput from './RothCOutput.vue'
 import Table from './Table.vue'
 import dayjs from 'dayjs'
 
-export default {
+export default{
   title: 'RothCOuterTable',
   components: {
     RothCOutput,
     Table
   },
-  data() {
-    return {
-      isTable: true,
-      columns: [
-        {
+  setup(){
+    
+    const coloumns  = reactive([
+      {
           dataIndex: 'RothC_step',
           key: 'RothC_step',
           title: 'step'
@@ -76,62 +76,61 @@ export default {
           key: 'atmosphere',
           title: 'atmosphere'
         }
-      ],
-      rows: this.generateDataRows()
+    ])
+    const rows = generateDataRows();
+
+
+    const RothC_step = () => {
+      console.log('store.state.rothc.RothC_step')
+      console.log(store.state.rothc.RothC_step)
+      return store.state.rothc.RothC_step
     }
-  },
-  methods: {
-    RothC_step() {
-      console.log('this.$store.state.rothc.RothC_step')
-      console.log(this.$store.state.rothc.RothC_step)
-      return this.$store.state.rothc.RothC_step
-    },
-    RothC_stepDate() {
-      console.log('this.$store.state.rothc.RothC_stepDate')
-      console.log(this.$store.state.rothc.RothC_stepDate)
-      return this.$store.state.rothc.RothC_stepDate
-    },
-    DPM() {
-      console.log('this.$store.state.rothc.DPM')
-      console.log(this.$store.state.rothc.DPM)
-      return this.$store.state.rothc.DPM
-    },
-    RPM() {
-      console.log('this.$store.state.rothc.RPM')
-      console.log(this.$store.state.rothc.RPM)
-      return this.$store.state.rothc.RPM
-    },
-    BIOF() {
-      console.log('this.$store.state.rothc.BIOF')
-      console.log(this.$store.state.rothc.BIOF)
-      return this.$store.state.rothc.BIOF
-    },
-    BIOS() {
-      console.log('this.$store.state.rothc.BIOS')
-      console.log(this.$store.state.rothc.BIOS)
-      return this.$store.state.rothc.BIOS
-    },
-    HUM() {
-      console.log('this.$store.state.rothc.HUM')
-      console.log(this.$store.state.rothc.HUM)
-      return this.$store.state.rothc.HUM
-    },
-    IOM() {
-      console.log('this.$store.state.rothc.IOM')
-      console.log(this.$store.state.rothc.IOM)
-      return this.$store.state.rothc.IOM
-    },
-    plantCM() {
-      console.log('this.$store.state.rothc.plantCM')
-      console.log(this.$store.state.rothc.plantCM)
-      return this.$store.state.rothc.plantCM
-    },
-    atmosphere() {
-      console.log('this.$store.state.rothc.atmosphere')
-      console.log(this.$store.state.rothc.atmosphere)
-      return this.$store.state.rothc.atmosphere
-    },
-    generateDataRows: function () {
+    const RothC_stepDate =() => {
+      console.log('store.state.rothc.RothC_stepDate')
+      console.log(store.state.rothc.RothC_stepDate)
+      return store.state.rothc.RothC_stepDate
+    }
+    const DPM = () =>  {
+      console.log('store.state.rothc.DPM')
+      console.log(store.state.rothc.DPM)
+      return store.state.rothc.DPM
+    }
+    const RPM = () => {
+      console.log('store.state.rothc.RPM')
+      console.log(store.state.rothc.RPM)
+      return store.state.rothc.RPM
+    }
+    const BIOF = () => {
+      console.log('store.state.rothc.BIOF')
+      console.log(store.state.rothc.BIOF)
+      return store.state.rothc.BIOF
+    }
+    const BIOS = ()=>  {
+      console.log('store.state.rothc.BIOS')
+      console.log(store.state.rothc.BIOS)
+      return store.state.rothc.BIOS
+    }
+    const HUM = () =>  {
+      console.log('store.state.rothc.HUM')
+      console.log(store.state.rothc.HUM)
+      return store.state.rothc.HUM
+    }
+    const IOM = () => {
+      console.log('store.state.rothc.IOM')
+      console.log(store.state.rothc.IOM)
+      return store.state.rothc.IOM
+    }
+    const plantCM = () => {
+      console.log('store.state.rothc.plantCM')
+      console.log(store.state.rothc.plantCM)
+      return store.state.rothc.plantCM
+    }
+    const atmosphere = () => {
+      console.log('store.state.rothc.atmosphere')
+      console.log(store.state.rothc.atmosphere)
+      return store.state.rothc.atmosphere
+    }
+    const generateDataRows = () => {
       var result = []
       var DPM = this.DPM(),
         RPM = this.RPM(),
@@ -180,9 +179,25 @@ export default {
       console.log(result)
       return result
     }
+    return{
+      isTable: true,
+      coloumns,
+      rows,
+      RothC_step,
+      RothC_stepDate,
+      DPM,
+      RPM,
+      BIOF,
+      BIOS,
+      HUM,
+      IOM,
+      plantCM,
+      atmosphere
+    }
   }
 }
 </script>
+
 
 <style>
 .outer-table {
