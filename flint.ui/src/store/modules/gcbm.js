@@ -42,6 +42,10 @@ export default {
     setGCBMUploadFilesState(state, { fileType, fileList }) {
       state.filesUploaded[fileType] = fileList
       console.log(`changed UploadFiles(${fileType}) state in GCBM store`, state.filesUploaded[fileType])
+    },
+    setGCBMInputDBConfigState(state, { newState }) {
+      state.fileConfigs.inputDB = newState
+      console.log('changed inputDB fileConfig state in GCBM store', state.fileConfigs.inputDB)
     }
   },
 

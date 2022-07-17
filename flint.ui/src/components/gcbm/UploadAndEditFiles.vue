@@ -2,8 +2,9 @@
   <a-upload-dragger
     v-if="!uploadingVars.uploaded"
     :showUploadList="false"
+    :disabled="fileList.length >= 1"
     name="file"
-    :multiple="true"
+    :multiple="fileType !== 'inputDB'"
     :before-upload="beforeUpload"
     @remove="handleRemove"
     style="padding: 14px"
@@ -12,7 +13,11 @@
       <UploadOutlined />
     </p>
     <p class="ant-upload-text">Click or drag file to this area to upload</p>
-    <p class="ant-upload-hint">Support for a single or bulk upload.</p>
+    <p class="ant-upload-hint">
+      {{
+        fileType === 'inputDB' ? 'You can only upload a single input database.' : 'Support for a single or bulk upload.'
+      }}
+    </p>
   </a-upload-dragger>
 
   <div v-if="!uploadingVars.uploaded" class="flex justify-center">
@@ -69,6 +74,7 @@
     <div class="flex justify-between">
       <a-typography-text type="secondary"> {{ bytesToKB(file.size) }}</a-typography-text>
       <a-button
+        v-if="fileType !== 'inputDB'"
         :loading="previewFileLoadingUid === file.uid"
         :disabled="!uploadingVars.uploaded"
         type="primary"
@@ -77,6 +83,9 @@
         Preview Config
       </a-button>
     </div>
+  </div>
+  <div v-if="fileType === 'inputDB' && uploadingVars.uploaded">
+    <DBEditor :tableNames="tableNames" />
   </div>
 
   <ConfigEditor
@@ -95,6 +104,7 @@ import { message, Modal } from 'ant-design-vue'
 import { useStore } from 'vuex'
 
 import ConfigEditor from '@/components/gcbm/ConfigEditor.vue'
+import DBEditor from '@/components/gcbm/DBEditor.vue'
 
 export default {
   name: 'UploadAndEditFiles',
@@ -110,7 +120,8 @@ export default {
   components: {
     ConfigEditor,
     UploadOutlined,
-    DeleteOutlined
+    DeleteOutlined,
+    DBEditor
   },
   setup(props) {
     const fileList = ref([])
@@ -130,6 +141,9 @@ export default {
       name: null,
       config: {}
     })
+
+    // Table, column names received from the backend, in case of Input DB upload section.
+    const tableNames = ref(null)
 
     const store = useStore()
 
@@ -166,11 +180,18 @@ export default {
 
       uploadingVars.value.uploading = true
 
-      fetch('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
+      fetch('https://run.mocky.io/v3/ebca54c1-1021-4356-a5dc-1c5e2330c2c4', {
         method: 'POST',
         data: formData
       })
-        .then(() => {
+        .then((res) => res.text())
+        .then((resText) => {
+          if (props.fileType === 'inputDB') {
+            tableNames.value = JSON.parse(resText)
+            store.commit('setGCBMInputDBConfigState', { newState: tableNames })
+            console.log(tableNames.value)
+          }
+
           uploadingVars.value.uploading = false
           uploadingVars.value.uploaded = true
           const modifiedFileList = fileList.value.map((file) => ({
@@ -184,8 +205,9 @@ export default {
         })
         .catch((err) => {
           uploadingVars.value.uploading = false
-          message.error('upload failed.')
+          message.error('Upload Failed. Please try again later.')
           console.error(err)
+          // TODO: Send some logs to the backend for error resolution.
         })
     }
 
@@ -253,6 +275,7 @@ export default {
     return {
       fileList,
       bytesToKB,
+      tableNames,
       selectedFile,
       uploadingVars,
       fileHoveredUid,

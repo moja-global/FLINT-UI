@@ -1,5 +1,5 @@
 <template>
-  <a-layout>
+  <a-layout style="max-width: 100vw !important; position: relative; overflow-x: hidden">
     <a-layout-sider width="260" style="background: #fff; min-height: 500px" class="pb-16">
       <div class="px-5">
         <a-typography-title style="margin-bottom: 0px">
@@ -84,8 +84,8 @@
       </a-menu>
     </a-layout-sider>
 
-    <a-affix v-show="!!title" :offset-right="10" :style="{ position: 'absolute', right: '10px', top: '100px' }">
-      <a-alert message="Active Simulation:" type="info" show-icon>
+    <a-affix v-show="!!title" :class="[affixHidden ? 'active-simulation-affix-minimized' : 'active-simulation-affix']">
+      <a-alert message="Active Simulation:" type="info" :show-icon="true">
         <template #description>
           <div>
             <a-typography-text>
@@ -95,6 +95,7 @@
           <div class="flex justify-end items-end flex-col">
             <a-button @click="onSimulationCancelClick" size="small">Cancel</a-button>
           </div>
+          <RightOutlined class="active-simulation-affix-icon" @click="affixHidden = !affixHidden" />
         </template>
       </a-alert>
     </a-affix>
@@ -107,7 +108,13 @@
 import { ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-import { SettingOutlined, RightCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons-vue'
+import {
+  SettingOutlined,
+  RightCircleOutlined,
+  RightOutlined,
+  UploadOutlined,
+  PlusOutlined
+} from '@ant-design/icons-vue'
 import useFunctions from '@/utils/useFunctions'
 import { Modal } from 'ant-design-vue'
 
@@ -117,7 +124,8 @@ export default {
     UploadOutlined,
     SettingOutlined,
     PlusOutlined,
-    RightCircleOutlined
+    RightCircleOutlined,
+    RightOutlined
   },
   setup() {
     // TODO: Fetch all simulation data (configs, classifiers, disturbances, etc.) from the server.
@@ -131,6 +139,17 @@ export default {
     const store = useStore()
     const title = ref('')
     const classifiersUploaded = ref(false)
+
+    const affixHidden = ref(false)
+    const affixIconRotate = ref('rotate(0deg)')
+
+    watchEffect(() => {
+      affixIconRotate.value = affixHidden.value ? 'rotate(180deg)' : 'rotate(0deg)'
+    })
+
+    setInterval(() => {
+      affixHidden.value = true
+    }, 10000)
 
     watchEffect(() => {
       title.value = store.state.gcbm.config.title
@@ -181,7 +200,16 @@ export default {
       })
     }
 
-    return { title, selectedKeys, openKeys, classifiersUploaded, onMenuItemClick, onSimulationCancelClick }
+    return {
+      title,
+      openKeys,
+      affixHidden,
+      selectedKeys,
+      affixIconRotate,
+      classifiersUploaded,
+      onMenuItemClick,
+      onSimulationCancelClick
+    }
   }
 }
 </script>
@@ -194,5 +222,28 @@ export default {
 :deep(.ant-collapse-header > div) {
   display: flex;
   align-self: center;
+}
+
+.active-simulation-affix {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  transition: all 0.3s ease;
+}
+.active-simulation-affix-minimized {
+  transition: all 0.3s ease;
+  position: absolute;
+  right: -190px;
+  top: 15px;
+  overflow: hidden;
+}
+
+.active-simulation-affix-icon {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  cursor: pointer;
+  transform: v-bind('affixIconRotate');
+  transition: transform 0.2s ease-in-out;
 }
 </style>

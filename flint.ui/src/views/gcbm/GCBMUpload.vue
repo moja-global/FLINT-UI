@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 px-8 w-full">
+  <div class="pt-4 px-8 flex-grow" style="max-width: 100vw; overflow-x: hidden">
     <a-typography-title><span class="font-normal text-earth"> Upload Files </span></a-typography-title>
     <!-- This router view is for rendering the upload routes like /gcbm/upload/classifiers, 
        /gcbm/upload/disturbances, etc. -->
