@@ -13,6 +13,9 @@ import GCBMRun from '@/views/gcbm/GCBMRun.vue'
 
 // GCBM Upload Components
 import Classifiers from '@/components/gcbm/Uploads/Classifiers.vue'
+import Disturbances from '@/components/gcbm/Uploads/Disturbances.vue'
+import InputDB from '@/components/gcbm/Uploads/InputDB.vue'
+import Miscellaneous from '@/components/gcbm/Uploads/Miscellaneous.vue'
 
 // GCBM Configuration Components
 import LocalDomain from '@/components/gcbm/Configurations/LocalDomain.vue'
@@ -61,12 +64,28 @@ const routes = [
       {
         name: 'gcbmUpload',
         path: '/gcbm/upload',
+        redirect: '/gcbm/upload/classifiers',
         component: GCBMUpload,
         children: [
           {
             name: 'gcbmUploadClassifiers',
             path: '/gcbm/upload/classifiers',
             component: Classifiers
+          },
+          {
+            name: 'gcbmUploadDisturbances',
+            path: '/gcbm/upload/disturbances',
+            component: Disturbances
+          },
+          {
+            name: 'gcbmUploadInputDB',
+            path: '/gcbm/upload/inputdb',
+            component: InputDB
+          },
+          {
+            name: 'gcbmUploadMiscellaneous',
+            path: '/gcbm/upload/miscellaneous',
+            component: Miscellaneous
           }
         ]
       },
