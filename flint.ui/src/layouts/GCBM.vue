@@ -1,5 +1,5 @@
 <template>
-  <a-layout>
+  <a-layout style="max-width: 100vw !important; position: relative; overflow-x: hidden">
     <a-layout-sider width="260" style="background: #fff; min-height: 500px" class="pb-16">
       <div class="px-5">
         <a-typography-title style="margin-bottom: 0px">
@@ -31,7 +31,7 @@
         </a-menu-item>
 
         <!-- UPLOAD SUB MENU -->
-        <a-sub-menu key="gcbmUpload" class="font-normal">
+        <a-sub-menu key="gcbmUpload" class="font-normal" :disabled="!title">
           <template #title>
             <span class="flex items-center text-lg">Upload Files <UploadOutlined class="mx-2" /></span>
           </template>
@@ -50,7 +50,7 @@
         </a-sub-menu>
 
         <!-- CONFIGURE PARAMETERS SUB MENU -->
-        <a-sub-menu key="gcbmConfigParams" class="font-normal">
+        <a-sub-menu key="gcbmConfigParams" class="font-normal" :disabled="!classifiersUploaded">
           <template #title>
             <span class="flex items-center text-lg">Configure Parameters</span>
           </template>
@@ -75,7 +75,7 @@
         </a-sub-menu>
 
         <!-- RUN -->
-        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')">
+        <a-menu-item key="gcbmRun" @click="() => onMenuItemClick('gcbmRun')" :disabled="!classifiersUploaded">
           <span class="flex items-center text-lg">
             Run Simulation
             <RightCircleOutlined class="mx-2" />
@@ -84,15 +84,39 @@
       </a-menu>
     </a-layout-sider>
 
+    <a-affix v-show="!!title" :class="[affixHidden ? 'active-simulation-affix-minimized' : 'active-simulation-affix']">
+      <a-alert message="Active Simulation:" type="info" :show-icon="true">
+        <template #description>
+          <div>
+            <a-typography-text>
+              <span class="font-normal">{{ title }}</span>
+            </a-typography-text>
+          </div>
+          <div class="flex justify-end items-end flex-col">
+            <a-button @click="onSimulationCancelClick" size="small">Cancel</a-button>
+          </div>
+          <RightOutlined class="active-simulation-affix-icon" @click="affixHidden = !affixHidden" />
+        </template>
+      </a-alert>
+    </a-affix>
+
     <!-- This router view is for rendering the /gcbm/create, /gcbm/configurations/*, /gcbm/upload, and /gcbm/run routes -->
     <router-view></router-view>
   </a-layout>
 </template>
 <script>
-import { useRoute, useRouter } from 'vue-router'
-import { SettingOutlined, RightCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import { ref, watchEffect } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute, useRouter } from 'vue-router'
+import {
+  SettingOutlined,
+  RightCircleOutlined,
+  RightOutlined,
+  UploadOutlined,
+  PlusOutlined
+} from '@ant-design/icons-vue'
 import useFunctions from '@/utils/useFunctions'
+import { Modal } from 'ant-design-vue'
 
 export default {
   name: 'GCBMLayout',
@@ -100,9 +124,11 @@ export default {
     UploadOutlined,
     SettingOutlined,
     PlusOutlined,
-    RightCircleOutlined
+    RightCircleOutlined,
+    RightOutlined
   },
   setup() {
+    // TODO: Fetch all simulation data (configs, classifiers, disturbances, etc.) from the server.
     const router = useRouter()
     const route = useRoute()
     const selectedKeys = ref([])
@@ -110,7 +136,29 @@ export default {
 
     const { trimSlashes } = useFunctions()
 
+    const store = useStore()
+    const title = ref('')
+    const classifiersUploaded = ref(false)
+
+    const affixHidden = ref(false)
+    const affixIconRotate = ref('rotate(0deg)')
+
     watchEffect(() => {
+      affixIconRotate.value = affixHidden.value ? 'rotate(180deg)' : 'rotate(0deg)'
+    })
+
+    setInterval(() => {
+      affixHidden.value = true
+    }, 10000)
+
+    watchEffect(() => {
+      title.value = store.state.gcbm.config.title
+      console.log(
+        store.state.gcbm.filesUploaded.classifiers.length,
+        store.state.gcbm.filesUploaded.classifiers.length > 0
+      )
+      classifiersUploaded.value = store.state.gcbm.filesUploaded.classifiers.length > 0
+
       const path = trimSlashes(route.path)
 
       if (path === 'gcbm/create') {
@@ -138,7 +186,30 @@ export default {
       router.push({ name })
     }
 
-    return { selectedKeys, openKeys, onMenuItemClick }
+    function onSimulationCancelClick() {
+      Modal.confirm({
+        title: 'Are you sure you want to cancel the simulation?',
+        content: 'This will cancel the simulation and all configurations and data will be lost.',
+        okText: 'Yes',
+        cancelText: 'No',
+        onOk: () => {
+          // TODO: Call a backend endpoint to delete simulation and all associated data.
+          router.push({ name: 'gcbmCreate' })
+          store.dispatch('reset_state')
+        }
+      })
+    }
+
+    return {
+      title,
+      openKeys,
+      affixHidden,
+      selectedKeys,
+      affixIconRotate,
+      classifiersUploaded,
+      onMenuItemClick,
+      onSimulationCancelClick
+    }
   }
 }
 </script>
@@ -151,5 +222,28 @@ export default {
 :deep(.ant-collapse-header > div) {
   display: flex;
   align-self: center;
+}
+
+.active-simulation-affix {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  transition: all 0.3s ease;
+}
+.active-simulation-affix-minimized {
+  transition: all 0.3s ease;
+  position: absolute;
+  right: -190px;
+  top: 15px;
+  overflow: hidden;
+}
+
+.active-simulation-affix-icon {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  cursor: pointer;
+  transform: v-bind('affixIconRotate');
+  transition: transform 0.2s ease-in-out;
 }
 </style>

@@ -10,9 +10,18 @@
 <script>
 // This component is a parent for all the configuration components like LocalDomain, Modules, etc.
 
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
 export default {
   name: 'GCBMConfigurations',
   setup() {
+    const store = useStore()
+    const router = useRouter()
+
+    if (!store.state.gcbm.config.title) {
+      router.push('/gcbm/create')
+    }
     return {}
   }
 }

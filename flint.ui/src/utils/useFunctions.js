@@ -23,7 +23,12 @@ export default function () {
     return str.replace(/^\/+|\/+$/g, '')
   }
 
+  function bytesToKB(bytes) {
+    return parseFloat((bytes / 1000).toFixed(2)) + ' KB'
+  }
+
   return {
+    bytesToKB,
     trimSlashes,
     convertGCBMModuleKeyToName,
     convertTitleCaseToStringWithSpaces,

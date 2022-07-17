@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [master]
+    branches: [master, 'feat/gcbm-simulation-editor']
 
   workflow_dispatch:
 
