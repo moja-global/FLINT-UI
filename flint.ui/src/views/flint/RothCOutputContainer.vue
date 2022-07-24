@@ -11,124 +11,122 @@
   </div>
 </template>
 
-<script >
+<script>
 import { reactive } from 'vue'
 import RothCOutput from './RothCOutput.vue'
 import Table from './Table.vue'
 import dayjs from 'dayjs'
 
-export default{
+export default {
   title: 'RothCOuterContainer',
   components: {
     RothCOutput,
     Table
   },
-  setup(){
-    
-    const coloumns  = reactive([
+  setup() {
+    const coloumns = reactive([
       {
-          dataIndex: 'RothC_step',
-          key: 'RothC_step',
-          title: 'step'
-        },
-        {
-          dataIndex: 'RothC_stepDate',
-          key: 'RothC_stepDate',
-          title: 'stepDate'
-        },
-        {
-          dataIndex: 'plantCM',
-          key: 'plantCM',
-          title: 'plantCM'
-        },
-        {
-          dataIndex: 'DPM',
-          key: 'DPM',
-          title: 'SoilDPM'
-        },
-        {
-          dataIndex: 'RPM',
-          key: 'RPM',
-          title: 'SoilRPM'
-        },
-        {
-          dataIndex: 'BIOF',
-          key: 'BIOF',
-          title: 'SoilBioF'
-        },
-        {
-          dataIndex: 'BIOS',
-          key: 'BIOS',
-          title: 'SoilBioS'
-        },
-        {
-          dataIndex: 'HUM',
-          key: 'HUM',
-          title: 'SoilHUM'
-        },
-        {
-          dataIndex: 'IOM',
-          key: 'IOM',
-          title: 'SoilIOM'
-        },
-        {
-          dataIndex: 'atmosphere',
-          key: 'atmosphere',
-          title: 'atmosphere'
-        }
+        dataIndex: 'RothC_step',
+        key: 'RothC_step',
+        title: 'step'
+      },
+      {
+        dataIndex: 'RothC_stepDate',
+        key: 'RothC_stepDate',
+        title: 'stepDate'
+      },
+      {
+        dataIndex: 'plantCM',
+        key: 'plantCM',
+        title: 'plantCM'
+      },
+      {
+        dataIndex: 'DPM',
+        key: 'DPM',
+        title: 'SoilDPM'
+      },
+      {
+        dataIndex: 'RPM',
+        key: 'RPM',
+        title: 'SoilRPM'
+      },
+      {
+        dataIndex: 'BIOF',
+        key: 'BIOF',
+        title: 'SoilBioF'
+      },
+      {
+        dataIndex: 'BIOS',
+        key: 'BIOS',
+        title: 'SoilBioS'
+      },
+      {
+        dataIndex: 'HUM',
+        key: 'HUM',
+        title: 'SoilHUM'
+      },
+      {
+        dataIndex: 'IOM',
+        key: 'IOM',
+        title: 'SoilIOM'
+      },
+      {
+        dataIndex: 'atmosphere',
+        key: 'atmosphere',
+        title: 'atmosphere'
+      }
     ])
-    const rows = generateDataRows();
-
+    const rows = generateDataRows()
 
     const RothC_step = () => {
-      console.log('store.state.rothc.RothC_step')
-      console.log(store.state.rothc.RothC_step)
-      return store.state.rothc.RothC_step
+      console.log('this.store.state.rothc.RothC_step')
+      console.log(this.store.state.rothc.RothC_step)
+      return this.store.state.rothc.RothC_step
     }
-    const RothC_stepDate =() => {
-      console.log('store.state.rothc.RothC_stepDate')
-      console.log(store.state.rothc.RothC_stepDate)
-      return store.state.rothc.RothC_stepDate
+    const RothC_stepDate = () => {
+      console.log('this.store.state.rothc.RothC_stepDate')
+      console.log(this.store.state.rothc.RothC_stepDate)
+      return this.store.state.rothc.RothC_stepDate
     }
-    const DPM = () =>  {
-      console.log('store.state.rothc.DPM')
-      console.log(store.state.rothc.DPM)
-      return store.state.rothc.DPM
+    const DPM = () => {
+      console.log('this.store.state.rothc.DPM')
+      console.log(this.store.state.rothc.DPM)
+      return this.store.state.rothc.DPM
     }
     const RPM = () => {
-      console.log('store.state.rothc.RPM')
-      console.log(store.state.rothc.RPM)
-      return store.state.rothc.RPM
+      console.log('this.store.state.rothc.RPM')
+      console.log(this.store.state.rothc.RPM)
+      return this.store.state.rothc.RPM
     }
     const BIOF = () => {
-      console.log('store.state.rothc.BIOF')
-      console.log(store.state.rothc.BIOF)
-      return store.state.rothc.BIOF
+      console.log('this.store.state.rothc.BIOF')
+      console.log(this.store.state.rothc.BIOF)
+      return this.store.state.rothc.BIOF
     }
-    const BIOS = ()=>  {
-      console.log('store.state.rothc.BIOS')
-      console.log(store.state.rothc.BIOS)
-      return store.state.rothc.BIOS
+    const BIOS = () => {
+      console.log('this.store.state.rothc.BIOS')
+      console.log(this.store.state.rothc.BIOS)
+      return this.store.state.rothc.BIOS
     }
-    const HUM = () =>  {
-      console.log('store.state.rothc.HUM')
-      console.log(store.state.rothc.HUM)
-      return store.state.rothc.HUM
+    const HUM = () => {
+      console.log('this.store.state.rothc.HUM')
+      console.log(this.store.state.rothc.HUM)
+      return this.store.state.rothc.HUM
     }
     const IOM = () => {
-      console.log('store.state.rothc.IOM')
-      console.log(store.state.rothc.IOM)
-      return store.state.rothc.IOM
+      console.log('this.store.state.rothc.IOM')
+      console.log(this.store.state.rothc.IOM)
+      return this.store.state.rothc.IOM
     }
     const plantCM = () => {
-      console.log('store.state.rothc.plantCM')
-      console.log(store.state.rothc.plantCM)
-      return store.state.rothc.plantCM
+      console.log('this.store.state.rothc.plantCM')
+      console.log(this.store.state.rothc.plantCM)
+      return this.store.state.rothc.plantCM
     }
     const atmosphere = () => {
-      console.log('store.state.rothc.atmosphere')
-      console.log(store.state.rothc.atmosphere)
-      return store.state.rothc.atmosphere
+      console.log('this.store.state.rothc.atmosphere')
+      console.log(this.store.state.rothc.atmosphere)
+      return this.store.state.rothc.atmosphere
     }
     const generateDataRows = () => {
       var result = []
@@ -179,7 +177,7 @@ export default{
       console.log(result)
       return result
     }
-    return{
+    return {
       isTable: true,
       coloumns,
       rows,
@@ -197,7 +195,6 @@ export default{
   }
 }
 </script>
-
 
 <style>
 .outer-table {
