@@ -201,17 +201,20 @@ export default {
   border: 1px solid #475447;
   border-radius: 5px;
 }
+
 .top-row {
   display: flex;
   flex-direction: row;
   border-bottom: 2px solid #eeeef0;
 }
+
 .top-row div {
   width: 50%;
   text-align: center;
   padding: 16px;
   cursor: pointer;
 }
+
 .top-row .active {
   color: white;
   background-color: #475447;
