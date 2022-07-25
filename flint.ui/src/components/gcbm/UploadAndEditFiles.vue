@@ -34,8 +34,12 @@
 
   <a-alert v-else message="Done Uploading!" showIcon type="success">
     <template #description>
-      Your files have been uploaded. You can click on "Preview Config" button of any file to view or change it's
-      generated configurations if needed.
+      Your files have been uploaded.
+      {{
+        fileType === 'inputDB'
+          ? 'You can edit the table and column names from your database in the table below, if needed.'
+          : 'You can click on "Preview Config" button of any file to view or change it\'s generated configurations if needed.'
+      }}
       <div>
         <a-typography-link @click="onUploadAgainClick"> Start another upload? </a-typography-link>
       </div>
