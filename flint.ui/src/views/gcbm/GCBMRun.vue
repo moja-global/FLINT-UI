@@ -5,6 +5,15 @@
       <span class="text-earth mb-6 block"> Run the simulation on the configured parameters. </span>
     </a-typography-text>
 
+    <div class="flex justify-items-center flex-row gap-2 mb-4">
+      <a-typography-text>
+        <span class=""> Active Simulation: </span>
+      </a-typography-text>
+      <a-typography-title :level="5" style="margin: 0">
+        <span class="text-earth"> {{ simulation_title }} </span>
+      </a-typography-title>
+    </div>
+
     <a-row :gutter="[16, 16]">
       <a-col :span="24" :sm="8" class="buttons">
         <button
@@ -78,33 +87,33 @@
 <script>
 import { notification } from 'ant-design-vue'
 import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
+import { useStore } from 'vuex'
 
 export default {
-  name: 'DashboardPage',
+  name: 'GCBMRun',
   components: {
     PlayCircleOutlined,
     QuestionCircleOutlined,
     DownloadOutlined
   },
 
-  data: () => ({
-    simulation_title: ''
-  }),
+  setup() {
+    const store = useStore()
+    const simulation_title = store.state.gcbm.config.title
 
-  methods: {
-    runSim: function () {
+    function runSim() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
-      console.log(this.$store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
+      console.log(store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, { method: 'POST', body: bodyFormData })
         .then((response) => {
+          console.log(response)
           notification.success({
             message: response.data.status,
             duration: 5
           })
-          console.log(response)
         })
         .catch((error) => {
           notification.error({
@@ -113,12 +122,12 @@ export default {
           })
           console.log(error)
         })
-    },
+    }
 
-    checkStatus: function () {
+    function checkStatus() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
-      console.log(this.$store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
+      console.log(store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST', body: bodyFormData })
@@ -127,9 +136,9 @@ export default {
             message: `${response.data.finished}`,
             duration: 5
           })
-          this.$store.commit('setSimulationProgressState', response.data.finished)
+          store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
-          console.log(this.$store.state.gcbm.SimulationProgress)
+          console.log(store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
           notification.error({
@@ -138,12 +147,12 @@ export default {
           })
           console.log(error)
         })
-    },
+    }
 
-    downloadSim: function () {
+    function downloadSim() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
-      console.log(this.$store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
+      console.log(store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, { method: 'POST' })
@@ -154,7 +163,7 @@ export default {
           console.log(response.data)
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', this.$store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
+          link.setAttribute('download', store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
           document.body.appendChild(link)
           link.click()
         })
@@ -166,6 +175,8 @@ export default {
           console.log(error)
         })
     }
+
+    return { simulation_title, runSim, checkStatus, downloadSim }
   }
 }
 </script>

@@ -1,4 +1,14 @@
 <template>
+  <div class="flex mb-2 justify-end">
+    <a-button @click="onCancelClick" :type="enableColumnNameEditing ? 'default' : 'primary'">
+      <template #icon>
+        <EditOutlined v-if="!enableColumnNameEditing" />
+        <CloseOutlined v-else />
+      </template>
+      <span v-if="!enableColumnNameEditing">Edit</span>
+      <span v-else>Cancel</span>
+    </a-button>
+  </div>
   <a-table
     :loading="dbDataSource === null"
     :data-source="dbDataSource"
@@ -7,12 +17,20 @@
     :pagination="false"
   >
     <template #bodyCell="{ column, text, record }">
-      <a-input
-        v-if="text !== ''"
-        v-model:value="modifiedDbSource[record.key][column.dataIndex]"
-        @pressEnter="save(record.key)"
-        @change="onInputChange"
-      />
+      <div v-if="enableColumnNameEditing">
+        <a-input
+          v-if="text !== ''"
+          v-model:value="modifiedDbSource[record.key][column.dataIndex]"
+          @pressEnter="save(record.key)"
+          @change="onInputChange"
+          :class="{
+            editedCell: modifiedDbSource[record.key][column.dataIndex] !== dbDataSource[record.key][column.dataIndex]
+          }"
+        />
+      </div>
+      <div v-else :style="{ minHeight: '24px' }" class="text-left px-2">
+        {{ text }}
+      </div>
     </template>
   </a-table>
   <div v-show="unsavedChanges" class="unsaved-changes-div flex">
@@ -28,10 +46,11 @@ import { message } from 'ant-design-vue'
 import { cloneDeep } from 'lodash'
 import { ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
+import { EditOutlined, CloseOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: 'DBEditor',
-  components: {},
+  components: { EditOutlined, CloseOutlined },
   props: {
     tableNames: {
       type: Object
@@ -43,6 +62,7 @@ export default {
     const dbDataSource = ref(null)
     const unsavedChanges = ref(false)
     const emptyColumnNameError = ref(false)
+    const enableColumnNameEditing = ref(false)
 
     const store = useStore()
 
@@ -98,14 +118,23 @@ export default {
       if (!foundEmpty) {
         emptyColumnNameError.value = false
       }
-      console.log('modifiedDbSource:', modifiedDbSource.value, 'dbDataSource:', dbDataSource.value)
     }
 
     function onSaveClick() {
       // TODO: send new column, table names to the backend.
       unsavedChanges.value = false
+      enableColumnNameEditing.value = false
       dbDataSource.value = cloneDeep(modifiedDbSource.value)
       message.success('Your changes are saved successfully!')
+    }
+
+    function onCancelClick() {
+      if (enableColumnNameEditing.value) {
+        // cancel click
+        unsavedChanges.value = false
+        modifiedDbSource.value = cloneDeep(dbDataSource.value)
+      }
+      enableColumnNameEditing.value = !enableColumnNameEditing.value
     }
 
     return {
@@ -114,8 +143,10 @@ export default {
       unsavedChanges,
       modifiedDbSource,
       emptyColumnNameError,
+      enableColumnNameEditing,
       onSaveClick,
-      onInputChange
+      onInputChange,
+      onCancelClick
     }
   }
 }
@@ -136,5 +167,9 @@ export default {
   gap: 24px;
   border-radius: 4px;
   align-items: center;
+}
+
+.editedCell {
+  border: 1px solid theme('colors.yellow.500') !important;
 }
 </style>

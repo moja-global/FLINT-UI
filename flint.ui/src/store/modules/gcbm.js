@@ -68,7 +68,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/upload/title`, bodyFormData)
         .then((response) => {
           if (!response.data.data.startsWith('Simulation already exists.')) {
             commit('resetState')

@@ -153,10 +153,6 @@ export default {
 
     watchEffect(() => {
       title.value = store.state.gcbm.config.title
-      console.log(
-        store.state.gcbm.filesUploaded.classifiers.length,
-        store.state.gcbm.filesUploaded.classifiers.length > 0
-      )
       classifiersUploaded.value = store.state.gcbm.filesUploaded.classifiers.length > 0
 
       const path = trimSlashes(route.path)
