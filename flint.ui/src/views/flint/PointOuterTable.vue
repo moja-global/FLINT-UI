@@ -12,85 +12,57 @@
 </template>
 
 <script>
-/* eslint-disable no-alert, no-console */
-
 import PointOutput from './PointOutput.vue'
 import Table from './Table.vue'
+
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
 export default {
   name: 'PointOuterTable',
   components: {
     PointOutput,
     Table
   },
-  data() {
-    return {
-      isTable: true,
-      columns: [
-        {
-          title: 'Step',
-          dataIndex: 'point_step',
-          key: 'point_step'
-        },
-        {
-          title: 'Step Date',
-          dataIndex: 'point_stepDate',
-          key: 'point_stepDate'
-        },
-        {
-          title: 'Step Length(years)',
-          dataIndex: 'point_stepLenInYears',
-          key: 'point_stepLenInYears'
-        },
-        {
-          title: 'Pool 1',
-          dataIndex: 'pool_1',
-          key: 'pool_1'
-        },
-        {
-          title: 'Pool 2',
-          dataIndex: 'pool_2',
-          key: 'pool_2'
-        },
-        {
-          title: 'Pool 3',
-          dataIndex: 'pool_3',
-          key: 'pool_3'
-        }
-      ],
-      rows: this.generateDataRows()
+
+  setup() {
+    const store = useStore()
+    const isTable = ref(true)
+
+    store.dispatch('parse_point_results')
+
+    function getPool1() {
+      return store.state.point.pool_1
     }
-  },
-  beforeCreate() {
-    this.$store.dispatch('parse_point_results')
-    this.isTable = true
-  },
-  methods: {
-    pool_1() {
-      return this.$store.state.point.pool_1
-    },
-    pool_2() {
-      return this.$store.state.point.pool_2
-    },
-    pool_3() {
-      return this.$store.state.point.pool_3
-    },
-    point_step() {
-      return this.$store.state.point.point_step
-    },
-    point_stepDate() {
-      return this.$store.state.point.point_stepDate
-    },
-    point_stepLenInYears() {
-      return this.$store.state.point.point_stepLenInYears
-    },
-    generateDataRows: function () {
+
+    function getPool2() {
+      return store.state.point.pool_2
+    }
+
+    function getPool3() {
+      return store.state.point.pool_3
+    }
+
+    function getPointStep() {
+      return store.state.point.point_step
+    }
+
+    function getPointStepDate() {
+      return store.state.point.point_stepDate
+    }
+
+    function getPointStepLenInYears() {
+      return store.state.point.point_stepLenInYears
+    }
+
+    function generateDataRows() {
       var result = []
-      var pool_1 = this.pool_1(),
-        pool_2 = this.pool_2(),
-        pool_3 = this.pool_3(),
-        point_step = this.point_step(),
-        point_stepDate = this.point_stepDate(),
-        point_stepLenInYears = this.point_stepLenInYears()
+      var pool_1 = getPool1(),
+        pool_2 = getPool2(),
+        pool_3 = getPool3(),
+        point_step = getPointStep(),
+        point_stepDate = getPointStepDate(),
+        point_stepLenInYears = getPointStepLenInYears()
       for (let j = 0; j < point_step.length; j++) {
         let original_date = point_stepDate[j]
         let date = original_date.substring(0, 10) + ' ' + original_date.substring(11)
@@ -108,6 +80,53 @@ export default {
         result.push(row)
       }
       return result
+    }
+
+    const rows = generateDataRows()
+    const columns = ref([
+      {
+        title: 'Step',
+        dataIndex: 'point_step',
+        key: 'point_step'
+      },
+      {
+        title: 'Step Date',
+        dataIndex: 'point_stepDate',
+        key: 'point_stepDate'
+      },
+      {
+        title: 'Step Length(years)',
+        dataIndex: 'point_stepLenInYears',
+        key: 'point_stepLenInYears'
+      },
+      {
+        title: 'Pool 1',
+        dataIndex: 'pool_1',
+        key: 'pool_1'
+      },
+      {
+        title: 'Pool 2',
+        dataIndex: 'pool_2',
+        key: 'pool_2'
+      },
+      {
+        title: 'Pool 3',
+        dataIndex: 'pool_3',
+        key: 'pool_3'
+      }
+    ])
+
+    return {
+      isTable,
+      rows,
+      columns,
+      getPool1,
+      getPool2,
+      getPool3,
+      getPointStep,
+      getPointStepDate,
+      getPointStepLenInYears,
+      generateDataRows
     }
   }
 }

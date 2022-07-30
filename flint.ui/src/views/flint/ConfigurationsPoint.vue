@@ -153,7 +153,7 @@ export default {
       }
     })
 
-    const steps = [
+    const steps = ref([
       {
         target: '[data-v-step="1"]',
         content: 'Set the Start and End date of simulation from the date picker.',
@@ -196,7 +196,7 @@ export default {
           placement: 'top'
         }
       }
-    ]
+    ])
 
     function finalPoolValues() {
       if (pool1.value.pool_value === 100 && pool2.value.pool_value === 100 && pool3.value.pool_value === 100) {
