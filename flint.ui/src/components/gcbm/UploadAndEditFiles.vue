@@ -34,8 +34,12 @@
 
   <a-alert v-else message="Done Uploading!" showIcon type="success">
     <template #description>
-      Your files have been uploaded. You can click on "Preview Config" button of any file to view or change it's
-      generated configurations if needed.
+      Your files have been uploaded.
+      {{
+        fileType === 'inputDB'
+          ? 'You can edit the table and column names from your database in the table below, if needed.'
+          : 'You can click on "Preview Config" button of any file to view or change it\'s generated configurations if needed.'
+      }}
       <div>
         <a-typography-link @click="onUploadAgainClick"> Start another upload? </a-typography-link>
       </div>
@@ -150,6 +154,8 @@ export default {
     fileList.value = [...store.state.gcbm.filesUploaded[props.fileType]]
     uploadingVars.value.uploaded = fileList.value.length > 0
 
+    const backendFileTypeName = props.fileType === 'inputDB' ? 'db' : props.fileType
+
     const { bytesToKB } = useFunctions()
 
     const handleRemove = (file) => {
@@ -174,15 +180,17 @@ export default {
 
     const handleUpload = () => {
       const formData = new FormData()
+      formData.append('title', store.state.gcbm.config.title)
+
       fileList.value.forEach((file) => {
-        formData.append('files[]', file)
+        formData.append(backendFileTypeName, file)
       })
 
       uploadingVars.value.uploading = true
 
-      fetch('https://run.mocky.io/v3/ebca54c1-1021-4356-a5dc-1c5e2330c2c4', {
+      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/upload/${backendFileTypeName}`, {
         method: 'POST',
-        data: formData
+        body: formData
       })
         .then((res) => res.text())
         .then((resText) => {

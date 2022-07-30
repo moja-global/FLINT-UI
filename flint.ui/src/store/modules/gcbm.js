@@ -40,6 +40,14 @@ export default {
       state.config.pools_cbm.Pools = newState
       console.log('changed Pools state in GCBM store', state.config.pools_cbm.Pools)
     },
+    setGCBMMSpinupEnabledState(state, { newState }) {
+      state.config.spinup.Spinup.enabled = newState
+      console.log('changed Spinup Enabled state in GCBM store', state.config.spinup.Spinup.enabled)
+    },
+    setGCBMMSpinupVariablesState(state, { newState }) {
+      state.config.spinup.SpinupVariables = newState
+      console.log('changed Spinup Variables state in GCBM store', state.config.spinup.SpinupVariables)
+    },
     setGCBMUploadFilesState(state, { fileType, fileList }) {
       state.filesUploaded[fileType] = fileList
       console.log(`changed UploadFiles(${fileType}) state in GCBM store`, state.filesUploaded[fileType])
@@ -61,7 +69,7 @@ export default {
       console.log([...bodyFormData])
 
       axios
-        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/upload/title`, bodyFormData)
         .then((response) => {
           if (!response.data.data.startsWith('Simulation already exists.')) {
             commit('resetState')

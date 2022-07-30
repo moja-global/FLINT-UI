@@ -41,7 +41,7 @@
           <a-menu-item key="disturbances" @click="() => onMenuItemClick('gcbmUploadDisturbances')">
             <span> Disturbances </span>
           </a-menu-item>
-          <a-menu-item key="inputDb" @click="() => onMenuItemClick('gcbmUploadInputDB')">
+          <a-menu-item key="input-db" @click="() => onMenuItemClick('gcbmUploadInputDB')">
             <span> Input Database </span>
           </a-menu-item>
           <a-menu-item key="miscellaneous" @click="() => onMenuItemClick('gcbmUploadMiscellaneous')">
@@ -66,12 +66,12 @@
           <a-menu-item key="pools" @click="() => onMenuItemClick('gcbmPools')">
             <span>Pools</span>
           </a-menu-item>
-          <a-menu-item key="spinup-parameters">
+          <a-menu-item key="spinup-parameters" @click="() => onMenuItemClick('gcbmSpinupParameters')">
             <span>Spinup Parameters</span>
           </a-menu-item>
-          <a-menu-item key="libraries">
+          <!-- <a-menu-item key="libraries">
             <span>Libraries</span>
-          </a-menu-item>
+          </a-menu-item> -->
         </a-sub-menu>
 
         <!-- RUN -->
@@ -153,10 +153,6 @@ export default {
 
     watchEffect(() => {
       title.value = store.state.gcbm.config.title
-      console.log(
-        store.state.gcbm.filesUploaded.classifiers.length,
-        store.state.gcbm.filesUploaded.classifiers.length > 0
-      )
       classifiersUploaded.value = store.state.gcbm.filesUploaded.classifiers.length > 0
 
       const path = trimSlashes(route.path)

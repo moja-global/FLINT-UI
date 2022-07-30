@@ -22,6 +22,7 @@ import LocalDomain from '@/components/gcbm/Configurations/LocalDomain.vue'
 import Modules from '@/components/gcbm/Configurations/Modules.vue'
 import Variables from '@/components/gcbm/Configurations/Variables.vue'
 import Pools from '@/components/gcbm/Configurations/Pools.vue'
+import Spinup from '@/components/gcbm/Configurations/Spinup.vue'
 
 import Landing from '@/views/Landing.vue'
 
@@ -79,7 +80,7 @@ const routes = [
           },
           {
             name: 'gcbmUploadInputDB',
-            path: '/gcbm/upload/inputdb',
+            path: '/gcbm/upload/input-db',
             component: InputDB
           },
           {
@@ -114,6 +115,11 @@ const routes = [
             name: 'gcbmPools',
             path: '/gcbm/configurations/pools',
             component: Pools
+          },
+          {
+            name: 'gcbmSpinupParameters',
+            path: '/gcbm/configurations/spinup-parameters',
+            component: Spinup
           }
         ]
       },
