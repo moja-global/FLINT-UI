@@ -5,4 +5,9 @@
 body {
   font-family: 'DM Sans', sans-serif !important;
 }
+
+.anticon {
+  vertical-align: 0.125em !important;
+}
+
 @tailwind utilities;
