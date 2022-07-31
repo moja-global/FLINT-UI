@@ -18,7 +18,6 @@ import Table from './Table.vue'
 import dayjs from 'dayjs'
 import { useStore } from 'vuex'
 
-
 export default {
   name: 'RothCOutputContainer',
   components: {
