@@ -1,19 +1,22 @@
 <template>
   <div class="relative">
     <div class="absolute left-0">
-      <vl-map data-projection="EPSG:4326" style="height: 300px; width: 600px">
-        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation" />
+      <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height: 300px; width: 600px">
+        <ol-view :zoom="zoom" :center="center" :rotation="rotation" :projection="'EPSG:4326'" />
 
-        <vl-layer-tile>
-          <vl-source-osm />
-        </vl-layer-tile>
-
-        <vl-feature>
-          <vl-geom-point
-            :coordinates="[$store.state.vuelayers.coordinates[0], $store.state.vuelayers.coordinates[1]]"
-          />
-        </vl-feature>
-      </vl-map>
+        <ol-tile-layer>
+          <ol-source-osm />
+        </ol-tile-layer>
+        <ol-vector-layer>
+          <ol-source-vector>
+            <ol-feature>
+              <ol-geom-point
+                :coordinates="[$store.state.vuelayers.coordinates[0], $store.state.vuelayers.coordinates[1]]"
+              />
+            </ol-feature>
+          </ol-source-vector>
+        </ol-vector-layer>
+      </ol-map>
     </div>
     <div class="absolute right-0">
       <div class="px-4 content-center rounded-md mb-5">
@@ -46,44 +49,54 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { ref, computed } from 'vue'
 export default {
-  data() {
+  setup() {
+    const store = useStore()
+
+    const zoom = ref(15)
+    const center = ref([store.state.vuelayers.coordinates[0], store.state.vuelayers.coordinates[1]])
+    const rotation = ref(0)
+
+    const returnlat = computed(() => {
+      return store.state.vuelayers.coordinates[0]
+    })
+
+    const returnlon = computed(() => {
+      return store.state.vuelayers.coordinates[1]
+    })
+
+    const getlatitude = computed({
+      get: () => {
+        return parseFloat(store.state.vuelayers.coordinates[0])
+      },
+      set: (newValue) => {
+        let tempval = newValue
+        store.commit('setnewlat', tempval)
+        console.log('newval', store.state.vuelayers.coordinates[0])
+      }
+    })
+
+    const getlongitude = computed({
+      get() {
+        return store.state.vuelayers.coordinates[1]
+      },
+      set(newValue) {
+        let tempval = newValue
+        store.commit('setnewlong', tempval)
+      }
+    })
+
     return {
-      zoom: 15,
-      center: [this.$store.state.vuelayers.coordinates[0], this.$store.state.vuelayers.coordinates[1]],
-      rotation: 0
+      zoom,
+      center,
+      rotation,
+      returnlat,
+      returnlon,
+      getlatitude,
+      getlongitude
     }
-  },
-
-  computed: {
-    returnlat() {
-      return this.$store.state.vuelayers.coordinates[0]
-    },
-    returnlon() {
-      return this.$store.state.vuelayers.coordinates[1]
-    },
-    getlatitude: {
-      get() {
-        return parseFloat(this.$store.state.vuelayers.coordinates[0])
-      },
-      set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setnewlat', tempval)
-        console.log('newval', this.$store.state.vuelayers.coordinates[0])
-      }
-    },
-
-    getlongitude: {
-      get() {
-        return this.$store.state.vuelayers.coordinates[1]
-      },
-      set(newValue) {
-        let tempval = newValue
-        this.$store.commit('setnewlong', tempval)
-      }
-    }
-  },
-
-  methods: {}
+  }
 }
 </script>

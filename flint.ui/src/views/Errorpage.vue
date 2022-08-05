@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LandingPageNavbar />
     <div class="flex-row pl-0 flex-wrap mt-6">
       <div class="p-6 innerdiv">
         <h1 class="mb mt-7 py-4 text-2xl text-earth my-4">Page Not Found</h1>
@@ -18,20 +17,15 @@
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import LandingPageNavbar from '../components/Navbars/LandingPageNavbar.vue'
-import Footer from '../components/Footer/Footer.vue'
 import Button from '../components/Button/Button.vue'
 
 export default {
   name: 'NotFound',
   components: {
-    LandingPageNavbar,
-    Footer,
     Button
   }
 }

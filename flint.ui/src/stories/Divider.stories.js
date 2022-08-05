@@ -1,4 +1,4 @@
-import BaseDivider from '@/components/Divider/Divider.vue'
+import BaseDivider from '../components/Divider/Divider.vue'
 
 export default {
   title: 'Divider',

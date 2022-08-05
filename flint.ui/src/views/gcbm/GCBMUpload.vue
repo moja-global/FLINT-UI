@@ -1,15 +1,13 @@
 <template>
   <div>
-    <LandingPageNavbar />
-    <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
+    <div class="px-8 pb-6 md:px-24 mt-8">
       <div class="bg-white p-6 rounded-lg shadow-lg flex flex-wrap justify-between">
         <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
 
         <button
           class="
-            inline-block
-            align-middle
-            flex-initial
+            inline-flex
+            items-center
             bg-white
             hover:bg-earth hover:text-white
             text-gray-800
@@ -22,7 +20,7 @@
           "
           @click="hello"
         >
-          <i class="far fa-file" /> Submit uploaded files
+          <FileOutlined :style="{ marginRight: '4px' }" /> Submit uploaded files
         </button>
       </div>
 
@@ -67,27 +65,25 @@
       <FileUpload ref="gcbmFileUpload" />
     </div>
 
-    <StepperGCBM />
-    <Footer />
+    <StepperGCBM :initial="1" />
   </div>
 </template>
 
 <script>
-import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
 import FileUpload from '@/components/FileUpload/FileUpload.vue'
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
-import Footer from '@/components/Footer/Footer.vue'
 import axios from 'axios'
+import { FileOutlined } from '@ant-design/icons-vue'
+import { notification } from 'ant-design-vue'
 
 export default {
   name: 'DashboardPage',
   components: {
-    LandingPageNavbar,
     StepperGCBM,
     FileUpload,
     StepperStatic,
-    Footer
+    FileOutlined
   },
 
   data: () => ({
@@ -118,8 +114,9 @@ export default {
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
         this.simulation_list = response.data.data
         console.log(this.simulation_list)
-        this.$toast.info(`Ongoing simulations - ${response.data.data}`, {
-          timeout: 5000
+        notification.info({
+          message: `Ongoing simulations - ${response.data.data}`,
+          duration: 5
         })
         console.log(response.data.data)
         console.log(this.simulation_list)

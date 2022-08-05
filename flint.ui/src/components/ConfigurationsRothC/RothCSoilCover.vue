@@ -47,45 +47,57 @@
 </template>
 
 <script>
-import formatData from '@/mixins/formatData'
+import useformatData from '../../utils/useformatData'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  mixins: [formatData],
-  computed: {
-    newconfig_soilcover_data_orig: {
-      get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[12].soilCover.transform.data_orig)
-      },
-      set(newValue) {
-        this.$store.commit('setNewConfig_soilCover_data_orig', '$#[ ' + newValue + ' ]$#')
-      }
-    },
+  setup() {
+    const { formatArray } = useformatData()
+    const store = useStore()
 
-    newconfig_soilcover_data_firstmonthcopy: {
+    const newconfig_soilcover_data_orig = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[12].soilCover.transform.data_firstmonthcopy)
+        return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_orig)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_soilCover_data_firstmonthcopy', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_soilCover_data_orig', '$#[ ' + newValue + ' ]$#')
       }
-    },
+    })
 
-    newconfig_soilcover_data_month_avg: {
+    const newconfig_soilcover_data_firstmonthcopy = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[12].soilCover.transform.data_month_avg)
+        return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_firstmonthcopy)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_soilCover_data_month_avg', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_soilCover_data_firstmonthcopy', '$#[ ' + newValue + ' ]$#')
       }
-    },
+    })
 
-    newconfig_soilcover_data_lastyearcopy: {
+    const newconfig_soilcover_data_month_avg = computed({
       get() {
-        return this.formatArray(this.$store.state.rothc.config.Variables[12].soilCover.transform.data_lastyearcopy)
+        return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_month_avg)
       },
       set(newValue) {
-        this.$store.commit('setNewConfig_soilCover_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+        store.commit('setNewConfig_soilCover_data_month_avg', '$#[ ' + newValue + ' ]$#')
       }
+    })
+
+    const newconfig_soilcover_data_lastyearcopy = computed({
+      get() {
+        return formatArray(store.state.rothc.config.Variables[12].soilCover.transform.data_lastyearcopy)
+      },
+      set(newValue) {
+        store.commit('setNewConfig_soilCover_data_lastyearcopy', '$#[ ' + newValue + ' ]$#')
+      }
+    })
+
+    return {
+      formatArray,
+      newconfig_soilcover_data_orig,
+      newconfig_soilcover_data_firstmonthcopy,
+      newconfig_soilcover_data_month_avg,
+      newconfig_soilcover_data_lastyearcopy
     }
   }
 }

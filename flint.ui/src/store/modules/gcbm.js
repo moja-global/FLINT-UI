@@ -1,4 +1,4 @@
-//import Vue from 'vue'
+import { notification } from 'ant-design-vue'
 import axios from 'axios'
 
 export default {
@@ -663,20 +663,30 @@ export default {
       console.log(this.state.gcbm.config.title)
       bodyFormData.append('title', this.state.gcbm.config.title)
       console.log([...bodyFormData])
+
       axios
         .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/new`, bodyFormData)
         .then((response) => {
-          this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
+          notification.success({
+            message: `${response.data.data}`,
+            duration: 5
+          })
           console.log(response)
         })
         .catch((error) => {
-          this._vm.$toast.error(`${error}`, { timeout: 2000 })
+          notification.error({
+            message: `${error}`,
+            duration: 5
+          })
           console.log(error)
         })
     },
     check_gcbm_run_status() {
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
-        this._vm.$toast.success(`${response.data.data}`, { timeout: 5000 })
+        notification.success({
+          message: `${response.data.data}`,
+          duration: 5
+        })
         console.log(response.data)
       })
     }

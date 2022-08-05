@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [master]
+    branches: [master, 'feat/gcbm-simulation-editor']
 
   workflow_dispatch:
 
@@ -42,11 +42,7 @@ jobs:
         working-directory: flint.ui
 
       - name: Lint 🧐
-        run: yarn lint
-        working-directory: flint.ui
-
-      - name: Build 🏗️
-        run: yarn build
+        run: yarn lint --no-fix --max-warnings 0
         working-directory: flint.ui
 
       - name: Storybook Build 🎨

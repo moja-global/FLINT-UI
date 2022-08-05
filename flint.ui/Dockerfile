@@ -7,10 +7,6 @@ COPY ["./", "."]
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN ["yarn", "run", "build"]
 
-COPY ["package.json", "yarn.lock", "./"]
-RUN ["echo", "$(cat package.json | jq 'del(.devDependencies)')", "> package.json"]
-RUN ["yarn", "--frozen-lockfile"]
-
 FROM nginx:1.21.4 as production-stage
 RUN ["mkdir", "/app"]
 COPY --from=build-stage ["/app/dist", "/app"]

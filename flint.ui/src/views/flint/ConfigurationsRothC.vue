@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="mb-10 mx-5 md:justify-center">
-      <LandingPageNavbar />
       <div class="px-8 pb-6 sm:px-16 md:px-24">
         <div>
           <h2 class="mb mt-7 py-4 text-2xl text-earth">RothC example simulation configuration</h2>
@@ -20,7 +19,7 @@
             <div class="py-6 mb-3">
               <h2 class="text-xl font-normal text-earth">Start and End date of simulation</h2>
               <div>
-                <div class="text-2xl font-normal text-gray"><Datepicker size="small" /></div>
+                <div class="text-2xl font-normal text-gray"><Datepicker size="large" /></div>
               </div>
             </div>
           </div>
@@ -28,40 +27,35 @@
 
         <h2 class="mt-7 py-4 text-2xl font-normal text-earth">Configure Parameters</h2>
 
-        <a-collapse accordion :bordered="false" class="rothcAccordion" @change="changeActiveKey">
+        <a-collapse accordion :bordered="false" class="rothcAccordion" expand-icon-position="right">
           <a-collapse-panel
             v-for="(item, index) in configurations"
             :key="index"
             :header="`${item.text} (${item.type})`"
-            :show-arrow="false"
           >
-            <a-icon slot="extra" type="right" :rotate="accordionActiveKey == index ? 90 : 0" />
-            <div :is="item.component" />
+            <component :is="item.component" />
           </a-collapse-panel>
         </a-collapse>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click.native="apiRoute_rothc">Run</Button></div>
+          <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click.native="showTable ? hideRothCOuterTable() : showRothCOuterTable()">
+            <Button :btn-size="'auto'" @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()">
               {{ showTable ? 'Hide' : 'Show' }} Output
             </Button>
           </div>
         </div>
-        <RothCOuterTable v-if="showTable" />
+        <RothCOutputContainer v-if="showTable" />
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
-import LandingPageNavbar from '../../components/Navbars/LandingPageNavbar.vue'
 import Button from '@/components/Button/Button.vue'
-import Footer from '@/components/Footer/Footer.vue'
-import RothCOuterTable from './RothCOuterTable.vue'
+import RothCOutputContainer from './RothCOutputContainer.vue'
 import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
 import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
 import RothCSoilVue from '@/components/ConfigurationsRothC/RothCSoil.vue'
@@ -70,87 +64,92 @@ import RothCPresCMVue from '@/components/ConfigurationsRothC/RothCPresCM.vue'
 import RothCOpenPanEvapVue from '@/components/ConfigurationsRothC/RothCOpenPanEvap.vue'
 import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue'
 
+import { ref } from 'vue'
+import { markRaw } from 'vue'
+import { RightOutlined } from '@ant-design/icons-vue'
+import { useStore } from 'vuex'
+
 export default {
   components: {
     RothCTemplate,
     Datepicker,
-    LandingPageNavbar,
-    RothCOuterTable,
-    Button,
-    Footer
+    RightOutlined,
+    RothCOutputContainer,
+    Button
   },
-  data: function () {
-    return {
-      showTable: false,
-      clickedRun: false,
-      text: `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`,
-      accordionActiveKey: '1',
-      configurations: {
-        rainfall: {
-          component: RothCRainfallVue,
-          type: 'rainfall',
-          text: 'Rainfall'
-        },
-        openPanEvap: {
-          component: RothCOpenPanEvapVue,
-          type: 'openPanEvap',
-          text: 'Open Pan Evaporation'
-        },
-        avgAirTemp: {
-          component: RothCAvgAirTempVue,
-          type: 'avgAirTemp',
-          text: 'Average Air Temperature'
-        },
-        presCM: {
-          component: RothCPresCMVue,
-          type: 'presCM',
-          text: 'Organic carbon inputs'
-        },
-        soilCover: {
-          component: RothCSoilCoverVue,
-          type: 'soilCover',
-          text: 'Soil Cover'
-        },
-        initSoil: {
-          component: RothCInitSoilVue,
-          type: 'initSoil',
-          text: 'Initial conditions of the Soil'
-        },
-        soil: {
-          component: RothCSoilVue,
-          type: 'soil',
-          text: 'Soil characteristics'
-        }
+
+  setup() {
+    const showTable = ref(false)
+    const clickedRun = ref(false)
+
+    const store = useStore()
+
+    const configurations = ref({
+      rainfall: {
+        component: markRaw(RothCRainfallVue),
+        type: 'rainfall',
+        text: 'Rainfall'
+      },
+      openPanEvap: {
+        component: markRaw(RothCOpenPanEvapVue),
+        type: 'openPanEvap',
+        text: 'Open Pan Evaporation'
+      },
+      avgAirTemp: {
+        component: markRaw(RothCAvgAirTempVue),
+        type: 'avgAirTemp',
+        text: 'Average Air Temperature'
+      },
+      presCM: {
+        component: markRaw(RothCPresCMVue),
+        type: 'presCM',
+        text: 'Organic carbon inputs'
+      },
+      soilCover: {
+        component: markRaw(RothCSoilCoverVue),
+        type: 'soilCover',
+        text: 'Soil Cover'
+      },
+      initSoil: {
+        component: markRaw(RothCInitSoilVue),
+        type: 'initSoil',
+        text: 'Initial conditions of the Soil'
+      },
+      soil: {
+        component: markRaw(RothCSoilVue),
+        type: 'soil',
+        text: 'Soil characteristics'
       }
-    }
-  },
-  methods: {
-    apiRoute_rothc() {
+    })
+
+    function apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
-      this.$store.dispatch('send_rothcConfig', { root: true })
-      this.clickedRun = true
-    },
+      store.dispatch('send_rothcConfig', { root: true })
+      clickedRun.value = true
+    }
 
-    showRothCOuterTable() {
-      this.$store.dispatch('parse_RothC_results')
-      this.showTable = true
-    },
+    function showRothCOutputContainer() {
+      store.dispatch('parse_RothC_results')
+      showTable.value = true
+    }
 
-    hideRothCOuterTable() {
-      this.showTable = false
-    },
+    function hideRothCOutputContainer() {
+      showTable.value = false
+    }
 
-    changeActiveKey(key) {
-      this.accordionActiveKey = key
+    return {
+      showTable,
+      clickedRun,
+      configurations,
+      apiRoute_rothc,
+      showRothCOutputContainer,
+      hideRothCOutputContainer
     }
   }
 }
 </script>
 <style>
-.rothcAccordion .anticon svg {
-  transition: transform 0.3s ease;
-}
 .rothcAccordion .ant-collapse-header {
   font-size: 18px;
   color: theme('colors.earth') !important;
