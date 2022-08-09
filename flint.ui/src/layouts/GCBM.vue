@@ -16,7 +16,8 @@
         <a-typography-text>
           <span>
             <span>Already have a configuration ready? </span>
-            <a href="#">Import</a>
+            <a-typography-link @click="() => (uploadAllModalVisible = true)">Import</a-typography-link>
+            <UploadAll :visible="uploadAllModalVisible" @cancel="uploadAllModalVisible = false" />
           </span>
         </a-typography-text>
       </div>
@@ -117,6 +118,7 @@ import {
 } from '@ant-design/icons-vue'
 import useFunctions from '@/utils/useFunctions'
 import { Modal } from 'ant-design-vue'
+import UploadAll from '@/components/gcbm/UploadAll.vue'
 
 export default {
   name: 'GCBMLayout',
@@ -125,7 +127,8 @@ export default {
     SettingOutlined,
     PlusOutlined,
     RightCircleOutlined,
-    RightOutlined
+    RightOutlined,
+    UploadAll
   },
   setup() {
     // TODO: Fetch all simulation data (configs, classifiers, disturbances, etc.) from the server.
@@ -133,6 +136,7 @@ export default {
     const route = useRoute()
     const selectedKeys = ref([])
     const openKeys = ref([])
+    const uploadAllModalVisible = ref(false)
 
     const { trimSlashes } = useFunctions()
 
@@ -203,6 +207,7 @@ export default {
       selectedKeys,
       affixIconRotate,
       classifiersUploaded,
+      uploadAllModalVisible,
       onMenuItemClick,
       onSimulationCancelClick
     }
