@@ -28,6 +28,22 @@ export default {
     setSimulationProgressState(state, newValue) {
       this.state.gcbm.SimulationProgress = newValue
     },
+    setGCBMLocalDomainState(state, { key, newState }) {
+      switch (key) {
+        case 'THREADS':
+          console.log('changed threads state in GCBM store', newState)
+          state.config.localdomain.LocalDomain.landscape.num_threads = newState
+          break
+        case 'START_DATE':
+          console.log('changed start date state in GCBM store')
+          state.config.localdomain.LocalDomain.start_date = newState
+          break
+        case 'END_DATE':
+          console.log('changed end date state in GCBM store')
+          state.config.localdomain.LocalDomain.end_date = newState
+          break
+      }
+    },
     setGCBMModulesState(state, { newState }) {
       state.config.modules_cbm.Modules = newState
       console.log('changed Modules state in GCBM store:', state.config.modules_cbm.Modules)

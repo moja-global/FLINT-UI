@@ -11,28 +11,26 @@
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
         <a-date-picker
-          v-model="startDateInput"
+          v-model:value="selectedStartDate"
           class="w-full"
           :size="size"
           :format="dateFormatList"
-          :value="selectedStartDate"
-          :default-value="selectedStartDate"
           v-bind="$attrs"
           @change="onStartChange"
+          :disabledDate="(date) => date > selectedEndDate"
         />
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
         <a-date-picker
-          v-model="endDateInput"
+          v-model:value="selectedEndDate"
           class="w-full"
           :size="size"
           :format="dateFormatList"
-          :value="selectedEndDate"
-          :default-value="selectedEndDate"
           v-bind="$attrs"
           @change="onEndChange"
+          :disabledDate="(date) => date < selectedStartDate"
         />
       </div>
     </div>
@@ -44,72 +42,51 @@
 </template>
 
 <script>
+// import dayjs from 'dayjs'
 import dayjs from 'dayjs'
+import { computed, ref } from 'vue'
 
 export default {
+  name: 'DatepickerGCBM',
+  emits: ['startDateChange', 'endDateChange'],
   props: {
-    value: { type: dayjs.Dayjs, default: dayjs('2022-01-01') }
+    start_date: {
+      type: String,
+      default: '2020-01-01'
+    },
+    end_date: {
+      type: String,
+      default: '2020-12-31'
+    }
   },
-  setup() {
+  setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
+
+    const selectedStartDate = ref(dayjs(props.start_date))
+    const selectedEndDate = ref(dayjs(props.end_date))
+
+    const date_diff = computed(() => {
+      // difference in years
+      const diff = selectedEndDate.value.diff(selectedStartDate.value) / (1000 * 60 * 60 * 24 * 365)
+      return diff
+    })
+
+    const onStartChange = (val) => {
+      emit('startDateChange', val)
+    }
+
+    const onEndChange = (val) => {
+      emit('endDateChange', val)
+    }
+
     return {
       size: 'large',
-      dateFormatList
-    }
-  },
-  data() {
-    return { selectedStartDate: this.value, selectedEndDate: this.value }
-  },
-  computed: {
-    date_diff() {
-      var start_date_value = new Date(dayjs(this.selectedStartDate).format('YYYY-MM-DD'))
-
-      var end_date_value = new Date(dayjs(this.selectedEndDate).format('YYYY-MM-DD'))
-
-      // difference in years
-      var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
-      return diff
-    },
-    startDateInput: {
-      get() {
-        return this.selectedStartDate
-      },
-      set(val) {
-        this.$emit('input', dayjs(val).toString())
-        this.selectedStartDate = val
-        console.log(this.selectedStartDate)
-
-        if (this.date_diff < 0) {
-          this.$toast.error('Start date should be less than end date', {
-            timeout: 5000
-          })
-        }
-      }
-    },
-
-    endDateInput: {
-      get() {
-        return this.selectedEndDate
-      },
-      set(val) {
-        this.$emit('input', dayjs(val).toString())
-        this.selectedEndDate = val
-        console.log(this.selectedEndDate)
-
-        if (this.date_diff < 0) {
-          this.$toast.error('End date should be greater than start date', {
-            timeout: 5000
-          })
-        }
-      }
-    }
-  },
-  methods: {
-    onStartChange(val) {
-      this.selectedStartDate = val
-    },
-    onEndChange(val) {
-      this.selectedEndDate = val
+      date_diff,
+      dateFormatList,
+      selectedEndDate,
+      selectedStartDate,
+      onStartChange,
+      onEndChange
     }
   }
 }
