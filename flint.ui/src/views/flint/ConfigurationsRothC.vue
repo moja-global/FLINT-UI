@@ -38,11 +38,30 @@
         </a-collapse>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
+          <div data-v-step="5">
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="apiRoute_rothc"
+              >Run</ButtonComponent
+            >
+          </div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()">
-              {{ showTable ? 'Hide' : 'Show' }} Output
-            </Button>
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()"
+            >
+              {{ showTable ? 'Hide' : 'Show' }} Output</ButtonComponent
+            >
           </div>
         </div>
         <RothCOutputContainer v-if="showTable" />
@@ -54,7 +73,7 @@
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
-import Button from '@/components/Button/Button.vue'
+import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 import RothCOutputContainer from './RothCOutputContainer.vue'
 import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
 import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
@@ -75,7 +94,7 @@ export default {
     Datepicker,
     RightOutlined,
     RothCOutputContainer,
-    Button
+    ButtonComponent
   },
 
   setup() {

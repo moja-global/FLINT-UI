@@ -9,9 +9,15 @@
           broken.
         </p>
         <div class="my-4">
-          <a href="/"
-            ><Button :btn-size="'auto'" class="flex mt-6"
-              >Go to Home Page <span class="ml-1" style="margin-top: -2px"> →</span></Button
+          <a href="/">
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              >Go to Home Page <span class="ml-1" style="margin-top: -2px"> →</span></ButtonComponent
             ></a
           >
         </div>
@@ -21,12 +27,12 @@
 </template>
 
 <script>
-import Button from '../components/Button/Button.vue'
+import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   name: 'NotFound',
   components: {
-    Button
+    ButtonComponent
   }
 }
 </script>
