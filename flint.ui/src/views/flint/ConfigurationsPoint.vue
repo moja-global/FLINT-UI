@@ -93,6 +93,7 @@
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
       <PointOuterTable v-if="showTable" />
+      <!-- <PointOuterTable /> -->
     </div>
   </div>
 </template>
