@@ -13,88 +13,98 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { ref, onBeforeMount } from 'vue'
 export default {
   name: 'BrushCharts',
-  data: function () {
-    return {
-      series: [
-        {
-          name: 'Pool 1',
-          data: this.$store.state.point.pool_1
-        },
-        {
-          name: 'Pool 2',
-          data: this.$store.state.point.pool_2
-        },
-        {
-          name: 'Pool 3',
-          data: this.$store.state.point.pool_3
-        }
-      ],
-      chartOptionsArea: {
-        chart: {
-          id: 'chartArea',
-          toolbar: {
-            autoSelected: 'pan',
-            show: true
-          }
-        },
-        colors: ['#546E7A', '#0ff1ce', '#bada55'],
-        stroke: {
-          width: 3
-        },
-        dataLabels: {
-          enabled: false
-        },
-        fill: {
-          opacity: 1
-        },
-        markers: {
-          size: 0
-        },
-        xaxis: {
-          type: 'numeric'
+  setup() {
+    const store = useStore()
+
+    const series = ref([
+      {
+        name: 'Pool 1',
+        data: store.state.point.pool_1
+      },
+      {
+        name: 'Pool 2',
+        data: store.state.point.pool_2
+      },
+      {
+        name: 'Pool 3',
+        data: store.state.point.pool_3
+      }
+    ])
+
+    const chartOptionsArea = ref({
+      chart: {
+        id: 'chartArea',
+        toolbar: {
+          autoSelected: 'pan',
+          show: true
         }
       },
-      chartOptionsBrush: {
-        chart: {
-          id: 'chartBrush',
-          brush: {
-            target: 'chartArea',
-            enabled: true,
-            autoScaleYaxis: false
-          },
-          selection: {
-            enabled: true,
-            xaxis: {
-              min: 1,
-              max: 20
-            }
-          }
-        },
-        colors: ['#008FFB'],
-        fill: {
-          gradient: {
-            enabled: true,
-            opacityFrom: 0.91,
-            opacityTo: 0.1
-          }
-        },
-        xaxis: {
-          type: 'numeric',
-          tooltip: {
-            enabled: false
-          }
-        },
-        yaxis: {
-          tickAmount: 2
-        }
+      colors: ['#546E7A', '#0ff1ce', '#bada55'],
+      stroke: {
+        width: 3
+      },
+      dataLabels: {
+        enabled: false
+      },
+      fill: {
+        opacity: 1
+      },
+      markers: {
+        size: 0
+      },
+      xaxis: {
+        type: 'numeric'
       }
-    }
-  },
+    })
 
-  beforeMount() {
-    this.$store.dispatch('parse_point_results')
+    const chartOptionsBrush = ref({
+      chart: {
+        id: 'chartBrush',
+        brush: {
+          target: 'chartArea',
+          enabled: true,
+          autoScaleYaxis: false
+        },
+        selection: {
+          enabled: true,
+          xaxis: {
+            min: 1,
+            max: 20
+          }
+        }
+      },
+      colors: ['#008FFB'],
+      fill: {
+        gradient: {
+          enabled: true,
+          opacityFrom: 0.91,
+          opacityTo: 0.1
+        }
+      },
+      xaxis: {
+        type: 'numeric',
+        tooltip: {
+          enabled: false
+        }
+      },
+      yaxis: {
+        tickAmount: 2
+      }
+    })
+
+    onBeforeMount(() => {
+      store.dispatch('parse_point_results')
+    })
+
+    return {
+      series,
+      chartOptionsArea,
+      chartOptionsBrush
+    }
   }
 }
 </script>
