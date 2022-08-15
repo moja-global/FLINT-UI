@@ -104,8 +104,10 @@ import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
 import PointOuterTable from './PointOuterTable.vue'
 
-import { ref, onMounted, getCurrentInstance } from 'vue'
+import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
+import { Modal } from 'ant-design-vue'
+import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 
 export default {
   components: {
@@ -198,16 +200,58 @@ export default {
       }
     ])
 
-    function finalPoolValues() {
-      if (pool1.value.pool_value === 100 && pool2.value.pool_value === 100 && pool3.value.pool_value === 100) {
-        console.log('Pool values are probably unchanged!')
+    function poolValuesNotChanged(slider_values) {
+      let pool_values_in_store = {
+        pool_1: parseInt(store.state.point.config['Pools'][0]['Pool 1'].toString().replaceAll('#$', '')),
+        pool_2: parseInt(store.state.point.config['Pools'][1]['Pool 2'].toString().replaceAll('#$', '')),
+        pool_3: parseInt(store.state.point.config['Pools'][2]['Pool 3'].toString().replaceAll('#$', ''))
       }
 
-      store.commit('set_pointConfig_Pool_1', pool1.value.pool_value.toFixed(1))
-      store.commit('set_pointConfig_Pool_2', pool2.value.pool_value.toFixed(1))
-      store.commit('set_pointConfig_Pool_3', pool3.value.pool_value.toFixed(1))
+      return (
+        pool_values_in_store.pool_1 === slider_values.pool_1 &&
+        pool_values_in_store.pool_2 === slider_values.pool_2 &&
+        pool_values_in_store.pool_3 === slider_values.pool_3
+      )
+    }
 
-      store.dispatch('send_pointConfig')
+    function finalPoolValues() {
+      let slider_values = {
+        pool_1: parseInt(pool1.value.pool_value),
+        pool_2: parseInt(pool2.value.pool_value),
+        pool_3: parseInt(pool3.value.pool_value)
+      }
+
+      if (store.state.point.firstRun) {
+        // Then return early. This also makes sure that user doesn't get
+        // `Modal.confirm` prompt if it's the first time.
+        store.commit('setRunStatus', false)
+        store.commit('set_pointConfig_Pool_1', slider_values.pool_1.toFixed(1))
+        store.commit('set_pointConfig_Pool_2', slider_values.pool_2.toFixed(1))
+        store.commit('set_pointConfig_Pool_3', slider_values.pool_3.toFixed(1))
+        store.dispatch('send_pointConfig')
+
+        return
+      }
+
+      if (poolValuesNotChanged(slider_values)) {
+        Modal.confirm({
+          title: 'Pool values are same as the last run!',
+          content: 'Click OK to run if this is intentional',
+          icon: createVNode(ExclamationCircleOutlined),
+          onOk() {
+            store.dispatch('send_pointConfig')
+          },
+          onCancel() {}
+        })
+
+        return
+      } else {
+        // Everything's new - commit changes
+        store.commit('set_pointConfig_Pool_1', slider_values.pool_1.toFixed(1))
+        store.commit('set_pointConfig_Pool_2', slider_values.pool_2.toFixed(1))
+        store.commit('set_pointConfig_Pool_3', slider_values.pool_3.toFixed(1))
+        store.dispatch('send_pointConfig')
+      }
     }
 
     function Run() {
@@ -216,7 +260,7 @@ export default {
     }
 
     function showPointOutputTable() {
-      showTable.value = true
+      showTable.value = !showTable.value
     }
 
     onMounted(() => {

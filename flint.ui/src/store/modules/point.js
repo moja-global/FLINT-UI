@@ -18,7 +18,7 @@ export default {
           allow_zero_result_transfers: false
         }
       },
-      Pools: [{ 'Pool 1': 100.0 }, { 'Pool 2': 100.0 }, { 'Pool 3': 100.0 }],
+      Pools: [{ 'Pool 1': null }, { 'Pool 2': null }, { 'Pool 3': null }],
       Variables: [
         {
           localDomainId: 1
@@ -145,10 +145,15 @@ export default {
     point_step: [],
     point_stepDate: [],
     point_stepLenInYears: [],
-    flag: 0 //Thiis is to check if whole Run works.
+    flag: 0, //Thiis is to check if whole Run works.
+    firstRun: true
   },
 
   mutations: {
+    setRunStatus(state, value) {
+      state.firstRun = value
+    },
+
     setNew_point_startDate(state, newValue) {
       this.state.point.config.LocalDomain.start_date = newValue
       console.log(this.state.point.config.LocalDomain.start_date)
