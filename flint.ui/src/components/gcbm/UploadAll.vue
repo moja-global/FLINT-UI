@@ -1,6 +1,14 @@
 <template>
   <div>
-    <a-modal :visible="visible" title="Upload Simulation Data Folder" @cancel="handleCancel" @ok="handleOk">
+    <a-modal
+      :visible="visible"
+      title="Upload Simulation Data Folder"
+      @cancel="handleCancel"
+      @ok="handleOk"
+      okText="Upload"
+      :okLoading="uploading"
+      :loading="uploading"
+    >
       <a-upload-dragger
         directory
         name="file"
@@ -33,12 +41,16 @@
 
 <script>
 import folderStructureImage from '@/assets/gcbm-upload-folder-structure.png'
+import { UploadOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import { ref } from 'vue'
 
 export default {
   name: 'UploadAll',
   emits: ['cancel', 'ok'],
+  components: {
+    UploadOutlined
+  },
   props: {
     visible: {
       type: Boolean,
@@ -92,7 +104,7 @@ export default {
     }
 
     const handleOk = () => {
-      emit('ok')
+      handleUpload()
     }
 
     return {
