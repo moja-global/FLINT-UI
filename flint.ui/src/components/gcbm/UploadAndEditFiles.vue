@@ -193,15 +193,30 @@ export default {
         body: formData
       })
         .then((res) => res.text())
-        .then((resText) => {
+        .then(() => {
           if (props.fileType === 'inputDB') {
-            tableNames.value = JSON.parse(resText)
-            store.commit('setGCBMInputDBConfigState', { newState: tableNames })
-            console.log(tableNames.value)
+            const dbFormData = new FormData()
+            dbFormData.append('title', store.state.gcbm.config.title)
+
+            fetch(`${process.env.VUE_APP_REST_API_GCBM}/upload/db/tables`, {
+              method: 'POST',
+              body: dbFormData
+            })
+              .then((res) => res.json())
+              .then((resJson) => {
+                tableNames.value = resJson
+                console.log(tableNames.value)
+                store.commit('setGCBMInputDBConfigState', { newState: tableNames })
+                uploadingVars.value.uploading = false
+                uploadingVars.value.uploaded = true
+                message.success('Upload Successful!')
+              })
+          } else {
+            uploadingVars.value.uploading = false
+            uploadingVars.value.uploaded = true
+            message.success('Upload Successful!')
           }
 
-          uploadingVars.value.uploading = false
-          uploadingVars.value.uploaded = true
           const modifiedFileList = fileList.value.map((file) => ({
             name: file.name,
             uid: file.uid,
@@ -209,7 +224,6 @@ export default {
             size: file.size
           }))
           store.commit('setGCBMUploadFilesState', { fileType: props.fileType, fileList: modifiedFileList })
-          message.success('Upload Successful!')
         })
         .catch((err) => {
           uploadingVars.value.uploading = false
