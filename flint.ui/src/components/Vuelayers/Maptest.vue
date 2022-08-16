@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="">
+    <div>
       <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height: 300px; width: 600px">
         <ol-view :zoom="zoom" :center="center" :rotation="rotation" :projection="'EPSG:4326'" />
 
