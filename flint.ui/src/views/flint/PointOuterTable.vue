@@ -5,14 +5,14 @@
       <div :class="{ active: !isTable }" @click="isTable = false">Graph</div>
     </div>
     <div class="full-w">
-      <PointOutput v-if="!isTable" />
+      <PointOutputGraph v-if="!isTable" />
       <Table v-else :columns="columns" :rows="rows" />
     </div>
   </div>
 </template>
 
 <script>
-import PointOutput from './PointOutput.vue'
+import PointOutputGraph from './PointOutputGraph.vue'
 import Table from './Table.vue'
 
 import { ref } from 'vue'
@@ -21,7 +21,7 @@ import { useStore } from 'vuex'
 export default {
   name: 'PointOuterTable',
   components: {
-    PointOutput,
+    PointOutputGraph,
     Table
   },
 
