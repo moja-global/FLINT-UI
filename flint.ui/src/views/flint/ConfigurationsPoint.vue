@@ -85,9 +85,29 @@
         </div>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click="Run()">Run</Button></div>
+          <div data-v-step="5">
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="Run()"
+              >Run</ButtonComponent
+            >
+          </div>
           <div data-v-step="6">
-            <Button :btn-size="'auto'" @click="showPointOutputTable()">Point Output Table</Button>
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="showPointOutputTable()"
+              >Point Output Table</ButtonComponent
+            >
           </div>
         </div>
       </div>
@@ -98,7 +118,7 @@
 </template>
 
 <script>
-import Button from '@/components/Button/Button.vue'
+import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
@@ -111,7 +131,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 
 export default {
   components: {
-    Button,
+    ButtonComponent,
     Datepicker,
     Maptest,
     Slider,
