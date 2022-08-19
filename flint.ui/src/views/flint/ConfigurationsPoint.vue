@@ -83,12 +83,7 @@
             </div>
           </div>
         </div>
-          <style>
-            .fixed-width{
-              width:"30%",
-              display:'block',
-              }
-          </style>
+         
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5">
             <ButtonComponent
@@ -310,3 +305,10 @@ export default {
   }
 }
 </script>
+
+ <style scoped>
+            .fixed-width{
+              width:"30%",
+              display:'block',
+              }
+          </style>
