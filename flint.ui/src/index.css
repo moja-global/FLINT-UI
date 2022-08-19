@@ -5,4 +5,9 @@
 body {
   font-family: 'DM Sans', sans-serif !important;
 }
+.fixed-width{
+  width: 30% !important;
+  display: block;
+}
 @tailwind utilities;
+
