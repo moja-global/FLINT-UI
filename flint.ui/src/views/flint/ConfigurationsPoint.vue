@@ -305,10 +305,4 @@ export default {
   }
 }
 </script>
-
- <style scoped>
-            .fixed-width{
-              width:"30%",
-              display:'block',
-              }
-          </style>
+ 
