@@ -83,7 +83,6 @@
             </div>
           </div>
         </div>
-         
         <div class="my-16 flex gap-8 flex-wrap items-center">
           <div data-v-step="5">
             <ButtonComponent
@@ -305,4 +304,3 @@ export default {
   }
 }
 </script>
- 
