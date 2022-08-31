@@ -44,7 +44,7 @@
 <script>
 // import dayjs from 'dayjs'
 import dayjs from 'dayjs'
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 
 export default {
   name: 'DatepickerGCBM',
@@ -62,8 +62,18 @@ export default {
   setup(props, { emit }) {
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
 
-    const selectedStartDate = ref(dayjs(props.start_date))
-    const selectedEndDate = ref(dayjs(props.end_date))
+    const startDate = ref(props.start_date)
+    const endDate = ref(props.end_date)
+
+    const selectedStartDate = ref(dayjs(startDate.value))
+    const selectedEndDate = ref(dayjs(endDate.value))
+
+    console.log(props.start_date, props.end_date)
+
+    watchEffect(() => {
+      selectedStartDate.value = dayjs(props.start_date)
+      selectedEndDate.value = dayjs(props.end_date)
+    })
 
     const date_diff = computed(() => {
       // difference in years

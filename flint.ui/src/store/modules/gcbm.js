@@ -43,25 +43,33 @@ export default {
           break
       }
     },
+    setWholeGCBMLocalDomainState(state, { newState }) {
+      state.config.localdomain = newState
+      console.log('changed whole local domain state in GCBM store', state.config.localdomain)
+    },
     setGCBMModulesState(state, { newState }) {
       state.config.modules_cbm.Modules = newState
       console.log('changed Modules state in GCBM store:', state.config.modules_cbm.Modules)
     },
-    setGCBMMVariablesState(state, { newState }) {
+    setGCBMVariablesState(state, { newState }) {
       state.config.variables.Variables = newState
-      console.log('changed Variables state in GCBM store', state.config.variables.Variables)
+      console.log('changed Variables state in GCBM store', newState, state.config.variables.Variables)
     },
-    setGCBMMPoolsState(state, { newState }) {
+    setGCBMPoolsState(state, { newState }) {
       state.config.pools_cbm.Pools = newState
       console.log('changed Pools state in GCBM store', state.config.pools_cbm.Pools)
     },
-    setGCBMMSpinupEnabledState(state, { newState }) {
+    setGCBMSpinupEnabledState(state, { newState }) {
       state.config.spinup.Spinup.enabled = newState
       console.log('changed Spinup Enabled state in GCBM store', state.config.spinup.Spinup.enabled)
     },
-    setGCBMMSpinupVariablesState(state, { newState }) {
+    setGCBMSpinupVariablesState(state, { newState }) {
       state.config.spinup.SpinupVariables = newState
       console.log('changed Spinup Variables state in GCBM store', state.config.spinup.SpinupVariables)
+    },
+    setWholeGCBMSpinupState(state, { newState }) {
+      state.config.spinup = newState
+      console.log('changed complete Spinup state in GCBM store', state.config.spinup)
     },
     setGCBMUploadFilesState(state, { fileType, fileList }) {
       state.filesUploaded[fileType] = fileList

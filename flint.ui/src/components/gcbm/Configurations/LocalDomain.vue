@@ -3,8 +3,8 @@
     <a-typography-title :level="2"><span class="font-normal text-earth"> Local Domain </span></a-typography-title>
     <DatepickerGCBM
       class="mt-4"
-      :start_date="start_date.format('YYYY-MM-DD')"
-      :end_date="end_date.format('YYYY-MM-DD')"
+      :start_date="start_date_ref"
+      :end_date="end_date_ref"
       @startDateChange="onStartDateChange"
       @endDateChange="onEndDateChange"
     />
@@ -23,9 +23,9 @@
 <script>
 import { ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
-import dayjs from 'dayjs'
 
 import DatepickerGCBM from '@/components/Datepicker/DatepickerGCBM.vue'
+import { cloneDeep } from 'lodash'
 
 export default {
   name: 'LocalDomain',
@@ -35,12 +35,21 @@ export default {
 
     const num_of_threads = ref(store.state.gcbm.config.localdomain.LocalDomain.landscape.num_threads)
 
+    const start_date_ref = ref(store.state.gcbm.config.localdomain.LocalDomain.start_date)
+    const end_date_ref = ref(store.state.gcbm.config.localdomain.LocalDomain.end_date)
+
     watchEffect(() => {
       store.commit('setGCBMLocalDomainState', { key: 'THREADS', newState: num_of_threads.value })
     })
 
-    const start_date = dayjs(store.state.gcbm.config.localdomain.LocalDomain.start_date)
-    const end_date = dayjs(store.state.gcbm.config.localdomain.LocalDomain.end_date)
+    store.subscribe((mutation) => {
+      if (mutation.type === 'setWholeGCBMLocalDomainState') {
+        const newState = cloneDeep(mutation.payload.newState)
+        num_of_threads.value = newState.LocalDomain.landscape.num_threads
+        start_date_ref.value = newState.LocalDomain.start_date
+        end_date_ref.value = newState.LocalDomain.end_date
+      }
+    })
 
     function onStartDateChange(date) {
       store.commit('setGCBMLocalDomainState', { key: 'START_DATE', newState: date.format('YYYY/MM/DD') })
@@ -51,8 +60,8 @@ export default {
     }
 
     return {
-      start_date,
-      end_date,
+      start_date_ref,
+      end_date_ref,
       num_of_threads,
       onStartDateChange,
       onEndDateChange

@@ -47,8 +47,17 @@ export default {
     })
 
     watchEffect(() => {
-      store.commit('setGCBMMSpinupEnabledState', { newState: spinupEnabled })
-      store.commit('setGCBMMSpinupVariablesState', { newState: { ...variables } })
+      store.commit('setGCBMSpinupEnabledState', { newState: spinupEnabled })
+      store.commit('setGCBMSpinupVariablesState', { newState: { ...variables } })
+    })
+
+    store.subscribe((mutation) => {
+      if (mutation.type === 'setWholeGCBMSpinupState') {
+        spinupEnabled.value = mutation.payload.newState.Spinup.enabled
+        variables.delay = mutation.payload.newState.SpinupVariables.delay
+        variables.minimum_rotation = mutation.payload.newState.SpinupVariables.minimum_rotation
+        variables.run_delay = mutation.payload.newState.SpinupVariables.run_delay
+      }
     })
 
     return { activeKey, variables, spinupEnabled, wrapperCol: { style: { marginRight: '16px' } } }

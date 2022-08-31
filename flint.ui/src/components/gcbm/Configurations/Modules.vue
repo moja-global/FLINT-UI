@@ -55,6 +55,7 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import useFunctions from '@/utils/useFunctions'
 import gcbmModuleDescriptions from '@/utils/gcbmModuleDescriptions.json'
+import { cloneDeep } from 'lodash'
 
 export default {
   name: 'LocalDomain',
@@ -74,6 +75,17 @@ export default {
         return acc
       }, {})
     )
+
+    store.subscribe((mutation) => {
+      if (mutation.type === 'setGCBMModulesState') {
+        const newModulesState = cloneDeep(mutation.payload.newState)
+        modulesWithNames.value = Object.keys(newModulesState).reduce((acc, moduleKey) => {
+          acc[moduleKey] = { ...newModulesState[moduleKey], name: convertGCBMModuleKeyToName(moduleKey) }
+          acc[moduleKey]['popConfirmVisible'] = false
+          return acc
+        }, {})
+      }
+    })
 
     function onEnableDisableClick(moduleKey, enabled) {
       const moduleState = store.state.gcbm.config.modules_cbm.Modules

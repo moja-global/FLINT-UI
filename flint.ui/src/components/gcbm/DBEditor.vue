@@ -16,6 +16,13 @@
     :scroll="{ x: 'max-content', y: 400 }"
     :pagination="false"
   >
+    <template #headerCell="{ column }">
+      <a-tooltip title="Click to Edit">
+        <div class="cursor-pointer h-full w-full" @click="() => onHeaderCellClick(column.dataIndex)">
+          {{ column.dataIndex }}
+        </div>
+      </a-tooltip>
+    </template>
     <template #bodyCell="{ column, text, record }">
       <div v-if="enableColumnNameEditing">
         <a-input
@@ -33,6 +40,21 @@
       </div>
     </template>
   </a-table>
+  <a-modal
+    v-model:visible="changeTableNameModalVisible"
+    :title="`Change table name`"
+    okText="Save"
+    @ok="saveTableNameChange"
+    :okButtonProps="{ loading: changeTableNameLoading }"
+  >
+    <a-typography-title :level="5">
+      <span>
+        Change the name of table
+        <span style="color: #0b8dde">'{{ selectedTableName }}'</span>
+      </span>
+    </a-typography-title>
+    <a-input v-model:value="newTableName" placeholder="New Table Name" @pressEnter="saveTableNameChange" />
+  </a-modal>
   <div v-show="unsavedChanges" class="unsaved-changes-div flex">
     <a-typography-text>{{
       emptyColumnNameError ? 'You cannot keep a column name empty!' : 'You have unsaved changes!'
@@ -63,6 +85,10 @@ export default {
     const unsavedChanges = ref(false)
     const emptyColumnNameError = ref(false)
     const enableColumnNameEditing = ref(false)
+    const changeTableNameModalVisible = ref(false)
+    const selectedTableName = ref('')
+    const newTableName = ref('')
+    const changeTableNameLoading = ref(false)
 
     const store = useStore()
 
@@ -82,7 +108,7 @@ export default {
         return {
           title: tableName,
           dataIndex: tableName,
-          width: 100
+          width: 150
         }
       })
 
@@ -137,16 +163,83 @@ export default {
       enableColumnNameEditing.value = !enableColumnNameEditing.value
     }
 
+    function onHeaderCellClick(tableName) {
+      selectedTableName.value = tableName
+      newTableName.value = tableName
+      changeTableNameModalVisible.value = true
+    }
+
+    function saveTableNameChange() {
+      // TODO: send new table name to the backend.
+      // TODO: Validate input.
+
+      changeTableNameLoading.value = true
+
+      // update column names
+      const newColumnNames = tableColumns.value.map((el) => {
+        const newColumnEntry = { ...el }
+        if (el.dataIndex === selectedTableName.value) {
+          newColumnEntry.dataIndex = newTableName.value
+          newColumnEntry.title = newTableName.value
+        }
+
+        return newColumnEntry
+      })
+
+      tableColumns.value = newColumnNames
+
+      // update data source (row data)
+      const newDataSource = dbDataSource.value.map((el) => {
+        const newEntry = { ...el }
+        if (el[selectedTableName.value]) {
+          newEntry[newTableName.value] = el[selectedTableName.value]
+          delete newEntry[selectedTableName.value]
+        }
+
+        return newEntry
+      })
+
+      dbDataSource.value = newDataSource
+      modifiedDbSource.value = cloneDeep(newDataSource)
+
+      // making new tableNames dict with table name as key and column names as value in an array
+      // for storing in the vuex store.
+      const newTableNames = {}
+      const tempTableNames = cloneDeep(props.tableNames) ?? cloneDeep(store.state.gcbm.fileConfigs.inputDB)
+      console.log(newTableNames)
+
+      Object.entries(tempTableNames).map(([k, v]) => {
+        if (k === selectedTableName.value) {
+          newTableNames[newTableName.value] = v
+        } else {
+          newTableNames[k] = v
+        }
+      })
+
+      store.commit('setGCBMInputDBConfigState', { newState: newTableNames })
+
+      selectedTableName.value = ''
+      newTableName.value = ''
+      changeTableNameModalVisible.value = false
+      changeTableNameLoading.value = false
+    }
+
     return {
       tableColumns,
       dbDataSource,
+      newTableName,
       unsavedChanges,
       modifiedDbSource,
+      selectedTableName,
       emptyColumnNameError,
+      changeTableNameLoading,
       enableColumnNameEditing,
+      changeTableNameModalVisible,
       onSaveClick,
       onInputChange,
-      onCancelClick
+      onCancelClick,
+      onHeaderCellClick,
+      saveTableNameChange
     }
   }
 }

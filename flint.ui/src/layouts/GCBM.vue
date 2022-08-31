@@ -17,7 +17,11 @@
           <span>
             <span>Already have a configuration ready? </span>
             <a-typography-link @click="() => (uploadAllModalVisible = true)">Import</a-typography-link>
-            <UploadAll :visible="uploadAllModalVisible" @cancel="uploadAllModalVisible = false" />
+            <UploadAll
+              :visible="uploadAllModalVisible"
+              @cancel="() => (uploadAllModalVisible = false)"
+              @ok="() => (uploadAllModalVisible = false)"
+            />
           </span>
         </a-typography-text>
       </div>
