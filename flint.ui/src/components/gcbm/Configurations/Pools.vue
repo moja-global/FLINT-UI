@@ -46,6 +46,7 @@
 import { computed, ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 import poolsDescriptions from '@/utils/gcbmPoolsDescriptions'
+import { cloneDeep } from 'lodash'
 
 export default {
   name: 'Pools',
@@ -66,7 +67,17 @@ export default {
         acc[key] = pools.value[key].value
         return acc
       }, {})
-      store.commit('setGCBMMPoolsState', { newState: poolsToSave })
+      store.commit('setGCBMPoolsState', { newState: poolsToSave })
+    })
+
+    store.subscribe((mutation) => {
+      if (mutation.type === 'setGCBMPoolsState') {
+        const newPoolsState = cloneDeep(mutation.payload.newState)
+        pools.value = Object.keys(newPoolsState).reduce((acc, key) => {
+          acc[key] = { value: newPoolsState[key] }
+          return acc
+        }, {})
+      }
     })
 
     const filteredPools = computed(() => {

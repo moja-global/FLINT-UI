@@ -8,6 +8,7 @@
       okText="Upload"
       :okLoading="uploading"
       :loading="uploading"
+      :okButtonProps="{ disabled: !fileList.length }"
     >
       <a-upload-dragger
         directory
@@ -43,7 +44,11 @@
 import folderStructureImage from '@/assets/gcbm-upload-folder-structure.png'
 import { UploadOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
+import path from 'path'
 import { ref } from 'vue'
+
+import gcbmWhiteList from '@/utils/gcbmUploadAllWhitelist.json'
+import { useStore } from 'vuex'
 
 export default {
   name: 'UploadAll',
@@ -61,6 +66,11 @@ export default {
     const uploaded = ref(false)
     const fileList = ref([])
     const uploading = ref(false)
+    const configs = ref({})
+
+    const { ACCEPTED_FOLDER_NAMES, ACCEPTED_CONFIG_FILE_NAMES } = gcbmWhiteList
+
+    const store = useStore()
 
     const handleRemove = (file) => {
       const index = fileList.value.indexOf(file)
@@ -70,8 +80,37 @@ export default {
     }
 
     const beforeUpload = (file) => {
+      const pathList = file.webkitRelativePath.split('/')
+      const subFolderName = pathList[1]
+
+      if (!ACCEPTED_FOLDER_NAMES.includes(subFolderName)) {
+        message.error(`'${subFolderName}' is not a valid folder name. Files from this folder will be ignored!`, 8)
+        return false
+      }
+
+      if (pathList.length > 3) {
+        message.error(
+          `The '${subFolderName}' folder contains files from multiple subfolders. Files from the subfolders will be ignored!`,
+          8
+        )
+        return false
+      }
+
+      const isWin = process.platform === 'win32'
+      const fileName = isWin ? path.posix.basename(file.webkitRelativePath) : path.basename(file.webkitRelativePath)
+
+      switch (subFolderName) {
+        case 'config':
+          if (!fileName.endsWith('.json') || !ACCEPTED_CONFIG_FILE_NAMES.includes(fileName)) {
+            message.error(`'${fileName}' is not a valid config file. This file will be ignored!`, 8)
+            return false
+          }
+          readConfigFileAndSaveInStore(file)
+          break
+      }
+
       fileList.value = [...fileList.value, file]
-      console.log(file)
+
       return false
     }
 
@@ -82,8 +121,6 @@ export default {
       })
       uploading.value = true
 
-      // TODO: Parse relative path of each file and upload them of the appropriate endpoint.
-
       fetch('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
         method: 'post',
         data: formData
@@ -92,6 +129,7 @@ export default {
           fileList.value = []
           uploading.value = false
           message.success('upload successfully.')
+          emit('ok')
         })
         .catch(() => {
           uploading.value = false
@@ -104,7 +142,66 @@ export default {
     }
 
     const handleOk = () => {
+      const configKeys = Object.keys(configs.value)
+      const actionMapping = {
+        'localdomain.json': 'setWholeGCBMLocalDomainState',
+        'modules_cbm.json': 'setGCBMModulesState',
+        'pools_cbm.json': 'setGCBMPoolsState',
+        'spinup.json': 'setWholeGCBMSpinupState',
+        'variables.json': 'setGCBMVariablesState'
+      }
+      configKeys.forEach((key) => {
+        store.commit(actionMapping[key], { newState: configs.value[key] })
+        console.log({ newState: configs.value[key] })
+      })
+
       handleUpload()
+    }
+
+    const readConfigFileAndSaveInStore = (file) => {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const data = e.target.result
+        const dataJSON = JSON.parse(data)
+        switch (file.name) {
+          case 'localdomain.json':
+            configs.value[file.name] = dataJSON
+            break
+
+          case 'modules_cbm.json':
+            if (!dataJSON.Modules) {
+              message.error(`${file.name} is an invalid config file!`, 8)
+              return
+            }
+            configs.value[file.name] = dataJSON['Modules']
+            break
+
+          case 'pools_cbm.json':
+            if (!dataJSON.Pools) {
+              message.error(`${file.name} is an invalid config file!`, 8)
+              return
+            }
+            configs.value[file.name] = dataJSON['Pools']
+            break
+
+          case 'spinup.json':
+            configs.value[file.name] = dataJSON
+            console.log(configs.value[file.name])
+            break
+
+          case 'variables.json':
+            if (!dataJSON.Variables) {
+              message.error(`${file.name} is an invalid config file!`, 8)
+              return
+            }
+            configs.value[file.name] = dataJSON['Variables']
+            break
+
+          default:
+            break
+        }
+      }
+      reader.readAsText(file)
     }
 
     return {
