@@ -44,18 +44,22 @@
       <StepperStatic />
     </div>
   </div>
+  <SimulationTour />
 </template>
 
 <script>
 import { createVNode, ref, watchEffect } from 'vue'
-import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import { notification, Modal } from 'ant-design-vue'
 import { useStore } from 'vuex'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 
+import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+import SimulationTour from '@/components/gcbm/SimulationTour.vue'
+import folderStructureImage from '@/assets/gcbm-upload-folder-structure.png'
+
 export default {
   name: 'GCBMLanding',
-  components: { StepperStatic },
+  components: { StepperStatic, SimulationTour },
   setup() {
     const simulation_title_input = ref('')
     const error_message = ref('')
@@ -139,6 +143,7 @@ export default {
       create_success,
       simulation_title: simulation_title_input,
       created_simulation_title,
+      folderStructureImage,
       sendToAPI,
       check_status,
       onCreateRunSuccess

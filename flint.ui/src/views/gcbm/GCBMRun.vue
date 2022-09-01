@@ -109,8 +109,8 @@ export default {
 
     function runSim() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
-      console.log(store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', simulation_title)
+      console.log(simulation_title)
       console.log([...bodyFormData])
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, { method: 'POST', body: bodyFormData })
