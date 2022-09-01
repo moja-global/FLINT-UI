@@ -148,9 +148,13 @@ export default {
         'modules_cbm.json': 'setGCBMModulesState',
         'pools_cbm.json': 'setGCBMPoolsState',
         'spinup.json': 'setWholeGCBMSpinupState',
-        'variables.json': 'setGCBMVariablesState'
+        'variables.json': 'setGCBMVariablesState',
+        'internal_variables.json': 'setGCBMInternalVariablesState'
       }
       configKeys.forEach((key) => {
+        if (!actionMapping[key]) {
+          return
+        }
         store.commit(actionMapping[key], { newState: configs.value[key] })
         console.log({ newState: configs.value[key] })
       })
@@ -195,6 +199,22 @@ export default {
               return
             }
             configs.value[file.name] = dataJSON['Variables']
+            break
+
+          case 'internal_variables.json':
+            if (!dataJSON.Variables) {
+              message.error(`${file.name} is an invalid config file!`, 8)
+              return
+            }
+            configs.value[file.name] = dataJSON['Variables']
+            break
+
+          case 'modules_output.json':
+            if (!dataJSON.Modules) {
+              message.error(`${file.name} is an invalid config file!`, 8)
+              return
+            }
+            configs.value[file.name] = dataJSON['Modules']
             break
 
           default:

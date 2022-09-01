@@ -5,6 +5,9 @@
     "modules_cbm.json",
     "pools_cbm.json",
     "spinup.json",
-    "variables.json"
+    "variables.json",
+    "internal_variables.json",
+    "modules_output.json",
+    "provider_config.json"
   ]
 }

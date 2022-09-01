@@ -16,7 +16,7 @@
         <a-typography-text>
           <span>
             <span>Already have a configuration ready? </span>
-            <a-typography-link @click="() => (uploadAllModalVisible = true)">Import</a-typography-link>
+            <a-typography-link @click="() => (uploadAllModalVisible = true)">Import Simulation</a-typography-link>
             <UploadAll
               :visible="uploadAllModalVisible"
               @cancel="() => (uploadAllModalVisible = false)"
