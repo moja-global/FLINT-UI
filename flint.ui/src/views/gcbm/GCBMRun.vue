@@ -2,7 +2,11 @@
   <div class="py-4 px-8 text-earth">
     <a-typography-title :level="2"><span class="font-normal text-earth"> Run </span></a-typography-title>
     <a-typography-text>
-      <span class="text-earth mb-6 block"> Run the simulation on the configured parameters. </span>
+      <span class="text-earth mb-6 block">
+        Run the simulation on the configured parameters. <br />
+        You can also <a-typography-link @click="exportSim">export the simulation</a-typography-link> and continue
+        editing later.</span
+      >
     </a-typography-text>
 
     <div class="flex justify-items-center flex-row gap-2 mb-4">
@@ -77,7 +81,7 @@
           @click="downloadSim"
         >
           <DownloadOutlined />
-          <span class="whitespace-nowrap">Download simulation</span>
+          <span class="whitespace-nowrap">Download Output</span>
         </button>
       </a-col>
     </a-row>
@@ -88,6 +92,8 @@
 import { notification } from 'ant-design-vue'
 import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
+import * as JSZip from 'jszip'
+import { saveAs } from 'file-saver'
 
 export default {
   name: 'GCBMRun',
@@ -176,7 +182,23 @@ export default {
         })
     }
 
-    return { simulation_title, runSim, checkStatus, downloadSim }
+    function exportSim() {
+      const zip = new JSZip()
+      const simFolder = zip.folder(simulation_title)
+      const config = simFolder.folder('config')
+      config.file('localdomain.json', JSON.stringify(store.state.gcbm.config.localdomain, null, 2))
+      config.file('modules_cbm.json', JSON.stringify(store.state.gcbm.config.modules_cbm, null, 2))
+      config.file('pools_cbm.json', JSON.stringify(store.state.gcbm.config.pools_cbm, null, 2))
+      config.file('spinup.json', JSON.stringify(store.state.gcbm.config.spinup, null, 2))
+      config.file('variables.json', JSON.stringify(store.state.gcbm.config.variables, null, 2))
+      config.file('internal_variables.json', JSON.stringify(store.state.gcbm.config.internal_variables, null, 2))
+
+      zip.generateAsync({ type: 'blob' }).then((content) => {
+        saveAs(content, simulation_title + '.zip')
+      })
+    }
+
+    return { simulation_title, runSim, checkStatus, exportSim, downloadSim }
   }
 }
 </script>

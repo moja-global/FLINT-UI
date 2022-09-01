@@ -78,6 +78,10 @@ export default {
     setGCBMInputDBConfigState(state, { newState }) {
       state.fileConfigs.inputDB = newState
       console.log('changed inputDB fileConfig state in GCBM store', state.fileConfigs.inputDB)
+    },
+    setGCBMInternalVariablesState(state, { newState }) {
+      state.config.internal_variables.Variables = newState
+      console.log('changed InternalVariables state in GCBM store', state.config.internal_variables.Variables)
     }
   },
 

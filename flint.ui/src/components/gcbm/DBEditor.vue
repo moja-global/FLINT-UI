@@ -45,7 +45,7 @@
     :title="`Change table name`"
     okText="Save"
     @ok="saveTableNameChange"
-    :okButtonProps="{ loading: changeTableNameLoading }"
+    :okButtonProps="{ loading: changeTableNameLoading, disabled: newTableName.trim() === '' }"
   >
     <a-typography-title :level="5">
       <span>
@@ -53,7 +53,11 @@
         <span style="color: #0b8dde">'{{ selectedTableName }}'</span>
       </span>
     </a-typography-title>
-    <a-input v-model:value="newTableName" placeholder="New Table Name" @pressEnter="saveTableNameChange" />
+    <a-input
+      v-model:value="newTableName"
+      placeholder="New Table Name"
+      @pressEnter="() => newTableName.trim() && saveTableNameChange()"
+    />
   </a-modal>
   <div v-show="unsavedChanges" class="unsaved-changes-div flex">
     <a-typography-text>{{
@@ -175,12 +179,14 @@ export default {
 
       changeTableNameLoading.value = true
 
+      const newTableNameTrimmed = newTableName.value.trim()
+
       // update column names
       const newColumnNames = tableColumns.value.map((el) => {
         const newColumnEntry = { ...el }
         if (el.dataIndex === selectedTableName.value) {
-          newColumnEntry.dataIndex = newTableName.value
-          newColumnEntry.title = newTableName.value
+          newColumnEntry.dataIndex = newTableNameTrimmed
+          newColumnEntry.title = newTableNameTrimmed
         }
 
         return newColumnEntry
@@ -192,7 +198,7 @@ export default {
       const newDataSource = dbDataSource.value.map((el) => {
         const newEntry = { ...el }
         if (el[selectedTableName.value]) {
-          newEntry[newTableName.value] = el[selectedTableName.value]
+          newEntry[newTableNameTrimmed] = el[selectedTableName.value]
           delete newEntry[selectedTableName.value]
         }
 
@@ -210,7 +216,7 @@ export default {
 
       Object.entries(tempTableNames).map(([k, v]) => {
         if (k === selectedTableName.value) {
-          newTableNames[newTableName.value] = v
+          newTableNames[newTableNameTrimmed] = v
         } else {
           newTableNames[k] = v
         }
@@ -222,6 +228,7 @@ export default {
       newTableName.value = ''
       changeTableNameModalVisible.value = false
       changeTableNameLoading.value = false
+      message.success('Table name changed successfully!')
     }
 
     return {
