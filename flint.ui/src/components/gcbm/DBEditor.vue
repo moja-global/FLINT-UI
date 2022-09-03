@@ -17,8 +17,11 @@
     :pagination="false"
   >
     <template #headerCell="{ column }">
-      <a-tooltip title="Click to Edit">
-        <div class="cursor-pointer h-full w-full" @click="() => onHeaderCellClick(column.dataIndex)">
+      <a-tooltip :title="enableColumnNameEditing ? '' : 'Click to Edit'">
+        <div
+          :class="`${!enableColumnNameEditing && 'cursor-pointer'} h-full w-full`"
+          @click="() => !enableColumnNameEditing && onHeaderCellClick(column.dataIndex)"
+        >
           {{ column.dataIndex }}
         </div>
       </a-tooltip>
