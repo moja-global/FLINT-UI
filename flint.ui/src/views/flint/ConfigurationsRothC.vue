@@ -58,13 +58,13 @@
               Padding="0.4rem 1.3rem"
               MinWidth="100px"
               FontSize="15px"
-              @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()"
+              @click="showTable ? hideGraphContainer() : showGraphContainer()"
             >
               {{ showTable ? 'Hide' : 'Show' }} Output</ButtonComponent
             >
           </div>
         </div>
-        <RothCOutputContainer v-if="showTable" />
+        <GraphContainer v-if="showTable" />
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
 import { ButtonComponent } from '@moja-global/mojaglobal-ui'
-import RothCOutputContainer from './RothCOutputContainer.vue'
+import GraphContainer from './GraphContainer.vue'
 import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
 import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
 import RothCSoilVue from '@/components/ConfigurationsRothC/RothCSoil.vue'
@@ -93,7 +93,7 @@ export default {
     RothCTemplate,
     Datepicker,
     RightOutlined,
-    RothCOutputContainer,
+    GraphContainer,
     ButtonComponent
   },
 
@@ -148,12 +148,12 @@ export default {
       clickedRun.value = true
     }
 
-    function showRothCOutputContainer() {
+    function showGraphContainer() {
       store.dispatch('parse_RothC_results')
       showTable.value = true
     }
 
-    function hideRothCOutputContainer() {
+    function hideGraphContainer() {
       showTable.value = false
     }
 
@@ -162,8 +162,8 @@ export default {
       clickedRun,
       configurations,
       apiRoute_rothc,
-      showRothCOutputContainer,
-      hideRothCOutputContainer
+      showGraphContainer,
+      hideGraphContainer
     }
   }
 }

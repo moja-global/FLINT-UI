@@ -6,22 +6,22 @@
     </div>
     <div class="full-w">
       <Table v-if="isTable" :columns="columns" :rows="rows" />
-      <RothCOutput v-else />
+      <RothCOutputGraph v-else />
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-import RothCOutput from './RothCOutput.vue'
+import RothCOutputGraph from './RothCOutputGraph.vue'
 import Table from './Table.vue'
 import dayjs from 'dayjs'
 import { useStore } from 'vuex'
 
 export default {
-  name: 'RothCOutputContainer',
+  name: 'RothCOutputGraphContainer',
   components: {
-    RothCOutput,
+    RothCOutputGraph,
     Table
   },
   setup() {
