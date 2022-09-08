@@ -115,7 +115,7 @@ export default {
     }
   }
 }
-</script>
+
 <style>
 div.chart-wrapper {
   padding-top: 40px !important;
