@@ -13,6 +13,7 @@
   </div>
 </template>
 
+<script>
 import { useStore } from 'vuex'
 import { ref, onBeforeMount } from 'vue'
 
@@ -115,7 +116,7 @@ export default {
     }
   }
 }
-
+</script>
 <style>
 div.chart-wrapper {
   padding-top: 40px !important;
