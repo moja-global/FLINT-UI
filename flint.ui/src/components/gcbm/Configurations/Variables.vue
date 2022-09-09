@@ -81,7 +81,8 @@
 </template>
 
 <script>
-import { ref, reactive, watchEffect } from 'vue'
+import { cloneDeep } from 'lodash'
+import { reactive, ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 export default {
   name: 'Variables',
@@ -94,7 +95,13 @@ export default {
     })
 
     watchEffect(() => {
-      store.commit('setGCBMMVariablesState', { newState: { ...variables } })
+      store.commit('setGCBMVariablesState', { newState: { ...variables } })
+    })
+
+    store.subscribe((mutation) => {
+      if (mutation.type === 'setGCBMVariablesState') {
+        Object.assign(variables, cloneDeep(mutation.payload.newState))
+      }
     })
 
     return { activeKey, variables, wrapperCol: { style: { marginRight: '16px' } } }

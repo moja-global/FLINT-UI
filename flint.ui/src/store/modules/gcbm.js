@@ -27,25 +27,49 @@ export default {
     setSimulationProgressState(state, newValue) {
       this.state.gcbm.SimulationProgress = newValue
     },
+    setGCBMLocalDomainState(state, { key, newState }) {
+      switch (key) {
+        case 'THREADS':
+          console.log('changed threads state in GCBM store', newState)
+          state.config.localdomain.LocalDomain.landscape.num_threads = newState
+          break
+        case 'START_DATE':
+          console.log('changed start date state in GCBM store')
+          state.config.localdomain.LocalDomain.start_date = newState
+          break
+        case 'END_DATE':
+          console.log('changed end date state in GCBM store')
+          state.config.localdomain.LocalDomain.end_date = newState
+          break
+      }
+    },
+    setWholeGCBMLocalDomainState(state, { newState }) {
+      state.config.localdomain = newState
+      console.log('changed whole local domain state in GCBM store', state.config.localdomain)
+    },
     setGCBMModulesState(state, { newState }) {
       state.config.modules_cbm.Modules = newState
       console.log('changed Modules state in GCBM store:', state.config.modules_cbm.Modules)
     },
-    setGCBMMVariablesState(state, { newState }) {
+    setGCBMVariablesState(state, { newState }) {
       state.config.variables.Variables = newState
-      console.log('changed Variables state in GCBM store', state.config.variables.Variables)
+      console.log('changed Variables state in GCBM store', newState, state.config.variables.Variables)
     },
-    setGCBMMPoolsState(state, { newState }) {
+    setGCBMPoolsState(state, { newState }) {
       state.config.pools_cbm.Pools = newState
       console.log('changed Pools state in GCBM store', state.config.pools_cbm.Pools)
     },
-    setGCBMMSpinupEnabledState(state, { newState }) {
+    setGCBMSpinupEnabledState(state, { newState }) {
       state.config.spinup.Spinup.enabled = newState
       console.log('changed Spinup Enabled state in GCBM store', state.config.spinup.Spinup.enabled)
     },
-    setGCBMMSpinupVariablesState(state, { newState }) {
+    setGCBMSpinupVariablesState(state, { newState }) {
       state.config.spinup.SpinupVariables = newState
       console.log('changed Spinup Variables state in GCBM store', state.config.spinup.SpinupVariables)
+    },
+    setWholeGCBMSpinupState(state, { newState }) {
+      state.config.spinup = newState
+      console.log('changed complete Spinup state in GCBM store', state.config.spinup)
     },
     setGCBMUploadFilesState(state, { fileType, fileList }) {
       state.filesUploaded[fileType] = fileList
@@ -54,6 +78,10 @@ export default {
     setGCBMInputDBConfigState(state, { newState }) {
       state.fileConfigs.inputDB = newState
       console.log('changed inputDB fileConfig state in GCBM store', state.fileConfigs.inputDB)
+    },
+    setGCBMInternalVariablesState(state, { newState }) {
+      state.config.internal_variables.Variables = newState
+      console.log('changed InternalVariables state in GCBM store', state.config.internal_variables.Variables)
     }
   },
 
