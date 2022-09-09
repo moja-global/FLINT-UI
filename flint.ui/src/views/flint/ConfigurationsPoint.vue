@@ -126,7 +126,7 @@ import PointOuterTable from './PointOuterTable.vue'
 
 import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
-import { Modal } from 'ant-design-vue'
+import { Modal, notification } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 
 export default {
@@ -241,7 +241,7 @@ export default {
         pool_3: parseInt(pool3.value.pool_value)
       }
 
-      if (store.state.point.firstRun) {
+      if (store.state.point.firstRun === true) {
         // Then return early. This also makes sure that user doesn't get
         // `Modal.confirm` prompt if it's the first time.
         store.commit('setRunStatus', false)
@@ -280,6 +280,18 @@ export default {
     }
 
     function showPointOutputTable() {
+      let firstRun = store.state.point.firstRun
+
+      if (firstRun === true) {
+        notification.error({
+          message: 'Simulation produced no result',
+          description: 'Did you forget to run the simulation first?',
+          duration: 5
+        })
+
+        return
+      }
+
       showTable.value = !showTable.value
     }
 
