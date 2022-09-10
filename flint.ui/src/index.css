@@ -30,4 +30,10 @@ input[type='text'] {
   border-bottom-right-radius: 0 !important;
 }
 
+/* temporary fix for an error in the UI Library repo */
+.ant-image-preview-img {
+  width: unset !important;
+  height: unset !important;
+}
+
 @tailwind utilities;

@@ -15,7 +15,6 @@
         <PlayCircleOutlined v-else-if="current === 3" />
         {{ steps[current].modalTitle }}
       </a-typography-title>
-      <a-divider />
       <div class="scroll-wrapper" :style="styles">
         <div ref="scrollDivRef" @scroll="onScroll" class="scroll">
           <div class="flex justify-center items-center" style="height: 300px; border: 1px solid #e8e8e8">
