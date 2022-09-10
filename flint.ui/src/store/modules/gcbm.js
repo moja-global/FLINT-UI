@@ -72,6 +72,10 @@ export default {
       state.config.spinup = newState
       console.log('changed complete Spinup state in GCBM store', state.config.spinup)
     },
+    setGCBMInternalVariablesState(state, { newState }) {
+      state.config.internal_variables.Variables = newState
+      console.log('changed InternalVariables state in GCBM store', state.config.internal_variables.Variables)
+    },
     setGCBMUploadFilesState(state, { fileType, fileList }) {
       state.filesUploaded[fileType] = fileList
       console.log(`changed UploadFiles(${fileType}) state in GCBM store`, state.filesUploaded[fileType])
@@ -80,9 +84,9 @@ export default {
       state.fileConfigs.inputDB = newState
       console.log('changed inputDB fileConfig state in GCBM store', state.fileConfigs.inputDB)
     },
-    setGCBMInternalVariablesState(state, { newState }) {
-      state.config.internal_variables.Variables = newState
-      console.log('changed InternalVariables state in GCBM store', state.config.internal_variables.Variables)
+    setGCBMFileConfig(state, { fileType, fileName, fileConfig }) {
+      state.fileConfigs[fileType][fileName] = fileConfig
+      console.log(`changed fileConfig(${fileType}) state in GCBM store`, state.fileConfigs[fileType][fileName])
     }
   },
 

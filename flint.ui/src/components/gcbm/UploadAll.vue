@@ -29,7 +29,7 @@
           <span class="font-normal"> Sample Folder Structure: </span>
         </a-typography-title>
         <div class="flex justify-center bg-gray-200 py-2 mb-2 rounded-sm">
-          <a-image :src="folderStructureImage" />
+          <a-image :src="require('@/assets/gcbm-import-all-folder-structure.png')" />
         </div>
         <a-typography-text>
           Keep your simulation files in appropriate folders. Some simulations do not require all the folders. <br />
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import folderStructureImage from '@/assets/gcbm-upload-folder-structure.png'
 import { UploadOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import path from 'path'
@@ -228,7 +227,6 @@ export default {
       uploaded,
       uploading,
       fileList,
-      folderStructureImage,
       handleOk,
       handleCancel,
       handleUpload,

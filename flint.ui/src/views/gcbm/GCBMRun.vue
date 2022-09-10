@@ -18,30 +18,28 @@
       </a-typography-title>
     </div>
 
-    <a-row :gutter="[16, 16]">
-      <a-col :span="24" :sm="8" class="buttons">
-        <button
-          class="
-            hover:bg-earth hover:text-white
-            text-gray-800
-            font-semibold
-            py-2
-            px-4
-            border border-gray-400
-            rounded
-            shadow
-            flex
-            items-center
-            gap-2
-          "
-          @click="runSim"
-        >
-          <PlayCircleOutlined />
-          <span class="whitespace-nowrap">Run simulation</span>
-        </button>
-      </a-col>
+    <div class="flex gap-4">
+      <button
+        class="
+          hover:bg-earth hover:text-white
+          text-gray-800
+          font-semibold
+          py-2
+          px-4
+          border border-gray-400
+          rounded
+          shadow
+          flex
+          items-center
+          gap-2
+        "
+        @click="runSim"
+      >
+        <PlayCircleOutlined />
+        <span class="whitespace-nowrap">Run simulation</span>
+      </button>
 
-      <a-col :span="24" :sm="8" class="buttons">
+      <!-- <a-col :span="24" :sm="8" class="buttons">
         <button
           class="
             hover:bg-earth hover:text-white
@@ -61,36 +59,34 @@
           <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
           <span>Check status</span>
         </button>
-      </a-col>
+      </a-col> -->
 
-      <a-col :span="24" :sm="8" class="buttons">
-        <button
-          class="
-            hover:bg-earth hover:text-white
-            text-gray-800
-            font-semibold
-            py-2
-            px-4
-            border border-gray-400
-            rounded
-            shadow
-            flex
-            items-center
-            gap-2
-          "
-          @click="downloadSim"
-        >
-          <DownloadOutlined />
-          <span class="whitespace-nowrap">Download Output</span>
-        </button>
-      </a-col>
-    </a-row>
+      <button
+        class="
+          hover:bg-earth hover:text-white
+          text-gray-800
+          font-semibold
+          py-2
+          px-4
+          border border-gray-400
+          rounded
+          shadow
+          flex
+          items-center
+          gap-2
+        "
+        @click="downloadSim"
+      >
+        <DownloadOutlined />
+        <span class="whitespace-nowrap">Download Output</span>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import { notification } from 'ant-design-vue'
-import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
+import { PlayCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import * as JSZip from 'jszip'
 import { saveAs } from 'file-saver'
@@ -99,7 +95,6 @@ export default {
   name: 'GCBMRun',
   components: {
     PlayCircleOutlined,
-    QuestionCircleOutlined,
     DownloadOutlined
   },
 

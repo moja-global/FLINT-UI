@@ -10,4 +10,14 @@ body {
   vertical-align: 0.125em !important;
 }
 
+.ant-image-preview-img-wrapper img {
+  /* This is needed because tailwind styles breaks ant design's Image component's */
+  height: unset;
+  display: unset;
+}
+
+.gcbm-tour-modal > .ant-modal {
+  top: 10px !important;
+}
+
 @tailwind utilities;

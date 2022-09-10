@@ -1,8 +1,15 @@
 <template>
   <div class="pt-4 pb-12 px-8">
-    <a-typography-title>
-      <span class="font-normal text-earth"> Generic Carbon Budgeting Model </span>
-    </a-typography-title>
+    <div class="flex gap-4 items-center">
+      <a-typography-title style="margin-bottom: 0">
+        <span class="font-normal text-earth"> Generic Carbon Budgeting Model </span>
+      </a-typography-title>
+      <QuestionCircleOutlined
+        style="color: #1890ff"
+        class="cursor-pointer text-xl"
+        @click="() => (tourModalVisible = true)"
+      />
+    </div>
     <div class="mt-4 w-12/12 md:w-3/4">
       <div class="text-xl mr-2">Create a new Simulation</div>
       <a-typography-text>
@@ -44,26 +51,26 @@
       <StepperStatic />
     </div>
   </div>
-  <SimulationTour />
+  <SimulationTour :visible="tourModalVisible" @close="() => (tourModalVisible = false)" />
 </template>
 
 <script>
 import { createVNode, ref, watchEffect } from 'vue'
 import { notification, Modal } from 'ant-design-vue'
 import { useStore } from 'vuex'
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
+import { ExclamationCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 
 import StepperStatic from '@/components/Stepper/StepperStatic.vue'
 import SimulationTour from '@/components/gcbm/SimulationTour.vue'
-import folderStructureImage from '@/assets/gcbm-upload-folder-structure.png'
 
 export default {
   name: 'GCBMLanding',
-  components: { StepperStatic, SimulationTour },
+  components: { StepperStatic, SimulationTour, QuestionCircleOutlined },
   setup() {
     const simulation_title_input = ref('')
     const error_message = ref('')
     const create_success = ref(false)
+    const tourModalVisible = ref(false)
 
     const store = useStore()
     const created_simulation_title = ref(store.state.gcbm.config.title)
@@ -141,9 +148,9 @@ export default {
     return {
       error_message,
       create_success,
+      tourModalVisible,
       simulation_title: simulation_title_input,
       created_simulation_title,
-      folderStructureImage,
       sendToAPI,
       check_status,
       onCreateRunSuccess

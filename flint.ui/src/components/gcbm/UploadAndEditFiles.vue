@@ -93,7 +93,7 @@
   </div>
 
   <ConfigEditor
-    :fileConfig="selectedFile.config"
+    :fileConfig="selectedFile.config['attributes']"
     :fileName="selectedFile.name"
     @hideModal="() => (configModalVisible = false)"
     :configModalVisible="configModalVisible"
@@ -109,6 +109,7 @@ import { useStore } from 'vuex'
 
 import ConfigEditor from '@/components/gcbm/ConfigEditor.vue'
 import DBEditor from '@/components/gcbm/DBEditor.vue'
+import { cloneDeep } from 'lodash'
 
 export default {
   name: 'UploadAndEditFiles',
@@ -251,6 +252,8 @@ export default {
       if (fileConfig) {
         fileConfigs.value[file.name] = fileConfig
         selectedFile.value.config = fileConfig
+        configModalVisible.value = true
+        previewFileLoadingUid.value = null
       } else {
         // TODO: Add appropriate backend endpoint when ready.
         fetch('https://run.mocky.io/v3/76a21629-87df-477f-bd78-633e0e48dc1c', {
@@ -262,11 +265,16 @@ export default {
         })
           .then((res) => res.json())
           .then((res) => {
-            fileConfigs.value[file.name] = res
-            selectedFile.value.config = res
+            const tempRes = cloneDeep(res)
+            // make sure that the 'attributes' key exists
+            if (!tempRes['attributes']) {
+              tempRes['attributes'] = {}
+            }
+            fileConfigs.value[file.name] = tempRes
+            selectedFile.value.config = tempRes
             configModalVisible.value = true
             previewFileLoadingUid.value = null
-            // TODO: Save this config in the store.
+            store.commit('setGCBMFileConfig', { fileType: props.fileType, fileName: file.name, fileConfig: tempRes })
           })
           .catch((err) => {
             console.log(err)

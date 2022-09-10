@@ -1,7 +1,7 @@
 <template>
   <a-modal
     :visible="configModalVisible"
-    :title="`Edit ${fileName} Config`"
+    :title="`Edit ${fileName} Config Attributes`"
     width="70%"
     wrap-class-name="file-config-modal"
     @ok="handleModalOk"
