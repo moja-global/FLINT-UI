@@ -1,0 +1,13 @@
+{
+  "ACCEPTED_FOLDER_NAMES": ["classifiers", "disturbances", "db", "miscellaneous", "config"],
+  "ACCEPTED_CONFIG_FILE_NAMES": [
+    "localdomain.json",
+    "modules_cbm.json",
+    "pools_cbm.json",
+    "spinup.json",
+    "variables.json",
+    "internal_variables.json",
+    "modules_output.json",
+    "provider_config.json"
+  ]
+}
