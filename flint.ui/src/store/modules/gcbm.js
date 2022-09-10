@@ -1,5 +1,4 @@
 import { notification } from 'ant-design-vue'
-import { notification } from 'ant-design-vue'
 import axios from 'axios'
 
 import initialState from '@/utils/gcbmInitialStoreState.js'
