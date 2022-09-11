@@ -1,14 +1,9 @@
 import { createStore } from 'vuex'
-import VuexPersistence from 'vuex-persist'
-
+// import axios from "axios";
 import point from './modules/point'
 import rothc from './modules/rothc'
 import gcbm from './modules/gcbm'
 import vuelayers from './modules/vuelayers'
-
-const vuexLocal = new VuexPersistence({
-  storage: window.localStorage
-})
 
 export const store = createStore({
   modules: {
@@ -20,6 +15,5 @@ export const store = createStore({
   state: {},
   mutations: {},
   actions: {},
-  getters: {},
-  plugins: [vuexLocal.plugin]
+  getters: {}
 })

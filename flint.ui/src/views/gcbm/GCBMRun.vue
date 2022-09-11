@@ -1,120 +1,133 @@
 <template>
-  <div class="py-4 px-8 text-earth">
-    <a-typography-title :level="2"><span class="font-normal text-earth"> Run </span></a-typography-title>
-    <a-typography-text>
-      <span class="text-earth mb-6 block">
-        Run the simulation on the configured parameters. <br />
-        You can also <a-typography-link @click="exportSim">export the simulation</a-typography-link> and continue
-        editing later.</span
-      >
-    </a-typography-text>
+  <div>
+    <div class="px-8 pb-6 sm:px-16 md:px-24 mt-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="mt-3 text-2xl font-bold mb-2 text-gray-800">GCBM simulation workflow</h2>
+        <p class="text-gray-700">
+          Follow the steps below to simulate GCBM runs.
+          <br />
+          Click the toggle to auto download the simulation once complete.
+        </p>
+        <Toggle @downloadsim="downloadSim" @checkstatus="checkStatus" />
+      </div>
 
-    <div class="flex justify-items-center flex-row gap-2 mb-4">
-      <a-typography-text>
-        <span class=""> Active Simulation: </span>
-      </a-typography-text>
-      <a-typography-title :level="5" style="margin: 0">
-        <span class="text-earth"> {{ simulation_title }} </span>
-      </a-typography-title>
+      <StepperStatic />
+
+      <div class="mt-8 pb-6 mx-auto sim-card">
+        <div class="p-4 bg-white rounded shadow-lg">
+          <div>
+            <h2 class="font-semibold text-xl text-blueGray-700">Run a simulation</h2>
+
+            <label class="mt-4">
+              <p class="text-gray-600 text-lg">Selected simulation title:</p>
+              <span class="text-red-600 font-semibold text-lg">{{ $store.state.gcbm.DropdownSelectedSim }}</span>
+            </label>
+
+            <a-row :gutter="[16, 16]">
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="runSim"
+                >
+                  <PlayCircleOutlined />
+                  <p>Run simulation</p>
+                </button>
+              </a-col>
+
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="checkStatus"
+                >
+                  <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
+                  <p>Check status</p>
+                </button>
+              </a-col>
+
+              <a-col :span="24" :sm="8" class="buttons">
+                <button
+                  class="
+                    hover:bg-earth hover:text-white
+                    text-gray-800
+                    font-semibold
+                    py-2
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                  @click="downloadSim"
+                >
+                  <DownloadOutlined />
+                  <p>Download simulation</p>
+                </button>
+              </a-col>
+            </a-row>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="flex gap-4">
-      <button
-        class="
-          hover:bg-earth hover:text-white
-          text-gray-800
-          font-semibold
-          py-2
-          px-4
-          border border-gray-400
-          rounded
-          shadow
-          flex
-          items-center
-          gap-2
-        "
-        @click="runSim"
-      >
-        <PlayCircleOutlined />
-        <span class="whitespace-nowrap">Run simulation</span>
-      </button>
-
-      <!-- <a-col :span="24" :sm="8" class="buttons">
-        <button
-          class="
-            hover:bg-earth hover:text-white
-            text-gray-800
-            font-semibold
-            py-2
-            px-4
-            border border-gray-400
-            rounded
-            shadow
-            flex
-            items-center
-            gap-2
-          "
-          @click="checkStatus"
-        >
-          <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
-          <span>Check status</span>
-        </button>
-      </a-col> -->
-
-      <button
-        class="
-          hover:bg-earth hover:text-white
-          text-gray-800
-          font-semibold
-          py-2
-          px-4
-          border border-gray-400
-          rounded
-          shadow
-          flex
-          items-center
-          gap-2
-        "
-        @click="downloadSim"
-      >
-        <DownloadOutlined />
-        <span class="whitespace-nowrap">Download Output</span>
-      </button>
-    </div>
+    <StepperGCBM :initial="2" />
   </div>
 </template>
 
 <script>
+import StepperGCBM from '@/components/Stepper/StepperGCBM.vue'
+import StepperStatic from '@/components/Stepper/StepperStatic.vue'
+import Toggle from '@/components/Slider/Toggle.vue'
+import axios from 'axios'
+import { PlayCircleOutlined, QuestionCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 import { notification } from 'ant-design-vue'
-import { PlayCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
-import { useStore } from 'vuex'
-import * as JSZip from 'jszip'
-import { saveAs } from 'file-saver'
 
 export default {
-  name: 'GCBMRun',
+  name: 'DashboardPage',
   components: {
+    Toggle,
+    StepperGCBM,
+    StepperStatic,
     PlayCircleOutlined,
+    QuestionCircleOutlined,
     DownloadOutlined
   },
 
-  setup() {
-    const store = useStore()
-    const simulation_title = store.state.gcbm.config.title
+  data: () => ({
+    simulation_title: ''
+  }),
 
-    function runSim() {
+  methods: {
+    runSim: function () {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', simulation_title)
-      console.log(simulation_title)
+      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
+      console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
-      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, { method: 'POST', body: bodyFormData })
+      axios
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, bodyFormData)
         .then((response) => {
-          console.log(response)
           notification.success({
             message: response.data.status,
             duration: 5
           })
+          console.log(response)
         })
         .catch((error) => {
           notification.error({
@@ -123,23 +136,24 @@ export default {
           })
           console.log(error)
         })
-    }
+    },
 
-    function checkStatus() {
+    checkStatus: function () {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
-      console.log(store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
+      console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
-      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST', body: bodyFormData })
+      axios
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, bodyFormData)
         .then((response) => {
           notification.info({
             message: `${response.data.finished}`,
             duration: 5
           })
-          store.commit('setSimulationProgressState', response.data.finished)
+          this.$store.commit('setSimulationProgressState', response.data.finished)
           console.log(response)
-          console.log(store.state.gcbm.SimulationProgress)
+          console.log(this.$store.state.gcbm.SimulationProgress)
         })
         .catch((error) => {
           notification.error({
@@ -148,15 +162,18 @@ export default {
           })
           console.log(error)
         })
-    }
+    },
 
-    function downloadSim() {
+    downloadSim: function () {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
-      console.log(store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', this.$store.state.gcbm.DropdownSelectedSim)
+      console.log(this.$store.state.gcbm.DropdownSelectedSim)
       console.log([...bodyFormData])
 
-      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, { method: 'POST' })
+      axios
+        .post(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, bodyFormData, {
+          responseType: 'arraybuffer'
+        })
         .then((response) => {
           console.log(response)
           let blob = new Blob([response.data], { type: 'application/zip' })
@@ -164,7 +181,7 @@ export default {
           console.log(response.data)
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
+          link.setAttribute('download', this.$store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
           document.body.appendChild(link)
           link.click()
         })
@@ -176,24 +193,25 @@ export default {
           console.log(error)
         })
     }
-
-    function exportSim() {
-      const zip = new JSZip()
-      const simFolder = zip.folder(simulation_title)
-      const config = simFolder.folder('config')
-      config.file('localdomain.json', JSON.stringify(store.state.gcbm.config.localdomain, null, 2))
-      config.file('modules_cbm.json', JSON.stringify(store.state.gcbm.config.modules_cbm, null, 2))
-      config.file('pools_cbm.json', JSON.stringify(store.state.gcbm.config.pools_cbm, null, 2))
-      config.file('spinup.json', JSON.stringify(store.state.gcbm.config.spinup, null, 2))
-      config.file('variables.json', JSON.stringify(store.state.gcbm.config.variables, null, 2))
-      config.file('internal_variables.json', JSON.stringify(store.state.gcbm.config.internal_variables, null, 2))
-
-      zip.generateAsync({ type: 'blob' }).then((content) => {
-        saveAs(content, simulation_title + '.zip')
-      })
-    }
-
-    return { simulation_title, runSim, checkStatus, exportSim, downloadSim }
   }
 }
 </script>
+
+<style scoped>
+.sim-card {
+  width: 100%;
+  max-width: 400px;
+}
+.buttons > button {
+  height: 80px;
+}
+@media screen and (max-width: 576px) {
+  .sim-card {
+    max-width: 300px;
+  }
+  .buttons > button {
+    height: initial;
+    width: 100%;
+  }
+}
+</style>
