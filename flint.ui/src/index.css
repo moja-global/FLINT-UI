@@ -5,4 +5,35 @@
 body {
   font-family: 'DM Sans', sans-serif !important;
 }
+
+.anticon {
+  vertical-align: 0.125em !important;
+}
+
+.ant-image-preview-img-wrapper img {
+  /* This is needed because tailwind styles breaks ant design's Image component's */
+  height: unset;
+  display: unset;
+}
+
+.gcbm-tour-modal > .ant-modal {
+  top: 10px !important;
+}
+
+/* temporary fix for an error in the UI Library repo */
+input[type='text'] {
+  padding: 6.5px 11px !important;
+  border: 1px solid #d9d9d9 !important;
+  border-top-left-radius: 2px !important;
+  border-bottom-left-radius: 2px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* temporary fix for an error in the UI Library repo */
+.ant-image-preview-img {
+  width: unset !important;
+  height: unset !important;
+}
+
 @tailwind utilities;

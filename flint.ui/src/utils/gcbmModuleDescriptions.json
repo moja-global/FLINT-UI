@@ -1,0 +1,12 @@
+{
+  "CBMDecayModule": "This module calculates the annual decay and turnover on a set of dead organic matter pools present in the GCBM. Data requirements for the Decay Module are:\n 1. A table named \"decay_parameters\", with one set of decay parameters for each of the enumerated dom pools in the DomPool.\n 2. Scalar \"mean_annual_temperature\". This is the mean annual temperature of the environment.\n 3. Scalar \"SlowMixingRate\". This is the amount that has moved from slow aboveground to slow belowground annually.",
+  "CBMBuildLandUnitModule": "",
+  "CBMSequencer": "",
+  "CBMDisturbanceListener": "",
+  "CBMDisturbanceEventModule": "",
+  "CBMTransitionRulesModule": "",
+  "CBMLandClassTransitionModule": "",
+  "CBMGrowthModule": "",
+  "CBMAgeIndicators": "",
+  "TransactionManagerAfterSubmitModule": ""
+}
