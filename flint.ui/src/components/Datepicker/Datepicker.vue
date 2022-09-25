@@ -38,7 +38,7 @@ export default {
     function onChange(val) {
       selectedDate.value = val
     }
-    
+
     function styles() {
       return { maxWidth: '250px' }
     }
@@ -48,7 +48,7 @@ export default {
       inputVal,
       onChange,
       styles
-      
+
     }
   }
 }
