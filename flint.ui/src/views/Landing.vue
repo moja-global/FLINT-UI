@@ -30,7 +30,7 @@
     >
       <LandingPageCard
         title="Point"
-        description="Point is a basic model in the FLINT that allows a person to enter three pool values, date, location. This is a good model to practice and a good starting point."
+        description="Point is a basic model in the FLINT that allows a person to enter three pool values, date and location. This is a good model to practice and a good starting point."
         link="/flint/configurations/point"
         docLink="https://docs.moja.global/en/master/FLINT/index.html"
       />
