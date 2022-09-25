@@ -1,23 +1,23 @@
 <template>
-  <div>
-    <a-date-picker
-      v-model="inputVal"
-      :value="selectedDate"
-      :default-value="selectedDate"
-      v-bind="$attrs"
-      @change="onChange"
+  <div :style="styles()">
+    <DatePickerComponent
+      @changeDate="onChange"
+      startYear="1924"
+      endYear="2022"
+      placeholder="Select the date"
+      readonly
     />
   </div>
 </template>
 
 <script>
-import { DatePicker } from 'ant-design-vue'
+import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
 import dayjs from 'dayjs'
 import { ref, computed } from 'vue'
 
 export default {
   components: {
-    'a-date-picker': DatePicker
+    DatePickerComponent
   },
   props: {
     value: { type: String, default: dayjs('2022-01-31') }
@@ -39,10 +39,15 @@ export default {
       selectedDate.value = val
     }
 
+    function styles() {
+      return { maxWidth: '250px' }
+    }
+
     return {
       selectedDate,
       inputVal,
-      onChange
+      onChange,
+      styles
     }
   }
 }
