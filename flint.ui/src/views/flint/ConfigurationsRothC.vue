@@ -36,8 +36,9 @@
             v-for="(item, index) in configurations"
             :key="index"
             :heading="`${item.text} (${item.type})`"
-          >
-            <component :is="item.component" />
+            ><p>
+              <component :is="item.component" />
+            </p>
           </AccordionItem>
         </AccordionComponent>
 
