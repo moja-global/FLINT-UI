@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-14 flex items-center justify-center">
+  <div class="mt-2 flex items-center justify-center">
     <a-row class="p-4 w-full" :gutter="[24, 32]">
       <a-col :xs="{ span: 24 }" :md="{ span: 12 }" :xl="{ span: 6 }">
         <a-row class="cards flex justify-between" :gutter="[6, 6]">
