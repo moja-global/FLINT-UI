@@ -27,15 +27,20 @@
 
         <h2 class="mt-7 py-4 text-2xl font-normal text-earth">Configure Parameters</h2>
 
-        <a-collapse accordion :bordered="false" class="rothcAccordion" expand-icon-position="right">
-          <a-collapse-panel
+        <AccordionComponent width="80vw" :centerItem="true" classname="rothcAccordion">
+          <AccordionItem
+            label="label_primary"
+            content="content_primary"
+            headingColor="white"
+            bgContent="#f7f5f7"
             v-for="(item, index) in configurations"
             :key="index"
-            :header="`${item.text} (${item.type})`"
-          >
+            :heading="`${item.text} (${item.type})`"
+            ><br />
             <component :is="item.component" />
-          </a-collapse-panel>
-        </a-collapse>
+            <br />
+          </AccordionItem>
+        </AccordionComponent>
 
         <div class="my-16 flex gap-8 items-center">
           <div data-v-step="5">
@@ -87,6 +92,8 @@ import { ref } from 'vue'
 import { markRaw } from 'vue'
 import { RightOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
+import { AccordionComponent } from '@moja-global/mojaglobal-ui'
+import { AccordionItem } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
@@ -94,7 +101,9 @@ export default {
     Datepicker,
     RightOutlined,
     RothCOutputContainer,
-    ButtonComponent
+    ButtonComponent,
+    AccordionComponent,
+    AccordionItem
   },
 
   setup() {
@@ -168,9 +177,5 @@ export default {
   }
 }
 </script>
-<style>
-.rothcAccordion .ant-collapse-header {
-  font-size: 18px;
-  color: theme('colors.earth') !important;
-}
-</style>
+
+<style></style>
