@@ -1515,10 +1515,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@moja-global/mojaglobal-ui@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@moja-global/mojaglobal-ui/-/mojaglobal-ui-0.1.0.tgz#eb2978e1e80dbe528d660ba2ce7d2639325d2cb0"
-  integrity sha512-v8L8Y7+kZiYFwFrmwyvIBPsVnAVyTFRNhL4JjC7XutDukYRziEHyne8fwR2ryS/+Wg9XgLAut7BiHwaYxYQ0nA==
+"@moja-global/mojaglobal-ui@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@moja-global/mojaglobal-ui/-/mojaglobal-ui-0.1.1.tgz#b35e85aba6618cae33a8bb00e7516ddad0b33a69"
+  integrity sha512-Me5eYI1XYJjarI522q2e8O7nCx9IYCB0auEGpQr7CdD09Io9C78ZGCZgB/0HtZNI3oK+pGuk2+a5Z5BdAwDPzQ==
   dependencies:
     "@rollup/plugin-image" "^2.1.1"
 
