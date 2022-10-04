@@ -10,43 +10,44 @@
     <div class="flex w-full lg:w-2/3 gap-4 md:gap-10">
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
-        <a-date-picker
-          v-model:value="selectedStartDate"
-          class="w-full"
-          :size="size"
-          :format="dateFormatList"
-          v-bind="$attrs"
-          @change="onStartChange"
-          :disabledDate="(date) => date > selectedEndDate"
-        />
+        <div :style="styles()">
+         <DatePickerComponent
+           @changeDate="onStartChange"
+           startYear="1924"
+           endYear="2022"
+           placeholder="Select the date"
+         />
+        </div>
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
-        <a-date-picker
-          v-model:value="selectedEndDate"
-          class="w-full"
-          :size="size"
-          :format="dateFormatList"
-          v-bind="$attrs"
-          @change="onEndChange"
-          :disabledDate="(date) => date < selectedStartDate"
-        />
+        <div :style="styles()">
+         <DatePickerComponent
+           @changeDate="onEndChange"
+           startYear="1924"
+           endYear="2022"
+           placeholder="Select the date"
+         />
+        </div>
       </div>
     </div>
     <h3 class="mt-4 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is
-      <span class="text-persiangreen">{{ date_diff > -0.01 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+      <span class="text-persiangreen">{{ date_diff >= 0.0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
     </h3>
   </div>
 </template>
 
 <script>
-// import dayjs from 'dayjs'
 import dayjs from 'dayjs'
 import { computed, ref, watchEffect } from 'vue'
+import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
+  components: {
+    DatePickerComponent
+  }, 
   name: 'DatepickerGCBM',
   emits: ['startDateChange', 'endDateChange'],
   props: {
@@ -88,6 +89,10 @@ export default {
     const onEndChange = (val) => {
       emit('endDateChange', val)
     }
+    
+    function styles() {
+      return { maxWidth: '250px' }
+    }
 
     return {
       size: 'large',
@@ -96,7 +101,8 @@ export default {
       selectedEndDate,
       selectedStartDate,
       onStartChange,
-      onEndChange
+      onEndChange,
+      styles
     }
   }
 }
