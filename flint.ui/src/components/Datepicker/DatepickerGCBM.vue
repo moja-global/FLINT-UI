@@ -11,24 +11,24 @@
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
         <div :style="styles()">
-         <DatePickerComponent
-           @changeDate="onStartChange"
-           startYear="1924"
-           endYear="2022"
-           placeholder="Select the date"
-         />
+          <DatePickerComponent
+            @changeDate="onStartChange"
+            startYear="1924"
+            endYear="2022"
+            placeholder="Select the date"
+          />
         </div>
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
         <div :style="styles()">
-         <DatePickerComponent
-           @changeDate="onEndChange"
-           startYear="1924"
-           endYear="2022"
-           placeholder="Select the date"
-         />
+          <DatePickerComponent
+            @changeDate="onEndChange"
+            startYear="1924"
+            endYear="2022"
+            placeholder="Select the date"
+          />
         </div>
       </div>
     </div>
