@@ -47,7 +47,7 @@ import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
 export default {
   components: {
     DatePickerComponent
-  }, 
+  },
   name: 'DatepickerGCBM',
   emits: ['startDateChange', 'endDateChange'],
   props: {
@@ -89,7 +89,7 @@ export default {
     const onEndChange = (val) => {
       emit('endDateChange', val)
     }
-    
+
     function styles() {
       return { maxWidth: '250px' }
     }
