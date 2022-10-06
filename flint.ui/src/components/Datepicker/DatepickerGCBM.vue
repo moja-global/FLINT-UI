@@ -85,7 +85,7 @@ export default {
     
     if (date_diff.value < 0) {
       notification.error({
-        message: 'Start date should be lesser than end date'
+        message: 'Start date should be lesser than end date',
         duration: 5
       })
     }
