@@ -43,6 +43,7 @@
 import dayjs from 'dayjs'
 import { computed, ref, watchEffect } from 'vue'
 import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
+import { notification } from 'ant-design-vue'
 
 export default {
   components: {
@@ -52,11 +53,11 @@ export default {
   emits: ['startDateChange', 'endDateChange'],
   props: {
     start_date: {
-      type: String,
+      type: string,
       default: '2020-01-01'
     },
     end_date: {
-      type: String,
+      type: string,
       default: '2020-12-31'
     }
   },
@@ -81,6 +82,13 @@ export default {
       const diff = selectedEndDate.value.diff(selectedStartDate.value) / (1000 * 60 * 60 * 24 * 365)
       return diff
     })
+    
+    if (date_diff.value < 0) {
+      notification.error({
+        message: 'Start date should be lesser than end date'
+        duration: 5
+      })
+    }
 
     const onStartChange = (val) => {
       emit('startDateChange', val)
