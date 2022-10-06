@@ -78,18 +78,45 @@ export default {
     })
 
     const date_diff = computed(() => {
+      var start_date_value = new Date(dayjs(selectedStartDate.value).format('YYYY/MM/DD'))
+      var end_date_value = new Date(dayjs(selectedEndDate.value).format('YYYY/MM/DD'))
       // difference in years
-      const diff = selectedEndDate.value.diff(selectedStartDate.value) / (1000 * 60 * 60 * 24 * 365)
+      var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
       return diff
     })
 
-    if (date_diff.value < 0) {
-      notification.error({
-        message: 'Start date should be lesser than end date',
-        duration: 5
-      })
-    }
+    const startDateInput = computed({
+      get: () => {
+        return selectedStartDate.value
+      },
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedStartDate.value = val
+        if (date_diff.value < 0) {
+          notification.error({
+            message: 'Start date should be lesser than end date',
+            duration: 5
+          })
+        }
+      }
+    })
 
+    const endDateInput = computed({
+      get: () => {
+        return selectedEndDate.value
+      },
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedEndDate.value = val
+        if (date_diff.value < 0) {
+          notification.error({
+            message: 'End date should be greater than start date',
+            duration: 5
+          })
+        }
+      }
+    })
+     
     const onStartChange = (val) => {
       emit('startDateChange', val)
     }
@@ -108,6 +135,8 @@ export default {
       dateFormatList,
       selectedEndDate,
       selectedStartDate,
+      startDateInput,
+      endDateInput,
       onStartChange,
       onEndChange,
       styles
