@@ -18,21 +18,39 @@
 
     <a-row type="flex" justify="center">
       <a-space>
-        <Button class="mt-4 ml-2 mr-2" :btn-size="'auto'" @click="onClick">Explore <span> →</span></Button>
-        <Button class="mt-4" :btn-size="'auto'" @click="goDocs">Docs <span> →</span></Button>
+        <ButtonComponent
+          classname="primarywh"
+          BackgroundColor="#ffffff"
+          Color="#475447"
+          Padding="0.4rem 1.3rem"
+          MinWidth="100px"
+          FontSize="15px"
+          @click="onClick"
+          >Explore <span> →</span></ButtonComponent
+        >
+        <ButtonComponent
+          classname="primarywh"
+          BackgroundColor="#ffffff"
+          Color="#475447"
+          Padding="0.4rem 1.3rem"
+          MinWidth="100px"
+          FontSize="15px"
+          @click="goDocs"
+          >Docs <span> →</span></ButtonComponent
+        >
       </a-space>
     </a-row>
   </a-col>
 </template>
 
 <script>
-import Button from '../Button/Button.vue'
+import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default {
   components: {
-    Button
+    ButtonComponent
   },
   props: {
     title: { type: String, required: true },

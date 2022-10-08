@@ -18,14 +18,15 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"octref.vetur",
-		"dariofuzinato.vue-peek",
 		"esbenp.prettier-vscode",
 		"formulahendry.auto-rename-tag",
 		"christian-kohler.path-intellisense",
 		"CoenraadS.bracket-pair-colorizer",
 		"streetsidesoftware.code-spell-checker",
 		"VisualStudioExptTeam.vscodeintellicode",
-		"mhutchie.git-graph"
+		"mhutchie.git-graph",
+		"dariofuzinato.vue-peek",
+		"Wscats.vue"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

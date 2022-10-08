@@ -27,22 +27,46 @@
 
         <h2 class="mt-7 py-4 text-2xl font-normal text-earth">Configure Parameters</h2>
 
-        <a-collapse accordion :bordered="false" class="rothcAccordion" expand-icon-position="right">
-          <a-collapse-panel
+        <AccordionComponent width="80vw" :centerItem="true" classname="rothcAccordion">
+          <AccordionItem
+            label="label_primary"
+            content="content_primary"
+            headingColor="white"
+            bgContent="#f7f5f7"
             v-for="(item, index) in configurations"
             :key="index"
-            :header="`${item.text} (${item.type})`"
-          >
+            :heading="`${item.text} (${item.type})`"
+            ><br />
             <component :is="item.component" />
-          </a-collapse-panel>
-        </a-collapse>
+            <br />
+          </AccordionItem>
+        </AccordionComponent>
 
         <div class="my-16 flex gap-8 items-center">
-          <div data-v-step="5"><Button @click="apiRoute_rothc">Run</Button></div>
+          <div data-v-step="5">
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="apiRoute_rothc"
+              >Run</ButtonComponent
+            >
+          </div>
           <div v-show="clickedRun" data-v-step="6">
-            <Button :btn-size="'auto'" @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()">
-              {{ showTable ? 'Hide' : 'Show' }} Output
-            </Button>
+            <ButtonComponent
+              classname="primarywh"
+              BackgroundColor="#ffffff"
+              Color="#475447"
+              Padding="0.4rem 1.3rem"
+              MinWidth="100px"
+              FontSize="15px"
+              @click="showTable ? hideRothCOutputContainer() : showRothCOutputContainer()"
+            >
+              {{ showTable ? 'Hide' : 'Show' }} Output</ButtonComponent
+            >
           </div>
         </div>
         <RothCOutputContainer v-if="showTable" />
@@ -54,7 +78,7 @@
 <script>
 import RothCTemplate from '@/views/flint/RothCTemplate.vue'
 import Datepicker from '@/components/Datepicker/DatepickerRothC.vue'
-import Button from '@/components/Button/Button.vue'
+import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 import RothCOutputContainer from './RothCOutputContainer.vue'
 import RothCAvgAirTempVue from '@/components/ConfigurationsRothC/RothCAvgAirTemp.vue'
 import RothCSoilCoverVue from '@/components/ConfigurationsRothC/RothCSoilCover.vue'
@@ -68,6 +92,8 @@ import { ref } from 'vue'
 import { markRaw } from 'vue'
 import { RightOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
+import { AccordionComponent } from '@moja-global/mojaglobal-ui'
+import { AccordionItem } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
@@ -75,7 +101,9 @@ export default {
     Datepicker,
     RightOutlined,
     RothCOutputContainer,
-    Button
+    ButtonComponent,
+    AccordionComponent,
+    AccordionItem
   },
 
   setup() {
@@ -149,9 +177,5 @@ export default {
   }
 }
 </script>
-<style>
-.rothcAccordion .ant-collapse-header {
-  font-size: 18px;
-  color: theme('colors.earth') !important;
-}
-</style>
+
+<style></style>
