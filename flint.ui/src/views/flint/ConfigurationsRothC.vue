@@ -101,7 +101,7 @@ export default {
     Datepicker,
     RightOutlined,
     GraphContainer,
-    ButtonComponent
+    ButtonComponent,
     AccordionComponent,
     AccordionItem
   },
