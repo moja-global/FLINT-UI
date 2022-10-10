@@ -37,9 +37,9 @@ GCBM
 Node
 -----
 
-This project requires node version >= 14
+This project requires Node version >= 14
 
-1. To check the version of installed node, run the following command:
+1. To check the version of installed Node, run the following command:
 
 .. code:: shell
 
@@ -47,20 +47,20 @@ This project requires node version >= 14
    
 2. You can also replace ``-v`` with ``--version`` and it should work the same.
 
-3. To update node to the latest version, ensure nvm is installed and run the following command:
+3. To update Node to the latest version, ensure ``nvm`` is installed (see `this`_) and run the following command:
 
 .. code:: shell
 
    nvm install <version>
    
-(replacing ``<version>`` with version of node you want to install.)
+(replacing ``<version>`` with version of Node you want to install.)
 
 Yarn
 -----
 
-It is recommended to install Yarn through the npm.
+It is recommended to install Yarn through the ``npm``.
 
-1. Once you have npm installed you can run the following both to install and upgrade Yarn:
+1. Once you have ``npm`` installed you can run the following both to install and upgrade Yarn:
 
 .. code:: shell
 
@@ -203,3 +203,4 @@ Minor errors can be fixed automatically:
 .. _Yarn: https://yarnpkg.com/
 .. _here: https://vuejs.org/v2/style-guide/
 .. _official integration: https://eslint.vuejs.org/user-guide/
+.. _this: https://github.com/nvm-sh/nvm/blob/master/
