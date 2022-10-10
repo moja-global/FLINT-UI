@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="absolute left-0">
+    <div>
       <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height: 300px; width: 600px">
         <ol-view :zoom="zoom" :center="center" :rotation="rotation" :projection="'EPSG:4326'" />
 
@@ -18,7 +18,7 @@
         </ol-vector-layer>
       </ol-map>
     </div>
-    <div class="absolute right-0">
+    <div class="md:flex">
       <div class="px-4 content-center rounded-md mb-5">
         <div class="text-gray-700 md:flex md:items-center">
           <div>
