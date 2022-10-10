@@ -1,80 +1,94 @@
 <template>
   <div class="flex flex-wrap gap-8">
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">dpmaCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">dpmaCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_dpmaCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_dpmaCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">rpmaCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">rpmaCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_rpmaCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_rpmaCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">biofCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">biofCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_biofCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_biofCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">biosCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">biosCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_biosCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_biosCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">humsCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">humsCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_humsCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_humsCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">inrtCMInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">inrtCMInit</label>
+        </div>
+        <input
+          v-model="newconfig_inrtCMInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_inrtCMInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
 
     <div class="text-gray-700 flex-grow">
-      <div class="mb-1">
-        <label for="forms-labelLeftInputCode" class="text-base">TSMDInit</label>
+      <div class="text-gray-700">
+        <div class="mb-1">
+          <label for="forms-labelLeftInputCode" class="text-base">TSMDInit</label>
+        </div>
+        <input
+          v-model="newconfig_TSMDInit"
+          class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+          type="text"
+        />
       </div>
-      <input
-        v-model="newconfig_TSMDInit"
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-        type="text"
-      />
     </div>
   </div>
 </template>
