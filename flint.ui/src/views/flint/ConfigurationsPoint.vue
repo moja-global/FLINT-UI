@@ -14,7 +14,14 @@
         </p>
 
         <div v-if="isShow">
-          <Maptest />
+          <ModalComponent
+            :toggle="
+              () => {
+                isShow = !isShow
+              }
+            "
+            ><CardComponent><Maptest /></CardComponent
+          ></ModalComponent>
         </div>
 
         <div class="mt-16">
@@ -123,7 +130,7 @@ import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
 import PointOuterTable from './PointOuterTable.vue'
-
+import { ModalComponent, CardComponent } from '@moja-global/mojaglobal-ui'
 import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
 import { Modal, notification } from 'ant-design-vue'
@@ -135,7 +142,9 @@ export default {
     Datepicker,
     Maptest,
     Slider,
-    PointOuterTable
+    CardComponent,
+    PointOuterTable,
+    ModalComponent
   },
 
   setup() {

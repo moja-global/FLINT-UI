@@ -102,7 +102,7 @@ export default {
 
     const onModalClose = () => {
       emit('close')
-      current.value = 0
+      setTimeout(() => (current.value = 0), 500)
     }
 
     const styles = computed(() => {
