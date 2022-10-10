@@ -111,8 +111,16 @@ export default {
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, { method: 'POST', body: bodyFormData })
         .then((response) => {
           console.log(response)
+          if (response.status === 500) {
+            throw new Error('There was an error running the simulation. Please try again later.')
+          } else {
+            return response.json()
+          }
+        })
+        .then((response) => {
+          console.log(response)
           notification.success({
-            message: response.data.status,
+            message: response.status,
             duration: 5
           })
         })
