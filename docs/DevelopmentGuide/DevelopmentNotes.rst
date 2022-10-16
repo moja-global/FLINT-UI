@@ -34,6 +34,44 @@ GCBM
 
    docker run --rm -d -p 8081:8080 gcbm-api
 
+Node
+-----
+
+This project requires Node version >= 14
+
+1. To check the version of installed Node, run the following command:
+
+.. code:: shell
+
+   node -v
+   
+2. You can also replace ``-v`` with ``--version`` and it should work the same.
+
+3. To update Node to the latest version, ensure ``nvm`` is installed (see `this`_) and run the following command:
+
+.. code:: shell
+
+   nvm install <version>
+   
+(replacing ``<version>`` with version of Node you want to install.)
+
+Yarn
+-----
+
+It is recommended to install Yarn through the ``npm``.
+
+1. Once you have ``npm`` installed you can run the following both to install and upgrade Yarn:
+
+.. code:: shell
+
+   npm install --global yarn
+   
+2. To check the version of Yarn installed by running the following command:
+
+.. code:: shell
+
+   yarn --version
+
 Vue app
 -------
 
@@ -165,3 +203,4 @@ Minor errors can be fixed automatically:
 .. _Yarn: https://yarnpkg.com/
 .. _here: https://vuejs.org/v2/style-guide/
 .. _official integration: https://eslint.vuejs.org/user-guide/
+.. _this: https://github.com/nvm-sh/nvm/blob/master/
