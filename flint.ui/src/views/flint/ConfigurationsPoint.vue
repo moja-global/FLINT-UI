@@ -36,7 +36,7 @@
         </div>
 
         <div class="flex justify-evenly gap-14 flex-wrap w-full mt-16 z-0">
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="2">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -54,7 +54,7 @@
             </div>
           </div>
 
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="3">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -72,7 +72,7 @@
             </div>
           </div>
 
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="4">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -90,8 +90,7 @@
             </div>
           </div>
         </div>
-
-        <div class="my-16 flex gap-8 items-center">
+        <div class="my-16 flex gap-8 flex-wrap items-center">
           <div data-v-step="5">
             <ButtonComponent
               classname="primarywh"
