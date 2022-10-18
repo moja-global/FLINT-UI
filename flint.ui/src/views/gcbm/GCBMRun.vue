@@ -39,27 +39,25 @@
         <span class="whitespace-nowrap">Run simulation</span>
       </button>
 
-      <!-- <a-col :span="24" :sm="8" class="buttons">
-        <button
-          class="
-            hover:bg-earth hover:text-white
-            text-gray-800
-            font-semibold
-            py-2
-            px-4
-            border border-gray-400
-            rounded
-            shadow
-            flex
-            items-center
-            gap-2
-          "
-          @click="checkStatus"
-        >
-          <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
-          <span>Check status</span>
-        </button>
-      </a-col> -->
+      <button
+        class="
+          hover:bg-earth hover:text-white
+          text-gray-800
+          font-semibold
+          py-2
+          px-4
+          border border-gray-400
+          rounded
+          shadow
+          flex
+          items-center
+          gap-2
+        "
+        @click="checkStatus"
+      >
+        <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
+        <span>Check status</span>
+      </button>
 
       <button
         class="
@@ -86,7 +84,7 @@
 
 <script>
 import { notification } from 'ant-design-vue'
-import { PlayCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
+import { PlayCircleOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import * as JSZip from 'jszip'
 import { saveAs } from 'file-saver'
@@ -95,7 +93,8 @@ export default {
   name: 'GCBMRun',
   components: {
     PlayCircleOutlined,
-    DownloadOutlined
+    DownloadOutlined,
+    QuestionCircleOutlined
   },
 
   setup() {
@@ -135,19 +134,16 @@ export default {
 
     function checkStatus() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
-      console.log(store.state.gcbm.DropdownSelectedSim)
-      console.log([...bodyFormData])
+      bodyFormData.append('title', simulation_title)
 
-      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST', body: bodyFormData })
-        .then((response) => {
+      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST' })
+        .then((response) => response.json())
+        .then((data) => {
           notification.info({
-            message: `${response.data.finished}`,
+            message: `${data.finished}`,
             duration: 5
           })
-          store.commit('setSimulationProgressState', response.data.finished)
-          console.log(response)
-          console.log(store.state.gcbm.SimulationProgress)
+          console.log(data.finished)
         })
         .catch((error) => {
           notification.error({
@@ -160,19 +156,18 @@ export default {
 
     function downloadSim() {
       var bodyFormData = new FormData()
-      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
-      console.log(store.state.gcbm.DropdownSelectedSim)
+      bodyFormData.append('title', simulation_title)
+      console.log(simulation_title)
       console.log([...bodyFormData])
 
-      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, { method: 'POST' })
-        .then((response) => {
-          console.log(response)
-          let blob = new Blob([response.data], { type: 'application/zip' })
-          const url = window.URL.createObjectURL(blob)
-          console.log(response.data)
+      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, { method: 'POST', body: bodyFormData })
+        .then((response) => response.blob())
+        .then((bytes) => {
+          console.log(bytes)
+          const url = window.URL.createObjectURL(bytes)
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
+          link.setAttribute('download', simulation_title + '_gcbm_run_ouput' + '.zip')
           document.body.appendChild(link)
           link.click()
         })
