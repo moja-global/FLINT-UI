@@ -14,7 +14,14 @@
         </p>
 
         <div v-if="isShow">
-          <Maptest />
+          <ModalComponent
+            :toggle="
+              () => {
+                isShow = !isShow
+              }
+            "
+            ><CardComponent><Maptest /></CardComponent
+          ></ModalComponent>
         </div>
 
         <div class="mt-16">
@@ -29,7 +36,7 @@
         </div>
 
         <div class="flex justify-evenly gap-14 flex-wrap w-full mt-16 z-0">
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="2">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -47,7 +54,7 @@
             </div>
           </div>
 
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="3">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -65,7 +72,7 @@
             </div>
           </div>
 
-          <div class="flex-grow">
+          <div class="flex-grow w-32">
             <div class="">
               <div data-v-step="4">
                 <div class="text-earth flex gap-4 justify-between mb-6">
@@ -83,8 +90,7 @@
             </div>
           </div>
         </div>
-
-        <div class="my-16 flex gap-8 items-center">
+        <div class="my-16 flex gap-8 flex-wrap items-center">
           <div data-v-step="5">
             <ButtonComponent
               classname="primarywh"
@@ -123,7 +129,7 @@ import Datepicker from '@/components/Datepicker/DatepickerPoint.vue'
 import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
 import PointOuterTable from './PointOuterTable.vue'
-
+import { ModalComponent, CardComponent } from '@moja-global/mojaglobal-ui'
 import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
 import { notification } from '@/components/Alerts/Alert.vue'
@@ -136,7 +142,9 @@ export default {
     Datepicker,
     Maptest,
     Slider,
-    PointOuterTable
+    CardComponent,
+    PointOuterTable,
+    ModalComponent
   },
 
   setup() {

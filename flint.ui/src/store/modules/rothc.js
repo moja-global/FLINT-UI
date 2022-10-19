@@ -492,7 +492,6 @@ export default {
             message: `Configuration loaded for RothC.`,
             duration: 5
           })
-
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
