@@ -132,7 +132,8 @@ import PointOuterTable from './PointOuterTable.vue'
 import { ModalComponent, CardComponent } from '@moja-global/mojaglobal-ui'
 import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
-import { Modal, notification } from 'ant-design-vue'
+import  notification  from '@/components/Alerts/Alert.vue'
+import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 
 export default {
