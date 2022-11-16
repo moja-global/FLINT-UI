@@ -47,7 +47,7 @@
 
 ## About The Project
 
-This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Budget Carbon Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
+This project provides an intuitive way for new to explore some preconfigured FLINT modules, including the Generic Carbon Budget Model (GCBM), in order to better understand how the FLINT system works. Our client is written as a Web application and can be used in a local or remote environment. Please contact us if you'd like help deploying your cloud instance or customizing the client.
 
 ### Built with
 

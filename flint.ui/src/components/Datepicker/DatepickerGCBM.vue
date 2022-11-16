@@ -10,43 +10,45 @@
     <div class="flex w-full lg:w-2/3 gap-4 md:gap-10">
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
-        <a-date-picker
-          v-model:value="selectedStartDate"
-          class="w-full"
-          :size="size"
-          :format="dateFormatList"
-          v-bind="$attrs"
-          @change="onStartChange"
-          :disabledDate="(date) => date > selectedEndDate"
-        />
+        <div :style="styles()">
+          <DatePickerComponent
+            @changeDate="onStartChange"
+            startYear="1924"
+            endYear="2022"
+            placeholder="Select the date"
+          />
+        </div>
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
-        <a-date-picker
-          v-model:value="selectedEndDate"
-          class="w-full"
-          :size="size"
-          :format="dateFormatList"
-          v-bind="$attrs"
-          @change="onEndChange"
-          :disabledDate="(date) => date < selectedStartDate"
-        />
+        <div :style="styles()">
+          <DatePickerComponent
+            @changeDate="onEndChange"
+            startYear="1924"
+            endYear="2022"
+            placeholder="Select the date"
+          />
+        </div>
       </div>
     </div>
     <h3 class="mt-4 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is
-      <span class="text-persiangreen">{{ date_diff > -0.01 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+      <span class="text-persiangreen">{{ date_diff >= 0.0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
     </h3>
   </div>
 </template>
 
 <script>
-// import dayjs from 'dayjs'
 import dayjs from 'dayjs'
 import { computed, ref, watchEffect } from 'vue'
+import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
+import { notification } from 'ant-design-vue'
 
 export default {
+  components: {
+    DatePickerComponent
+  },
   name: 'DatepickerGCBM',
   emits: ['startDateChange', 'endDateChange'],
   props: {
@@ -76,9 +78,43 @@ export default {
     })
 
     const date_diff = computed(() => {
+      var start_date_value = new Date(dayjs(selectedStartDate.value).format('YYYY/MM/DD'))
+      var end_date_value = new Date(dayjs(selectedEndDate.value).format('YYYY/MM/DD'))
       // difference in years
-      const diff = selectedEndDate.value.diff(selectedStartDate.value) / (1000 * 60 * 60 * 24 * 365)
+      var diff = (Date.parse(end_date_value) - Date.parse(start_date_value)) / (1000 * 60 * 60 * 24 * 365)
       return diff
+    })
+
+    const startDateInput = computed({
+      get: () => {
+        return selectedStartDate.value
+      },
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedStartDate.value = val
+        if (date_diff.value < 0) {
+          notification.error({
+            message: 'Start date should be lesser than end date',
+            duration: 5
+          })
+        }
+      }
+    })
+
+    const endDateInput = computed({
+      get: () => {
+        return selectedEndDate.value
+      },
+      set: (val) => {
+        emit('input', dayjs(val).toString())
+        selectedEndDate.value = val
+        if (date_diff.value < 0) {
+          notification.error({
+            message: 'End date should be greater than start date',
+            duration: 5
+          })
+        }
+      }
     })
 
     const onStartChange = (val) => {
@@ -89,14 +125,21 @@ export default {
       emit('endDateChange', val)
     }
 
+    function styles() {
+      return { maxWidth: '250px' }
+    }
+
     return {
       size: 'large',
       date_diff,
       dateFormatList,
       selectedEndDate,
       selectedStartDate,
+      startDateInput,
+      endDateInput,
       onStartChange,
-      onEndChange
+      onEndChange,
+      styles
     }
   }
 }
