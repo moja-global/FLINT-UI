@@ -39,6 +39,7 @@
         <span class="whitespace-nowrap">Run simulation</span>
       </button>
 
+<<<<<<< Updated upstream
       <button
         class="
           hover:bg-earth hover:text-white
@@ -58,6 +59,29 @@
         <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
         <span>Check status</span>
       </button>
+=======
+      <!-- <a-col :span="24" :sm="8" class="buttons">
+        <button
+          class="
+            hover:bg-earth hover:text-white
+            text-gray-800
+            font-semibold
+            py-2
+            px-4
+            border border-gray-400
+            rounded
+            shadow
+            flex
+            items-center
+            gap-2
+          "
+          @click="checkStatus"
+        >
+          <QuestionCircleOutlined :style="{ fontSize: '16px' }" />
+          <span>Check status</span>
+        </button>
+      </a-col> -->
+>>>>>>> Stashed changes
 
       <button
         class="
@@ -84,7 +108,11 @@
 
 <script>
 import { notification } from 'ant-design-vue'
+<<<<<<< Updated upstream
 import { PlayCircleOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
+=======
+import { PlayCircleOutlined, DownloadOutlined } from '@ant-design/icons-vue'
+>>>>>>> Stashed changes
 import { useStore } from 'vuex'
 import * as JSZip from 'jszip'
 import { saveAs } from 'file-saver'
@@ -93,8 +121,12 @@ export default {
   name: 'GCBMRun',
   components: {
     PlayCircleOutlined,
+<<<<<<< Updated upstream
     DownloadOutlined,
     QuestionCircleOutlined
+=======
+    DownloadOutlined
+>>>>>>> Stashed changes
   },
 
   setup() {
@@ -108,6 +140,7 @@ export default {
       console.log([...bodyFormData])
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/dynamic`, { method: 'POST', body: bodyFormData })
+<<<<<<< Updated upstream
         .then((response) => {
           console.log(response)
           if (response.status === 500) {
@@ -116,6 +149,8 @@ export default {
             return response.json()
           }
         })
+=======
+>>>>>>> Stashed changes
         .then((response) => {
           console.log(response)
           notification.success({
@@ -134,16 +169,31 @@ export default {
 
     function checkStatus() {
       var bodyFormData = new FormData()
+<<<<<<< Updated upstream
       bodyFormData.append('title', simulation_title)
 
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST' })
         .then((response) => response.json())
         .then((data) => {
+=======
+      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
+      console.log(store.state.gcbm.DropdownSelectedSim)
+      console.log([...bodyFormData])
+
+      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST', body: bodyFormData })
+        .then((response) => {
+>>>>>>> Stashed changes
           notification.info({
             message: `${data.finished}`,
             duration: 5
           })
+<<<<<<< Updated upstream
           console.log(data.finished)
+=======
+          store.commit('setSimulationProgressState', response.data.finished)
+          console.log(response)
+          console.log(store.state.gcbm.SimulationProgress)
+>>>>>>> Stashed changes
         })
         .catch((error) => {
           notification.error({
@@ -156,6 +206,7 @@ export default {
 
     function downloadSim() {
       var bodyFormData = new FormData()
+<<<<<<< Updated upstream
       bodyFormData.append('title', simulation_title)
       console.log(simulation_title)
       console.log([...bodyFormData])
@@ -168,6 +219,21 @@ export default {
           const link = document.createElement('a')
           link.href = url
           link.setAttribute('download', simulation_title + '_gcbm_run_ouput' + '.zip')
+=======
+      bodyFormData.append('title', store.state.gcbm.DropdownSelectedSim)
+      console.log(store.state.gcbm.DropdownSelectedSim)
+      console.log([...bodyFormData])
+
+      fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/download`, { method: 'POST' })
+        .then((response) => {
+          console.log(response)
+          let blob = new Blob([response.data], { type: 'application/zip' })
+          const url = window.URL.createObjectURL(blob)
+          console.log(response.data)
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute('download', store.state.gcbm.DropdownSelectedSim + '_gcbm_run_ouput' + '.zip')
+>>>>>>> Stashed changes
           document.body.appendChild(link)
           link.click()
         })

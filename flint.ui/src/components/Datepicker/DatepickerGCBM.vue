@@ -10,6 +10,7 @@
     <div class="flex w-full lg:w-2/3 gap-4 md:gap-10">
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">Start Date</button><br />
+<<<<<<< Updated upstream
         <div :style="styles()">
           <DatePickerComponent
             @changeDate="onStartChange"
@@ -18,10 +19,22 @@
             placeholder="Select the date"
           />
         </div>
+=======
+        <a-date-picker
+          v-model:value="selectedStartDate"
+          class="w-full"
+          :size="size"
+          :format="dateFormatList"
+          v-bind="$attrs"
+          @change="onStartChange"
+          :disabledDate="(date) => date > selectedEndDate"
+        />
+>>>>>>> Stashed changes
       </div>
 
       <div class="w-12/12 md:w-10/12">
         <button class="text-gray text-base">End Date</button><br />
+<<<<<<< Updated upstream
         <div :style="styles()">
           <DatePickerComponent
             @changeDate="onEndChange"
@@ -30,16 +43,32 @@
             placeholder="Select the date"
           />
         </div>
+=======
+        <a-date-picker
+          v-model:value="selectedEndDate"
+          class="w-full"
+          :size="size"
+          :format="dateFormatList"
+          v-bind="$attrs"
+          @change="onEndChange"
+          :disabledDate="(date) => date < selectedStartDate"
+        />
+>>>>>>> Stashed changes
       </div>
     </div>
     <h3 class="mt-4 py-4 text-xl font-medium mb-2 text-gray-600 justify-center">
       Simulation length is
+<<<<<<< Updated upstream
       <span class="text-persiangreen">{{ date_diff >= 0.0 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+=======
+      <span class="text-persiangreen">{{ date_diff > -0.01 ? date_diff.toFixed(2) + ' years' : 'invalid' }}</span>
+>>>>>>> Stashed changes
     </h3>
   </div>
 </template>
 
 <script>
+<<<<<<< Updated upstream
 import dayjs from 'dayjs'
 import { computed, ref, watchEffect } from 'vue'
 import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
@@ -49,6 +78,13 @@ export default {
   components: {
     DatePickerComponent
   },
+=======
+// import dayjs from 'dayjs'
+import dayjs from 'dayjs'
+import { computed, ref, watchEffect } from 'vue'
+
+export default {
+>>>>>>> Stashed changes
   name: 'DatepickerGCBM',
   emits: ['startDateChange', 'endDateChange'],
   props: {
@@ -78,6 +114,7 @@ export default {
     })
 
     const date_diff = computed(() => {
+<<<<<<< Updated upstream
       var start_date_value = new Date(dayjs(selectedStartDate.value).format('YYYY/MM/DD'))
       var end_date_value = new Date(dayjs(selectedEndDate.value).format('YYYY/MM/DD'))
       // difference in years
@@ -117,6 +154,13 @@ export default {
       }
     })
 
+=======
+      // difference in years
+      const diff = selectedEndDate.value.diff(selectedStartDate.value) / (1000 * 60 * 60 * 24 * 365)
+      return diff
+    })
+
+>>>>>>> Stashed changes
     const onStartChange = (val) => {
       emit('startDateChange', val)
     }
@@ -125,21 +169,29 @@ export default {
       emit('endDateChange', val)
     }
 
+<<<<<<< Updated upstream
     function styles() {
       return { maxWidth: '250px' }
     }
 
+=======
+>>>>>>> Stashed changes
     return {
       size: 'large',
       date_diff,
       dateFormatList,
       selectedEndDate,
       selectedStartDate,
+<<<<<<< Updated upstream
       startDateInput,
       endDateInput,
       onStartChange,
       onEndChange,
       styles
+=======
+      onStartChange,
+      onEndChange
+>>>>>>> Stashed changes
     }
   }
 }

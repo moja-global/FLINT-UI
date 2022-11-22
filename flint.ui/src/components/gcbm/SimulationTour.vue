@@ -102,7 +102,11 @@ export default {
 
     const onModalClose = () => {
       emit('close')
+<<<<<<< Updated upstream
       setTimeout(() => (current.value = 0), 500)
+=======
+      current.value = 0
+>>>>>>> Stashed changes
     }
 
     const styles = computed(() => {
