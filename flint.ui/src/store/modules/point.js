@@ -1,4 +1,4 @@
-import { notification } from 'ant-design-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 import axios from 'axios'
 
 export default {
@@ -235,18 +235,22 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`, final_config_string)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'Configuration loaded for Point.',
-            duration: 5
+            time: 5000
           })
           console.log(response)
           commit('save_point_results', response.data)
           console.log(this.state.point.point_results)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
