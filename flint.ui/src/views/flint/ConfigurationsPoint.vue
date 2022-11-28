@@ -119,6 +119,7 @@
       </div>
       <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
       <PointOuterTable v-if="showTable" />
+      <ToastComponent />
     </div>
   </div>
 </template>
@@ -134,6 +135,7 @@ import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
 import { Modal, notification } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
+import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
@@ -143,7 +145,8 @@ export default {
     Slider,
     CardComponent,
     PointOuterTable,
-    ModalComponent
+    ModalComponent,
+    ToastComponent
   },
 
   setup() {
