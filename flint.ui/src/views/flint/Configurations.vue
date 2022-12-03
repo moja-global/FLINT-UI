@@ -8,7 +8,6 @@
 <script>
 import ExampleCardsConfig from '@/components/Headers/ExampleCardsConfig.vue'
 
-
 export default {
   name: 'DashboardPage',
   components: {
