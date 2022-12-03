@@ -70,6 +70,7 @@
           </div>
         </div>
         <RothCOutputContainer v-if="showTable" />
+        <ToastComponent />
       </div>
     </div>
   </div>
@@ -94,6 +95,7 @@ import { RightOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import { AccordionComponent } from '@moja-global/mojaglobal-ui'
 import { AccordionItem } from '@moja-global/mojaglobal-ui'
+import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
@@ -103,7 +105,8 @@ export default {
     RothCOutputContainer,
     ButtonComponent,
     AccordionComponent,
-    AccordionItem
+    AccordionItem,
+    ToastComponent
   },
 
   setup() {
