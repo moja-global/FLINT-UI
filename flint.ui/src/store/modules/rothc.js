@@ -1,5 +1,5 @@
-import { notification } from 'ant-design-vue'
 import axios from 'axios'
+import { useToast } from '@moja-global/mojaglobal-ui'
 
 export default {
   state: {
@@ -488,17 +488,21 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`, final_RothC_config_string)
         .then((response) => {
-          notification.success({
-            message: `Configuration loaded for RothC.`,
-            duration: 5
+          useToast({
+            type: 'success',
+            title: 'Success',
+            message: 'Configuration loaded for RothC.',
+            time: 5000
           })
           commit('save_rothc_results', response.data)
           console.log(this.state.rothc.rothc_results)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
