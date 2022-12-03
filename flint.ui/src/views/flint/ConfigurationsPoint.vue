@@ -138,7 +138,6 @@ import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
-
 export default {
   components: {
     ButtonComponent,
