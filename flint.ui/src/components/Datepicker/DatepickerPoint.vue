@@ -33,8 +33,8 @@
 <script>
 import dayjs from 'dayjs'
 import { ref, computed } from 'vue'
-import { notification } from 'ant-design-vue'
 import { DatePickerComponent } from '@moja-global/mojaglobal-ui'
+import { useToast } from '@moja-global/mojaglobal-ui'
 export default {
   components: {
     DatePickerComponent
@@ -63,9 +63,11 @@ export default {
         selectedStartDate.value = val
         console.log(selectedStartDate.value)
         if (date_diff.value < 0) {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: 'Start date should be lesser than end date',
-            duration: 5
+            time: 5000
           })
         }
       }
@@ -79,9 +81,11 @@ export default {
         selectedEndDate.value = val
         console.log(selectedEndDate.value)
         if (date_diff.value < 0) {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: 'End date should be greater than start date.',
-            duration: 5
+            time: 5000
           })
         }
       }
