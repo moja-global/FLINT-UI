@@ -28,6 +28,7 @@ export default {
         title: 'Get In Touch',
         subitems: [
           {
+             html:'<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="24.000000pt" viewBox="0 0 32.000000 32.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M30 150 l0 -90 130 0 130 0 0 90 0 90 -130 0 -130 0 0 -90z m178 45 c-20 -14 -42 -25 -48 -25 -6 0 -28 11 -48 25 l-37 25 85 0 85 0 -37 -25z m7 -21 l55 36 0 -65 0 -65 -110 0 -110 0 0 65 0 65 55 -36 55 -37 55 37z"/></g></svg>',
             name: 'info@moja.global',
             href: 'mailto:info@moja.global'
           }
