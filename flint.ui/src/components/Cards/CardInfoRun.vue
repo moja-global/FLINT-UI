@@ -115,7 +115,7 @@ export default {
             type: 'success',
             title: 'Success',
             message: 'Specification route has been invoked',
-            duration: 5000
+            time: 5000
           })
           console.log(response)
         })
