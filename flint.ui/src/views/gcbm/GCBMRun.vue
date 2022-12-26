@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import { notification } from 'ant-design-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 import { PlayCircleOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import * as JSZip from 'jszip'
@@ -118,15 +118,19 @@ export default {
         })
         .then((response) => {
           console.log(response)
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: response.status,
-            duration: 5
+            time: 5000
           })
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -139,16 +143,20 @@ export default {
       fetch(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/status`, { method: 'POST' })
         .then((response) => response.json())
         .then((data) => {
-          notification.info({
+          useToast({
+            type: 'info',
+            title: 'Info',
             message: `${data.finished}`,
-            duration: 5
+            time: 5000
           })
           console.log(data.finished)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -172,9 +180,11 @@ export default {
           link.click()
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
