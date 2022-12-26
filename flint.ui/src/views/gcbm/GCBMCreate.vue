@@ -85,8 +85,7 @@ export default {
         useToast({
           type: 'error',
           title: 'Error'
-          message: 'Error',
-          description: 'Please enter a simulation title.',
+          message: 'Please enter a valid simulation title!',
           time: 5000
         })
         return
@@ -128,8 +127,7 @@ export default {
         useToast({
           type: 'error',
           title: 'Error',
-          message: 'Failed to Create New Simulation',
-          description: `${msg}`,
+          message: `${msg}`,
           time: 5000
         })
         return
