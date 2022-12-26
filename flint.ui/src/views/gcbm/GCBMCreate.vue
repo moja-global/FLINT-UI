@@ -56,7 +56,8 @@
 
 <script>
 import { createVNode, ref, watchEffect } from 'vue'
-import { notification, Modal } from 'ant-design-vue'
+import { Modal } from 'ant-design-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 import { useStore } from 'vuex'
 import { ExclamationCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 
@@ -81,10 +82,12 @@ export default {
 
     function sendToAPI() {
       if (!simulation_title_input.value.trim()) {
-        notification.error({
+        useToast({
+          type: 'error',
+          title: 'Error'
           message: 'Error',
           description: 'Please enter a simulation title.',
-          duration: 5
+          time: 5000
         })
         return
       }
@@ -122,10 +125,12 @@ export default {
       if (msg.startsWith('Simulation already exists.')) {
         create_success.value = false
         error_message.value = msg
-        notification.error({
+        useToast({
+          type: 'error',
+          title: 'Error',
           message: 'Failed to Create New Simulation',
           description: `${msg}`,
-          duration: 5
+          time: 5000
         })
         return
       }
