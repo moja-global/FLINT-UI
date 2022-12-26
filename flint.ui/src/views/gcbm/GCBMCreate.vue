@@ -84,7 +84,7 @@ export default {
       if (!simulation_title_input.value.trim()) {
         useToast({
           type: 'error',
-          title: 'Error'
+          title: 'Error',
           message: 'Please enter a valid simulation title!',
           time: 5000
         })
