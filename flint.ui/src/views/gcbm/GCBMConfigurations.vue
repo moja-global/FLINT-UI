@@ -18,7 +18,7 @@ import { ToastComponent } from '@moja-global/mojaglobal-ui'
 export default {
   name: 'GCBMConfigurations',
   components: {
-    ToastComponent 
+    ToastComponent
   },
   setup() {
     const store = useStore()
