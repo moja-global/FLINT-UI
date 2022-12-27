@@ -50,6 +50,7 @@
       <a-typography-text class="w-1"> The GCBM Simulation Run consists of 4 main steps: </a-typography-text>
       <StepperStatic />
     </div>
+    <ToastComponent />
   </div>
   <SimulationTour :visible="tourModalVisible" @close="() => (tourModalVisible = false)" />
 </template>
@@ -57,7 +58,7 @@
 <script>
 import { createVNode, ref, watchEffect } from 'vue'
 import { Modal } from 'ant-design-vue'
-import { useToast } from '@moja-global/mojaglobal-ui'
+import { useToast, ToastComponent } from '@moja-global/mojaglobal-ui'
 import { useStore } from 'vuex'
 import { ExclamationCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 
@@ -66,7 +67,7 @@ import SimulationTour from '@/components/gcbm/SimulationTour.vue'
 
 export default {
   name: 'GCBMLanding',
-  components: { StepperStatic, SimulationTour, QuestionCircleOutlined },
+  components: { StepperStatic, SimulationTour, QuestionCircleOutlined, ToastComponent },
   setup() {
     const simulation_title_input = ref('')
     const error_message = ref('')
