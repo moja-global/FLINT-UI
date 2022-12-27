@@ -19,7 +19,7 @@ export default {
   name: 'GCBMUpload',
   components: {
     ToastComponent
-  }
+  },
   setup() {
     const store = useStore()
     const router = useRouter()
