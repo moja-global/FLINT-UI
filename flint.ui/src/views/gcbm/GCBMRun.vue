@@ -79,11 +79,12 @@
         <span class="whitespace-nowrap">Download Output</span>
       </button>
     </div>
+    <ToastComponent />
   </div>
 </template>
 
 <script>
-import { useToast } from '@moja-global/mojaglobal-ui'
+import { useToast, ToastComponent } from '@moja-global/mojaglobal-ui'
 import { PlayCircleOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import * as JSZip from 'jszip'
@@ -94,7 +95,8 @@ export default {
   components: {
     PlayCircleOutlined,
     DownloadOutlined,
-    QuestionCircleOutlined
+    QuestionCircleOutlined,
+    ToastComponent
   },
 
   setup() {
