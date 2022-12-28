@@ -4,6 +4,7 @@
     <!-- This router view is for rendering the upload routes like /gcbm/upload/classifiers, 
        /gcbm/upload/disturbances, etc. -->
     <router-view></router-view>
+    <ToastComponent />
   </div>
 </template>
 
@@ -12,9 +13,13 @@
 
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   name: 'GCBMUpload',
+  components: {
+    ToastComponent
+  },
   setup() {
     const store = useStore()
     const router = useRouter()

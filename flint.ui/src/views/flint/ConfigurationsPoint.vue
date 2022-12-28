@@ -133,8 +133,9 @@ import PointOuterTable from './PointOuterTable.vue'
 import { ModalComponent, CardComponent } from '@moja-global/mojaglobal-ui'
 import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
 import { useStore } from 'vuex'
-import { Modal, notification } from 'ant-design-vue'
+import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
@@ -294,10 +295,12 @@ export default {
       let firstRun = store.state.point.firstRun
 
       if (firstRun === true) {
-        notification.error({
+        useToast({
+          type: 'error',
+          title: 'Simulation Error',
           message: 'Simulation produced no result',
           description: 'Did you forget to run the simulation first?',
-          duration: 5
+          time: 5000
         })
 
         return

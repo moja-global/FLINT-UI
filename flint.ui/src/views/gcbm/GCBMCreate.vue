@@ -50,13 +50,15 @@
       <a-typography-text class="w-1"> The GCBM Simulation Run consists of 4 main steps: </a-typography-text>
       <StepperStatic />
     </div>
+    <ToastComponent />
   </div>
   <SimulationTour :visible="tourModalVisible" @close="() => (tourModalVisible = false)" />
 </template>
 
 <script>
 import { createVNode, ref, watchEffect } from 'vue'
-import { notification, Modal } from 'ant-design-vue'
+import { Modal } from 'ant-design-vue'
+import { useToast, ToastComponent } from '@moja-global/mojaglobal-ui'
 import { useStore } from 'vuex'
 import { ExclamationCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
 
@@ -65,7 +67,7 @@ import SimulationTour from '@/components/gcbm/SimulationTour.vue'
 
 export default {
   name: 'GCBMLanding',
-  components: { StepperStatic, SimulationTour, QuestionCircleOutlined },
+  components: { StepperStatic, SimulationTour, QuestionCircleOutlined, ToastComponent },
   setup() {
     const simulation_title_input = ref('')
     const error_message = ref('')
@@ -81,10 +83,11 @@ export default {
 
     function sendToAPI() {
       if (!simulation_title_input.value.trim()) {
-        notification.error({
-          message: 'Error',
-          description: 'Please enter a simulation title.',
-          duration: 5
+        useToast({
+          type: 'error',
+          title: 'Error',
+          message: 'Please enter a valid simulation title!',
+          time: 5000
         })
         return
       }
@@ -122,10 +125,11 @@ export default {
       if (msg.startsWith('Simulation already exists.')) {
         create_success.value = false
         error_message.value = msg
-        notification.error({
-          message: 'Failed to Create New Simulation',
-          description: `${msg}`,
-          duration: 5
+        useToast({
+          type: 'error',
+          title: 'Error',
+          message: `${msg}`,
+          time: 5000
         })
         return
       }
