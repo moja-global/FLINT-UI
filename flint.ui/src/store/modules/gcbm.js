@@ -1,4 +1,4 @@
-import { notification } from 'ant-design-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 import axios from 'axios'
 
 import initialState from '@/utils/gcbmInitialStoreState.js'
@@ -110,9 +110,11 @@ export default {
           onCreateRunSuccess(response.data.data)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           onCreateRunError(error)
           console.log(error)
@@ -120,9 +122,11 @@ export default {
     },
     check_gcbm_run_status() {
       axios.get(`${process.env.VUE_APP_REST_API_GCBM}/gcbm/list`).then((response) => {
-        notification.success({
+        useToast({
+          type: 'success',
+          title: 'Success',
           message: `${response.data.data}`,
-          duration: 5
+          time: 5000
         })
         console.log(response.data)
       })
