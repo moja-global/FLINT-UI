@@ -50,7 +50,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import ConfirmRun from '@/components/Prompts/ConfirmRun'
 import { PlayCircleOutlined } from '@ant-design/icons-vue'
-import { notification } from 'ant-design-vue'
+import { useToast } from '@moja-global/mojaglobal-ui'
 
 export default {
   name: 'CardInfoRun',
@@ -111,16 +111,20 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/spec`)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'Specification route has been invoked',
-            duration: 5
+            time: 5000
           })
           console.log(response)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -131,16 +135,20 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/help/all`)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'Help route has been invoked',
-            duration: 5
+            time: 5000
           })
           console.log(response)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -151,16 +159,20 @@ export default {
       axios
         .get(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/version`)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'Version route has been invoked',
-            duration: 5
+            time: 5000
           })
           console.log(response)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -171,16 +183,20 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/point`)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'Point route has been invoked',
-            duration: 5
+            time: 5000
           })
           console.log(response)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
@@ -191,25 +207,32 @@ export default {
       axios
         .post(`${process.env.VUE_APP_REST_API_FLINT_EXAMPLE}/rothc`)
         .then((response) => {
-          notification.success({
+          useToast({
+            type: 'success',
+            title: 'Success',
             message: 'RothC route has been invoked. You can see the output in RothC Output Table.',
-            duration: 5
+            time: 5000
           })
           console.log(response)
         })
         .catch((error) => {
-          notification.error({
+          useToast({
+            type: 'error',
+            title: 'Error',
             message: `${error}`,
-            duration: 5
+            time: 5000
           })
           console.log(error)
         })
     }
 
     function apiRoute_nonexistent() {
-      notification.warning({
+      useToast({
+        type: 'warning',
+        title: 'Warning',
         message: 'No such route exists!',
-        duration: 5
+        time: 5000,
+        varient: 'solid'
       })
       console.log('No such route exists!')
     }
