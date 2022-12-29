@@ -4,6 +4,7 @@
     <!-- This router view is for rendering the configuration routes like /gcbm/configurations/local-domain, 
        /gcbm/configurations/modules, etc. -->
     <router-view></router-view>
+    <ToastComponent />
   </div>
 </template>
 
@@ -12,9 +13,13 @@
 
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   name: 'GCBMConfigurations',
+  components: {
+    ToastComponent
+  },
   setup() {
     const store = useStore()
     const router = useRouter()
