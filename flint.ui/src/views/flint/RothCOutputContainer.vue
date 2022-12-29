@@ -13,7 +13,7 @@
 
 <script>
 import { ref } from 'vue'
-import RothCOutput from './RothCOutput.vue'
+import RothCOutput from './RothCOutputGraph.vue'
 import Table from './Table.vue'
 import dayjs from 'dayjs'
 import { useStore } from 'vuex'
