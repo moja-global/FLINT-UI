@@ -65,7 +65,7 @@ export default {
         if (date_diff.value < 0) {
           useToast({
             type: 'error',
-            title: 'Error',
+            title: 'Invalid Start Date',
             message: 'Start date should be lesser than end date',
             time: 5000
           })
@@ -83,7 +83,7 @@ export default {
         if (date_diff.value < 0) {
           useToast({
             type: 'error',
-            title: 'Error',
+            title: 'Invalid End Date',
             message: 'End date should be greater than start date.',
             time: 5000
           })
