@@ -1,48 +1,48 @@
 <template>
- <a-col display="inline-block">
-  <CardComponent 
-    class="card bg-white rounded shadow-lg cover"
-    align="center"
-    :span="24"
-    :md="{ span: 11 }"
-    :xl="{ span: 7 }"
-    type="flex"
-  >
-    <a-col>
-      <h2 class="text-earth text-2xl mb-2">
-        {{ title }}
-      </h2>
-      <p class="text-earth text-base leading-7 justify-text">
-        {{ description }}
-      </p>
-    </a-col>
+  <a-col display="inline-block">
+    <CardComponent 
+      class="card bg-white rounded shadow-lg cover"
+      align="center"
+      :span="24"
+      :md="{ span: 11 }"
+      :xl="{ span: 7 }"
+      type="flex"
+    >
+      <a-col>
+        <h2 class="text-earth text-2xl mb-2">
+          {{ title }}
+        </h2>
+        <p class="text-earth text-base leading-7 justify-text">
+          {{ description }}
+        </p>
+      </a-col>
 
-    <a-row type="flex" justify="center">
-      <a-space>
-        <ButtonComponent
-          classname="primarywh"
-          BackgroundColor="#ffffff"
-          Color="#475447"
-          Padding="0.4rem 1.3rem"
-          MinWidth="100px"
-          FontSize="15px"
-          @click="onClick"
-          >Explore <span> →</span></ButtonComponent
-        >
-        <ButtonComponent
-          classname="primarywh"
-          BackgroundColor="#ffffff"
-          Color="#475447"
-          Padding="0.4rem 1.3rem"
-          MinWidth="100px"
-          FontSize="15px"
-          @click="goDocs"
-          >Docs <span> →</span></ButtonComponent
-        >
-      </a-space>
-    </a-row>
-  </CardComponent >
- </a-col>
+      <a-row type="flex" justify="center">
+        <a-space>
+          <ButtonComponent
+            classname="primarywh"
+            BackgroundColor="#ffffff"
+            Color="#475447"
+            Padding="0.4rem 1.3rem"
+            MinWidth="100px"
+            FontSize="15px"
+            @click="onClick"
+            >Explore <span> →</span></ButtonComponent
+          >
+          <ButtonComponent
+            classname="primarywh"
+            BackgroundColor="#ffffff"
+            Color="#475447"
+            Padding="0.4rem 1.3rem"
+            MinWidth="100px"
+            FontSize="15px"
+            @click="goDocs"
+            >Docs <span> →</span></ButtonComponent
+          >
+        </a-space>
+      </a-row>
+    </CardComponent >
+  </a-col>
 </template>
 
 <script>
