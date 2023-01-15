@@ -1,6 +1,6 @@
 <template>
   <a-col display="inline-block">
-    <CardComponent 
+    <CardComponent
       class="card bg-white rounded shadow-lg cover"
       align="center"
       :span="24"
@@ -41,7 +41,7 @@
           >
         </a-space>
       </a-row>
-    </CardComponent >
+    </CardComponent>
   </a-col>
 </template>
 
