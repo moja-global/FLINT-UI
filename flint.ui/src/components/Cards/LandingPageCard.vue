@@ -1,11 +1,12 @@
 <template>
-  <a-col
-    type="flex"
+ <a-col display="inline-block">
+  <CardComponent 
+    class="card bg-white rounded shadow-lg cover"
     align="center"
     :span="24"
     :md="{ span: 11 }"
     :xl="{ span: 7 }"
-    class="card bg-white rounded shadow-lg"
+    type="flex"
   >
     <a-col>
       <h2 class="text-earth text-2xl mb-2">
@@ -40,17 +41,20 @@
         >
       </a-space>
     </a-row>
-  </a-col>
+  </CardComponent >
+ </a-col>
 </template>
 
 <script>
 import { ButtonComponent } from '@moja-global/mojaglobal-ui'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { CardComponent } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
-    ButtonComponent
+    ButtonComponent,
+    CardComponent
   },
   props: {
     title: { type: String, required: true },
@@ -96,9 +100,50 @@ export default {
   text-align: justify;
 }
 
-@media screen and (min-width: 1400px) {
+.cover {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 1223px) {
   .card {
-    max-width: 350px;
+    max-width: 320px;
+  }
+  .card:first-child {
+    margin-right: auto;
+  }
+  .card:last-child {
+    margin-left: auto;
+  }
+  .card:nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1224px) {
+  .card {
+    max-width: 420px;
+  }
+  .card:first-child {
+    margin-right: auto;
+  }
+  .card:last-child {
+    margin-left: auto;
+  }
+  .card:nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+  .card {
+    padding: 16px 8px;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .card:first-child {
     margin-right: auto;
