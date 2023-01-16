@@ -44,19 +44,29 @@ export default {
 :deep(.ant-slider:hover .ant-slider-rail) {
   background-color: theme('colors.earth');
 }
+:deep(.ant-slider:hover .ant-slider-handle) {
+  border-color: theme('colors.earth');
+}
+
 :deep(.ant-slider-track) {
-  height: 2px;
+  height: 5px;
   background-color: theme('colors.earth');
+  border-radius: 5px;
 }
 :deep(.ant-slider-rail) {
-  height: 2px;
-  background-color: theme('colors.earth');
+  height: 5px;
+  background-color: gray;
+  border-radius: 5px;
 }
 :deep(.ant-slider-handle) {
-  background-color: theme('colors.earth');
+  background-color: rgb(82, 77, 77);
   border: none;
-  width: 14px;
-  height: 14px;
-  margin-top: -6px;
+  width: 24px;
+  height: 24px;
+  margin-top: -10px;
+  border: 3px;
+  border-style: solid;
+  border-color: white;
+  box-shadow: 2px 2px 5px #aaaaaa;
 }
 </style>
