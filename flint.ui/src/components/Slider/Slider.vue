@@ -1,16 +1,27 @@
 <template>
-  <div>
-    <a-slider v-model:value="inputVal" v-bind="$attrs" />
+  <div :style="styles()">
+    <SliderComponent
+      classname="primary"
+      PrimaryColor="#2E382B"
+      OuterWidth="356px"
+      OuterHeight="7px"
+      InnerWidth="16px"
+      InnerHeight="16px"
+      minimum="0"
+      maximum="100"
+      value="22"
+      @clicked="getvalue"
+    />
   </div>
 </template>
 
 <script>
-import { Slider } from 'ant-design-vue'
+import { SliderComponent } from '@moja-global/mojaglobal-ui'
 import { ref, computed } from 'vue'
 
 export default {
   components: {
-    'a-slider': Slider
+    SliderComponent
   },
   emits: ['changeVal'],
   props: {
