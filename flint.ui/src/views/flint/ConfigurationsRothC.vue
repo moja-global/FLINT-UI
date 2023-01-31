@@ -154,7 +154,7 @@ export default {
       }
     })
 
-    if (store.state.point.firstRun === true) {
+    if (store.state.rothc.firstRun === true) {
       // Then return early. This also makes sure that user doesn't get
       // `Modal.confirm` prompt if it's the first time.
       store.commit('setRunStatus', false)
@@ -168,7 +168,7 @@ export default {
     }
 
     function showRothCOutputContainer() {
-      let firstRun = store.state.point.firstRun
+      let firstRun = store.state.rothc.firstRun
       if (firstRun === true) {
         notification.error({
           message: 'Simulation produced no result',

@@ -241,8 +241,14 @@ export default {
     RothC_stepLenInYears: [],
     initialValues: [],
     plantCM: [],
-    atmosphere: []
+    atmosphere: [],
+    firstRun: true
   },
+
+  mutations: { 
+    setRunStatus(state, value) { 
+      state.firstRun = value 
+    },
 
   mutations: {
     setNew_rothc_startDate(state, newValue) {
