@@ -245,12 +245,10 @@ export default {
     firstRun: true
   },
 
-  mutations: { 
-    setRunStatus(state, value) { 
-      state.firstRun = value 
-    },
-
   mutations: {
+    setRunStatus(state, value) { 
+        state.firstRun = value 
+    },
     setNew_rothc_startDate(state, newValue) {
       this.state.rothc.config.LocalDomain.start_date = newValue
       console.log(this.state.rothc.config.LocalDomain.start_date)
