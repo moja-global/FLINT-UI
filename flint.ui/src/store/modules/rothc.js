@@ -241,10 +241,14 @@ export default {
     RothC_stepLenInYears: [],
     initialValues: [],
     plantCM: [],
-    atmosphere: []
+    atmosphere: [],
+    firstRun: true
   },
 
   mutations: {
+    setRunStatus(state, value) {
+      state.firstRun = value
+    },
     setNew_rothc_startDate(state, newValue) {
       this.state.rothc.config.LocalDomain.start_date = newValue
       console.log(this.state.rothc.config.LocalDomain.start_date)

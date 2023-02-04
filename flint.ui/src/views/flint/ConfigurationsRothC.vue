@@ -91,7 +91,7 @@ import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue
 
 import { ref } from 'vue'
 import { markRaw } from 'vue'
-import { RightOutlined } from '@ant-design/icons-vue'
+import { RightOutlined, notification } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import { AccordionComponent } from '@moja-global/mojaglobal-ui'
 import { AccordionItem } from '@moja-global/mojaglobal-ui'
@@ -153,6 +153,12 @@ export default {
       }
     })
 
+    if (store.state.rothc.firstRun === true) {
+      // Then return early. This also makes sure that user doesn't get
+      // `Modal.confirm` prompt if it's the first time.
+      store.commit('setRunStatus', false)
+    }
+
     function apiRoute_rothc() {
       // sending the new rothc config
       console.log('ROTHC route invoked with new configs')
@@ -161,6 +167,15 @@ export default {
     }
 
     function showRothCOutputContainer() {
+      let firstRun = store.state.rothc.firstRun
+      if (firstRun === true) {
+        notification.error({
+          message: 'Simulation produced no result',
+          description: 'Did you forget to run the simulation first?',
+          duration: 5
+        })
+        return
+      }
       store.dispatch('parse_RothC_results')
       showTable.value = true
     }
