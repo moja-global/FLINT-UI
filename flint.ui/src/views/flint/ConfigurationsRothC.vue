@@ -172,7 +172,8 @@ export default {
       if (firstRun === true) {
         useToast({
           type: 'error',
-          title: 'Simulation produced no result',
+          title: 'Simulation error',
+          message: 'Simulation produced no result',
           description: 'Did you forget to run the simulation first?',
           time: 5000
         })
