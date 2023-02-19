@@ -103,7 +103,7 @@
               >Run</ButtonComponent
             >
             <div v-show="isModal">
-              <ModalComponent 
+              <ModalComponent
                 :toggle="
                   () => {
                     isModal = !isModal
@@ -113,7 +113,7 @@
                 <CardComponent>
                   <h2 style="font-size: larger">Pool values are same as the last run!</h2>
                   <p style="font-size: medium">Click continue to run if this is intentional</p>
-                  <ButtonComponent 
+                  <ButtonComponent
                     class="modal"
                     @click="toggle()"
                     classname="primary hovered round"
@@ -356,8 +356,8 @@ export default {
 </script>
 
 <style>
-.modal{
+.modal {
   margin-left: 30%;
   margin-top: 5%;
-  }
+}
 </style>
