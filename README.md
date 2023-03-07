@@ -75,6 +75,32 @@ npm install -g yarn
 
 ### Installation
 
+#### Yarn Setup
+
+To run the Vue app locally, you can follow the below procedure:
+
+1. Clone [FLINT.UI](https://github.com/moja-global/FLINT-UI) repository:
+
+```shell
+git clone  https://github.com/<username>/FLINT-UI
+```
+2. Go to the flint.ui folder and run yarn install.
+```shell
+cd flint.ui
+yarn install
+```
+ 
+3. Run yarn serve to start the Vue app server.
+```shell
+yarn serve
+````
+
+4. Go to 127.0.0.1:8000 to view the Vue app.
+
+
+
+#### Docker Setup
+
 To set up this project locally follow the below procedure:
 
 1. Pull the below docker image to run `flint.example`:
