@@ -28,7 +28,7 @@ export default {
         title: 'Get In Touch',
         subitems: [
           {
-            name: '✉info@moja.global',
+            name: 'info@moja.global',
             href: 'mailto:info@moja.global'
           }
         ]
