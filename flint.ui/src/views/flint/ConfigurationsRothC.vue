@@ -91,11 +91,12 @@ import RothCRainfallVue from '@/components/ConfigurationsRothC/RothCRainfall.vue
 
 import { ref } from 'vue'
 import { markRaw } from 'vue'
-import { RightOutlined, notification } from '@ant-design/icons-vue'
+import { RightOutlined } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import { AccordionComponent } from '@moja-global/mojaglobal-ui'
 import { AccordionItem } from '@moja-global/mojaglobal-ui'
 import { ToastComponent } from '@moja-global/mojaglobal-ui'
+import { useToast } from '@moja-global/mojaglobal-ui'
 
 export default {
   components: {
@@ -169,10 +170,12 @@ export default {
     function showRothCOutputContainer() {
       let firstRun = store.state.rothc.firstRun
       if (firstRun === true) {
-        notification.error({
+        useToast({
+          type: 'error',
+          title: 'Simulation error',
           message: 'Simulation produced no result',
           description: 'Did you forget to run the simulation first?',
-          duration: 5
+          time: 5000
         })
         return
       }
