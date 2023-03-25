@@ -102,25 +102,50 @@
               @click="Run()"
               >Run</ButtonComponent
             >
-          </div>
-          <div data-v-step="6">
-            <ButtonComponent
-              classname="primarywh"
-              BackgroundColor="#ffffff"
-              Color="#475447"
-              Padding="0.4rem 1.3rem"
-              MinWidth="100px"
-              FontSize="15px"
-              @click="showPointOutputTable()"
-              >Point Output Table</ButtonComponent
-            >
+            <div v-show="isModal">
+              <ModalComponent
+                :toggle="
+                  () => {
+                    isModal = !isModal
+                  }
+                "
+              >
+                <CardComponent>
+                  <h2 style="font-size: larger">Pool values are same as the last run!</h2>
+                  <p style="font-size: medium">Click continue to run if this is intentional</p>
+                  <ButtonComponent
+                    class="modal"
+                    @click="toggle()"
+                    classname="primary hovered round"
+                    BackgroundColor="#ffffff"
+                    Color="#475447"
+                    Padding="0.4rem 1.3rem"
+                    MinWidth="100px"
+                    FontSize="15px"
+                    >Continue</ButtonComponent
+                  >
+                </CardComponent>
+              </ModalComponent>
+            </div>
           </div>
         </div>
+        <div data-v-step="6">
+          <ButtonComponent
+            classname="primarywh"
+            BackgroundColor="#ffffff"
+            Color="#475447"
+            Padding="0.4rem 1.3rem"
+            MinWidth="100px"
+            FontSize="15px"
+            @click="showPointOutputTable()"
+            >Point Output Table</ButtonComponent
+          >
+        </div>
       </div>
-      <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
-      <PointOuterTable v-if="showTable" />
-      <ToastComponent />
     </div>
+    <v-tour name="MyTour" :steps="steps" :options="myOptions"></v-tour>
+    <PointOuterTable v-if="showTable" />
+    <ToastComponent />
   </div>
 </template>
 
@@ -131,10 +156,8 @@ import Maptest from '@/components/Vuelayers/Maptest.vue'
 import Slider from '@/components/Slider/Slider.vue'
 import PointOuterTable from './PointOuterTable.vue'
 import { ModalComponent, CardComponent } from '@moja-global/mojaglobal-ui'
-import { ref, onMounted, getCurrentInstance, createVNode } from 'vue'
+import { ref, onMounted, getCurrentInstance } from 'vue'
 import { useStore } from 'vuex'
-import { Modal } from 'ant-design-vue'
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import { useToast } from '@moja-global/mojaglobal-ui'
 import { ToastComponent } from '@moja-global/mojaglobal-ui'
 
@@ -153,6 +176,7 @@ export default {
   setup() {
     const isShow = ref(false)
     const showTable = ref(false)
+    const isModal = ref(false)
 
     const store = useStore()
 
@@ -266,15 +290,7 @@ export default {
       }
 
       if (poolValuesNotChanged(slider_values)) {
-        Modal.confirm({
-          title: 'Pool values are same as the last run!',
-          content: 'Click OK to run if this is intentional',
-          icon: createVNode(ExclamationCircleOutlined),
-          onOk() {
-            store.dispatch('send_pointConfig')
-          },
-          onCancel() {}
-        })
+        isModal.value = true
 
         return
       } else {
@@ -284,6 +300,11 @@ export default {
         store.commit('set_pointConfig_Pool_3', slider_values.pool_3.toFixed(1))
         store.dispatch('send_pointConfig')
       }
+    }
+
+    function toggle() {
+      store.dispatch('send_pointConfig')
+      isModal.value = false
     }
 
     function Run() {
@@ -319,6 +340,7 @@ export default {
     return {
       isShow,
       showTable,
+      isModal,
       pool1,
       pool2,
       pool3,
@@ -326,8 +348,16 @@ export default {
       steps,
       finalPoolValues,
       Run,
-      showPointOutputTable
+      showPointOutputTable,
+      toggle
     }
   }
 }
 </script>
+
+<style>
+.modal {
+  margin-left: 30%;
+  margin-top: 5%;
+}
+</style>
